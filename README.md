@@ -1,9 +1,18 @@
 Introduction
 ============
 
-ETSpec (Embedded Software Test Specification) is a framework for the development of software
-tests that are executed automatically. At its core it is a domain specific programming language
-which integrates seamlessly with Java.
+The Embedded Software Test Development Kit eases the implementation of test for embedded software 
+(focusing on C code). It can be used like a unit test framework, but also supports advanced test 
+scenarios for embedded systems including timing analysis and Hardware-in-the-Loop (HiL) testing. 
+The ES TDK comes with a new test programming language called ETSpec providing a consistent view on 
+heterogeneous test environments.
+
+The tested software is executed on the real device. Test execution is controlled and the behavior 
+is observed using the debug and trace interfaces of the processor hardware. In principle any 
+microcontroller is supported (especially multicore controllers). Aggregation of data obtained from 
+different targets and other sources (communication networks, analog signals, simulated environment) 
+is also supported. The ES TDK is independent of any operating system and does not require any 
+software support on the target device.
 
 The first version of the language was called "PTSpec" and has been developed in the research project
 "MoTTeM" (www.mottem.fzi.de) funded by the BMWI (German Federal Ministry for Economic Affairs). This
@@ -14,11 +23,11 @@ Main Folders
 ------------
 
 * workspace_main
-  * The main development workspace for the ETSpec langauge and tools.
+  * The main development workspace for the ES TDK.
 * workspace_libs
   * The development workspace for drivers / JNI adapters of access hardware.
 * workspace_ptspec
-  * The workspace to for debugging/testing of the ETSpec language and tools.
+  * The workspace to for debugging/testing of the ES TDK.
   * Contains several examples.
 * workspace_picoSAR
   * A windows GUI application to configure the AUTOSAR-like VFB (Virtual Functional Bus)
@@ -50,7 +59,7 @@ Configure build environment
   * Do not use another folder, i.e. do not try to copy the projects into another folder.
   * You may want to create a shortcut for Eclipse that always opens the specific workspace.
     This is possible using the "-data" argument for eclipse, e.g.
-    C:\eclipse\eclipse.exe -data "C:\etspec-repository\workspace_main"
+    C:\eclipse\eclipse.exe -data "C:\es-tdk-repository\workspace_main"
 
 * Ensure that installed JREs and default JRE are set correctly (version 1.8)
   * Main Menu -> Window -> Preferences -> Java -> Installed JREs
@@ -65,8 +74,8 @@ Configure build environment
     trigger code generation first (see next step).
 
 
-Build and run ETSpec
---------------------
+Build and run the ES TDK
+------------------------
 
 * Generate code for fzi.mottem.model
   * Right-click "fzi.mottem.model/Generate Model Code.launch" -> Run As -> Generate Model Code.
@@ -94,7 +103,7 @@ To build and run these examples specific hardware and software is required.
   commutation), the other core is responsible for CAN communication.
 
 Even if the hardware is not available the source code of these example applications can be used to
-get an idea of ETSpec.
+get an idea of the ES TDK.
 
 
 Requirements to build example applications
