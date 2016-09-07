@@ -1,0 +1,84 @@
+# Common Generated Files #
+##########################
+*.o
+*.obj
+*.lo
+*.la
+*.al
+*.class
+*.so
+*.so.[0-9]*
+*.a
+*.idb
+*.pdb
+*.ilk
+*.tlog
+*.ipch
+*.exe
+*.pyc
+*.pyo
+*.rej
+.*.swp
+*.xml_gen
+*.log
+*.manifest
+*.manifest.res
+*.lib
+*.dll
+*.exp
+*.rc
+*.lastbuildstate
+*.d
+*.sdf
+*.cache
+*.html
+*.ini
+Progress.log
+.repos.xml
+
+
+# Visual Studio User Files #
+############################
+*.suo
+*.vcxproj.user
+*.csproj.user
+
+
+# Misc. #
+#########
+*.lnk
+*.elf
+*.map
+*.trf
+*.xtrf
+*.disassembly
+$STDERR.txt
+$STDOUT.txt
+$Download.xml
+language.settings.xml
+
+
+# Eclipse User Files #
+######################
+**/.metadata/
+
+
+# PTSpec Generated Files #
+##########################
+**/reports/
+**/tracedb/
+
+
+# Erika RTOS sources #
+######################
+**/ee_files_discovery/
+**/ee_files_isystem/
+
+
+# RT-Druid output #
+###################
+**/Debug/
+
+# Eclipse Crap #
+################
+**/RemoteSystemsTempFiles/
