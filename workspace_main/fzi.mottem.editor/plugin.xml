@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypes">
+      <diagramType
+            name="Editor"
+            type="editor"
+            id="fzi.mottem.editor.editorDiagramType">
+      </diagramType>
+   </extension>
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypeProviders">
+      <diagramTypeProvider
+            name="Editor Diagram Type Provider"
+            class="diagram.EditorDiagramTypeProvider"
+            id="fzi.mottem.editor.editorDiagramTypeProvider">
+         <diagramType
+               id="fzi.mottem.editor.editorDiagramType">
+         </diagramType>
+         <imageProvider
+            id="ImageProvider">
+   	     </imageProvider>   
+      </diagramTypeProvider>
+   </extension>
+   
+   <extension
+      point="org.eclipse.graphiti.ui.imageProviders">
+   	<imageProvider
+         class="diagram.EditorImageProvider"
+         id="ImageProvider">
+   	</imageProvider>
+   </extension>
+
+       <extension
+	    point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+	    <propertyContributor contributorId="editor.PropertyContributor"> 
+	        <propertyCategory category="Graphiti"> 
+	        </propertyCategory> 
+	    </propertyContributor> 
+	</extension>
+	       
+	<extension
+	      point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+	   <propertyTabs
+	          contributorId="editor.PropertyContributor">
+	   <propertyTab
+	         category="Graphiti"
+	         id="graphiti.main.tab"
+	         label="Main">
+	    </propertyTab>
+	   </propertyTabs>
+	</extension>
+	
+	<extension
+	      point="org.eclipse.ui.views.properties.tabbed.propertySections">
+	    <propertySections
+	          contributorId="editor.PropertyContributor">
+	        <propertySection
+	              class="property.sheet.IOnePropertySheet"
+	              filter="property.filter.IOneFilter"
+	              id="graphiti.main.tab.ione"
+	              tab="graphiti.main.tab">
+	        </propertySection>
+	    </propertySections>
+	</extension>
+	<extension
+	      point="org.eclipse.ui.views.properties.tabbed.propertySections">
+	    <propertySections
+	          contributorId="editor.PropertyContributor">
+	        <propertySection
+	              class="property.sheet.IC5000PropertySheet"
+	              filter="property.filter.IC5000Filter"
+	              id="graphiti.main.tab.ic5000"
+	              tab="graphiti.main.tab">
+	        </propertySection>
+	    </propertySections>
+	</extension>
+	<extension
+	      point="org.eclipse.ui.views.properties.tabbed.propertySections">
+	    <propertySections
+	          contributorId="editor.PropertyContributor">
+	        <propertySection
+	              class="property.sheet.HostInspectorPropertySheet"
+	              filter="property.filter.HostInspectorFilter"
+	              id="graphiti.main.tab.hostinspector"
+	              tab="graphiti.main.tab">
+	        </propertySection>
+	    </propertySections>
+	</extension>
+	<extension
+	      point="org.eclipse.ui.views.properties.tabbed.propertySections">
+	    <propertySections
+	          contributorId="editor.PropertyContributor">
+	        <propertySection
+	              class="property.sheet.VN7600PropertySheet"
+	              filter="property.filter.VN7600Filter"
+	              id="graphiti.main.tab.vn7600"
+	              tab="graphiti.main.tab">
+	        </propertySection>
+	    </propertySections>
+	</extension>
+	<extension
+	      point="org.eclipse.ui.views.properties.tabbed.propertySections">
+	    <propertySections
+	          contributorId="editor.PropertyContributor">
+	        <propertySection
+	              class="property.sheet.AgilentPropertySheet"
+	              filter="property.filter.AgilentFilter"
+	              id="graphiti.main.tab.agilent"
+	              tab="graphiti.main.tab">
+	        </propertySection>
+	    </propertySections>
+	</extension>
+	<extension
+	      point="org.eclipse.ui.views.properties.tabbed.propertySections">
+	    <propertySections
+	          contributorId="editor.PropertyContributor">
+	        <propertySection
+	              class="property.sheet.UUTPropertySheet"
+	              filter="property.filter.UUTFilter"
+	              id="graphiti.main.tab.uut"
+	              tab="graphiti.main.tab">
+	        </propertySection>
+	    </propertySections>
+	</extension>
+	<extension
+	      point="org.eclipse.ui.views.properties.tabbed.propertySections">
+	    <propertySections
+	          contributorId="editor.PropertyContributor">
+	        <propertySection
+	              class="property.sheet.ProcessorPropertySheet"
+	              filter="property.filter.ProcessorFilter"
+	              id="graphiti.main.tab.processor"
+	              tab="graphiti.main.tab">
+	        </propertySection>
+	    </propertySections>
+	</extension>
+	<extension
+	      point="org.eclipse.ui.views.properties.tabbed.propertySections">
+	    <propertySections
+	          contributorId="editor.PropertyContributor">
+	        <propertySection
+	              class="property.sheet.SoftwareExecutorPropertySheet"
+	              filter="property.filter.SoftwareExecutorFilter"
+	              id="graphiti.main.tab.softwareexecutor"
+	              tab="graphiti.main.tab">
+	        </propertySection>
+	    </propertySections>
+	</extension>
+	<extension
+	      point="org.eclipse.ui.views.properties.tabbed.propertySections">
+	    <propertySections
+	          contributorId="editor.PropertyContributor">
+	        <propertySection
+	              class="property.sheet.ProcessorCorePropertySheet"
+	              filter="property.filter.ProcessorCoreFilter"
+	              id="graphiti.main.tab.processorcore"
+	              tab="graphiti.main.tab">
+	        </propertySection>
+	    </propertySections>
+	</extension>
+	<extension
+	      point="org.eclipse.ui.views.properties.tabbed.propertySections">
+	    <propertySections
+	          contributorId="editor.PropertyContributor">
+	        <propertySection
+	              class="property.sheet.IOPinPropertySheet"
+	              filter="property.filter.IOPinFilter"
+	              id="graphiti.main.tab.iopin"
+	              tab="graphiti.main.tab">
+	        </propertySection>
+	    </propertySections>
+	</extension>
+	<extension
+	      point="org.eclipse.ui.views.properties.tabbed.propertySections">
+	    <propertySections
+	          contributorId="editor.PropertyContributor">
+	        <propertySection
+	              class="property.sheet.IOPortPropertySheet"
+	              filter="property.filter.IOPortFilter"
+	              id="graphiti.main.tab.ioport"
+	              tab="graphiti.main.tab">
+	        </propertySection>
+	    </propertySections>
+	</extension>
+	<extension
+	      point="org.eclipse.ui.views.properties.tabbed.propertySections">
+	    <propertySections
+	          contributorId="editor.PropertyContributor">
+	        <propertySection
+	              class="property.sheet.NetworkPropertySheet"
+	              filter="property.filter.NetworkFilter"
+	              id="graphiti.main.tab.network"
+	              tab="graphiti.main.tab">
+	        </propertySection>
+	    </propertySections>
+	</extension>
+
+
+   <extension
+        point="org.eclipse.ui.newWizards">
+     <category
+           id="fzi.mottem.ptspec.newWizards"
+           name="ES TDK">
+     </category>
+    <wizard
+          category="fzi.mottem.ptspec.newWizards"
+          class="wizard.TestRigDiagramWizard"
+          icon="icons/TestRigWizardIcon.gif"
+          id="fzi.mottem.ptspec.dsl.ui.wizards.wizard"
+          name="TestRigModel Graphical Representation">
+     </wizard>
+  </extension>
+ 
+<!--
+   <extension point="org.eclipse.ui.commands">
+      <category
+            id="fzi.mottem.runtime.commandCategory"
+            name="Runtime Commands">
+      </category>
+      <command
+            categoryId="fzi.mottem.runtime.commandCategory"
+            id="fzi.mottem.runtime.commands.create"
+            name="Create Diagram from Model File">
+      </command>
+   </extension>
+   
+   <extension point="org.eclipse.ui.handlers">
+      <handler
+            class="util.CreateDiagramCommand"
+            commandId="fzi.mottem.runtime.commands.create">
+      </handler>
+   </extension>
+  
+   
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution locationURI="menu:fzi.mottem.ptspec.menu?after=RuntimeAdditions">
+         <command
+              commandId="fzi.mottem.runtime.commands.create"
+              id="fzi.mottem.runtime.menu.runall"
+              mnemonic="I">
+         </command>
+         <separator name="additions" visible="true"/>
+      </menuContribution>
+   </extension>
+
+-->
+
+</plugin>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fzi.mottem.model.codemodel:CodeInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fzi.mottem.model.codemodel="http://www.fzi.de/mottem/model/codemodel" xmi:id="+R[B@fb641b" name="MyCode" cProjectName="none">
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+R[B@17e92ac" name="doWork" dataType="+R[B@4ff529">
+    <declarationLocation xmi:id="+LS+R[B@17e92ac" sourceFile="+LFnull"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+R[B@1ae82dd" name="var" dataType="+R[B@4ff529">
+    <declarationLocation xmi:id="+LS+R[B@1ae82dd" sourceFile="+LFnull"/>
+  </symbols>
+  <sourceFiles xmi:id="+LFnull" sourceCodeLocations="+LS+R[B@17e92ac +LS+R[B@1ae82dd" filePath=""/>
+  <dataTypes xsi:type="fzi.mottem.model.codemodel:DTVoid" xmi:id="+R[B@198ca52" name="void"/>
+  <dataTypes xsi:type="fzi.mottem.model.codemodel:DTInteger" xmi:id="+R[B@4ff529" name="int32" bitSize="32"/>
+</fzi.mottem.model.codemodel:CodeInstance>

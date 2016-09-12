@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="fzi.mottem.model" default="default">
+	<description>
+		Build script to generate code for all .gemodel files
+	</description>
+	 
+	<target name="default" description="Build script to generate code for all .gemodel files">
+		<emf.Ecore2Java
+			genModel="model/WrapperModel.genmodel"
+			model="model/WrapperModel.ecore"
+			generatemodelproject="true"
+			generateeditproject="true"
+			generateeditorproject="yes"
+			reconcilegenmodel="keep">
+		</emf.Ecore2Java>
+		
+		<input 
+			message="Do you want to overwrite generated '...simpleditors/plugin.xml' with correct defaults? Choose 'y' if unsure."
+		    validargs="y,n"
+		    addproperty="do.overwrite">
+		</input>
+
+		<condition property="do.abort">
+			<equals arg1="${do.overwrite}" arg2="n" />
+		</condition>
+		
+		<fail if="do.abort">plugin.xml was not overwritten. Manual merge with 'plugin.xml.correct' is necessary.</fail>
+		
+		<copy file="../fzi.mottem.model.simpleeditors/plugin.xml.correct" tofile="../fzi.mottem.model.simpleeditors/plugin.xml" overwrite="true" />
+	</target>
+	
+</project>

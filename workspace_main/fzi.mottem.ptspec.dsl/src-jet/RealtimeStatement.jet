@@ -1,0 +1,128 @@
+<%@jet class="JET_RealtimeStatement" package="fzi.mottem.ptspec.compiler.precompiled" skeleton="_template.skeleton" imports="fzi.mottem.jjet.interfaces.* java.util.List fzi.util.* fzi.mottem.model.baseelements.IInspector fzi.mottem.model.baseelements.ITestReferenceable fzi.mottem.ptspec.dsl.pTSpec.* fzi.mottem.ptspec.dsl.common.* fzi.mottem.ptspec.compiler.util.* fzi.mottem.ptspec.compiler.workers.*" %>
+<%
+	PTSRealtimeStatement rtStm = (PTSRealtimeStatement)context.getArgument();
+	PTSWorker ptsWorker = new PTSWorker(context);
+	PTSExpressionWorker ptsExpressionWorker = new PTSExpressionWorker(context);
+    context.setBuffer(stringBuffer);
+%>
+// realtime statement
+{
+	ITrace <%= PTS2JavaUtil.TRACE_INTANCE_NAME %> = new Trace(<%= PTS2JavaUtil.RUNTIME_INSTANCE_NAME %>,<%= PTS2JavaUtil.getJavaTestProviderName(rtStm) %>,<%= rtStm.getRealtimeBlock().isWithTimeout() ? ptsExpressionWorker.getCodeFor(rtStm.getRealtimeBlock().getTimeoutExpression()) : "0" %>);
+<%
+	List<IInspector> inspectorsToRegister = PTSpecUtils.getInspectorsParticipatingRealtime(rtStm);
+
+	for (IInspector inspector : inspectorsToRegister)
+	{
+%>
+	<%= PTS2JavaUtil.TRACE_INTANCE_NAME %>.registerTraceController(<%= PTS2JavaUtil.getJavaElementUID(inspector) %>);
+<%
+	}
+
+	ptsWorker.compile(rtStm.getRealtimeBlock().getImplementation());
+
+	if (rtStm.getRealtimeBlock().isBreaked())
+	{
+%>
+	<%= PTS2JavaUtil.TRACE_INTANCE_NAME %>.setUntilEvaluator(new ITraceEvaluator()
+		{
+			@Override
+			public boolean evaluateIsDone(ITrace <%= PTS2JavaUtil.TRACE_INTANCE_NAME %>)
+			{
+				return <%= ptsExpressionWorker.getCodeFor(rtStm.getRealtimeBlock().getBreakExpression()) %>;
+			}
+		});
+<%
+	}
+%>
+	<%= PTS2JavaUtil.TRACE_INTANCE_NAME %>.configure(new LinkedList<String>(){
+		private static final long serialVersionUID = 1L;
+		{
+<%
+	for (TupleFirstKey<ITestReferenceable, PTSSymbolReference> item : PTSpecUtils.getElementsForTracing(rtStm))
+	{
+%>
+			add(<%= PTS2JavaUtil.getJavaElementUID(item.Ele1) %>);
+<%
+	}
+%>
+		}});
+	<%= PTS2JavaUtil.TRACE_INTANCE_NAME %>.runAndTrace();
+<%
+	for (PTSPostRealtimeBlock block : rtStm.getPostRealtimeBlocks())
+	{
+		if (!(block instanceof PTSAnalyzeBlock)) continue;
+		PTSAnalyzeBlock analyzeBlock = (PTSAnalyzeBlock) block;
+%>
+	<%= PTS2JavaUtil.TRACE_INTANCE_NAME %>.rewind();
+	{
+<%
+		context.pushIndent(1);
+		ptsWorker.compile(analyzeBlock.getImplementation());
+		context.popIndent();
+%>
+	}
+<%
+	}
+%>
+	<%= PTS2JavaUtil.TRACE_INTANCE_NAME %>.storeAndClose();
+<%
+	for (PTSPostRealtimeBlock block : rtStm.getPostRealtimeBlocks())
+	{
+		if (!(block instanceof PTSTimePlotBlock)) continue;
+		PTSTimePlotBlock tpBlock = (PTSTimePlotBlock) block;
+%>
+	<%= PTS2JavaUtil.TRACE_INTANCE_NAME %>.rewind();
+	{
+	    TraceDB _pts_plotDB = _pts_trace.getPlotTraceDB("<%= tpBlock.getName() %>");
+<%
+		if (tpBlock.getRangeExpr() != null)
+		{
+%>
+		_pts_plotDB.insertMetaInfo("GLOBAL", "axis", "<%= PTSpecUtils.getPlotMetaInfo_Axis(tpBlock.getRangeExpr()) %>");
+		_pts_plotDB.insertMetaInfo("GLOBAL", "min", String.valueOf(<%= ptsExpressionWorker.getCodeFor(tpBlock.getRangeExpr().getStartOffset()) %>));
+		_pts_plotDB.insertMetaInfo("GLOBAL", "max", String.valueOf(<%= ptsExpressionWorker.getCodeFor(tpBlock.getRangeExpr().getEndOffset()) %>));
+<%
+		}
+		for (PTSStatement stm : tpBlock.getTimePlotStatements())
+		{
+			PTSTimePlotStatement tpStm = (PTSTimePlotStatement)stm;
+			if (tpStm.getRangeExpr() != null)
+			{
+%>
+		_pts_plotDB.insertMetaInfo("<%= tpStm.getName() %>", "axis", "<%= PTSpecUtils.getPlotMetaInfo_Axis(tpStm.getRangeExpr()) %>");
+		_pts_plotDB.insertMetaInfo("<%= tpStm.getName() %>", "line", "<%= PTSpecUtils.getPlotMetaInfo_Line(tpStm.getRangeExpr()) %>");
+		_pts_plotDB.insertMetaInfo("<%= tpStm.getName() %>", "min", String.valueOf(<%= ptsExpressionWorker.getCodeFor(tpStm.getRangeExpr().getStartOffset()) %>));
+		_pts_plotDB.insertMetaInfo("<%= tpStm.getName() %>", "max", String.valueOf(<%= ptsExpressionWorker.getCodeFor(tpStm.getRangeExpr().getEndOffset()) %>));
+<%
+			}
+		}
+%>
+		double[] _pts_lastValue = new double[<%= tpBlock.getTimePlotStatements().size() %>];
+		while(!<%= PTS2JavaUtil.TRACE_INTANCE_NAME %>.isEndOfTrace())
+		{
+		    double _pts_value;
+<%
+		int plotStmIdx = 0;
+		for (PTSStatement stm : tpBlock.getTimePlotStatements())
+		{
+			PTSTimePlotStatement tpStm = (PTSTimePlotStatement)stm;
+%>
+			_pts_value = <%= ptsExpressionWorker.getCodeFor(tpStm.getPlotExpr()) %>;
+			if (_pts_value != _pts_lastValue[<%= plotStmIdx %>] || _pts_value == 0.0)
+			{
+			    _pts_plotDB.injectValueMS(<%= PTS2JavaUtil.TRACE_INTANCE_NAME %>.<%= PTS2JavaUtil.getJavaRuntimePropertyFuncName(PTS_ERUNTIMEPROPERTY.TIMESTAMP) %>(), "<%= tpStm.getName() %>", String.valueOf(_pts_value));
+			    _pts_lastValue[<%= plotStmIdx %>] = _pts_value;
+			}
+<%
+			plotStmIdx++;
+		}
+%>
+			<%= PTS2JavaUtil.TRACE_INTANCE_NAME %>.moveNextDelta();
+		}
+		_pts_plotDB.synchronizeToHardStorage();
+		_pts_plots.add(_pts_plotDB);
+	}
+<%
+	}
+%>
+}

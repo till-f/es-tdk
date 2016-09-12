@@ -1,0 +1,25 @@
+<%@jet class="JET_StatementAsync" package="fzi.mottem.ptspec.compiler.precompiled" skeleton="_template.skeleton" imports="fzi.mottem.jjet.interfaces.* fzi.mottem.ptspec.compiler.util.* fzi.mottem.ptspec.compiler.workers.* fzi.mottem.ptspec.dsl.pTSpec.*" %>
+<%
+	PTSConcurrentStatementWrapper concurrentWrapper = (PTSConcurrentStatementWrapper)context.getArgument();
+	PTSImplementation impl = concurrentWrapper.getImplementation();
+	PTSWorker ptsWorker = new PTSWorker(context);
+    context.setBuffer(stringBuffer);
+%>
+// async item
+{
+	(new AbstractAsyncExecutable(
+		<%= concurrentWrapper.getAsyncId() != null ? "\"" + concurrentWrapper.getAsyncId() + "\"" : "null" %>,
+		<%= PTS2JavaUtil.RUNTIME_INSTANCE_NAME %>,
+		<%= PTS2JavaUtil.getJavaTraceProviderName(impl) %>)
+		{
+			@Override
+			public void execute() throws InterruptedException
+			{
+<%
+		context.pushIndent(3);
+		ptsWorker.compile(impl);
+		context.popIndent();
+%>
+			}
+		}).start();
+}

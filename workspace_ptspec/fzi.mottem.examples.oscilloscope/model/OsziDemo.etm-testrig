@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fzi.mottem.model.testrigmodel:TestRigInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fzi.mottem.model.testrigmodel="http://www.fzi.de/mottem/model/testrigmodel" xmi:id="+NOsziDemo" name="OsziDemo" comment="">
+  <uuts xmi:id="+R[B@7f08c0" name="FuncGen">
+    <ioPins xmi:id="+R[B@7f6b32" inspectorConnector="+R[B@11a2c9f" name="PinA">
+      <pinSignals xmi:id="+R[B@ba8754" name="Value"/>
+    </ioPins>
+    <ioPins xmi:id="+R[B@1ca91fd" name="PinB">
+      <pinSignals xmi:id="+R[B@189e2bc" name="Value"/>
+    </ioPins>
+  </uuts>
+  <inspectors xsi:type="fzi.mottem.model.testrigmodel:AgilentInspectorContainer" xmi:id="+R[B@249c93" name="Oscilloscope" connectURL="ess-pitl-oszi-1.fzi.de">
+    <agilentPins xmi:id="+R[B@5ba462" name="OszilloscopePin" runtimeInspectorClass="fzi.mottem.runtime.rti.keysight.IVIInspector" traceControllerClass="fzi.mottem.runtime.rti.keysight.IVITraceController" inspectorConnector="+R[B@11a2c9f"/>
+  </inspectors>
+  <connectors xsi:type="fzi.mottem.model.testrigmodel:PinConnector" xmi:id="+R[B@11a2c9f" inspector="+R[B@5ba462" inspectable="+R[B@7f6b32"/>
+</fzi.mottem.model.testrigmodel:TestRigInstance>

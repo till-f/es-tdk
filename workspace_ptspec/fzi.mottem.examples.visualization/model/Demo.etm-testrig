@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fzi.mottem.model.testrigmodel:TestRigInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fzi.mottem.model.datastreammodel="http://www.fzi.de/mottem/model/datastreammodel" xmlns:fzi.mottem.model.environmentdatamodel="http://www.fzi.de/mottem/model/environmentdatamodel" xmlns:fzi.mottem.model.testrigmodel="http://www.fzi.de/mottem/model/testrigmodel" xmi:id="_00u2EE4dEeSslsYpQMObKg" name="Demo">
+  <uuts xmi:id="+NUUT_00u2EE4dEeSslsYpQMObKg" name="EvalBoard">
+    <processors xmi:id="+Nprocessor+NUUT_00u2EE4dEeSslsYpQMObKg" inspectorConnector="+R[B@2e1189ce" name="MPC5643L">
+      <processorCores xmi:id="+R[B@9247cfe" name="Core0"/>
+      <processorCores xmi:id="+R[B@56f135f6" name="Core1"/>
+    </processors>
+    <ioPorts xsi:type="fzi.mottem.model.testrigmodel:CANPort" xmi:id="+NCANPort+NUUT_00u2EE4dEeSslsYpQMObKg" name="CAN_A" networkConnector="+R[B@3fbaeea7">
+      <symbolContainer xsi:type="fzi.mottem.model.datastreammodel:DataStreamInstance" href="CAN.etm-dstream#+R[B@2ed250fa"/>
+    </ioPorts>
+    <ioPins xmi:id="+R[B@ca016e" inspectorConnector="+R[B@ccf78c" name="PinA">
+      <pinSignals xmi:id="+R[B@1a67d4c" name="Value" physicalUnit=""/>
+    </ioPins>
+  </uuts>
+  <inspectors xsi:type="fzi.mottem.model.testrigmodel:IC5000" xmi:id="+NIC5000_00u2EE4dEeSslsYpQMObKg" name="IC5000">
+    <port xmi:id="+R[B@340a71d2" name="IC5000Port" runtimeInspectorClass="fzi.mottem.runtime.rti.isystem.ISYSTEMAccessDriver" traceControllerClass="fzi.mottem.runtime.rti.isystem.ISYSTEMTraceDriver" inspectorConnector="+R[B@2e1189ce"/>
+  </inspectors>
+  <inspectors xsi:type="fzi.mottem.model.testrigmodel:AgilentInspectorContainer" xmi:id="+R[B@54c79b" name="Oscilloscope" connectURL="ess-pitl-oszi-1.fzi.de">
+    <agilentPins xmi:id="+R[B@9faf63" name="OszilloscopePin" runtimeInspectorClass="fzi.mottem.runtime.rti.keysight.IVIAccessDriver" traceControllerClass="fzi.mottem.runtime.rti.keysight.IVITraceDriver" inspectorConnector="+R[B@ccf78c"/>
+  </inspectors>
+  <inspectors xsi:type="fzi.mottem.model.testrigmodel:VN7600" xmi:id="+R[B@15c7c5e" name="VN7600">
+    <canPorts xmi:id="+R[B@1642787" name="CANInspectorPort0" runtimeInspectorClass="fzi.mottem.runtime.rti.vector.VectorAccessDriver" traceControllerClass="fzi.mottem.runtime.rti.vector.VectorTraceDriver" inspectorConnector="+R[B@16efd58" channelNumber="1"/>
+    <canPorts xmi:id="+R[B@19e7774" name="CANInspectorPort1" runtimeInspectorClass="fzi.mottem.runtime.rti.vector.VectorAccessDriver" traceControllerClass="fzi.mottem.runtime.rti.vector.VectorTraceDriver" channelNumber="2"/>
+    <canPorts xmi:id="+R[B@14987" name="CANInspectorPort2" runtimeInspectorClass="fzi.mottem.runtime.rti.vector.VectorAccessDriver" traceControllerClass="fzi.mottem.runtime.rti.vector.VectorTraceDriver" channelNumber="3"/>
+  </inspectors>
+  <networks xsi:type="fzi.mottem.model.testrigmodel:CANBus" xmi:id="+NCANBus_00u2EE4dEeSslsYpQMObKg" inspectorConnector="+R[B@16efd58" name="CANBus" networkConnector="+R[B@3fbaeea7"/>
+  <connectors xsi:type="fzi.mottem.model.testrigmodel:TraceInspectorConnector" xmi:id="+R[B@2e1189ce" inspector="+R[B@340a71d2" inspectable="+Nprocessor+NUUT_00u2EE4dEeSslsYpQMObKg"/>
+  <connectors xsi:type="fzi.mottem.model.testrigmodel:PinConnector" xmi:id="+R[B@ccf78c" inspector="+R[B@9faf63" inspectable="+R[B@ca016e"/>
+  <connectors xsi:type="fzi.mottem.model.testrigmodel:CANInspectorConnector" xmi:id="+R[B@16efd58" inspector="+R[B@1642787" inspectable="+NCANBus_00u2EE4dEeSslsYpQMObKg"/>
+  <networkConnectors xsi:type="fzi.mottem.model.testrigmodel:CANPortConnector" xmi:id="+R[B@3fbaeea7" network="+NCANBus_00u2EE4dEeSslsYpQMObKg" networkPort="+NCANPort+NUUT_00u2EE4dEeSslsYpQMObKg"/>
+  <environment xmi:id="+R[B@193ef6e" name="Environment">
+    <symbolContainer xsi:type="fzi.mottem.model.environmentdatamodel:EnvironmentDataInstance" href="EnvironmentDataModel.etm-env#+R[B@6f451b"/>
+  </environment>
+</fzi.mottem.model.testrigmodel:TestRigInstance>

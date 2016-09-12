@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="ES TDK"
+            id="fzi.mottem.ptspec">
+      </category>
+      <view
+            name="ETSpec UI Settings"
+            icon="icons/settings-icon.png"
+            category="fzi.mottem.ptspec"
+            class="fzi.mottem.runtime.rtgraph.settingsViews.SettingsViewPart"
+            id="fzi.mottem.runtime.rtgraph.views.SettingsViewPart">
+      </view>
+      
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.ProblemView"
+               relationship="right"
+               id="fzi.mottem.runtime.rtgraph.views.MainView">
+         </view>
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.ProblemView"
+               relationship="right"
+               id="fzi.mottem.runtime.rtgraph.views.SettingsViewPart">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+   
+   <extension point="org.eclipse.ui.commands">
+      <category
+            id="fzi.mottem.rtgraph.commandCategory"
+            name="rtgraph Commands">
+      </category>
+      <command
+            categoryId="fzi.mottem.rtgraph.commandCategory"
+            id="fzi.mottem.rtgraph.commands.refresh"
+            name="(Re-)Load Signals">
+      </command>
+      <command
+            defaultHandler="fzi.mottem.runtime.rtgraph.editors.DashboardEditorCaller"
+            id="fzi.mottem.runtime.rtgraph.openDashboardEditor"
+            name="Open Dashboard Editor">
+      </command>
+   </extension>
+   
+   <extension point="org.eclipse.ui.handlers">
+      <handler
+            class="fzi.mottem.runtime.rtgraph.commands.RefreshCommand"
+            commandId="fzi.mottem.rtgraph.commands.refresh">
+      </handler>
+   </extension>
+   
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution locationURI="menu:fzi.mottem.ptspec.menu?after=UtilAdditions">
+         <command
+              commandId="fzi.mottem.rtgraph.commands.refresh"
+              id="fzi.mottem.rtgraph.menu.refresh"
+              mnemonic="I">
+         </command>
+      </menuContribution>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="fzi.mottem.runtime.rtgraph.Activator">
+      </startup>
+   </extension>
+   
+      <extension
+        point="org.eclipse.core.contenttype.contentTypes">
+     <content-type
+           base-type="org.eclipse.core.runtime.xml"
+           file-extensions="db"
+           id="fzi.mottem.runtime.rtgraph.GraphViewDB"
+           name="GraphView DB"
+           priority="normal">
+     </content-type>
+  </extension>
+  <extension
+        point="org.eclipse.ui.editors">
+     <editor
+           class="fzi.mottem.runtime.rtgraph.editors.GraphViewEditor"
+           default="true"
+           icon="icons/AutoScale.png"
+           id="fzi.mottem.runtime.rtgraph.editors.GraphViewEditor"
+           name="GraphView Editor">
+           <contentTypeBinding
+              contentTypeId="fzi.mottem.runtime.rtgraph.GraphViewDB">
+        </contentTypeBinding>
+     </editor>
+  </extension>
+   
+   <extension
+        point="org.eclipse.core.contenttype.contentTypes">
+     <content-type
+           base-type="org.eclipse.core.runtime.xml"
+           file-extensions="graphview"
+           id="fzi.mottem.runtime.rtgraph.GraphView"
+           name="GraphView XML"
+           priority="normal">
+     </content-type>
+  </extension>
+  <extension
+        point="org.eclipse.ui.editors">
+     <editor
+           class="fzi.mottem.runtime.rtgraph.editors.GraphViewEditor"
+           default="true"
+           icon="icons/AutoScale.png"
+           id="fzi.mottem.runtime.rtgraph.editors.GraphViewEditor"
+           name="GraphView Editor">
+           <contentTypeBinding
+              contentTypeId="fzi.mottem.runtime.rtgraph.GraphView">
+        </contentTypeBinding>
+     </editor>
+  </extension>
+  
+   
+   <extension
+        point="org.eclipse.core.contenttype.contentTypes">
+     <content-type
+           base-type="org.eclipse.core.runtime.xml"
+           file-extensions="dashboard"
+           id="fzi.mottem.runtime.rtgraph.Dashboard"
+           name="Dashboard XML"
+           priority="normal">
+     </content-type>
+  </extension>
+  <extension
+        point="org.eclipse.ui.editors">
+     <editor
+           class="fzi.mottem.runtime.rtgraph.editors.DashboardEditor"
+           default="true"
+           icon="icons/dashboard-icon.png"
+           id="fzi.mottem.runtime.rtgraph.editors.DashboardEditor"
+           name="Dashboard Editor">
+           <contentTypeBinding
+              contentTypeId="fzi.mottem.runtime.rtgraph.Dashboard">
+        </contentTypeBinding>
+     </editor>
+  </extension>
+   
+</plugin>

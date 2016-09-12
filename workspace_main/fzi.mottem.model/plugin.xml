@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated WrapperModel -->
+      <package
+            uri="http://www.fzi.de/mottem/model/baseelements"
+            class="fzi.mottem.model.baseelements.BaseelementsPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated WrapperModel -->
+      <parser
+            type="etm-base"
+            class="fzi.mottem.model.baseelements.util.BaseelementsResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated WrapperModel -->
+      <package
+            uri="http://www.fzi.de/mottem/model/codemodel"
+            class="fzi.mottem.model.codemodel.CodemodelPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated WrapperModel -->
+      <parser
+            type="etm-code"
+            class="fzi.mottem.model.codemodel.util.CodemodelResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated WrapperModel -->
+      <package
+            uri="http://www.fzi.de/mottem/model/datastreammodel"
+            class="fzi.mottem.model.datastreammodel.DatastreammodelPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated WrapperModel -->
+      <parser
+            type="etm-dstream"
+            class="fzi.mottem.model.datastreammodel.util.DatastreammodelResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated WrapperModel -->
+      <package
+            uri="http://www.fzi.de/mottem/model/environmentdatamodel"
+            class="fzi.mottem.model.environmentdatamodel.EnvironmentdatamodelPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated WrapperModel -->
+      <parser
+            type="etm-env"
+            class="fzi.mottem.model.environmentdatamodel.util.EnvironmentdatamodelResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated WrapperModel -->
+      <package
+            uri="http://www.fzi.de/mottem/model/testrigmodel"
+            class="fzi.mottem.model.testrigmodel.TestrigmodelPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated WrapperModel -->
+      <parser
+            type="etm-testrig"
+            class="fzi.mottem.model.testrigmodel.util.TestrigmodelResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated WrapperModel -->
+      <factory
+            uri="http://www.fzi.de/mottem/model/baseelements"
+            class="fzi.mottem.model.baseelements.provider.BaseelementsItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated WrapperModel -->
+      <factory
+            uri="http://www.fzi.de/mottem/model/codemodel"
+            class="fzi.mottem.model.codemodel.provider.CodemodelItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated WrapperModel -->
+      <factory
+            uri="http://www.fzi.de/mottem/model/datastreammodel"
+            class="fzi.mottem.model.datastreammodel.provider.DatastreammodelItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated WrapperModel -->
+      <factory
+            uri="http://www.fzi.de/mottem/model/environmentdatamodel"
+            class="fzi.mottem.model.environmentdatamodel.provider.EnvironmentdatamodelItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated WrapperModel -->
+      <factory
+            uri="http://www.fzi.de/mottem/model/testrigmodel"
+            class="fzi.mottem.model.testrigmodel.provider.TestrigmodelItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+</plugin>

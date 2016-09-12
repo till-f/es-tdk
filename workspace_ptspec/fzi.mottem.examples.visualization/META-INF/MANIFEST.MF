@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: fzi.mottem.examples.visualization
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: fzi.mottem.examples.visualization; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: fzi.mottem.model,
+ fzi.mottem.runtime,
+ fzi.mottem.runtime.dataexchanger;bundle-version="1.0.0",
+ fzi.mottem.ptspec.dsl;bundle-version="1.0.0"
+Import-Package: org.apache.log4j,
+ org.apache.commons.logging
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

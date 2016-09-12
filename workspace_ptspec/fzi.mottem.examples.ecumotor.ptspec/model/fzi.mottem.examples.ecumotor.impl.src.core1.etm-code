@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fzi.mottem.model.codemodel:CodeInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fzi.mottem.model.codemodel="http://www.fzi.de/mottem/model/codemodel" xmi:id="+NPkgsrc_core1" name="Pkgsrc_core1" cProjectName="fzi.mottem.examples.ecumotor.impl" binaryFile="fzi.mottem.examples.ecumotor.impl/bin/MPC5643L_core0.elf">
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nrpm_act+NPkgsrc_core1" name="rpm_act" dataType="+Nfloat+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+Nrpm_act+NPkgsrc_core1" offset="155" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="7" lineNumber="10"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Npwm_dc+NPkgsrc_core1" name="pwm_dc" dataType="+Nfloat+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+Npwm_dc+NPkgsrc_core1" offset="171" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="6" lineNumber="11"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nrpm_tar_CAN+NPkgsrc_core1" name="rpm_tar_CAN" dataType="+Nint32+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+Nrpm_tar_CAN+NPkgsrc_core1" offset="184" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="11" lineNumber="12"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nrpm_tar+NPkgsrc_core1" name="rpm_tar" dataType="+Nint32+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+Nrpm_tar+NPkgsrc_core1" offset="202" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="7" lineNumber="13"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nk_p_CAN+NPkgsrc_core1" name="k_p_CAN" dataType="+Nfloat+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+Nk_p_CAN+NPkgsrc_core1" offset="218" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="7" lineNumber="14"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nk_i_CAN+NPkgsrc_core1" name="k_i_CAN" dataType="+Nfloat+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+Nk_i_CAN+NPkgsrc_core1" offset="234" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="7" lineNumber="15"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NinitPIT+NPkgsrc_core1" name="initPIT" dataType="+Nvoid+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+NinitPIT+NPkgsrc_core1" offset="321" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="7" lineNumber="20"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NinitCAN+NPkgsrc_core1" name="initCAN" dataType="+Nvoid+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+NinitCAN+NPkgsrc_core1" offset="625" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="7" lineNumber="28"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NenableIRQ+NPkgsrc_core1" name="enableIRQ" dataType="+Nvoid+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+NenableIRQ+NPkgsrc_core1" offset="5318" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="9" lineNumber="116"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NCANreceive0+NPkgsrc_core1" name="CANreceive0" dataType="+Nvoid+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+NCANreceive0+NPkgsrc_core1" offset="5504" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="11" lineNumber="122"/>
+    <localvariables xmi:id="+Ncontrolstatus+NCANreceive0+NPkgsrc_core1" name="controlstatus" dataType="+Nint32+NPkgsrc_core1">
+      <declarationLocation xmi:id="+LS+Ncontrolstatus+NCANreceive0+NPkgsrc_core1" offset="5528" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="13" lineNumber="124"/>
+    </localvariables>
+    <localvariables xmi:id="+Ntimer+NCANreceive0+NPkgsrc_core1" name="timer" dataType="+Nint32+NPkgsrc_core1">
+      <declarationLocation xmi:id="+LS+Ntimer+NCANreceive0+NPkgsrc_core1" offset="5549" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="5" lineNumber="125"/>
+    </localvariables>
+    <localvariables xmi:id="+Ndata1+NCANreceive0+NPkgsrc_core1" name="data1" dataType="+Nint32+NPkgsrc_core1">
+      <declarationLocation xmi:id="+LS+Ndata1+NCANreceive0+NPkgsrc_core1" offset="5556" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="5" lineNumber="125"/>
+    </localvariables>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NCANreceive1+NPkgsrc_core1" name="CANreceive1" dataType="+Nvoid+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+NCANreceive1+NPkgsrc_core1" offset="5973" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="11" lineNumber="135"/>
+    <localvariables xmi:id="+Ncontrolstatus+NCANreceive1+NPkgsrc_core1" name="controlstatus" dataType="+Nint32+NPkgsrc_core1">
+      <declarationLocation xmi:id="+LS+Ncontrolstatus+NCANreceive1+NPkgsrc_core1" offset="5997" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="13" lineNumber="137"/>
+    </localvariables>
+    <localvariables xmi:id="+Ntimer+NCANreceive1+NPkgsrc_core1" name="timer" dataType="+Nint32+NPkgsrc_core1">
+      <declarationLocation xmi:id="+LS+Ntimer+NCANreceive1+NPkgsrc_core1" offset="6018" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="5" lineNumber="138"/>
+    </localvariables>
+    <localvariables xmi:id="+Ndata1+NCANreceive1+NPkgsrc_core1" name="data1" dataType="+Nint32+NPkgsrc_core1">
+      <declarationLocation xmi:id="+LS+Ndata1+NCANreceive1+NPkgsrc_core1" offset="6025" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="5" lineNumber="138"/>
+    </localvariables>
+    <localvariables xmi:id="+Ndata2+NCANreceive1+NPkgsrc_core1" name="data2" dataType="+Nint32+NPkgsrc_core1">
+      <declarationLocation xmi:id="+LS+Ndata2+NCANreceive1+NPkgsrc_core1" offset="6032" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="5" lineNumber="138"/>
+    </localvariables>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NCANreceive2+NPkgsrc_core1" name="CANreceive2" dataType="+Nvoid+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+NCANreceive2+NPkgsrc_core1" offset="6383" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="11" lineNumber="150"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NCANreceive3+NPkgsrc_core1" name="CANreceive3" dataType="+Nvoid+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+NCANreceive3+NPkgsrc_core1" offset="6413" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="11" lineNumber="155"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NCANtransmit4+NPkgsrc_core1" name="CANtransmit4" dataType="+Nvoid+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+NCANtransmit4+NPkgsrc_core1" offset="6443" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="12" lineNumber="160"/>
+    <localvariables xmi:id="+Ndata1+NCANtransmit4+NPkgsrc_core1" name="data1" dataType="+Nfloat+NPkgsrc_core1" functionParameter="true">
+      <declarationLocation xmi:id="+LS+Ndata1+NCANtransmit4+NPkgsrc_core1" offset="6462" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="5" lineNumber="160"/>
+    </localvariables>
+    <localvariables xmi:id="+Ndata2+NCANtransmit4+NPkgsrc_core1" name="data2" dataType="+Nfloat+NPkgsrc_core1" functionParameter="true">
+      <declarationLocation xmi:id="+LS+Ndata2+NCANtransmit4+NPkgsrc_core1" offset="6475" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="5" lineNumber="160"/>
+    </localvariables>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NCANtransmit5+NPkgsrc_core1" name="CANtransmit5" dataType="+Nvoid+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+NCANtransmit5+NPkgsrc_core1" offset="7385" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="12" lineNumber="181"/>
+    <localvariables xmi:id="+Ndata1+NCANtransmit5+NPkgsrc_core1" name="data1" dataType="+Nint32+NPkgsrc_core1" functionParameter="true">
+      <declarationLocation xmi:id="+LS+Ndata1+NCANtransmit5+NPkgsrc_core1" offset="7402" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="5" lineNumber="181"/>
+    </localvariables>
+    <localvariables xmi:id="+Ndata2+NCANtransmit5+NPkgsrc_core1" name="data2" dataType="+Nint32+NPkgsrc_core1" functionParameter="true">
+      <declarationLocation xmi:id="+LS+Ndata2+NCANtransmit5+NPkgsrc_core1" offset="7413" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="5" lineNumber="181"/>
+    </localvariables>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NCANtransmit6+NPkgsrc_core1" name="CANtransmit6" dataType="+Nvoid+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+NCANtransmit6+NPkgsrc_core1" offset="8303" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="12" lineNumber="202"/>
+    <localvariables xmi:id="+Ndata1+NCANtransmit6+NPkgsrc_core1" name="data1" dataType="+Nfloat+NPkgsrc_core1" functionParameter="true">
+      <declarationLocation xmi:id="+LS+Ndata1+NCANtransmit6+NPkgsrc_core1" offset="8322" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="5" lineNumber="202"/>
+    </localvariables>
+    <localvariables xmi:id="+Ndata2+NCANtransmit6+NPkgsrc_core1" name="data2" dataType="+Nfloat+NPkgsrc_core1" functionParameter="true">
+      <declarationLocation xmi:id="+LS+Ndata2+NCANtransmit6+NPkgsrc_core1" offset="8335" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="5" lineNumber="202"/>
+    </localvariables>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NCan0ISR+NPkgsrc_core1" name="Can0ISR" dataType="+Nvoid+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+NCan0ISR+NPkgsrc_core1" offset="9245" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="7" lineNumber="223"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NPit0ISR+NPkgsrc_core1" name="Pit0ISR" dataType="+Nvoid+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+NPit0ISR+NPkgsrc_core1" offset="9736" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="7" lineNumber="250"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Ninit_app+NPkgsrc_core1" name="init_app" dataType="+Nvoid+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+Ninit_app+NPkgsrc_core1" offset="10720" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="8" lineNumber="282"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nrun_app+NPkgsrc_core1" name="run_app" dataType="+Nvoid+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+Nrun_app+NPkgsrc_core1" offset="10965" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="7" lineNumber="298"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nmain+NPkgsrc_core1" name="main" dataType="+Nint32+NPkgsrc_core1">
+    <declarationLocation xmi:id="+LS+Nmain+NPkgsrc_core1" offset="100" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\main.c" length="4" lineNumber="8"/>
+    <localvariables xmi:id="+Nargc+Nmain+NPkgsrc_core1" name="argc" dataType="+Nint32+NPkgsrc_core1" functionParameter="true">
+      <declarationLocation xmi:id="+LS+Nargc+Nmain+NPkgsrc_core1" offset="109" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\main.c" length="4" lineNumber="8"/>
+    </localvariables>
+    <localvariables xmi:id="+Nargv+Nmain+NPkgsrc_core1" name="argv" dataType="+NRef_char+NPkgsrc_core1" functionParameter="true">
+      <declarationLocation xmi:id="+LS+Nargv+Nmain+NPkgsrc_core1" offset="121" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\main.c" length="4" lineNumber="8"/>
+    </localvariables>
+    <localvariables xmi:id="+Ni+Nmain+NPkgsrc_core1" name="i" dataType="+Nint32+NPkgsrc_core1">
+      <declarationLocation xmi:id="+LS+Ni+Nmain+NPkgsrc_core1" offset="308" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\main.c" length="1" lineNumber="19"/>
+    </localvariables>
+  </symbols>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" sourceCodeLocations="+LS+Nrpm_act+NPkgsrc_core1 +LS+Npwm_dc+NPkgsrc_core1 +LS+Nrpm_tar_CAN+NPkgsrc_core1 +LS+Nrpm_tar+NPkgsrc_core1 +LS+Nk_p_CAN+NPkgsrc_core1 +LS+Nk_i_CAN+NPkgsrc_core1 +LS+NinitPIT+NPkgsrc_core1 +LS+NinitCAN+NPkgsrc_core1 +LS+NenableIRQ+NPkgsrc_core1 +LS+NCANreceive0+NPkgsrc_core1 +LS+Ncontrolstatus+NCANreceive0+NPkgsrc_core1 +LS+Ntimer+NCANreceive0+NPkgsrc_core1 +LS+Ndata1+NCANreceive0+NPkgsrc_core1 +LS+NCANreceive1+NPkgsrc_core1 +LS+Ncontrolstatus+NCANreceive1+NPkgsrc_core1 +LS+Ntimer+NCANreceive1+NPkgsrc_core1 +LS+Ndata1+NCANreceive1+NPkgsrc_core1 +LS+Ndata2+NCANreceive1+NPkgsrc_core1 +LS+NCANreceive2+NPkgsrc_core1 +LS+NCANreceive3+NPkgsrc_core1 +LS+NCANtransmit4+NPkgsrc_core1 +LS+Ndata1+NCANtransmit4+NPkgsrc_core1 +LS+Ndata2+NCANtransmit4+NPkgsrc_core1 +LS+NCANtransmit5+NPkgsrc_core1 +LS+Ndata1+NCANtransmit5+NPkgsrc_core1 +LS+Ndata2+NCANtransmit5+NPkgsrc_core1 +LS+NCANtransmit6+NPkgsrc_core1 +LS+Ndata1+NCANtransmit6+NPkgsrc_core1 +LS+Ndata2+NCANtransmit6+NPkgsrc_core1 +LS+NCan0ISR+NPkgsrc_core1 +LS+NPit0ISR+NPkgsrc_core1 +LS+Ninit_app+NPkgsrc_core1 +LS+Nrun_app+NPkgsrc_core1" filePath="fzi.mottem.examples.ecumotor.impl\src\core1\app.c"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.h" filePath="fzi.mottem.examples.ecumotor.impl\src\core1\app.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.ecumotor.impl\src\core1\main.c" sourceCodeLocations="+LS+Nmain+NPkgsrc_core1 +LS+Nargc+Nmain+NPkgsrc_core1 +LS+Nargv+Nmain+NPkgsrc_core1 +LS+Ni+Nmain+NPkgsrc_core1" filePath="fzi.mottem.examples.ecumotor.impl\src\core1\main.c"/>
+  <dataTypes xsi:type="fzi.mottem.model.codemodel:DTFloatingPoint" xmi:id="+Nfloat+NPkgsrc_core1" name="float" exponentBitSize="8" significandBitSize="23"/>
+  <dataTypes xsi:type="fzi.mottem.model.codemodel:DTInteger" xmi:id="+Nint32+NPkgsrc_core1" name="int32" isSigned="true" bitSize="32"/>
+  <dataTypes xsi:type="fzi.mottem.model.codemodel:DTVoid" xmi:id="+Nvoid+NPkgsrc_core1" name="void"/>
+  <dataTypes xsi:type="fzi.mottem.model.codemodel:DTInteger" xmi:id="+Nchar+NPkgsrc_core1" name="char" isSigned="true" bitSize="8"/>
+  <dataTypes xsi:type="fzi.mottem.model.codemodel:DTReference" xmi:id="+NRef_char+NPkgsrc_core1" name="Ref_char" targetType="+Nchar+NPkgsrc_core1"/>
+</fzi.mottem.model.codemodel:CodeInstance>

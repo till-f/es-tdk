@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fzi.mottem.model.datastreammodel:DataStreamInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:fzi.mottem.model.datastreammodel="http://www.fzi.de/mottem/model/datastreammodel" xmi:id="+R[B@11eda48" comment="" name="CANdb">
+  <signals xmi:id="+R[B@43017a" name="MyInSignal" physicalUnit="" canMessage="+R[B@d78a07">
+    <conversion xmi:id="+R[B@1e9ad7e" baseType="Float"/>
+  </signals>
+  <signals xmi:id="+R[B@32393d" name="MyOutSignal" physicalUnit="" bitOffset="32" direction="Output" canMessage="+R[B@d78a07">
+    <conversion xmi:id="+R[B@af9641" baseType="Float"/>
+  </signals>
+  <canMessages xmi:id="+R[B@d78a07" name="MyMessage" byteCount="8" signals="+R[B@43017a +R[B@32393d"/>
+</fzi.mottem.model.datastreammodel:DataStreamInstance>

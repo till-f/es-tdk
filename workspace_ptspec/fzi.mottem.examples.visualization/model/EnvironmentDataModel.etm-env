@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fzi.mottem.model.environmentdatamodel:EnvironmentDataInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:fzi.mottem.model.environmentdatamodel="http://www.fzi.de/mottem/model/environmentdatamodel" xmi:id="+R[B@6f451b">
+  <signals xmi:id="+R[B@144576" name="MyEnvSignal"/>
+</fzi.mottem.model.environmentdatamodel:EnvironmentDataInstance>

@@ -1,0 +1,33 @@
+<%@jet class="JET_Main" package="fzi.mottem.ptspec.compiler.precompiled" skeleton="_template.skeleton" imports="fzi.mottem.jjet.interfaces.* fzi.mottem.model.baseelements.* fzi.mottem.ptspec.dsl.pTSpec.*" %>
+<%
+	PTSRoot ptsRoot = (PTSRoot)context.getArgument();
+
+	for (IReferenceableContainer declaration : ptsRoot.getContainerDeclarations())
+	{
+		IJJETTemplate template;
+		
+		if (declaration instanceof PTSTargetDeclaration)
+		{
+			// nothing to generate for target declarations
+			continue;
+		} 
+		else if (declaration instanceof PTSTestDeclaration)
+		{
+			template = new JET_TestDeclaration();
+		}
+		else if (declaration instanceof PTSPackageDeclaration)
+		{
+			template = new JET_PackageDeclaration();
+		}
+		else if (declaration instanceof PTSTestSuiteDeclaration)
+		{
+			template = new JET_TestSuiteDeclaration(); 
+		}
+		else
+		{
+			throw new RuntimeException("Unexpected declaration when executing Main.jet");
+		}
+		
+		context.getCompiler().compile(template, declaration, null);
+	}
+%>

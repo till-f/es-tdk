@@ -1,0 +1,105 @@
+Ecore - Lessons Learned
+
+Dieses Dokument enhält Notizen zu Problemen, Lösungen und Tricks, welche bei der Modellierung mit Ecore aufgetreten sind bzw. entdeckt wurden. Achtung: stellenweise ist in den Ausführungen leichter Sarkasmus zu erkennen.
+
+
+================================================================================
+1. XMI-Serialisierung - Oder warum die Serialisierung
+   des generierten Standard-Model-Codes nicht gut ist
+
+Standardmäßig ist für den "Resource Type" "none" gewählt. Dies erzeugt eine index-basierte Serialisierung von Referenzen im Modell. Offensichtlich ist dies nicht robust. Dabei bietet Ecore mittels XMI eine sehr viel robustere Variante. Hierzu müssen zwei Dinge getan werden:
+a) Im .genmodel unter "Model" des Base-Packages "Resource Type" auf "XMI" umstellen
+b) Im generierten Model-Code die <MyModel>ResourceImpl.useUUIDs() überschreiben und true zurückgeben lassen
+
+
+================================================================================
+2. Generate All - Oder wie man eben nicht immer alles
+   generiert
+
+Standardmäßig werden für ein .genmodel bei Betätigen von "Generate All" sowohl Model-, Edit-, Editor- als auch Test-Code generiert. Dies ist nicht immer erwünscht. Setzt man das ensprechende Directory für die generierten Dateien auf einen leeren String, wird dieser Teil nicht generiert.
+
+
+================================================================================
+3. Referenzieren anderer Meta-Modelle - Oder warum die
+   Standard-Verzeichnisse für generierten Code nur die
+   Arbeit erschweren
+
+Standardmäßig werden für Model-, Edit-, Editor und Test-Code separate Projekte in Eclipse erstellt. Dies ist spätestens dann problematisch, wenn aus dem eigenen Metamodell andere Metamodelle referenziert werden, da Abhängigkeiten dann nicht ohne weiteres aufgelöst werden können. Eine Abhilfe und auch unabhängig davon eine Erleichterung ist es, Model- und Edit-Code aller Ecore-Modelle in ein gemeinsames Projekt zu generieren. Dieses stellt dann die Basisfunktionalität zur Arbeit mit allen Modellen bereit; darauf basierende Tools (z.B. Editoren) referenzieren dieses Plugin.
+
+Hierzu müssen die Eigenschaften "Model/Edit Directory" und "Model/Edit Plug-in ID" geändert werden.
+a) Model/Edit Plug-in ID: jeweils identisch, z.B. "company.project.model"
+b) Model Directory: z.B. "/company.project.model/src-model"
+c) Edit Directory : z.B. "/company.project.model/src-edit"
+
+Das erzeugt nicht nur weniger komplexe/fragmentierte Workspaces (zig Projekte / Plugins, welche allein so gut wie keinen Sinn machen), sondern umgeht auch diverse Probleme beim "Neu-Generieren": da die jeweilige "plugin.xml" und "plugin.properties", etc. nur beim ersten Generieren erzeugt werden, müssen diese nach Änderungen manuell nachgezogen werden - was bei vielen Abhängigkeiten zwischen Projekten schnell sehr unübersichtlich ist und zu Fehlern führt.
+
+
+================================================================================
+4. Generation Gap Pattern - Oder warum das Vermischen
+   von generiertem und manuell erzeugtem Code eigentlich
+   keine Alternative sein dürfte
+
+Wirklich gut wäre es, wenn das EMF .genmodel das "Generation Gap Pattern" bzw. "Double Derived Classes" verwenden würde, da sich damit diverse weitere Probleme beim "Neu-Generieren" automatisch nicht ergeben würden. Hier prallt einem leider die geballte Ignoranz akademischer Vordenker ohne jegliche Praxiserfahrung entgegen...
+
+Mehr dazu hier: http://www.eclipse.org/forums/index.php/m/1062767/
+
+
+================================================================================
+5. Modell-Validierung - Oder welche Annotierungen hierzu
+   nötig sind
+   
+Typisch für Eclipse, EMF und Open Source im allgemeinen ist, dass selbstverständliche Dinge häufig schön versteckt werden. Validierungen lassen sich tatsächlich wunderbar mittels OCL (oder auch Java) ausdrücken; man muss nur wissen wie. Hierzu sind sogar lediglich Annotierungen im Metamodell ausreichend; leider gibt einem der Eclipse Ecore-Diagramm Editor keinerlei Hilfestellung beim Hinzufügen einer Validierung (streng nach Open-Source Paradigma: "Dazuklatschen statt Integrieren"). Für OCL-basierte Validierungen kann man immerhin den OCLinEcore Editor benutzen (Rechtsklick und "Öffnen mit..."), welcher eine textuelle Darstellung des Ecore-Files und Schlüsselworte wie "invariant" bietet. Zu Fuß geht's folgendermaßen:
+
+Für OCL grundlegend ist eine Annotation der Wurzel mit spezifischen Einträgen ("Details"):
+
+* http://www.eclipse.org/emf/2002/Ecore
+  - invocationDelegates = http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
+  - settingDelegates = http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
+  - validationDelegates = http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
+
+Die zu validierenden Elemente werden dann mit weiteren Annotations versehen, um die konkrete Validierung zu steuern. Eine weitere Annotation ermöglicht die Nutzung von OCL; die Validierungsfunktion wird dann komplett generiert.
+
+* http://www.eclipse.org/emf/2002/Ecore
+  - constraints = myValidationFunctionNamePostfix
+* http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
+  - myValidationFunctionNamePostfix = OCL-Constraint (z.B. "name = 'OnlyValidName'")
+
+Ein noch ungelöstes Problem ist, dass mittels Annotation festgelegte Validierungen nicht vererbt werden. Beispiel: ein Interface "INamed", welche das Attribut "name" festlegt. Für dieses Attribut ist es zwar möglich eine Validierung festzulegen, aber in der Praxis wird diese niemals von EMF ausgeführt, da zum Einen eine Instanz von "INamed" nicht existieren kann (abstrakt!), und andererseits EMF zu blöd ist, im Vererbungsbaum nach oben zu laufen und dort nach Validierungen zu suchen.
+
+
+================================================================================
+6. XMLResource.OPTION_RECORD_UNKNOWN_FEATURE - Oder wie man
+   verhindert, dass unbekannte Elemente im persistierten
+   Modell (XML/XMI) einen fatalen Fehler verursachen
+   
+Es ist äußerst unpraktisch, wenn beim Laden des Modells jeder Fehler gleich zu einem Absturz führt. Unbekannte XML-Elememente könnten z.B. einfach ignoriert werden. Auch hier ist EMF glücklicherweise in der Lage, dies direkt zu unterstützen, nur die Defaults sind mal wieder idiotisch. Nötig ist es lediglich, die Eigenschaft "XMLResource.OPTION_RECORD_UNKNOWN_FEATURE" auf true zu sezen. Dies geschieht sinnvollerweise im Konstruktor der MyModelResourceImpl:
+
+this.getDefaultLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
+
+
+================================================================================
+7. Benutzung von ANT, um Code-Generierung zu automatisieren
+
+Es ist möglich ANT zu benutzen, um die Code-Generierung für mehrere GenModels automatisiert durchzuführen. Das zugehörige Element ist <emf.Ecore2Java/>. Leider scheint es hier  Probleme zu geben, wenn das GenModel vorab neu geladen werden soll (reconcilegenmodel="reload"), was i.d.R. gewünscht ist. Daher ist es nötig, um eine zum normalen Generierungsprozess konsistente Ausgabe zu erhalten, reconcilegenmodel="keep" zu verwenden und nach jeder Modelländerung manuell das reload auszuführen (Rechtsklick auf das GenModel und "Reload" wählen).
+
+Hier ein Beispiel für ein ANT Buildfile:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="fzi.mottem.model" default="default">
+	<description>
+		Build script to generate code for .gemodel file
+	</description>
+	 
+	<target name="default" description="Build script to generate code for .gemodel file">
+        <emf.Ecore2Java
+            genModel="model/BaseElements.genmodel"
+            model="model/BaseElements.ecore"
+            generatemodelproject="true"
+            generateeditproject="true"
+            reconcilegenmodel="keep">
+        </emf.Ecore2Java>
+	</target>
+</project>
+
+
+-- TF

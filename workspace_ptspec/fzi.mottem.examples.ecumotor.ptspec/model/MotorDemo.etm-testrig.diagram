@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pi:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms" visible="true" gridUnit="10" diagramTypeId="editor" name="MotorDemo" snapToGrid="true" pictogramLinks="//@children.0/@link //@children.0/@children.0/@link //@children.0/@children.0/@children.0/@link //@children.0/@children.0/@children.1/@link //@children.0/@children.1/@link //@children.1/@link //@children.2/@children.0/@link //@children.2/@link //@connections.0/@link //@connections.1/@link //@children.3/@children.0/@link //@children.3/@children.1/@link //@children.3/@children.2/@link //@children.3/@link //@children.4/@children.0/@link //@children.4/@link //@connections.2/@link //@children.0/@children.2/@link //@children.0/@children.3/@link //@children.0/@children.4/@link //@children.0/@children.5/@link //@children.0/@children.6/@link //@children.0/@children.7/@link //@children.0/@children.8/@link //@children.0/@children.9/@link //@children.0/@children.10/@link //@children.0/@children.11/@link //@children.0/@children.12/@link //@children.0/@children.13/@link //@children.0/@children.14/@link //@connections.3/@link" version="0.13.0">
+  <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.0" lineWidth="1" transparency="0.0" width="1000" height="1000"/>
+  <link>
+    <businessObjects href="MotorDemo.etm-testrig#+NMotorDemo"/>
+  </link>
+  <children xsi:type="pi:ContainerShape" visible="true" active="true">
+    <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineWidth="1" filled="true" transparency="0.0" width="441" height="201" x="10" y="120">
+      <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="20" x="2" y="2" id="fzi.mottem.editor.UUT" stretchH="false" stretchV="false" proportional="false"/>
+      <graphicsAlgorithmChildren xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="150" height="20" x="20" y="5" value="EvalBoard"/>
+    </graphicsAlgorithm>
+    <link>
+      <businessObjects href="MotorDemo.etm-testrig#+NUUT+NMotorDemo"/>
+    </link>
+    <anchors xsi:type="pi:ChopboxAnchor"/>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.1" lineWidth="1" filled="true" transparency="0.0" width="75" height="80" x="180" y="28">
+        <graphicsAlgorithmChildren xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="135" height="16" x="5" y="5" value="MPC5643L"/>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="MotorDemo.etm-testrig#+Nprocessor+NUUT+NMotorDemo"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.0"/>
+      <children visible="true" active="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="16" height="16" x="29" y="25" id="fzi.mottem.editor.ProcessorCore" stretchH="false" stretchV="false" proportional="false"/>
+        <link>
+          <businessObjects href="MotorDemo.etm-testrig#+R[B@326e024f"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor"/>
+      </children>
+      <children visible="true" active="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="16" height="16" x="29" y="45" id="fzi.mottem.editor.ProcessorCore" stretchH="false" stretchV="false" proportional="false"/>
+        <link>
+          <businessObjects href="MotorDemo.etm-testrig#+R[B@23fb307f"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.3" lineWidth="1" filled="true" transparency="0.0" width="20" height="25" x="419" y="55">
+        <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="2" y="2" id="fzi.mottem.editor.IOPORT" stretchH="false" stretchV="false" proportional="false"/>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="MotorDemo.etm-testrig#+NCANPort+NUUT+NMotorDemo"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.1"/>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="80" height="15" x="27" y="40">
+        <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="13" height="15" id="fzi.mottem.editor.IOPIN" stretchH="false" stretchV="false" proportional="false"/>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="MotorDemo.etm-testrig#+R[B@16d684d"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.5" lineWidth="1" filled="false" transparency="0.0" width="80" height="15" x="18" verticalAlignment="ALIGNMENT_MIDDLE" value="H0"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="80" height="15" x="27" y="60">
+        <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="13" height="15" id="fzi.mottem.editor.IOPIN" stretchH="false" stretchV="false" proportional="false"/>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="MotorDemo.etm-testrig#+R[B@115e7f6"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.5" lineWidth="1" filled="false" transparency="0.0" width="80" height="15" x="18" verticalAlignment="ALIGNMENT_MIDDLE" value="H1"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="80" height="15" x="27" y="80">
+        <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="13" height="15" id="fzi.mottem.editor.IOPIN" stretchH="false" stretchV="false" proportional="false"/>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="MotorDemo.etm-testrig#+R[B@e47f4f"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.5" lineWidth="1" filled="false" transparency="0.0" width="80" height="15" x="18" verticalAlignment="ALIGNMENT_MIDDLE" value="H2"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="80" height="15" x="27" y="129">
+        <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="13" height="15" id="fzi.mottem.editor.IOPIN" stretchH="false" stretchV="false" proportional="false"/>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="MotorDemo.etm-testrig#+R[B@13a413f"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.5" lineWidth="1" filled="false" transparency="0.0" width="80" height="15" x="18" verticalAlignment="ALIGNMENT_MIDDLE" value="I0"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="80" height="15" x="27" y="149">
+        <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="13" height="15" id="fzi.mottem.editor.IOPIN" stretchH="false" stretchV="false" proportional="false"/>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="MotorDemo.etm-testrig#+R[B@1dedffb"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.5" lineWidth="1" filled="false" transparency="0.0" width="80" height="15" x="18" verticalAlignment="ALIGNMENT_MIDDLE" value="I1"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="80" height="15" x="27" y="169">
+        <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="13" height="15" id="fzi.mottem.editor.IOPIN" stretchH="false" stretchV="false" proportional="false"/>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="MotorDemo.etm-testrig#+R[B@1c776e2"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.5" lineWidth="1" filled="false" transparency="0.0" width="80" height="15" x="18" verticalAlignment="ALIGNMENT_MIDDLE" value="I2"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="80" height="15" x="106" y="129">
+        <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="13" height="15" id="fzi.mottem.editor.IOPIN" stretchH="false" stretchV="false" proportional="false"/>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="MotorDemo.etm-testrig#+R[B@7213ac"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.3"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.5" lineWidth="1" filled="false" transparency="0.0" width="80" height="15" x="18" verticalAlignment="ALIGNMENT_MIDDLE" value="PWM0"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="80" height="15" x="106" y="149">
+        <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="13" height="15" id="fzi.mottem.editor.IOPIN" stretchH="false" stretchV="false" proportional="false"/>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="MotorDemo.etm-testrig#+R[B@2e21ea"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.5" lineWidth="1" filled="false" transparency="0.0" width="80" height="15" x="18" verticalAlignment="ALIGNMENT_MIDDLE" value="PWM1"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="80" height="15" x="106" y="169">
+        <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="13" height="15" id="fzi.mottem.editor.IOPIN" stretchH="false" stretchV="false" proportional="false"/>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="MotorDemo.etm-testrig#+R[B@fea306"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.5" lineWidth="1" filled="false" transparency="0.0" width="80" height="15" x="18" verticalAlignment="ALIGNMENT_MIDDLE" value="PWM2"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="80" height="15" x="270" y="50">
+        <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="13" height="15" id="fzi.mottem.editor.IOPIN" stretchH="false" stretchV="false" proportional="false"/>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="MotorDemo.etm-testrig#+R[B@1034a25"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.5" lineWidth="1" filled="false" transparency="0.0" width="80" height="15" x="18" verticalAlignment="ALIGNMENT_MIDDLE" value="Rx"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="80" height="15" x="270" y="74">
+        <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="13" height="15" id="fzi.mottem.editor.IOPIN" stretchH="false" stretchV="false" proportional="false"/>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="MotorDemo.etm-testrig#+R[B@55004d"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.5" lineWidth="1" filled="false" transparency="0.0" width="80" height="15" x="18" verticalAlignment="ALIGNMENT_MIDDLE" value="Tx"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="80" height="15" x="340" y="50">
+        <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="13" height="15" id="fzi.mottem.editor.IOPIN" stretchH="false" stretchV="false" proportional="false"/>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="MotorDemo.etm-testrig#+R[B@5e942b"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.5" lineWidth="1" filled="false" transparency="0.0" width="80" height="15" x="18" verticalAlignment="ALIGNMENT_MIDDLE" value="CAN_H"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="80" height="15" x="340" y="74">
+        <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="13" height="15" id="fzi.mottem.editor.IOPIN" stretchH="false" stretchV="false" proportional="false"/>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="MotorDemo.etm-testrig#+R[B@505ccd"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.5" lineWidth="1" filled="false" transparency="0.0" width="80" height="15" x="18" verticalAlignment="ALIGNMENT_MIDDLE" value="CAN_L"/>
+      </children>
+    </children>
+  </children>
+  <children xsi:type="pi:ContainerShape" visible="true" active="true">
+    <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.1" lineWidth="1" filled="true" transparency="0.0" width="100" height="50" x="490" y="120">
+      <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" height="20" id="fzi.mottem.editor.CANBus" stretchH="false" stretchV="false" proportional="false"/>
+      <graphicsAlgorithmChildren xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="60" height="20" x="20" y="15" value="CAN Bus"/>
+    </graphicsAlgorithm>
+    <link>
+      <businessObjects href="MotorDemo.etm-testrig#+NCANBus+NMotorDemo"/>
+    </link>
+    <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.1" incomingConnections="//@connections.2"/>
+  </children>
+  <children xsi:type="pi:ContainerShape" visible="true" active="true">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="65" x="250" y="20">
+      <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.6" lineWidth="1" filled="true" transparency="0.0" width="60" height="50">
+        <graphicsAlgorithmChildren xsi:type="al:Text" foreground="//@colors.1" lineWidth="1" filled="false" transparency="0.0" width="50" height="20" x="5" y="5" value="IC5000"/>
+      </graphicsAlgorithmChildren>
+    </graphicsAlgorithm>
+    <link>
+      <businessObjects href="MotorDemo.etm-testrig#+NIC5000+NMotorDemo"/>
+    </link>
+    <anchors xsi:type="pi:ChopboxAnchor"/>
+    <children visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.5" lineWidth="1" filled="true" transparency="0.0" width="10" height="15" x="25" y="50"/>
+      <link>
+        <businessObjects href="MotorDemo.etm-testrig#+R[B@36b569f6"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.0"/>
+    </children>
+  </children>
+  <children xsi:type="pi:ContainerShape" visible="true" active="true">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="75" height="65" x="416" y="20">
+      <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.9" lineWidth="1" filled="true" transparency="0.0" width="75" height="50">
+        <graphicsAlgorithmChildren xsi:type="al:Text" foreground="//@colors.1" lineWidth="1" filled="false" transparency="0.0" width="65" height="20" x="10" y="5" value="VN7600"/>
+      </graphicsAlgorithmChildren>
+    </graphicsAlgorithm>
+    <link>
+      <businessObjects href="MotorDemo.etm-testrig#+R[B@2f4176"/>
+    </link>
+    <anchors xsi:type="pi:ChopboxAnchor"/>
+    <anchors xsi:type="pi:ChopboxAnchor"/>
+    <anchors xsi:type="pi:ChopboxAnchor"/>
+    <anchors xsi:type="pi:ChopboxAnchor"/>
+    <children visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.5" lineWidth="1" filled="true" transparency="0.0" width="10" height="15" x="13" y="50"/>
+      <link>
+        <businessObjects href="MotorDemo.etm-testrig#+R[B@1940c10"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+    </children>
+    <children visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.5" lineWidth="1" filled="true" transparency="0.0" width="10" height="15" x="31" y="50"/>
+      <link>
+        <businessObjects href="MotorDemo.etm-testrig#+R[B@26a5ba"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.2"/>
+    </children>
+    <children visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.5" lineWidth="1" filled="true" transparency="0.0" width="10" height="15" x="49" y="50"/>
+      <link>
+        <businessObjects href="MotorDemo.etm-testrig#+R[B@1cf808e"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+    </children>
+  </children>
+  <children xsi:type="pi:ContainerShape" visible="true" active="true">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="80" height="65" x="70" y="20">
+      <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.8" lineWidth="1" filled="true" transparency="0.0" width="80" height="50">
+        <graphicsAlgorithmChildren xsi:type="al:Text" foreground="//@colors.1" lineWidth="1" filled="false" transparency="0.0" width="80" height="20" x="5" y="5" value="DSOX2012A"/>
+      </graphicsAlgorithmChildren>
+    </graphicsAlgorithm>
+    <link>
+      <businessObjects href="MotorDemo.etm-testrig#+R[B@9583af"/>
+    </link>
+    <anchors xsi:type="pi:ChopboxAnchor"/>
+    <children visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.5" lineWidth="1" filled="true" transparency="0.0" width="10" height="15" x="35" y="50"/>
+      <link>
+        <businessObjects href="MotorDemo.etm-testrig#+R[B@11a1521"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.3"/>
+    </children>
+  </children>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" start="//@children.2/@children.0/@anchors.0" end="//@children.0/@children.0/@anchors.0">
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.5" width="1"/>
+    <link>
+      <businessObjects href="MotorDemo.etm-testrig#+R[B@34abed7e"/>
+    </link>
+    <bendpoints x="279" y="109"/>
+    <bendpoints x="228" y="109"/>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.1/@anchors.0" end="//@children.0/@children.1/@anchors.0">
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.5" width="1"/>
+    <link>
+      <businessObjects href="MotorDemo.etm-testrig#+R[B@318ffb"/>
+    </link>
+    <bendpoints x="540" y="187"/>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" start="//@children.3/@children.1/@anchors.0" end="//@children.1/@anchors.0">
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.5" width="1"/>
+    <link>
+      <businessObjects href="MotorDemo.etm-testrig#+R[B@10b94e9"/>
+    </link>
+    <bendpoints x="452" y="103"/>
+    <bendpoints x="540" y="103"/>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" start="//@children.0/@children.8/@anchors.0" end="//@children.4/@children.0/@anchors.0">
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.5" width="1"/>
+    <link>
+      <businessObjects href="MotorDemo.etm-testrig#+R[B@12443a"/>
+    </link>
+    <bendpoints x="110" y="252"/>
+  </connections>
+  <colors red="227" green="238" blue="249"/>
+  <colors red="255" green="255" blue="255"/>
+  <colors red="154" green="205" blue="50"/>
+  <colors red="211" green="211" blue="211"/>
+  <colors red="193" green="205" blue="193"/>
+  <colors/>
+  <colors red="30" green="144" blue="255"/>
+  <colors red="200" green="200" blue="200"/>
+  <colors red="23" green="143" blue="215"/>
+  <colors red="183" blue="50"/>
+</pi:Diagram>

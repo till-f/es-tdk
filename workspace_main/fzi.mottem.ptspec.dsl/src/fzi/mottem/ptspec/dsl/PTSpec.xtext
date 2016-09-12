@@ -1,0 +1,762 @@
+/*
+ * The ETSpec grammar file.
+ * (c) 2016, Till Fischer, FZI Forschungszentrum Informatik
+ */
+
+grammar fzi.mottem.ptspec.dsl.PTSpec with org.eclipse.xtext.common.Terminals
+
+generate pTSpec "http://www.mottem.fzi/ptspec/dsl/PTSpec"
+
+import "http://www.eclipse.org/emf/2002/Ecore" as Ecore
+import "http://www.fzi.de/mottem/model/baseelements" as BaseElements
+import "http://www.eclipse.org/xtext/common/JavaVMTypes" as JavaTypes
+
+PTSRoot:
+    includes+=PTSInclude* imports+=PTSJavaImport* containerDeclarations+=PTSContainerDeclaration*
+;
+
+PTSInclude:
+    'include' importURI=STRING ';'
+;
+
+PTSJavaImport:
+    'import' importedType=[JavaTypes::JvmDeclaredType|FULLQUALIFIEDNAME] ';'
+;
+
+PTSContainerDeclaration returns BaseElements::IReferenceableContainer:
+    PTSTargetDeclaration | PTSTestDeclaration | PTSTestSuiteDeclaration  | PTSPackageDeclaration
+;
+
+
+/*
+ * ------------------------------------------------------------------
+ * Target
+ * ------------------------------------------------------------------
+ */
+
+PTSTargetDeclaration returns PTSContainerDeclaration:
+    {PTSTargetDeclaration}
+    'target' name=ID
+    '{'
+        (list=PTSTargetDefinitionList)?
+    '}'
+;
+
+PTSTargetDefinitionList:
+    actualTargets+=[BaseElements::IExecutor|FULLQUALIFIEDNAME] (',' actualTargets+=[BaseElements::IExecutor|FULLQUALIFIEDNAME])*
+;
+
+
+/*
+ * ------------------------------------------------------------------
+ * Package
+ * ------------------------------------------------------------------
+ */
+
+PTSPackageDeclaration returns PTSContainerDeclaration:
+    {PTSPackageDeclaration}
+    'package' name=ID ( ':' target=[PTSTargetDeclaration|ID] )?
+    '{'
+        (packageElements+=(PTSPackageFunction | PTSPackageVariable | PTSPackageUnit))*
+    '}'
+;
+
+
+/*
+ * ------------------------------------------------------------------
+ * Package Constants & Functions
+ * ------------------------------------------------------------------
+ */
+
+PTSPackageVariable returns PTSPackageElement:
+    {PTSPackageVariable}
+    (const?='const' | global?='global') dataType=PTSDataType declaration=PTSPackageVariableDeclaration (withInit?='=' initialValue=PTSConstant)? ';'
+;
+
+PTSPackageFunction returns PTSPackageElement:
+    {PTSPackageFunction}
+    (
+        (realtimeFunc?='realtime' | analyzeFunc?='analyze')?
+        'func' returnDataType=PTSDataType declaration=PTSPackageFunctionDeclaration 
+        '(' (parameterList=PTSPackageFuncParameterList)? ')'
+        (withDefault?='default' executor=PTSExecutor)?
+       )
+    '{'
+        implementation=PTSImplementation
+    '}'
+;
+
+PTSPackageFuncParameterList:
+    parameters+=PTSPackageFuncParameter (',' parameters+=PTSPackageFuncParameter)*   
+;
+
+PTSPackageFuncParameter:
+    {PTSPackageFuncParameter}
+    (referenceAccess?='ref')? dataType=PTSDataType declaration=PTSPackageFuncParameterDeclaration
+;
+
+PTSPackageEnum returns PTSPackageElement:
+    {PTSPackageEnum}
+    'enum' name=ID '{'
+        (elements+=PTSEnumElement (',' elements+=PTSEnumElement)*)
+    '}'
+;
+
+PTSEnumElement: 
+    ID
+;
+
+
+/*
+ * ------------------------------------------------------------------
+ * Package Units
+ * ------------------------------------------------------------------
+ */
+
+PTSPackageUnit returns PTSPackageElement:
+    {PTSPackageUnit}
+    'unit' declaration=PTSUnitDeclaration (derived?='[' baseUnit=[PTSUnitDeclaration|UNITNAME] '=' expression=PTSUnitExpression ']')? ';'
+;
+
+PTSUnitDeclaration:
+    {PTSUnitDeclaration}
+    name=UNITNAME
+;
+
+PTSUnitExpression:
+    {PTSUnitExpression}
+    (
+        ( bracketed?='(' innerExpression=PTSUnitExpression ')' ) |
+        ( unit=[PTSUnitDeclaration|UNITNAME] ) |
+        ( => constant=NUMBER )
+    )
+    (operationExpression=PTSUnitOperationExpression)?
+;
+
+PTSUnitOperationExpression:
+    {PTSUnitOperationExpression}
+    op=PTS_EUNITOPERATOR rhs=PTSUnitExpression
+;
+
+/*
+ * ------------------------------------------------------------------
+ * TestSuite
+ * ------------------------------------------------------------------
+ */
+
+PTSTestSuiteDeclaration returns PTSContainerDeclaration:
+    {PTSTestSuiteDeclaration}
+    'suite' name=ID '{'
+        (list=PTSTestDeclarationList)?
+    '}'
+;
+
+PTSTestDeclarationList:
+    tests+=[PTSTestDeclaration|ID] (',' tests+=[PTSTestDeclaration|ID])*   
+;
+
+/*
+ * ------------------------------------------------------------------
+ * Test & Implementation
+ * ------------------------------------------------------------------
+ */
+
+PTSTestDeclaration returns PTSContainerDeclaration:
+    {PTSTestDeclaration}
+    'test' name=ID (':' target=[PTSTargetDeclaration|ID])? ('default' defaultExecutor=PTSExecutor)?
+    '{'
+        implementation=PTSImplementation
+    '}'
+;
+
+PTSImplementation:
+    {PTSImplementation}
+    (statements+=PTSStatement)*
+;
+
+PTSSingleStatementImplementation returns PTSImplementation:
+    statements+=PTSStatement    
+;
+
+PTSExecutor:
+    {PTSExecutor}
+    actualExecutor=[BaseElements::IExecutor|FULLQUALIFIEDNAME]
+;
+
+
+/*
+ * ------------------------------------------------------------------
+ * Statements
+ * ------------------------------------------------------------------
+ */
+
+PTSStatement:
+    PTSDeclarationStatement | 
+    PTSExpressionStatement |
+    PTSReturnStatement |
+    PTSLoopStatement |
+    PTSLoopControlStatement |
+    PTSTryCatchStatement |
+    PTSIfThenElseStatement |
+    PTSRunStatement | 
+    PTSRunUntilStatement | 
+    PTSStopStatement |
+    PTSBreakAtStatement |
+    PTSConcurrentStatement |
+    PTSCancelStatement |
+    PTSWaitTimeStatement |
+    PTSTriggerStatement |
+    PTSWaitUntilStatement |
+    PTSWaitDeltaStatement |
+    PTSAssertStatement |
+    PTSReportStatement |
+    PTSSwitchCaseStatement |
+    PTSScopeStatement |
+    PTSRealtimeStatement
+;
+
+/*
+ * ------------------------------------------------------------------
+ * Commonly known statements (from other programming languages)
+ * ------------------------------------------------------------------
+ */
+
+PTSDeclarationStatement returns PTSStatement:
+    {PTSDeclarationStatement}
+    (final?='final' | capture?='capture')?  declarator=PTSDeclarator (withAssignment?='=' assignment=PTSExpression)? ';'
+;
+
+PTSExpressionStatement returns PTSStatement:
+    {PTSExpressionStatement}
+    expression=PTSExpression ';'
+;
+
+PTSReturnStatement returns PTSStatement:
+    {PTSReturnStatement}
+    'return' expression=PTSExpression? ';'
+;
+
+PTSLoopStatement returns PTSStatement:
+    PTSForLoopStatement | PTSWhileLoopStatement | PTSDoWhileLoopStatement
+;
+
+PTSForLoopStatement returns PTSLoopStatement:
+    {PTSForLoopStatement}
+    'for' '(' (forDecls+=PTSDeclarationStatementForLoop (',' forDecls+=PTSDeclarationStatementForLoop)*)? ';' cancelExpression=PTSExpression ';' (iterationExpression=PTSExpression)? ')' '{'
+        implementation=PTSImplementation
+    '}'
+;
+
+PTSDeclarationStatementForLoop:
+    (capture?='capture')? declarator=PTSDeclarator (withAssignment?='=' assignment=PTSExpression)?
+;
+
+PTSWhileLoopStatement returns PTSLoopStatement:
+    {PTSWhileLoopStatement}
+    'while' '(' cancelExpression=PTSExpression ')' '{'
+        implementation=PTSImplementation
+    '}'
+;
+
+PTSDoWhileLoopStatement returns PTSLoopStatement:
+    {PTSDoWhileLoopStatement}
+    'do' '{'
+        implementation=PTSImplementation
+    '}' 'while' '(' cancelExpression=PTSExpression ')' ';'
+;
+
+PTSLoopControlStatement returns PTSStatement:
+    {PTSLoopControlStatement}
+    controlType=PTS_ELOOPCTRLSTATEMENT ';'
+;
+
+PTSTryCatchStatement returns PTSStatement:
+    {PTSTryCatchStatement}
+    tryBlock=PTSTryBlock ( finallyBlock=PTSFinallyBlock | (catchBlocks+=PTSCatchBlock)+ (finallyBlock=PTSFinallyBlock)? )
+;
+
+PTSTryBlock:
+    'try' '{'
+        implementation=PTSImplementation
+    '}'
+;
+
+PTSCatchBlock:
+    'catch' '(' declarators+=PTSDeclarator (',' declarators+=PTSDeclarator)* ')' '{'
+        implementation=PTSImplementation
+    '}'
+;
+
+PTSFinallyBlock:
+    'finally' '{'
+        implementation=PTSImplementation
+    '}'
+;
+
+PTSIfThenElseStatement returns PTSStatement:
+    {PTSIfThenElseStatement}
+    ifBlock=PTSIfBlock (=> elseIfBlocks+=PTSElseIfBlock)* (=> elseBlock=PTSElseBlock)?
+;
+
+PTSIfBlock:
+    {PTSIfBlock}
+    'if' '(' ifExpression=PTSExpression ')'
+    ('{' implementation=PTSImplementation '}' | implementation=PTSSingleStatementImplementation)
+;
+
+PTSElseIfBlock:
+    {PTSElseIfBlock}
+    'else' 'if' '(' elseIfExpression=PTSExpression ')'
+    ('{' implementation=PTSImplementation '}' | implementation=PTSSingleStatementImplementation)
+;
+
+PTSElseBlock:
+    {PTSElseBlock}
+    'else'
+    ('{' implementation=PTSImplementation '}' | implementation=PTSSingleStatementImplementation)
+;
+
+PTSSwitchCaseStatement returns PTSStatement:
+    {PTSSwitchCaseStatement}
+    'switch' '(' switchExpr=PTSExpression ')' '{' (caseBlocks+=PTSSwitchCaseBlock)* (withDefaultBlock?='default' defaultBlock=PTSSwitchDefaultBlock)? '}'
+;
+
+PTSSwitchCaseBlock:
+    {PTSSwitchCaseBlock}
+    'case' caseExprs+=PTSExpression (',' caseExprs+=PTSExpression)* ':'
+    implementation=PTSImplementation
+;
+
+PTSSwitchDefaultBlock:
+    {PTSSwitchDefaultBlock}
+    ':'
+    implementation=PTSImplementation
+;
+
+
+/*
+ * ------------------------------------------------------------------
+ * PTSPec specific statements
+ * ------------------------------------------------------------------
+ */
+
+PTSRunStatement returns PTSStatement:
+    {PTSRunStatement}
+    'run' (executor=PTSExecutor)? ';'
+;
+
+PTSRunUntilStatement returns PTSStatement:
+    {PTSRunUntilStatement}
+    'run' 'until' symbolReference=PTSSymbolReference ';'
+;
+
+PTSStopStatement returns PTSStatement:
+    {PTSStopStatement}
+    'stop' (executor=PTSExecutor)? ';'
+;
+
+//PTSStopOnStatement returns PTSStatement:
+//    {PTSStopOnStatement}
+//    'stop' 'at' symbolReference=PTSSymbolReference ';'
+//;
+
+PTSBreakAtStatement returns PTSStatement:
+    {PTSBreakAtStatement}
+    'break' 'at' symbolReference=PTSSymbolReference ';'
+;
+
+PTSConcurrentStatement returns PTSStatement:
+    {PTSConcurrentStatement}
+    'concurrent' (conncurrentThread=PTSConcurrentThread)? '{' implementation=PTSImplementation '}'
+;
+
+PTSCancelStatement:
+    {PTSCancelStatement}
+    'cancel' concurrentThreads+=[PTSConcurrentThread|ID] (',' concurrentThreads+=[PTSConcurrentThread|ID])*  ';'
+;
+
+PTSWaitTimeStatement returns PTSStatement:
+    {PTSWaitTimeStatement}
+    'wait' (expression=PTSExpression)? ';'
+;
+
+PTSTriggerStatement:
+    {PTSTriggerStatement}
+    'trigger' expression=PTSExpression ';'
+;
+
+PTSWaitUntilStatement returns PTSStatement:
+    {PTSWaitUntilStatement}
+    'wait' 'until' expression=PTSExpression ';'
+;
+
+PTSWaitDeltaStatement returns PTSStatement:
+    {PTSWaitDeltaStatement}
+    'wait' 'delta' ';'
+;
+
+PTSReportStatement returns PTSStatement:
+    {PTSReportStatement}
+    'report' severity=PTS_ESEVERITY
+        (':' messageExpr=PTSExpression (',' contextExpr=PTSExpression)?)? ';'
+;
+
+PTSAssertStatement returns PTSStatement:
+    {PTSAssertStatement}
+    'assert' '(' expression=PTSExpression ')' severity=PTS_ESEVERITY
+        (':' messageExpr=PTSExpression (',' contextExpr=PTSExpression)?)? ';'
+;
+
+
+PTSScopeStatement returns PTSStatement:
+    {PTSScopeStatement}
+    (
+        'scope' executor=PTSExecutor
+        '{'
+            implementation=PTSImplementation
+        '}'
+    )
+;
+
+PTSRealtimeStatement returns PTSStatement:
+    {PTSRealtimeStatement}
+    (
+        realtimeBlock=PTSRealtimeBlock
+        (postRealtimeBlocks+=PTSPostRealtimeBlock)*
+    )
+;
+
+PTSRealtimeBlock:
+    {PTSRealtimeBlock}
+    'realtime' (breaked?='until' breakExpression=PTSExpression)? (withTimeout?='timeout' timeoutExpression=PTSExpression)? '{' (implementation=PTSImplementation) '}'
+;
+
+PTSPostRealtimeBlock:
+    PTSAnalyzeBlock | PTSPlotBlock
+;
+
+PTSAnalyzeBlock returns PTSPostRealtimeBlock:
+    {PTSAnalyzeBlock}
+    'analyze' '{' implementation=PTSImplementation '}'
+;
+
+PTSPlotBlock returns PTSPostRealtimeBlock:
+    PTSTimePlotBlock
+;
+
+PTSTimePlotBlock returns PTSPlotBlock:
+    {PTSTimePlotBlock}
+    'plot' name=ID (rangeExpr=PTSPlotRangeExpression)?
+    '{' (timePlotStatements+=PTSTimePlotStatement)* '}'
+;
+
+PTSTimePlotStatement returns PTSStatement:
+    {PTSTimePlotStatement}
+    name=ID ':' plotExpr=PTSExpression (rangeExpr=PTSPlotRangeExpression)? ';'
+;
+
+PTSPlotRangeExpression:
+    {PTSPlotRangeExpression}
+    'range'
+        ('[' startOffset=PTSExpression ',' endOffset=PTSExpression ']')?
+        (naturalLog?='ln' | decimalLog?='lg')?
+        (sampleHold?='hold' | dots?='dots')?
+;
+
+
+/*
+ * ------------------------------------------------------------------
+ * Expressions
+ * ------------------------------------------------------------------
+ */
+
+PTSExpression:
+    {PTSExpression}
+       (
+           instantiation?='new' valueSymbol=PTSJavaReference call?='(' callParameterList=PTSCallParameterList ')'
+       ) |
+    (
+        (
+            (prefixOperator=PTSEWrapPrefixOperator) |
+            (withCast?='<' castDataType=PTSDataType '>')
+        )?
+        (
+            ( bracketed?='(' innerExpression=PTSExpression ')' ) |
+            ( valueSymbol=PTSValueSymbol )
+        )
+        (
+            call?='(' callParameterList=PTSCallParameterList ')'
+        )?
+        (operationExpression=PTSOperationExpression)?
+    )
+;
+
+PTSOperationExpression:
+    {PTSOperationExpression}
+    op=PTS_EOPERATOR rhs=PTSExpression
+;
+
+PTSCallParameterList:
+    {PTSCallParameterList}
+    (expressions+=PTSExpression (',' expressions+=PTSExpression)*)?
+;
+
+
+/*
+ * ------------------------------------------------------------------
+ * Value Symbol
+ * ------------------------------------------------------------------
+ */
+ 
+PTSValueSymbol:
+    PTSConstant | PTSRuntimeInstance | PTSSymbolReference | PTSJavaReference
+;
+
+PTSConstant returns PTSValueSymbol:
+    PTSNumberConstant | PTSStringConstant | PTSSpecialConstant
+;
+
+PTSNumberConstant returns PTSConstant:
+    {PTSNumberConstant}
+    value=NUMBER (=> unit=[PTSUnitDeclaration|UNITNAME])?
+;
+
+PTSStringConstant returns PTSConstant:
+    {PTSStringConstant}
+    value=STRING
+;
+
+PTSSpecialConstant returns PTSConstant:
+    {PTSSpecialConstant}
+    value=PTS_ESPECIALCONSTANT
+;
+
+PTSRuntimeInstance returns PTSValueSymbol:
+    {PTSRuntimeInstance}
+    'Runtime' ':' property=PTS_ERUNTIMEPROPERTY
+;
+
+PTSSymbolReference returns PTSValueSymbol:
+    {PTSSymbolReference}
+    (
+        (
+            (referenceAccess?='ref')?
+        )
+        baseSymbol=[BaseElements::ITestReferenceable|ID] (subSymbols+=PTSSubSymbolReference)*
+        (
+            (propertyAccess?=':' property=PTSEWrapProperty) |
+            (eventAccess?='´' event=PTSEWrapEvent) |
+            (arrayAccess?='[' arrayAccessExpression=PTSExpression ']')
+        )?
+    )
+;
+
+PTSSubSymbolReference:
+    {PTSSubSymbolReference}
+    '.' actualSymbol=PTSActualSymbol
+;
+
+PTSActualSymbol:
+    {PTSActualSymbol}
+    testReferenceable=[Ecore::EObject|ID]
+;
+
+
+/*
+ * ------------------------------------------------------------------
+ * Internal Declarator
+ * ------------------------------------------------------------------
+ */
+
+PTSDeclarator:
+    {PTSDeclarator}
+    (dataType=PTSDataType | javaType=PTSJavaReference) declaration=PTSTestVariableDeclaration
+;
+
+
+/*
+ * ------------------------------------------------------------------
+ * Internal Data Types
+ * ------------------------------------------------------------------
+ */
+
+PTSDataType:
+    (
+        integralType=PTS_EINTEGRALDATATYPE |
+        (physicalType ?= 'physical' '[' (unit=[PTSUnitDeclaration|UNITNAME])? ']')
+    ) (array?='[' arraySizeExpression=PTSExpression ']')?
+;
+
+
+PTSJavaReference returns PTSValueSymbol:
+    {PTSJavaReference}
+    'Java' '.' baseJElement=[JavaTypes::JvmIdentifiableElement|ID] (subJElements+=PTSSubJavaReference)*
+;
+
+PTSSubJavaReference:
+    {PTSSubJavaReference}
+    '.' actualJElement=PTSActualJElement
+;
+
+PTSActualJElement:
+    {PTSActualJElement}
+    jElement=[JavaTypes::JvmIdentifiableElement|ID]
+;
+
+/*
+ * ------------------------------------------------------------------
+ * Internal Referenceables
+ * ------------------------------------------------------------------
+ */
+
+PTSTestVariableDeclaration returns BaseElements::ITestReferenceable:
+    {PTSTestVariableDeclaration}
+    name=ID
+;
+
+PTSPackageVariableDeclaration returns BaseElements::ITestReferenceable:
+    {PTSPackageVariableDeclaration}
+    name=ID
+;
+
+PTSPackageFunctionDeclaration returns BaseElements::ITestCallable:
+    {PTSPackageFunctionDeclaration}
+    name=ID
+;
+
+PTSPackageFuncParameterDeclaration returns BaseElements::ITestReferenceable:
+    {PTSPackageFuncParameterDeclaration}
+    name=ID
+;
+
+PTSConcurrentThread:
+    {PTSConcurrentThread}
+    name=ID
+;
+
+/*
+ * ------------------------------------------------------------------
+ * Terminals
+ * ------------------------------------------------------------------
+ */
+ 
+FULLQUALIFIEDNAME returns Ecore::EString:
+    ID ('.' ID)*
+;
+
+NUMBER returns Ecore::EString:
+    ('-'? INT ('.' INT)?) |
+    (HEXINT)
+;
+
+terminal HEXINT:
+    '0x' (('0'..'9') | ('a'..'f') | ('A'..'F'))*
+;
+
+terminal UNITPOWER:
+    '¹'|'²'|'³'|'⁴'|'⁵'|'⁶'|'⁷'|'⁸'|'⁹'|'⁰'
+;
+
+UNITNAME returns Ecore::EString:
+       ID
+       ('⁻' UNITPOWER)? (UNITPOWER)*
+       (=> '⋅' UNITNAME)*
+;
+
+/*
+ * ------------------------------------------------------------------
+ * Enum Wrappers
+ * Wrappers are required in certain cases, because Enums are never
+ * 'null' and therefore always set. However, it is be desired for
+ * some elements that they either are UNSET (=null) or contain a
+ * SPECIFIC (=Enum) value. Introducing an additional default value
+ * for the Enum would work; but as Xtext will make a syntax proposal
+ * for this value, too, this approach is considered to be inadequate.
+ * ------------------------------------------------------------------
+ */
+ 
+PTSEWrapPrefixOperator:
+    {PTSEWrapPrefixOperator}
+    evalue=PTS_EPREFIXOPERATOR
+;
+
+PTSEWrapEvent:
+    {PTSEWrapEvent}
+    evalue=PTS_EEVENT
+;
+
+PTSEWrapProperty:
+    {PTSEWrapProperty}
+    evalue=PTS_EPROPERTY
+;
+
+
+/*
+ * ------------------------------------------------------------------
+ * Enums
+ * ------------------------------------------------------------------
+ */
+ 
+enum PTS_EPREFIXOPERATOR:
+    Invert='!'
+;
+
+enum PTS_EOPERATOR:
+    Assign='=' | 
+    AssignAdd='+=' | AssignSubstract='-=' | AssignMultiply='*=' | AssignDivide='/=' |
+    Lower='<' | LowerEqual='<=' | Equal='==' | GreaterEqual='>=' | Greater='>' | UnEqual='!=' |
+    Add='+' | Substract='-' | Multiply='*' | Divide='/' | Modulo='%' |
+    Or='|' | And='&' | Xor='^' |
+    ShiftLeft='<<' | ShiftRight='>>' | ShiftRightZero='>>>' |
+    InstanceOf='is' |
+    BoolOr='||' | BoolAnd='&&'
+;
+
+enum PTS_EUNITOPERATOR:
+    Add='+' | Substract='-' | Multiply='*' | Divide='/' 
+;
+
+enum PTS_ELOOPCTRLSTATEMENT:
+    Break='break' | Continue='continue'
+;
+
+enum PTS_ESPECIALCONSTANT:
+    True='true' | False='false' | Null='null'
+;
+
+enum PTS_EINTEGRALDATATYPE:
+    Void='void' | Bool='bool' | Int8='int8' | Int16='int16' | Int32='int32' | Int64='int64' | Float='float' | Double='double' | String='string' | Event='event'
+;
+
+enum PTS_EEVENT:
+    Read='read' | Written='written' | Called='called' | Returned='returned' | Received='received' | Sent ='sent'
+;
+
+enum PTS_ESEVERITY:
+    Info='info' | Warning='warning' | Error='error' | Fatal='fatal'
+;
+
+enum PTS_EPROPERTY:
+    /* for Processor Cores */
+    InstructionPointer='InstructionPointer' |
+    /* for Symbols (Variables, Functions) */
+    Address='Address' |
+    /* for Signals */
+    TriggerRising='TriggerRising' | TriggerFalling='TriggerFalling' | TriggerAbove='TriggerAbove' | TriggerBelow='TriggerBelow' | SampleRate='SampleRate' |
+    /* for Arrays */
+    Count='Count'
+;
+
+enum PTS_ERUNTIMEPROPERTY:
+    GlobalTime='GlobalTime' | Timestamp='Timestamp' | EndOfTrace='EOT'
+;
+
+
+/*
+ * ------------------------------------------------------------------
+ * Overridden Terminals
+ * ------------------------------------------------------------------
+ */ 
+
+terminal SL_COMMENT : '//' !('\n'|'\r')* '\r'? '\n'?;
+

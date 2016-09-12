@@ -1,0 +1,37 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!--?eclipse version="3.4"?-->
+<plugin>
+
+    <extension
+          point="org.eclipse.xtext.extension_resourceServiceProvider">
+        <resourceServiceProvider
+              class="fzi.mottem.ptspec.dsl.resources.ui.testrigmodel.ExecutableExtensionFactory:org.eclipse.xtext.ui.resource.generic.EmfResourceUIServiceProvider"
+              uriExtension="etm-testrig">
+        </resourceServiceProvider>
+    </extension>
+
+    <extension
+          point="org.eclipse.xtext.extension_resourceServiceProvider">
+        <resourceServiceProvider
+              class="fzi.mottem.ptspec.dsl.resources.ui.codemodel.ExecutableExtensionFactory:org.eclipse.xtext.ui.resource.generic.EmfResourceUIServiceProvider"
+              uriExtension="etm-code">
+        </resourceServiceProvider>
+    </extension>
+    
+    <extension
+          point="org.eclipse.xtext.extension_resourceServiceProvider">
+        <resourceServiceProvider
+              class="fzi.mottem.ptspec.dsl.resources.ui.datastreammodel.ExecutableExtensionFactory:org.eclipse.xtext.ui.resource.generic.EmfResourceUIServiceProvider"
+              uriExtension="etm-dstream">
+        </resourceServiceProvider>
+    </extension>
+    
+    <extension
+          point="org.eclipse.xtext.extension_resourceServiceProvider">
+        <resourceServiceProvider
+              class="fzi.mottem.ptspec.dsl.resources.ui.environmentdatamodel.ExecutableExtensionFactory:org.eclipse.xtext.ui.resource.generic.EmfResourceUIServiceProvider"
+              uriExtension="etm-edm">
+        </resourceServiceProvider>
+    </extension>
+    
+</plugin>

@@ -1,0 +1,186 @@
+<%@jet class="JET_TestReport" package="fzi.mottem.runtime.reportgenerator.precompiled" skeleton="_template.skeleton" imports="fzi.mottem.jjet.interfaces.* org.eclipse.core.runtime.Path fzi.mottem.runtime.interfaces.* fzi.mottem.runtime.reportgenerator.* fzi.mottem.runtime.TraceDB fzi.mottem.ptspec.dsl.pTSpec.PTS_ESEVERITY" %>
+<%
+	ITest test = (ITest)context.getArgument();
+	
+	context.setOutputFile(new Path("./"), test.getName() + ".html");
+	context.setBuffer(stringBuffer);
+%>
+<html>
+<head>
+
+<title><%= test.getName() %></title>
+  
+<style>
+
+p {
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	}
+
+h1 {
+	font-size: 16px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	}
+
+h2 {
+	font-size: 14px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	border-bottom: 1px solid #000;
+	width: 100%;
+	display: block;
+	}
+
+table { 
+	border-collapse: collapse;
+	margin-top: 0px;
+	}
+
+th { 
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	background: #2F2D3B; 
+	color: white; 
+	}
+
+td, th { 
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 6px; 
+	border: 1px solid #ccc; 
+	text-align: left; 
+	}
+
+</style>
+</head>
+
+<body>
+
+<% 
+	String pathToImage = ReportHelper.getSeverityImagePath(test);
+	String[] path = test.getSourceFileUri().split("/");
+	String filename = path[path.length-1];
+%>
+	<h1><img src="<%=pathToImage%>"> Test <%= test.getName() %></h1>
+
+	<p style="font-size: 14px; font-family: Arial, Helvetica, sans-serif;"> Link to source: <a href="../pts/<%=filename%>"><%= test.getProject() %>/pts/<%=filename %>/<%=test.getName() %></a></p>
+	
+	<h2>Message Statistic</h2>
+
+	<p>
+	<table>
+		<tr>
+			<th width=80>Severity</th>
+			<th width=80>Count</th>
+		</tr>
+		<tr>
+			<td>Info</td>
+			<td><%=test.getTestStatistics().get_infoCount()%></td>
+		</tr>
+		<tr>
+			<td>Warning</td>
+			<td><%=test.getTestStatistics().get_warningCount()%></td>
+		</tr>
+		<tr>
+			<td>Error</td>
+			<td><%=test.getTestStatistics().get_errorCount()%></td>
+		</tr>
+		<tr>
+			<td>Fatal</td>
+			<td><%=test.getTestStatistics().get_fatalCount()%></td>
+		</tr>
+	</table>
+	</p>
+
+	<h2>Plots</h2>
+	
+<%
+	for (TraceDB db : test.getTestPlots())
+	{
+		String fullPath = db.getPlotImageFile().getRawLocation().toOSString();
+%>
+	<p><%= db.getPlotName() %>:</p> 
+	<p><img src="<%= fullPath %>"></p>
+<%
+	}
+%>
+
+	<h2>Messages</h2>
+	
+	<p>
+	<table>
+		<tbody class="hide">			
+			<tr class="labels">
+				<th width=80>State</th>
+				<th width=80>Timestamp</th>
+				<th width=300>Message</th>
+				<th width=80>Offset</th>
+			</tr>
+		
+			<% for (IReportMessage rm: test.getReportMessages()) { %>
+			<tr>
+				<% if (rm.getSeverity() == PTS_ESEVERITY.INFO) { %>
+				<td> "Info" </td>
+					
+				<% } else if (rm.getSeverity() == PTS_ESEVERITY.WARNING) { %>
+				<td> "Warning" </td>
+					
+				<% } else if (rm.getSeverity() == PTS_ESEVERITY.ERROR) { %>
+				<td> "Error" </td>
+					
+				<% } else if (rm.getSeverity() == PTS_ESEVERITY.FATAL) { %>
+				<td> "Fatal" </td>
+				<% } %>
+				<td> <%= rm.getTimestamp() %> </td>
+				<td> <%= rm.getMessage() %> </td>
+				<td> <%= rm.getOffset() %> </td>
+			</tr>
+			<% } %>
+		</tbody>
+	</table>			
+	</p>
+	
+	<h2>Failed Assertions</h2>
+
+	<p>
+	<table>
+		<tbody class="hide">
+			<tr>
+				<th width=80>State</th>
+				<th width=80>Timestamp</th>
+				<th width=300>Expression</th>
+				<th width=300>Message</th>
+				<th width=80>Offset</th>
+			</tr>
+
+			<% for (IFailedAssertion fa : test.getFailedAssertions()) { %>
+			<tr>
+				<% if (fa.getSeverity() == PTS_ESEVERITY.INFO) { %>
+				<td> "Info" </td>
+					
+				<% } else if (fa.getSeverity() == PTS_ESEVERITY.WARNING) { %>
+				<td> "Warning" </td>
+					
+				<% } else if (fa.getSeverity() == PTS_ESEVERITY.ERROR) { %>
+				<td> "Error" </td>
+					
+				<% } else if (fa.getSeverity() == PTS_ESEVERITY.FATAL) { %>
+				<td> "Fatal" </td>
+				<% } %>
+				<td> <%= fa.getTimestamp() %> </td>
+				<td> <%= fa.getPtsCode() %> </td>
+				<td> <%= fa.getMessage() %> </td>
+				<td> <%= fa.getOffset() %> </td>
+			</tr>
+			<% } %>
+
+		</tbody>
+	</table>
+	</p>
+
+</body>
+
+	
+</html>

@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: fzi.mottem.ptspec.dsl.resources
+Bundle-SymbolicName: fzi.mottem.ptspec.dsl.resources
+Bundle-Version: 0.1.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.xtext;bundle-version="2.4.2",
+ org.eclipse.xtext.ui;bundle-version="2.4.2",
+ org.eclipse.xtext.ui.shared;bundle-version="2.4.2",
+ fzi.mottem.model
+Import-Package: org.apache.log4j;version="1.2.15"
+Export-Package: fzi.mottem.ptspec.dsl.resources.codemodel,
+ fzi.mottem.ptspec.dsl.resources.datastreammodel,
+ fzi.mottem.ptspec.dsl.resources.environmentdatamodel,
+ fzi.mottem.ptspec.dsl.resources.testrigmodel
+Bundle-Vendor: Till Fischer

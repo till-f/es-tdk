@@ -1,0 +1,600 @@
+<%@jet class="JET_Statement" package="fzi.mottem.ptspec.compiler.precompiled" skeleton="_template.skeleton" imports="fzi.mottem.jjet.interfaces.* fzi.mottem.model.baseelements.ITestReferenceable fzi.util.ecore.* fzi.mottem.model.baseelements.* org.eclipse.xtext.nodemodel.util.NodeModelUtils fzi.mottem.ptspec.dsl.pTSpec.* fzi.mottem.ptspec.dsl.common.* fzi.mottem.ptspec.compiler.* fzi.mottem.ptspec.compiler.util.* fzi.mottem.ptspec.compiler.workers.*" %>
+<%
+	PTSStatement ptsStatement = (PTSStatement)context.getArgument();
+	PTSWorker ptsWorker = new PTSWorker(context);
+	PTSExpressionWorker expressionWorker = new PTSExpressionWorker(context);
+    context.setBuffer(stringBuffer);
+
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSDeclarationStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	if (ptsStatement instanceof PTSDeclarationStatement)
+	{
+		PTSDeclarationStatement stm = (PTSDeclarationStatement)ptsStatement;
+		String code = PTS2JavaUtil.getCode(stm, expressionWorker);
+%>
+<%= code %>;
+<%
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSExpressionStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSExpressionStatement)
+	{
+		PTSExpressionStatement stm = (PTSExpressionStatement)ptsStatement;
+		if (stm.getExpression() != null)
+		{
+%>
+<%= expressionWorker.getCodeFor(stm.getExpression()) %>;
+<%
+		}
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSReturnStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSReturnStatement)
+	{
+		PTSReturnStatement stm = (PTSReturnStatement)ptsStatement;
+		PTSPackageFunction pkgFunc = EcoreUtils.getContainerInstanceOf(stm, PTSPackageFunction.class);
+		if (pkgFunc == null)
+			throw new PTSCompilerException("return outside package function detected");
+			
+		String retExpr = stm.getExpression() != null ? expressionWorker.getCodeFor(stm.getExpression()) : "";
+		if (pkgFunc.isAnalyzeFunc())
+		{
+			if (pkgFunc.getReturnDataType().getIntegralType() == PTS_EINTEGRALDATATYPE.VOID)
+			{
+%>
+<%= PTS2JavaUtil.getJavaTraceProviderName(stm) %>.popTimeStack();
+return;
+<%
+			}
+			else
+			{
+				String dTypeStr = PTS2JavaUtil.getJavaDataType(pkgFunc.getReturnDataType(), false, false);
+%>
+<%= dTypeStr %> _pts_tmp = (<%= dTypeStr %>)(<%= retExpr %>);
+<%= PTS2JavaUtil.getJavaTraceProviderName(stm) %>.popTimeStack();
+return _pts_tmp;
+<%
+			}
+		}
+		else
+		{
+%>
+return <%= retExpr %>;
+<%
+		}
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSForLoopStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSForLoopStatement)
+	{
+		PTSForLoopStatement stm = (PTSForLoopStatement)ptsStatement;
+		for (PTSDeclarationStatementForLoop dsf : stm.getForDecls())
+		{
+			String code = PTS2JavaUtil.getCode(dsf, expressionWorker);
+%>
+<%= code %>;
+<%
+		}
+%>
+while(<%= expressionWorker.getCodeFor(stm.getCancelExpression()) %>)
+{
+<%
+		ptsWorker.compile(stm.getImplementation());
+%>
+	<%= expressionWorker.getCodeFor(stm.getIterationExpression()) %>;
+}
+<%
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSWhileLoopStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSWhileLoopStatement)
+	{
+		PTSWhileLoopStatement stm = (PTSWhileLoopStatement)ptsStatement;
+%>
+while(<%= expressionWorker.getCodeFor(stm.getCancelExpression()) %>)
+{
+<%
+		ptsWorker.compile(stm.getImplementation());
+%>
+}
+<%
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSDoWhileLoopStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSDoWhileLoopStatement)
+	{
+		PTSDoWhileLoopStatement stm = (PTSDoWhileLoopStatement)ptsStatement;
+%>
+do
+{
+<%
+		ptsWorker.compile(stm.getImplementation());
+%>
+} while(<%= expressionWorker.getCodeFor(stm.getCancelExpression()) %>);
+<%
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSLoopControlStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSLoopControlStatement)
+	{
+		PTSLoopControlStatement stm = (PTSLoopControlStatement)ptsStatement;
+		if (stm.getControlType() == PTS_ELOOPCTRLSTATEMENT.CONTINUE)
+		{
+			PTSLoopStatement lstm = EcoreUtils.getContainerInstanceOf(stm, PTSLoopStatement.class);
+			if (lstm instanceof PTSForLoopStatement)
+			{
+%>
+<%= expressionWorker.getCodeFor(((PTSForLoopStatement) lstm).getIterationExpression()) %>;
+<%
+			}
+		}
+%>
+<%= PTS2JavaUtil.getJavaLoopControlKeyword(stm.getControlType()) %>;
+<%
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSTryCatchStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSTryCatchStatement)
+	{
+		PTSTryCatchStatement stm = (PTSTryCatchStatement)ptsStatement;
+%>
+try
+{
+<%
+		ptsWorker.compile(stm.getTryBlock().getImplementation());
+%>
+}
+<%
+		for(PTSCatchBlock cb : stm.getCatchBlocks())
+		{
+			String declCode = "";
+			boolean first = true;
+			for (PTSDeclarator declarator : cb.getDeclarators())
+			{
+				if (!first)
+					declCode += ',';
+				first = false;
+				declCode += PTS2JavaUtil.getCodeForDeclaration(declarator);
+			}
+%>
+catch(<%= declCode %>)
+{
+<%
+	ptsWorker.compile(cb.getImplementation());
+%>
+}
+<%
+		}
+		
+		if (stm.getFinallyBlock() != null)
+		{
+%>
+finally
+{
+<%
+		ptsWorker.compile(stm.getFinallyBlock().getImplementation());
+%>
+}
+<%
+		}
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSIfThenElseStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSIfThenElseStatement)
+	{
+		PTSIfThenElseStatement stm = (PTSIfThenElseStatement)ptsStatement;
+%>
+if (<%= expressionWorker.getCodeFor(stm.getIfBlock().getIfExpression()) %>)
+{
+<%
+		ptsWorker.compile(stm.getIfBlock().getImplementation());
+%>
+}
+<%
+		for (PTSElseIfBlock eib : stm.getElseIfBlocks())
+		{
+%>
+else if (<%= expressionWorker.getCodeFor(eib.getElseIfExpression()) %>)
+{
+<%
+		ptsWorker.compile(eib.getImplementation());
+%>
+}
+<%
+		}
+		if (stm.eIsSet(PTSpecPackage.Literals.PTS_IF_THEN_ELSE_STATEMENT__ELSE_BLOCK))
+		{
+%>
+else
+{
+<%
+		ptsWorker.compile(stm.getElseBlock().getImplementation());
+%>
+}
+<%
+		}
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSSwitchCaseStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSSwitchCaseStatement)
+	{
+		PTSSwitchCaseStatement stm = (PTSSwitchCaseStatement)ptsStatement;
+%>
+// switch
+{
+	Object _pts_switch=<%= expressionWorker.getCodeFor(stm.getSwitchExpr()) %>;
+<%
+		String elsePrefix = "";
+		for (PTSSwitchCaseBlock cBlock : stm.getCaseBlocks())
+		{
+%>
+	<%= elsePrefix %> if (
+<%
+			String orOperator = "  ";
+			for (PTSExpression expr : cBlock.getCaseExprs())
+			{
+%>
+		<%= orOperator %> (_pts_switch.equals(<%= expressionWorker.getCodeFor(expr) %>))
+<%
+				orOperator = "||";
+			}
+%>
+		)
+	{
+<%
+		ptsWorker.compile(cBlock.getImplementation());
+%>
+	}
+<%
+			elsePrefix = "else";
+		}
+		if (stm.isWithDefaultBlock())
+		{
+%>
+	else {
+<%
+		ptsWorker.compile(stm.getDefaultBlock().getImplementation());
+%>
+	}
+<%
+		}
+%>
+}
+<%
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSWaitTimeStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSWaitTimeStatement)
+	{
+		PTSWaitTimeStatement stm = (PTSWaitTimeStatement)ptsStatement;
+		
+		if (PTSpecUtils.isTraceAnalyzeContext(stm))
+		{
+			String traceProviderName = PTS2JavaUtil.getJavaTraceProviderName(stm);
+%>
+<%= traceProviderName %>.moveTime(<%= stm.getExpression() == null ? "-1" : expressionWorker.getCodeFor(stm.getExpression()) %>);
+<%
+		}
+		else if (PTSpecUtils.isRealtimeContext(stm))
+		{
+			String traceProviderName = PTS2JavaUtil.getJavaTraceProviderName(stm);
+%>
+<%= traceProviderName %>.suspend(<%= expressionWorker.getCodeFor(stm.getExpression()) %>);
+<%
+		}
+		else if (PTSpecUtils.isConcurrentThreadContext(stm))
+		{
+%>
+PTSpecRuntimeUtil.sleep(<%= expressionWorker.getCodeFor(stm.getExpression()) %>);
+<%
+		}
+		else
+		{
+%>
+PTSpecRuntimeUtil.sleepThrowRT(<%= expressionWorker.getCodeFor(stm.getExpression()) %>);
+<%
+		}
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSTriggerStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSTriggerStatement)
+	{
+		PTSTriggerStatement stm = (PTSTriggerStatement)ptsStatement;
+		if (PTSpecUtils.isTraceAnalyzeContext(stm))
+		{
+			throw new RuntimeException("trigger in analyze blocks currently not supported");
+		}
+		else if(PTSpecUtils.isRealtimeContext(stm))
+		{
+%>
+<%= PTS2JavaUtil.TRACE_INTANCE_NAME %>.raiseEvent(<%= expressionWorker.getCodeFor(stm.getExpression()) %>);
+<%
+		}
+		else
+		{
+%>
+<%= PTS2JavaUtil.RUNTIME_INSTANCE_NAME %>.raiseEvent(<%= expressionWorker.getCodeFor(stm.getExpression()) %>);
+<%
+		}
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSWaitUntilStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSWaitUntilStatement)
+	{
+		PTSWaitUntilStatement stm = (PTSWaitUntilStatement)ptsStatement;
+		if (PTSpecUtils.isTraceAnalyzeContext(stm))
+		{
+%>
+do
+{
+	<%= PTS2JavaUtil.getJavaTraceProviderName(stm) %>.moveNextDelta();
+}while(!(<%= expressionWorker.getCodeFor(stm.getExpression()) %>));
+<%
+		}
+		else if(PTSpecUtils.isRealtimeContext(stm))
+		{
+%>
+<%= PTS2JavaUtil.TRACE_INTANCE_NAME %>.suspendUntil(<%= expressionWorker.getCodeFor(stm.getExpression()) %>);
+<%
+		}
+		else
+		{
+%>
+<%= PTS2JavaUtil.RUNTIME_INSTANCE_NAME %>.suspendUntil(<%= expressionWorker.getCodeFor(stm.getExpression()) %>);
+<%
+		}
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSWaitDeltaStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSWaitDeltaStatement)
+	{
+		if (PTSpecUtils.isTraceAnalyzeContext(ptsStatement))
+		{
+%>
+<%= PTS2JavaUtil.getJavaTraceProviderName(ptsStatement) %>.moveNextDelta();
+<%
+		}
+		else
+		{
+			throw new RuntimeException("wait-delta outside analyze blocks not supported");
+		}
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSAssertStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSAssertStatement)
+	{
+		PTSAssertStatement stm = (PTSAssertStatement)ptsStatement;
+%>
+if (!(<%= expressionWorker.getCodeFor(stm.getExpression()) %>))
+{
+	<%= PTS2JavaUtil.RUNTIME_INSTANCE_NAME %>.assertionFailed(
+		  <%= PTS2JavaUtil.TEST_INSTANCE_NAME %>
+		, "<%= stm.eResource().getURI().toString() %>"
+		, <%= NodeModelUtils.findActualNodeFor(stm).getOffset() %>
+		, <%= NodeModelUtils.findActualNodeFor(stm).getLength() %>
+		, "<%= PTSCompilerUtil.getStringCompatibleOriginalSyntax(stm.getExpression()) %>"
+		, <%= stm.getSeverity().getValue() %>
+		<%= stm.getMessageExpr() != null ? ", " + expressionWorker.getCodeFor(stm.getMessageExpr()) : "" %>
+		<%= stm.getContextExpr() != null ? ", " + expressionWorker.getCodeFor(stm.getContextExpr()) : "" %>);
+}
+<%
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSReportStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSReportStatement)
+	{
+		PTSReportStatement stm = (PTSReportStatement)ptsStatement;
+%>
+<%= PTS2JavaUtil.RUNTIME_INSTANCE_NAME %>.report(
+		  <%= PTS2JavaUtil.TEST_INSTANCE_NAME %>
+		, "<%= stm.eResource().getURI().toString() %>"
+		, <%= NodeModelUtils.findActualNodeFor(stm).getOffset() %>
+		, <%= NodeModelUtils.findActualNodeFor(stm).getLength() %>
+		, <%= stm.getSeverity().getValue() %>
+		<%= stm.getMessageExpr() != null ? ", " + expressionWorker.getCodeFor(stm.getMessageExpr()) : "" %>
+		<%= stm.getContextExpr() != null ? ", " + expressionWorker.getCodeFor(stm.getContextExpr()) : "" %>);
+<%
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSAsyncStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSConcurrentStatement)
+	{
+		PTSConcurrentStatement stm = (PTSConcurrentStatement)ptsStatement;
+		String concurrentThreadId = null;
+		if (stm.getConncurrentThread() != null)
+			concurrentThreadId = stm.getConncurrentThread().getName();
+		
+		PTSConcurrentStatementWrapper wrapper = new PTSConcurrentStatementWrapper(concurrentThreadId, stm.getImplementation());
+		ptsWorker.compile(wrapper);
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSCancelStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSCancelStatement)
+	{
+		PTSCancelStatement stm = (PTSCancelStatement)ptsStatement;
+%>
+<%= PTS2JavaUtil.RUNTIME_INSTANCE_NAME %>.cancelAsyncExecution(
+<%
+		boolean first = true;
+		for (PTSConcurrentThread concurrentThreads: stm.getConcurrentThreads())
+		{
+%>
+			<%= first ? " " : "," %>"<%= concurrentThreads.getName() %>"
+<%
+			first = false;
+		}
+%>
+			);
+<%
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSRunStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSRunStatement)
+	{
+		if (PTSpecUtils.isRealtimeContext(ptsStatement))
+		{
+%>
+<%= PTS2JavaUtil.TRACE_INTANCE_NAME %>.addStimulus(<%= PTS2JavaUtil.getJavaInspectorUID(ptsStatement) %>,<%= PTS2JavaUtil.getJavaExecutorUID(ptsStatement) %>,ITrace.SetupEvent.RUN,null,<%= PTS2JavaUtil.EPROPERTY_NONE %>, null);
+<%
+		}
+		else
+		{
+	
+%>
+<%= PTS2JavaUtil.RUNTIME_INSTANCE_NAME %>.run(<%= PTS2JavaUtil.getJavaInspectorUID(ptsStatement) %>,<%= PTS2JavaUtil.getJavaExecutorUID(ptsStatement) %>);
+<%
+		}
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSRunUntilStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSRunUntilStatement)
+	{
+		PTSRunUntilStatement stm = (PTSRunUntilStatement)ptsStatement;
+		PTSSymbolReference symRef = (PTSSymbolReference)stm.getSymbolReference();
+		ITestReferenceable finalTestRef = PTSpecUtils.getFinalTestReferenceable(symRef);
+		if (!(finalTestRef instanceof ITestCallable))
+			throw new PTSCompilerException("Bad run until statement: bad reference");
+		
+		if (PTSpecUtils.isRealtimeContext(symRef))
+		{
+%>
+<%= PTS2JavaUtil.TRACE_INTANCE_NAME %>.addStimulus(<%= PTS2JavaUtil.getJavaInspectorUID(ptsStatement) %>,<%= PTS2JavaUtil.getJavaExecutorUID(ptsStatement) %>,ITrace.SetupEvent.RUN_UNTIL,<%= PTS2JavaUtil.getJavaElementUID(finalTestRef) %>,<%= PTS2JavaUtil.EPROPERTY_NONE %>,null);
+<%
+		}
+		else
+		{
+%>
+<%= PTS2JavaUtil.RUNTIME_INSTANCE_NAME %>.runUntil(<%= PTS2JavaUtil.getJavaInspectorUID(symRef) %>,<%= PTS2JavaUtil.getJavaExecutorUID(symRef) %>,<%= PTS2JavaUtil.getJavaElementUID(finalTestRef) %>);
+<%
+		}
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSStopStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSStopStatement)
+	{
+		if (PTSpecUtils.isRealtimeContext(ptsStatement))
+		{
+%>
+<%= PTS2JavaUtil.TRACE_INTANCE_NAME %>.addStimulus(<%= PTS2JavaUtil.getJavaInspectorUID(ptsStatement) %>,<%= PTS2JavaUtil.getJavaExecutorUID(ptsStatement) %>,ITrace.SetupEvent.STOP,null,<%= PTS2JavaUtil.EPROPERTY_NONE %>,null);
+<%
+		}
+		else
+		{
+%>
+<%= PTS2JavaUtil.RUNTIME_INSTANCE_NAME %>.stop(<%= PTS2JavaUtil.getJavaInspectorUID(ptsStatement) %>,<%= PTS2JavaUtil.getJavaExecutorUID(ptsStatement) %>);
+<%
+		}
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSBreakAtStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSBreakAtStatement)
+	{
+		PTSBreakAtStatement stm = (PTSBreakAtStatement)ptsStatement;
+		PTSSymbolReference symRef = (PTSSymbolReference)stm.getSymbolReference();
+		ITestReferenceable finalTestRef = PTSpecUtils.getFinalTestReferenceable(symRef);
+		if (!(finalTestRef instanceof ITestCallable))
+			throw new PTSCompilerException("Bad break at statement: bad reference");
+%>
+<%= PTS2JavaUtil.RUNTIME_INSTANCE_NAME %>.breakAt(<%= PTS2JavaUtil.getJavaInspectorUID(symRef) %>,<%= PTS2JavaUtil.getJavaExecutorUID(symRef) %>,<%= PTS2JavaUtil.getJavaElementUID(finalTestRef) %>);
+<%
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSScopeStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSScopeStatement)
+	{
+		PTSScopeStatement scopeStm = (PTSScopeStatement) ptsStatement;
+		
+		if (scopeStm.getImplementation() != null)
+		{
+			ptsWorker.compile(scopeStm.getImplementation());
+		}
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * PTSRealtimeStatement
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else if (ptsStatement instanceof PTSRealtimeStatement)
+	{
+		PTSRealtimeStatement stm = (PTSRealtimeStatement)ptsStatement;
+		IJJETTemplate rtStatementTemplate = new JET_RealtimeStatement();
+		context.getCompiler().compile(rtStatementTemplate, stm, context);
+	}
+	/*
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 * ------------------------------------------------------------------------------------------------------------------------
+	 */
+	else
+	{
+		throw new PTSCompilerException("Unknown statement type: " + ptsStatement.getClass().getSimpleName());
+	}
+%>

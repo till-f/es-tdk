@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pi:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms" visible="true" gridUnit="10" diagramTypeId="editor" name="Demo" snapToGrid="true" pictogramLinks="//@link //@children.0/@link //@children.0/@children.0/@link //@children.1/@link //@connections.0/@link //@children.0/@children.1/@link //@children.2/@children.0/@link //@children.2/@children.1/@link //@children.2/@children.2/@link //@children.2/@link //@children.3/@children.0/@link //@children.3/@link //@connections.1/@link //@connections.2/@link //@children.0/@children.2/@link //@children.0/@children.2/@children.0/@link //@children.4/@children.0/@link //@children.4/@link //@connections.3/@link" version="0.12.0">
+  <properties value="platform:/resource/fzi.mottem.examples.hostapp.ptspec/model/Demo.etm-testrig#_00u2EE4dEeSslsYpQMObKg"/>
+  <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.0" lineWidth="1" transparency="0.0" width="1000" height="1000"/>
+  <link>
+    <businessObjects href="Demo.etm-testrig#_00u2EE4dEeSslsYpQMObKg"/>
+  </link>
+  <children xsi:type="pi:ContainerShape" visible="true" active="true">
+    <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.7" lineWidth="1" filled="true" transparency="0.0" width="350" height="121" x="50" y="220">
+      <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="20" x="2" y="2" id="fzi.mottem.editor.UUT" stretchH="false" stretchV="false" proportional="false"/>
+      <graphicsAlgorithmChildren xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="150" height="20" x="20" y="5" value="EvalBoard"/>
+    </graphicsAlgorithm>
+    <link>
+      <businessObjects href="Demo.etm-testrig#+NUUT_00u2EE4dEeSslsYpQMObKg"/>
+    </link>
+    <anchors xsi:type="pi:ChopboxAnchor"/>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.8" lineWidth="1" filled="true" transparency="0.0" width="20" height="25" x="300">
+        <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="15" x="2" y="2" id="fzi.mottem.editor.IOPORT" stretchH="false" stretchV="false" proportional="false"/>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="Demo.etm-testrig#+NCANPort+NUUT_00u2EE4dEeSslsYpQMObKg"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.0"/>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="80" height="15" x="210" y="16">
+        <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="13" height="15" id="fzi.mottem.editor.IOPIN" stretchH="false" stretchV="false" proportional="false"/>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="Demo.etm-testrig#+R[B@1014de9"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.1"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.3" lineWidth="1" filled="false" transparency="0.0" width="80" height="15" x="18" verticalAlignment="ALIGNMENT_MIDDLE" value="PinA1"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.1" lineWidth="1" filled="true" transparency="0.0" width="61" height="67" x="90" y="30">
+        <graphicsAlgorithmChildren xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="135" height="16" x="5" y="5" value="CPU"/>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="Demo.etm-testrig#+R[B@4ff36c"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.3"/>
+      <children visible="true" active="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="16" height="16" x="29" y="40" id="fzi.mottem.editor.ProcessorCore" stretchH="false" stretchV="false" proportional="false"/>
+        <link>
+          <businessObjects href="Demo.etm-testrig#+R[B@f37b6d"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor"/>
+      </children>
+    </children>
+  </children>
+  <children xsi:type="pi:ContainerShape" visible="true" active="true">
+    <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.1" lineWidth="1" filled="true" transparency="0.0" width="100" height="50" x="300" y="130">
+      <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" height="20" id="fzi.mottem.editor.CANBus" stretchH="false" stretchV="false" proportional="false"/>
+      <graphicsAlgorithmChildren xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="60" height="20" x="20" y="15" value="CAN Bus"/>
+    </graphicsAlgorithm>
+    <link>
+      <businessObjects href="Demo.etm-testrig#+NCANBus_00u2EE4dEeSslsYpQMObKg"/>
+    </link>
+    <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.0 //@connections.2"/>
+  </children>
+  <children xsi:type="pi:ContainerShape" visible="true" active="true">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="75" height="65" x="325" y="20">
+      <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.11" lineWidth="1" filled="true" transparency="0.0" width="75" height="50">
+        <graphicsAlgorithmChildren xsi:type="al:Text" foreground="//@colors.1" lineWidth="1" filled="false" transparency="0.0" width="65" height="20" x="10" y="5" value="VN7600"/>
+      </graphicsAlgorithmChildren>
+    </graphicsAlgorithm>
+    <link>
+      <businessObjects href="Demo.etm-testrig#+R[B@33ddaa"/>
+    </link>
+    <anchors xsi:type="pi:ChopboxAnchor"/>
+    <anchors xsi:type="pi:ChopboxAnchor"/>
+    <anchors xsi:type="pi:ChopboxAnchor"/>
+    <anchors xsi:type="pi:ChopboxAnchor"/>
+    <children visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.3" lineWidth="1" filled="true" transparency="0.0" width="10" height="15" x="13" y="50"/>
+      <link>
+        <businessObjects href="Demo.etm-testrig#+R[B@1d81d88"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.2"/>
+    </children>
+    <children visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.3" lineWidth="1" filled="true" transparency="0.0" width="10" height="15" x="31" y="50"/>
+      <link>
+        <businessObjects href="Demo.etm-testrig#+R[B@d68fdf"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+    </children>
+    <children visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.3" lineWidth="1" filled="true" transparency="0.0" width="10" height="15" x="49" y="50"/>
+      <link>
+        <businessObjects href="Demo.etm-testrig#+R[B@33fc7c"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+    </children>
+  </children>
+  <children xsi:type="pi:ContainerShape" visible="true" active="true">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="80" height="65" x="200" y="20">
+      <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.12" lineWidth="1" filled="true" transparency="0.0" width="80" height="50">
+        <graphicsAlgorithmChildren xsi:type="al:Text" foreground="//@colors.1" lineWidth="1" filled="false" transparency="0.0" width="80" height="20" x="5" y="5" value="DSOX2012A"/>
+      </graphicsAlgorithmChildren>
+    </graphicsAlgorithm>
+    <link>
+      <businessObjects href="Demo.etm-testrig#+R[B@191cb07"/>
+    </link>
+    <anchors xsi:type="pi:ChopboxAnchor"/>
+    <children visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.3" lineWidth="1" filled="true" transparency="0.0" width="10" height="15" x="35" y="50"/>
+      <link>
+        <businessObjects href="Demo.etm-testrig#+R[B@ddb19f"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.1"/>
+    </children>
+  </children>
+  <children xsi:type="pi:ContainerShape" visible="true" active="true">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="65" x="100" y="20">
+      <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.6" lineWidth="1" filled="true" transparency="0.0" width="60" height="50">
+        <graphicsAlgorithmChildren xsi:type="al:Text" foreground="//@colors.1" lineWidth="1" filled="false" transparency="0.0" width="50" height="20" x="5" y="5" value="IC5000"/>
+      </graphicsAlgorithmChildren>
+    </graphicsAlgorithm>
+    <link>
+      <businessObjects href="Demo.etm-testrig#+R[B@cf0944"/>
+    </link>
+    <anchors xsi:type="pi:ChopboxAnchor"/>
+    <children visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.3" lineWidth="1" filled="true" transparency="0.0" width="10" height="15" x="25" y="50"/>
+      <link>
+        <businessObjects href="Demo.etm-testrig#+R[B@57cbd3"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.3"/>
+    </children>
+  </children>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.0/@anchors.0" end="//@children.1/@anchors.0">
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.3" width="1"/>
+    <link>
+      <businessObjects href="Demo.etm-testrig#+R[B@3fbaeea7"/>
+    </link>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" start="//@children.3/@children.0/@anchors.0" end="//@children.0/@children.1/@anchors.0">
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.3" width="1"/>
+    <link>
+      <businessObjects href="Demo.etm-testrig#+R[B@197f0ac"/>
+    </link>
+    <bendpoints x="239" y="244"/>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" start="//@children.2/@children.0/@anchors.0" end="//@children.1/@anchors.0">
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.3" width="1"/>
+    <link>
+      <businessObjects href="Demo.etm-testrig#+R[B@a2d69a"/>
+    </link>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" start="//@children.4/@children.0/@anchors.0" end="//@children.0/@children.2/@anchors.0">
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.3" width="1"/>
+    <link>
+      <businessObjects href="Demo.etm-testrig#+R[B@38f339"/>
+    </link>
+  </connections>
+  <colors red="227" green="238" blue="249"/>
+  <colors red="255" green="255" blue="255"/>
+  <colors red="192" green="192" blue="192"/>
+  <colors/>
+  <colors red="255" green="255"/>
+  <colors red="127" green="127" blue="255"/>
+  <colors red="30" green="144" blue="255"/>
+  <colors red="154" green="205" blue="50"/>
+  <colors red="211" green="211" blue="211"/>
+  <colors red="193" green="205" blue="193"/>
+  <colors red="200" green="200" blue="200"/>
+  <colors red="183" blue="50"/>
+  <colors red="23" green="143" blue="215"/>
+  <colors red="152" green="251" blue="152"/>
+</pi:Diagram>

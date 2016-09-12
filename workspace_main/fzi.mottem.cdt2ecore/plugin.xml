@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension point="org.eclipse.ui.commands">
+      <category
+            id="fzi.mottem.cdt2ecore.commandCategory"
+            name="cdt2ecore Commands">
+      </category>
+      <command
+            categoryId="fzi.mottem.cdt2ecore.commandCategory"
+            id="fzi.mottem.cdt2ecore.commands.refresh"
+            name="(Re-)Load CodeModels">
+      </command>
+   </extension>
+   
+   <extension point="org.eclipse.ui.handlers">
+      <handler
+            class="fzi.mottem.cdt2ecore.commands.RefreshCommand"
+            commandId="fzi.mottem.cdt2ecore.commands.refresh">
+      </handler>
+   </extension>
+   
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution locationURI="menu:fzi.mottem.ptspec.menu?after=UtilAdditions">
+         <command
+              commandId="fzi.mottem.cdt2ecore.commands.refresh"
+              id="fzi.mottem.cdt2ecore.menu.refresh"
+              mnemonic="I">
+         </command>
+      </menuContribution>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="fzi.mottem.cdt2ecore.CDT2EcorePlugin">
+      </startup>
+   </extension>
+
+</plugin>

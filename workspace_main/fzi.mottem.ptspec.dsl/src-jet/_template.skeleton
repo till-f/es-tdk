@@ -1,0 +1,7 @@
+public class CLASS implements IJJETTemplate
+{
+  public String generate(IJJETContext context)
+  {
+     return "";
+  }
+}

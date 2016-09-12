@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GraphView>
+    <traceList>
+        <trace>
+            <blue>196</blue>
+            <bufferSize>4096</bufferSize>
+            <green>21</green>
+            <name>TL exampleGraphView.graphview Trace 0</name>
+            <pointStyle>NONE</pointStyle>
+            <pollingDelay>10</pollingDelay>
+            <red>21</red>
+            <traceName>Trace 0</traceName>
+            <type>SOLID_LINE</type>
+        </trace>
+    </traceList>
+    <name>exampleGraphView.graphview</name>
+    <path>C:\Git\daves\workspace_ptspec\fzi.mottem.examples.visualization\dashboards\exampleGraphView.graphview</path>
+</GraphView>

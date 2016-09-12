@@ -1,0 +1,146 @@
+<%@jet class="JET_TestSuiteReport" package="fzi.mottem.runtime.reportgenerator.precompiled" skeleton="_template.skeleton" imports="fzi.mottem.jjet.interfaces.* org.eclipse.core.runtime.Path fzi.mottem.runtime.interfaces.* fzi.mottem.runtime.reportgenerator.*" %>
+
+<%
+	ITest suiteAsTest = (ITest)context.getArgument();
+	ITestSuite suite = (ITestSuite)context.getArgument();
+	
+	context.setOutputFile(new Path("./"), suiteAsTest.getName() + ".html");
+	context.setBuffer(stringBuffer);
+	
+	int passedCount = 0;
+	int indecisiveCount = 0;
+	int failedCount = 0;
+
+	for (ITest innerTest : suite.getAllTests())
+	{
+	   switch(innerTest.getTestState())
+	   {
+	       case Passed: passedCount++; break;
+	       case Indecisive: indecisiveCount++; break;
+	       case Failed: failedCount++; break;
+	   }
+	}
+%>
+<html>
+<head>
+  <title><%= suiteAsTest.getName() %></title>
+  
+<style>
+
+p {
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	}
+
+h1 {
+	font-size: 16px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	}
+
+h2 {
+	font-size: 14px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	border-bottom: 1px solid #000;
+	width: 100%;
+	display: block;
+	}
+
+table { 
+	border-collapse: collapse;
+	margin-top: 0px;
+	}
+
+th { 
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	background: #2F2D3B; 
+	color: white; 
+	}
+
+td, th { 
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 6px; 
+	border: 1px solid #ccc; 
+	text-align: left; 
+	}
+</style>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['State', 'Number of Tests'],
+          ['Passed', <%= passedCount %>], 
+          ['Indecisive', <%= indecisiveCount %>], 
+          ['Failed', <%= failedCount %>]
+        ]);
+
+        var options = {
+          title: 'Suite Statistics',
+          pieHole: 0.1,
+          chartArea:{left:20,top:20,width:'100%',height:'100%'},
+          is3D:'true',
+		  
+		  slices: {
+            0: { color: 'green' },
+            1: { color: 'orange' },
+            2: { color: 'red' }
+          }
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+    </script>
+
+</head>
+
+
+<% 
+	String pathToSuiteImage = ReportHelper.getSeverityImagePath(suiteAsTest, indecisiveCount, failedCount);
+	String[] path = suiteAsTest.getSourceFileUri().split("/");
+	String filename = path[path.length-1];
+%>
+
+<body>
+	<h1><img src="<%=pathToSuiteImage%>"> Test Suite <%= suiteAsTest.getName() %></h1>
+    <div id="donutchart" style="width: 350px; height: 300px; float:center"></div>
+    
+	<table align="left">
+	<thead>
+		<tr>
+			<th>TestName</th>
+			<th>Link to HTML Report</th>
+			<th>Link to Source File</th>
+			<th>State</th>
+		</tr>
+	</thead>
+	
+<%
+	for (ITest myTest: suite.getAllTests())
+	{
+%>
+		<tr>
+			<td> <%= myTest.getName() %> </td>
+			<td> <a href="<%= myTest.getName() %>.html"> <%= myTest.getName() %>.html</a> </td>
+			<td> <a href="../pts/<%= filename %>"> <%= suiteAsTest.getProject() %>/pts/<%= filename %></a> </td>
+<%
+		String pathToImage = ReportHelper.getSeverityImagePath(myTest);
+%>
+			<td style="text-align: center;"> <img src="<%=pathToImage%>" width=16 height=16> </td>
+			
+		</tr>
+<% 
+	}
+%>
+	</table>
+
+</body>
+
+</html>

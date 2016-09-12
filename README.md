@@ -29,9 +29,6 @@ Main Folders
 * workspace_ptspec
   * The workspace to for debugging/testing of the ES TDK.
   * Contains several examples.
-* workspace_picoSAR
-  * A windows GUI application to configure the AUTOSAR-like VFB (Virtual Functional Bus)
-    used in the "raupe" example. Has some bugs.
 
 
 Primary Requirements

@@ -1,0 +1,429 @@
+Archive member included because of file (symbol)
+
+c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_sf_to_df.o)
+                              obj/core1/core1/app.o (__extendsfdf2)
+c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_make_df.o)
+                              c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_sf_to_df.o) (__make_dp)
+c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_df_to_sf.o)
+                              obj/core1/core1/app.o (__truncdfsf2)
+c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_unpack_sf.o)
+                              c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_sf_to_df.o) (__unpack_f)
+c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_make_sf.o)
+                              c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_df_to_sf.o) (__make_fp)
+c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_pack_df.o)
+                              c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_make_df.o) (__pack_d)
+c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_unpack_df.o)
+                              c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_df_to_sf.o) (__unpack_d)
+c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_lshrdi3.o)
+                              c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_pack_df.o) (__lshrdi3)
+c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_ashldi3.o)
+                              c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_pack_df.o) (__ashldi3)
+c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_pack_sf.o)
+                              c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_make_sf.o) (__pack_f)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 obj/core1/crt0.o
+ .data          0x00000000        0x0 obj/core1/crt0.o
+ .bss           0x00000000        0x0 obj/core1/crt0.o
+ .text          0x00000000        0x0 obj/core1/init_mmu.o
+ .data          0x00000000        0x0 obj/core1/init_mmu.o
+ .bss           0x00000000        0x0 obj/core1/init_mmu.o
+ .text          0x00000000        0x0 obj/core1/core1/tables.o
+ .data          0x00000000        0x0 obj/core1/core1/tables.o
+ .bss           0x00000000        0x0 obj/core1/core1/tables.o
+ .data          0x00000000        0x0 obj/core1/core1/interrupt_handlers.o
+ .bss           0x00000000        0x0 obj/core1/core1/interrupt_handlers.o
+ .group         0x00000000        0x8 obj/core1/init_misc.o
+ .group         0x00000000        0x8 obj/core1/init_misc.o
+ .group         0x00000000        0x8 obj/core1/init_misc.o
+ .text          0x00000000        0x0 obj/core1/init_misc.o
+ .data          0x00000000        0x0 obj/core1/init_misc.o
+ .bss           0x00000000        0x0 obj/core1/init_misc.o
+ .group         0x00000000        0x8 obj/core1/core1/main.o
+ .group         0x00000000        0x8 obj/core1/core1/main.o
+ .text          0x00000000        0x0 obj/core1/core1/main.o
+ .data          0x00000000        0x0 obj/core1/core1/main.o
+ .bss           0x00000000        0x0 obj/core1/core1/main.o
+ .debug_macro   0x00000000      0x54a obj/core1/core1/main.o
+ .debug_macro   0x00000000      0x27e obj/core1/core1/main.o
+ .group         0x00000000        0x8 obj/core1/core1/app.o
+ .group         0x00000000        0x8 obj/core1/core1/app.o
+ .group         0x00000000        0x8 obj/core1/core1/app.o
+ .text          0x00000000        0x0 obj/core1/core1/app.o
+ .data          0x00000000        0x0 obj/core1/core1/app.o
+ .bss           0x00000000        0x0 obj/core1/core1/app.o
+ .bss.rpm_act   0x00000000        0x4 obj/core1/core1/app.o
+ .bss.pwm_dc    0x00000000        0x4 obj/core1/core1/app.o
+ .debug_macro   0x00000000      0x54a obj/core1/core1/app.o
+ .debug_macro   0x00000000      0x27e obj/core1/core1/app.o
+ .debug_macro   0x00000000       0x52 obj/core1/core1/app.o
+ .data          0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_sf_to_df.o)
+ .bss           0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_sf_to_df.o)
+ .got2          0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_sf_to_df.o)
+ .data          0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_make_df.o)
+ .bss           0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_make_df.o)
+ .got2          0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_make_df.o)
+ .data          0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_df_to_sf.o)
+ .bss           0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_df_to_sf.o)
+ .got2          0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_df_to_sf.o)
+ .data          0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_unpack_sf.o)
+ .bss           0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_unpack_sf.o)
+ .got2          0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_unpack_sf.o)
+ .data          0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_make_sf.o)
+ .bss           0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_make_sf.o)
+ .got2          0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_make_sf.o)
+ .data          0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_pack_df.o)
+ .bss           0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_pack_df.o)
+ .got2          0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_pack_df.o)
+ .data          0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_unpack_df.o)
+ .bss           0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_unpack_df.o)
+ .got2          0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_unpack_df.o)
+ .data          0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_lshrdi3.o)
+ .bss           0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_lshrdi3.o)
+ .got2          0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_lshrdi3.o)
+ .data          0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_ashldi3.o)
+ .bss           0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_ashldi3.o)
+ .got2          0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_ashldi3.o)
+ .data          0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_pack_sf.o)
+ .bss           0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_pack_sf.o)
+ .got2          0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_pack_sf.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+iboot            0x00004000         0x00004000         xr
+iflash           0x00040000         0x00030000         xr
+isram            0x50000000         0x00040000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD obj/core1/crt0.o
+LOAD obj/core1/init_mmu.o
+LOAD obj/core1/core1/tables.o
+LOAD obj/core1/core1/interrupt_handlers.o
+LOAD obj/core1/init_misc.o
+LOAD obj/core1/core1/main.o
+LOAD obj/core1/core1/app.o
+LOAD c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a
+LOAD c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/../../../../powerpc-eabi/lib/nof\libc.a
+LOAD c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a
+                [0x00001000]                __STACK_SIZE = DEFINED (__STACK_SIZE)?__STACK_SIZE:0x1000
+                0x50000000                isram_base = ORIGIN (isram)
+                0x00040000                isram_len = 0x40000
+
+.boot           0x00004000      0x588
+ *(.boot_data)
+ *(.boot)
+ .boot          0x00004000      0x260 obj/core1/crt0.o
+                0x00004000                __start
+                0x00004044                __eabi
+ .boot          0x00004260      0x18c obj/core1/init_mmu.o
+                0x00004260                init_mmu
+ .boot          0x000043ec      0x19c obj/core1/init_misc.o
+                0x000043ec                clear_wdg
+                0x00004444                init_interrupt_controller
+
+.tables         0x00040000     0x1124
+ *(.interrupt_table)
+ .interrupt_table
+                0x00040000      0xff4 obj/core1/core1/tables.o
+                0x00040000                _interrupt_table
+                0x00041000                . = ALIGN (0x800)
+ *fill*         0x00040ff4        0xc 
+ *(.trap_table)
+ .trap_table    0x00041000      0x124 obj/core1/core1/tables.o
+                0x00041000                _trap_table
+                0x00041000                IVOR0trap
+                0x00041010                IVOR1trap
+                0x00041020                IVOR2trap
+                0x00041030                IVOR3trap
+                0x00041040                IVOR4trap
+                0x00041050                IVOR5trap
+                0x00041060                IVOR6trap
+                0x00041070                IVOR7trap
+                0x00041080                IVOR8trap
+                0x00041090                IVOR9trap
+                0x000410a0                IVOR10trap
+                0x000410b0                IVOR11trap
+                0x000410c0                IVOR12trap
+                0x000410d0                IVOR13trap
+                0x000410e0                IVOR14trap
+                0x000410f0                IVOR15trap
+                0x00041100                IVOR32trap
+                0x00041110                IVOR33trap
+                0x00041120                IVOR34trap
+
+.text           0x00041124     0x15dc
+ *(.text)
+ .text          0x00041124       0xf8 obj/core1/core1/interrupt_handlers.o
+                0x00041124                Pit0Handler
+                0x00041130                Can0Handler
+ .text          0x0004121c       0x4c c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_sf_to_df.o)
+                0x0004121c                __extendsfdf2
+ .text          0x00041268       0x38 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_make_df.o)
+                0x00041268                __make_dp
+ .text          0x000412a0       0x60 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_df_to_sf.o)
+                0x000412a0                __truncdfsf2
+ .text          0x00041300       0xbc c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_unpack_sf.o)
+                0x00041300                __unpack_f
+ .text          0x000413bc       0x34 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_make_sf.o)
+                0x000413bc                __make_fp
+ .text          0x000413f0      0x220 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_pack_df.o)
+                0x000413f0                __pack_d
+ .text          0x00041610       0xec c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_unpack_df.o)
+                0x00041610                __unpack_d
+ .text          0x000416fc       0x40 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_lshrdi3.o)
+                0x000416fc                __lshrdi3
+ .text          0x0004173c       0x40 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_ashldi3.o)
+                0x0004173c                __ashldi3
+ .text          0x0004177c      0x138 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_pack_sf.o)
+                0x0004177c                __pack_f
+ *(.text.*)
+ .text.main     0x000418b4       0x84 obj/core1/core1/main.o
+                0x000418b4                main
+ .text.initPIT  0x00041938       0x54 obj/core1/core1/app.o
+                0x00041938                initPIT
+ .text.initCAN  0x0004198c      0x51c obj/core1/core1/app.o
+                0x0004198c                initCAN
+ .text.enableIRQ
+                0x00041ea8       0x38 obj/core1/core1/app.o
+                0x00041ea8                enableIRQ
+ .text.CANreceive0
+                0x00041ee0       0x8c obj/core1/core1/app.o
+                0x00041ee0                CANreceive0
+ .text.CANreceive1
+                0x00041f6c       0x70 obj/core1/core1/app.o
+                0x00041f6c                CANreceive1
+ .text.CANreceive2
+                0x00041fdc       0x1c obj/core1/core1/app.o
+                0x00041fdc                CANreceive2
+ .text.CANreceive3
+                0x00041ff8       0x1c obj/core1/core1/app.o
+                0x00041ff8                CANreceive3
+ .text.CANtransmit4
+                0x00042014       0xf8 obj/core1/core1/app.o
+                0x00042014                CANtransmit4
+ .text.CANtransmit5
+                0x0004210c       0xf0 obj/core1/core1/app.o
+                0x0004210c                CANtransmit5
+ .text.CANtransmit6
+                0x000421fc       0xf8 obj/core1/core1/app.o
+                0x000421fc                CANtransmit6
+ .text.Can0ISR  0x000422f4       0xdc obj/core1/core1/app.o
+                0x000422f4                Can0ISR
+ .text.Pit0ISR  0x000423d0      0x280 obj/core1/core1/app.o
+                0x000423d0                Pit0ISR
+ .text.init_app
+                0x00042650       0xa0 obj/core1/core1/app.o
+                0x00042650                init_app
+ .text.run_app  0x000426f0       0x10 obj/core1/core1/app.o
+                0x000426f0                run_app
+ *(.init)
+ *(.fini)
+ *(rdata)
+ *(.eini)
+
+.glink          0x00042700        0x0
+ .glink         0x00000000        0x0 obj/core1/core1/interrupt_handlers.o
+
+.rodata
+ *(.rodata)
+ *(.rodata.*)
+
+.eh_frame       0x00042700        0x0
+ .eh_frame      0x00000000        0x0 obj/core1/core1/interrupt_handlers.o
+
+.eh_frame_hdr   0x00042700        0x0
+ .eh_frame_hdr  0x00000000        0x0 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_pack_sf.o)
+
+.rela.dyn       0x00042700        0x0
+ .rela.iplt     0x00000000        0x0 obj/core1/core1/interrupt_handlers.o
+
+.sdata2         0x00042700        0x0
+                0x00008000                _SDA2_BASE_ = 0x8000
+ *(.sdata2)
+ *(.sdata2.*)
+
+.sbss2          0x00042700        0x0
+                0x00042700                ee_ssbss2 = .
+ *(.sbss2)
+ *(.sbss2.*)
+                0x00042700                ee_esbss2 = .
+
+.rom_copy_info  0x00042700        0x0
+                0x00042700                PROVIDE (ee_load_ram, .)
+
+.data           0x50000000        0x0 load address 0x00042700
+                0x50000000                ee_sdata = .
+                0x00008000                _SDA_BASE_ = 0x8000
+ *(.data)
+ *(.data.*)
+
+.sdata
+ *(.sdata)
+ *(.sdata.*)
+
+.sbss           0x50000000        0x0
+                0x50000000                ee_sbss = .
+ *(.sbss)
+ *(.sbss.*)
+
+.bss            0x50000000       0x1c
+ *(.bss)
+ *(.bss.*)
+ .bss.Pit0Ctr   0x50000000        0x4 obj/core1/core1/app.o
+                0x50000000                Pit0Ctr
+ .bss.rpm_tar_CAN
+                0x50000004        0x4 obj/core1/core1/app.o
+                0x50000004                rpm_tar_CAN
+ .bss.rpm_tar   0x50000008        0x4 obj/core1/core1/app.o
+                0x50000008                rpm_tar
+ .bss.k_p_CAN   0x5000000c        0x4 obj/core1/core1/app.o
+                0x5000000c                k_p_CAN
+ .bss.k_i_CAN   0x50000010        0x4 obj/core1/core1/app.o
+                0x50000010                k_i_CAN
+ .bss.core0info
+                0x50000014        0x4 obj/core1/core1/app.o
+                0x50000014                core0info
+ .bss.core1info
+                0x50000018        0x4 obj/core1/core1/app.o
+                0x50000018                core1info
+                0x5000001c                ee_ebss = .
+
+.iplt           0x50000020        0x0
+ .iplt          0x00000000        0x0 obj/core1/core1/interrupt_handlers.o
+
+.stack          0x5000001c     0x1000
+                0x5000001c                ee_sstack = .
+                0x5000100c                . = (. + (__STACK_SIZE - 0x10))
+ *fill*         0x5000001c      0xff0 
+                0x5000100c                ee_stack0 = .
+                0x5000101c                . = (. + 0x10)
+ *fill*         0x5000100c       0x10 
+                0x5000101c                ee_estack = .
+OUTPUT(bin/MPC5643L_core1.elf elf32-powerpc)
+
+.PPC.EMB.apuinfo
+                0x00000000       0x18
+ .PPC.EMB.apuinfo
+                0x00000000       0x18 obj/core1/crt0.o
+ .PPC.EMB.apuinfo
+                0x00000018       0x18 obj/core1/init_mmu.o
+ .PPC.EMB.apuinfo
+                0x00000030       0x18 obj/core1/core1/interrupt_handlers.o
+ .PPC.EMB.apuinfo
+                0x00000048       0x18 obj/core1/init_misc.o
+ .PPC.EMB.apuinfo
+                0x00000060       0x18 obj/core1/core1/main.o
+ .PPC.EMB.apuinfo
+                0x00000078       0x18 obj/core1/core1/app.o
+
+.comment        0x00000000       0x11
+ .comment       0x00000000       0x11 obj/core1/init_misc.o
+                                 0x12 (size before relaxing)
+ .comment       0x00000000       0x12 obj/core1/core1/main.o
+ .comment       0x00000000       0x12 obj/core1/core1/app.o
+ .comment       0x00000000       0x12 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_sf_to_df.o)
+ .comment       0x00000000       0x12 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_make_df.o)
+ .comment       0x00000000       0x12 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_df_to_sf.o)
+ .comment       0x00000000       0x12 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_unpack_sf.o)
+ .comment       0x00000000       0x12 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_make_sf.o)
+ .comment       0x00000000       0x12 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_pack_df.o)
+ .comment       0x00000000       0x12 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_unpack_df.o)
+ .comment       0x00000000       0x12 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_lshrdi3.o)
+ .comment       0x00000000       0x12 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_ashldi3.o)
+ .comment       0x00000000       0x12 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_pack_sf.o)
+
+.gnu.attributes
+                0x00000000       0x10
+ .gnu.attributes
+                0x00000000       0x10 obj/core1/core1/app.o
+ .gnu.attributes
+                0x00000010       0x10 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_sf_to_df.o)
+ .gnu.attributes
+                0x00000020       0x10 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_make_df.o)
+ .gnu.attributes
+                0x00000030       0x10 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_df_to_sf.o)
+ .gnu.attributes
+                0x00000040       0x10 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_make_sf.o)
+ .gnu.attributes
+                0x00000050       0x10 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_pack_df.o)
+ .gnu.attributes
+                0x00000060       0x10 c:/gcc/ppc/bin/../lib/gcc/powerpc-eabi/4.7.2/nof\libgcc.a(_pack_sf.o)
+
+.debug_line     0x00000000      0x70d
+ .debug_line    0x00000000       0xd7 obj/core1/crt0.o
+ .debug_line    0x000000d7       0xa0 obj/core1/init_mmu.o
+ .debug_line    0x00000177      0x161 obj/core1/core1/tables.o
+ .debug_line    0x000002d8       0x91 obj/core1/core1/interrupt_handlers.o
+ .debug_line    0x00000369       0xab obj/core1/init_misc.o
+ .debug_line    0x00000414       0xa4 obj/core1/core1/main.o
+ .debug_line    0x000004b8      0x255 obj/core1/core1/app.o
+
+.debug_info     0x00000000    0x2af9c
+ .debug_info    0x00000000       0x73 obj/core1/crt0.o
+ .debug_info    0x00000073       0x77 obj/core1/init_mmu.o
+ .debug_info    0x000000ea       0x77 obj/core1/core1/tables.o
+ .debug_info    0x00000161       0x87 obj/core1/core1/interrupt_handlers.o
+ .debug_info    0x000001e8     0x533c obj/core1/init_misc.o
+ .debug_info    0x00005524       0xb9 obj/core1/core1/main.o
+ .debug_info    0x000055dd    0x259bf obj/core1/core1/app.o
+
+.debug_abbrev   0x00000000      0x39f
+ .debug_abbrev  0x00000000       0x14 obj/core1/crt0.o
+ .debug_abbrev  0x00000014       0x14 obj/core1/init_mmu.o
+ .debug_abbrev  0x00000028       0x12 obj/core1/core1/tables.o
+ .debug_abbrev  0x0000003a       0x14 obj/core1/core1/interrupt_handlers.o
+ .debug_abbrev  0x0000004e      0x109 obj/core1/init_misc.o
+ .debug_abbrev  0x00000157       0x72 obj/core1/core1/main.o
+ .debug_abbrev  0x000001c9      0x1d6 obj/core1/core1/app.o
+
+.debug_aranges  0x00000000      0x158
+ .debug_aranges
+                0x00000000       0x20 obj/core1/crt0.o
+ .debug_aranges
+                0x00000020       0x20 obj/core1/init_mmu.o
+ .debug_aranges
+                0x00000040       0x28 obj/core1/core1/tables.o
+ .debug_aranges
+                0x00000068       0x20 obj/core1/core1/interrupt_handlers.o
+ .debug_aranges
+                0x00000088       0x28 obj/core1/init_misc.o
+ .debug_aranges
+                0x000000b0       0x20 obj/core1/core1/main.o
+ .debug_aranges
+                0x000000d0       0x88 obj/core1/core1/app.o
+
+.debug_ranges   0x00000000       0xc0
+ .debug_ranges  0x00000000       0x20 obj/core1/core1/tables.o
+ .debug_ranges  0x00000020       0x18 obj/core1/init_misc.o
+ .debug_ranges  0x00000038       0x10 obj/core1/core1/main.o
+ .debug_ranges  0x00000048       0x78 obj/core1/core1/app.o
+
+.debug_loc      0x00000000      0x46c
+ .debug_loc     0x00000000       0x88 obj/core1/init_misc.o
+ .debug_loc     0x00000088       0x44 obj/core1/core1/main.o
+ .debug_loc     0x000000cc      0x3a0 obj/core1/core1/app.o
+
+.debug_macro    0x00000000      0x8e2
+ .debug_macro   0x00000000       0x3d obj/core1/init_misc.o
+ .debug_macro   0x0000003d      0x54a obj/core1/init_misc.o
+ .debug_macro   0x00000587      0x27e obj/core1/init_misc.o
+ .debug_macro   0x00000805       0x52 obj/core1/init_misc.o
+ .debug_macro   0x00000857       0x44 obj/core1/core1/main.o
+ .debug_macro   0x0000089b       0x47 obj/core1/core1/app.o
+
+.debug_str      0x00000000     0x63ad
+ .debug_str     0x00000000     0x3bce obj/core1/init_misc.o
+                               0x3c1f (size before relaxing)
+ .debug_str     0x00003bce       0x3b obj/core1/core1/main.o
+                               0x2ba7 (size before relaxing)
+ .debug_str     0x00003c09     0x27a4 obj/core1/core1/app.o
+                               0x64a3 (size before relaxing)
+
+.debug_frame    0x00000000      0x290
+ .debug_frame   0x00000000       0x58 obj/core1/init_misc.o
+ .debug_frame   0x00000058       0x34 obj/core1/core1/main.o
+ .debug_frame   0x0000008c      0x204 obj/core1/core1/app.o

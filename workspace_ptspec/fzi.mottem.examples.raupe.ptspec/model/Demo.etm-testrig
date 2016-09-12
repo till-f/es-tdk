@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fzi.mottem.model.testrigmodel:TestRigInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fzi.mottem.model.codemodel="http://www.fzi.de/mottem/model/codemodel" xmlns:fzi.mottem.model.testrigmodel="http://www.fzi.de/mottem/model/testrigmodel" xmi:id="+NMotorDemo" name="MotorDemo">
+  <uuts xmi:id="+R[B@de650b" name="ActuatorBoard">
+    <processors xmi:id="+R[B@e17cd" inspectorConnector="+R[B@17b34a3" name="STM32F4">
+      <processorCores xmi:id="+R[B@1ef07b3" name="Core0">
+        <symbolContainer xsi:type="fzi.mottem.model.codemodel:CodeInstance" href="fzi.mottem.examples.raupe.actuator.etm-code#+NPkgfzi_mottem_examples_raupe_actuator"/>
+      </processorCores>
+    </processors>
+    <ioPorts xsi:type="fzi.mottem.model.testrigmodel:CANPort" xmi:id="+R[B@924c1c" name="CANPort" networkConnector="+R[B@9afc70"/>
+  </uuts>
+  <uuts xmi:id="+R[B@16ad296" name="SensorBoard">
+    <processors xmi:id="+R[B@1607072" name="STM32F4">
+      <processorCores xmi:id="+R[B@53050d" name="Core0">
+        <symbolContainer xsi:type="fzi.mottem.model.codemodel:CodeInstance" href="fzi.mottem.examples.raupe.sensor.etm-code#+NPkgfzi_mottem_examples_raupe_sensor"/>
+      </processorCores>
+    </processors>
+    <ioPorts xsi:type="fzi.mottem.model.testrigmodel:CANPort" xmi:id="+R[B@191020b" name="CANPort" networkConnector="+R[B@c399fd"/>
+  </uuts>
+  <inspectors xsi:type="fzi.mottem.model.testrigmodel:IOne" xmi:id="+R[B@53bd89" name="IOne" workspacePath="fzi.mottem.examples.raupe.actuator/_winIDEA/Example.xjrf">
+    <port xmi:id="+R[B@8b57d3" name="IOnePort" runtimeInspectorClass="fzi.mottem.runtime.rti.isystem.ISYSTEMAccessDriver" inspectorConnector="+R[B@17b34a3"/>
+  </inspectors>
+  <networks xsi:type="fzi.mottem.model.testrigmodel:CANBus" xmi:id="+R[B@1e67e29" name="CANBus" networkConnector="+R[B@9afc70 +R[B@c399fd"/>
+  <connectors xsi:type="fzi.mottem.model.testrigmodel:JTAGInspectorConnector" xmi:id="+R[B@17b34a3" inspector="+R[B@8b57d3" inspectable="+R[B@e17cd"/>
+  <networkConnectors xsi:type="fzi.mottem.model.testrigmodel:CANPortConnector" xmi:id="+R[B@9afc70" network="+R[B@1e67e29" networkPort="+R[B@924c1c"/>
+  <networkConnectors xsi:type="fzi.mottem.model.testrigmodel:CANPortConnector" xmi:id="+R[B@c399fd" network="+R[B@1e67e29" networkPort="+R[B@191020b"/>
+</fzi.mottem.model.testrigmodel:TestRigInstance>

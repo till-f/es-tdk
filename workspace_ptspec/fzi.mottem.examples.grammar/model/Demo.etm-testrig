@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fzi.mottem.model.testrigmodel:TestRigInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fzi.mottem.model.codemodel="http://www.fzi.de/mottem/model/codemodel" xmlns:fzi.mottem.model.datastreammodel="http://www.fzi.de/mottem/model/datastreammodel" xmlns:fzi.mottem.model.testrigmodel="http://www.fzi.de/mottem/model/testrigmodel" xmi:id="_00u2EE4dEeSslsYpQMObKg" name="Demo">
+  <uuts xmi:id="+NUUT_00u2EE4dEeSslsYpQMObKg" name="EvalBoard">
+    <processors xmi:id="+R[B@4ff36c" inspectorConnector="+R[B@38f339" name="CPU">
+      <processorCores xmi:id="+R[B@f37b6d" name="Core0">
+        <symbolContainer xsi:type="fzi.mottem.model.codemodel:CodeInstance" href="CodeModel.etm-code#+R[B@fb641b"/>
+      </processorCores>
+    </processors>
+    <ioPorts xsi:type="fzi.mottem.model.testrigmodel:CANPort" xmi:id="+NCANPort+NUUT_00u2EE4dEeSslsYpQMObKg" name="CAN_A" networkConnector="+R[B@3fbaeea7">
+      <symbolContainer xsi:type="fzi.mottem.model.datastreammodel:DataStreamInstance" href="candb.etm-dstream#+R[B@11eda48"/>
+    </ioPorts>
+    <ioPins xmi:id="+R[B@1014de9" inspectorConnector="+R[B@197f0ac" name="PinA1">
+      <pinSignals xmi:id="+R[B@790047" name="Value"/>
+    </ioPins>
+  </uuts>
+  <inspectors xsi:type="fzi.mottem.model.testrigmodel:VN7600" xmi:id="+R[B@33ddaa" name="VN7600">
+    <canPorts xmi:id="+R[B@1d81d88" name="CANInspectorPort0" runtimeInspectorClass="fzi.mottem.runtime.rti.vector.VectorAccessDriver" traceControllerClass="fzi.mottem.runtime.rti.vector.VectorTraceDriver" inspectorConnector="+R[B@a2d69a" channelNumber="1"/>
+    <canPorts xmi:id="+R[B@d68fdf" name="CANInspectorPort1" runtimeInspectorClass="fzi.mottem.runtime.rti.vector.VectorAccessDriver" traceControllerClass="fzi.mottem.runtime.rti.vector.VectorTraceDriver" channelNumber="2"/>
+    <canPorts xmi:id="+R[B@33fc7c" name="CANInspectorPort2" runtimeInspectorClass="fzi.mottem.runtime.rti.vector.VectorAccessDriver" traceControllerClass="fzi.mottem.runtime.rti.vector.VectorTraceDriver" channelNumber="3"/>
+  </inspectors>
+  <inspectors xsi:type="fzi.mottem.model.testrigmodel:AgilentInspectorContainer" xmi:id="+R[B@191cb07" name="DSOX2012A" connectURL="">
+    <agilentPins xmi:id="+R[B@ddb19f" name="OszilloscopePin" runtimeInspectorClass="fzi.mottem.runtime.rti.keysight.IVIAccessDriver" traceControllerClass="fzi.mottem.runtime.rti.keysight.IVITraceDriver" inspectorConnector="+R[B@197f0ac"/>
+  </inspectors>
+  <inspectors xsi:type="fzi.mottem.model.testrigmodel:IC5000" xmi:id="+R[B@cf0944" name="IC5000">
+    <port xmi:id="+R[B@57cbd3" name="IC5000Port" runtimeInspectorClass="fzi.mottem.runtime.rti.isystem.ISYSTEMAccessDriver" traceControllerClass="fzi.mottem.runtime.rti.isystem.ISYSTEMTraceDriver" inspectorConnector="+R[B@38f339"/>
+  </inspectors>
+  <networks xsi:type="fzi.mottem.model.testrigmodel:CANBus" xmi:id="+NCANBus_00u2EE4dEeSslsYpQMObKg" inspectorConnector="+R[B@a2d69a" name="CANBus" networkConnector="+R[B@3fbaeea7"/>
+  <connectors xsi:type="fzi.mottem.model.testrigmodel:PinConnector" xmi:id="+R[B@197f0ac" inspector="+R[B@ddb19f" inspectable="+R[B@1014de9"/>
+  <connectors xsi:type="fzi.mottem.model.testrigmodel:CANInspectorConnector" xmi:id="+R[B@a2d69a" inspector="+R[B@1d81d88" inspectable="+NCANBus_00u2EE4dEeSslsYpQMObKg"/>
+  <connectors xsi:type="fzi.mottem.model.testrigmodel:TraceInspectorConnector" xmi:id="+R[B@38f339" inspector="+R[B@57cbd3" inspectable="+R[B@4ff36c"/>
+  <networkConnectors xsi:type="fzi.mottem.model.testrigmodel:CANPortConnector" xmi:id="+R[B@3fbaeea7" network="+NCANBus_00u2EE4dEeSslsYpQMObKg" networkPort="+NCANPort+NUUT_00u2EE4dEeSslsYpQMObKg"/>
+</fzi.mottem.model.testrigmodel:TestRigInstance>

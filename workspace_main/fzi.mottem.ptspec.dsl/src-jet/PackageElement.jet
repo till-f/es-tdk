@@ -1,0 +1,93 @@
+<%@jet class="JET_PackageElement" package="fzi.mottem.ptspec.compiler.precompiled" skeleton="_template.skeleton" imports="fzi.mottem.jjet.interfaces.* fzi.mottem.ptspec.dsl.pTSpec.* fzi.mottem.ptspec.dsl.common.* fzi.mottem.ptspec.compiler.* fzi.mottem.ptspec.compiler.util.* fzi.mottem.ptspec.compiler.workers.*" %>
+<%
+	PTSWorker ptsWorker = new PTSWorker(context);
+	PTSPackageElement pkgElement = (PTSPackageElement)context.getArgument();
+    context.setBuffer(stringBuffer);
+
+    if (pkgElement instanceof PTSPackageUnit)
+    {
+    	// nothing to do
+    }
+	else if (pkgElement instanceof PTSPackageEnum)
+	{
+		PTSPackageEnum pkgEnum = (PTSPackageEnum)pkgElement;
+%>
+enum <%= pkgEnum.getName() %>
+{
+}
+<%
+	}
+	
+	else if (pkgElement instanceof PTSPackageVariable)
+	{
+		PTSPackageVariable pkgVar = (PTSPackageVariable)pkgElement;
+		String finalStr="";
+		if (pkgVar.isConst())
+		{
+			finalStr+="final";
+		}
+	
+		String initStr="";
+		if (pkgVar.isWithInit())
+		{
+			PTSConstant initValue = (PTSConstant)pkgVar.getInitialValue();
+			initStr+="="+PTS2JavaUtil.getJavaConstantValue(initValue);
+		}
+%>
+public <%= finalStr %> <%= PTS2JavaUtil.getJavaDataType(pkgVar.getDataType(), false, false) %> <%= pkgVar.getDeclaration().getName() %><%= initStr %>;
+<%
+	}
+	else if (pkgElement instanceof PTSPackageFunction)
+	{
+		PTSPackageFunction ptsFunc = (PTSPackageFunction)pkgElement;
+%>
+public <%= PTS2JavaUtil.getJavaDataType(ptsFunc.getReturnDataType(), false, false) %> <%= ptsFunc.getDeclaration().getName() %>(
+<%
+		boolean first = true;
+		if (ptsFunc.isAnalyzeFunc() || ptsFunc.isRealtimeFunc())
+		{
+			first = false;
+%>
+		  ITrace <%= PTS2JavaUtil.TRACE_INTANCE_NAME %>
+<%
+		}
+		if (ptsFunc.getParameterList() != null)
+		{
+			for (PTSPackageFuncParameter p : ptsFunc.getParameterList().getParameters())
+			{
+%>
+		<%= first ? "  " : ", " %><%= PTS2JavaUtil.getJavaDataType(p.getDataType(), p.isReferenceAccess(), false) %> <%= p.getDeclaration().getName() %>
+<%
+				first = false;
+			}
+		}
+%>
+	)
+{
+<%
+	if (ptsFunc.isAnalyzeFunc())
+	{
+%>
+	<%= PTS2JavaUtil.TRACE_INTANCE_NAME %>.pushTimeStack();
+<%
+	}
+	if (ptsFunc.getImplementation() != null)
+	{
+		ptsWorker.compile(ptsFunc.getImplementation());
+	}
+	if (ptsFunc.isAnalyzeFunc() && !(PTSpecUtils.getLastStatement(ptsFunc) instanceof PTSReturnStatement))
+	{
+%>
+	<%= PTS2JavaUtil.TRACE_INTANCE_NAME %>.popTimeStack();
+<%
+	}
+%>
+}
+
+<%
+	}
+	else
+	{
+		throw new PTSCompilerException("Unkown PTSPackageElement type: " + pkgElement.getClass().getSimpleName());
+	}
+%>

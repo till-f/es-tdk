@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated WrapperModel -->
+      <editor
+            id="fzi.mottem.model.baseelements.presentation.BaseelementsEditorID"
+            name="%_UI_BaseelementsEditor_label"
+            icon="icons/full/obj16/BaseelementsModelFile.gif"
+            extensions="etm-base"
+            class="fzi.mottem.model.baseelements.presentation.BaseelementsEditor"
+            contributorClass="fzi.mottem.model.baseelements.presentation.BaseelementsActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated WrapperModel -->
+      <category
+            id="fzi.mottem.ptspec.newWizards"
+            name="ES TDK"/>
+      <wizard
+            id="fzi.mottem.model.codemodel.presentation.CodemodelModelWizardID"
+            name="%_UI_CodemodelModelWizard_label"
+            class="fzi.mottem.model.codemodel.presentation.CodemodelModelWizard"
+            category="fzi.mottem.ptspec.newWizards"
+            icon="icons/full/obj16/CodemodelModelFile.gif">
+         <description>%_UI_CodemodelModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated WrapperModel -->
+      <editor
+            id="fzi.mottem.model.codemodel.presentation.CodemodelEditorID"
+            name="%_UI_CodemodelEditor_label"
+            icon="icons/full/obj16/CodemodelModelFile.gif"
+            extensions="etm-code"
+            class="fzi.mottem.model.codemodel.presentation.CodemodelEditor"
+            contributorClass="fzi.mottem.model.codemodel.presentation.CodemodelActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated WrapperModel -->
+      <category
+            id="fzi.mottem.ptspec.newWizards"
+            name="ES TDK"/>
+      <wizard
+            id="fzi.mottem.model.datastreammodel.presentation.DatastreammodelModelWizardID"
+            name="%_UI_DatastreammodelModelWizard_label"
+            class="fzi.mottem.model.datastreammodel.presentation.DatastreammodelModelWizard"
+            category="fzi.mottem.ptspec.newWizards"
+            icon="icons/full/obj16/DatastreammodelModelFile.gif">
+         <description>%_UI_DatastreammodelModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated WrapperModel -->
+      <editor
+            id="fzi.mottem.model.datastreammodel.presentation.DatastreammodelEditorID"
+            name="%_UI_DatastreammodelEditor_label"
+            icon="icons/full/obj16/DatastreammodelModelFile.gif"
+            extensions="etm-dstream"
+            class="fzi.mottem.model.datastreammodel.presentation.DatastreammodelEditor"
+            contributorClass="fzi.mottem.model.datastreammodel.presentation.DatastreammodelActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated WrapperModel -->
+      <category
+            id="fzi.mottem.ptspec.newWizards"
+            name="ES TDK"/>
+      <wizard
+            id="fzi.mottem.model.environmentdatamodel.presentation.EnvironmentdatamodelModelWizardID"
+            name="%_UI_EnvironmentdatamodelModelWizard_label"
+            class="fzi.mottem.model.environmentdatamodel.presentation.EnvironmentdatamodelModelWizard"
+            category="fzi.mottem.ptspec.newWizards"
+            icon="icons/full/obj16/EnvironmentdatamodelModelFile.gif">
+         <description>%_UI_EnvironmentdatamodelModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated WrapperModel -->
+      <editor
+            id="fzi.mottem.model.environmentdatamodel.presentation.EnvironmentdatamodelEditorID"
+            name="%_UI_EnvironmentdatamodelEditor_label"
+            icon="icons/full/obj16/EnvironmentdatamodelModelFile.gif"
+            extensions="etm-env"
+            class="fzi.mottem.model.environmentdatamodel.presentation.EnvironmentdatamodelEditor"
+            contributorClass="fzi.mottem.model.environmentdatamodel.presentation.EnvironmentdatamodelActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated WrapperModel -->
+      <category
+            id="fzi.mottem.ptspec.newWizards"
+            name="ES TDK"/>
+      <wizard
+            id="fzi.mottem.model.testrigmodel.presentation.TestrigmodelModelWizardID"
+            name="%_UI_TestrigmodelModelWizard_label"
+            class="fzi.mottem.model.testrigmodel.presentation.TestrigmodelModelWizard"
+            category="fzi.mottem.ptspec.newWizards"
+            icon="icons/full/obj16/TestrigmodelModelFile.gif">
+         <description>%_UI_TestrigmodelModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated WrapperModel -->
+      <editor
+            id="fzi.mottem.model.testrigmodel.presentation.TestrigmodelEditorID"
+            name="%_UI_TestrigmodelEditor_label"
+            icon="icons/full/obj16/TestrigmodelModelFile.gif"
+            extensions="etm-testrig"
+            class="fzi.mottem.model.testrigmodel.presentation.TestrigmodelEditor"
+            contributorClass="fzi.mottem.model.testrigmodel.presentation.TestrigmodelActionBarContributor">
+      </editor>
+   </extension>
+</plugin>

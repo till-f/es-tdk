@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fzi.mottem.model.codemodel:CodeInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fzi.mottem.model.codemodel="http://www.fzi.de/mottem/model/codemodel" xmi:id="+NPkgfzi_mottem_examples_raupe_actuator" name="Pkgfzi_mottem_examples_raupe_actuator" cProjectName="fzi.mottem.examples.raupe.actuator" binaryFile="fzi.mottem.examples.raupe.actuator/Debug/c_mX.elf">
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nsystick_handler+NPkgfzi_mottem_examples_raupe_actuator" name="systick_handler" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nsystick_handler+NPkgfzi_mottem_examples_raupe_actuator" offset="209" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ISR.c" length="21" lineNumber="15"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NISR2_systick_handler+NPkgfzi_mottem_examples_raupe_actuator" name="ISR2_systick_handler" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NISR2_systick_handler+NPkgfzi_mottem_examples_raupe_actuator" offset="209" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ISR.c" length="21" lineNumber="15"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Ncan_handler+NPkgfzi_mottem_examples_raupe_actuator" name="can_handler" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Ncan_handler+NPkgfzi_mottem_examples_raupe_actuator" offset="323" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ISR.c" length="18" lineNumber="22"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NISR2_can_handler+NPkgfzi_mottem_examples_raupe_actuator" name="ISR2_can_handler" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NISR2_can_handler+NPkgfzi_mottem_examples_raupe_actuator" offset="323" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ISR.c" length="18" lineNumber="22"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NFuncTaskRunnableSlot1+NPkgfzi_mottem_examples_raupe_actuator" name="FuncTaskRunnableSlot1" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NFuncTaskRunnableSlot1+NPkgfzi_mottem_examples_raupe_actuator" offset="22" sourceFile="+LFfzi.mottem.examples.raupe.actuator\TASKs.c" length="23" lineNumber="3"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NFuncTaskRunnableSlot2+NPkgfzi_mottem_examples_raupe_actuator" name="FuncTaskRunnableSlot2" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NFuncTaskRunnableSlot2+NPkgfzi_mottem_examples_raupe_actuator" offset="80" sourceFile="+LFfzi.mottem.examples.raupe.actuator\TASKs.c" length="23" lineNumber="8"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NFuncTaskRunnableSlot3+NPkgfzi_mottem_examples_raupe_actuator" name="FuncTaskRunnableSlot3" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NFuncTaskRunnableSlot3+NPkgfzi_mottem_examples_raupe_actuator" offset="138" sourceFile="+LFfzi.mottem.examples.raupe.actuator\TASKs.c" length="23" lineNumber="13"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NFuncTaskRunnableSlot4+NPkgfzi_mottem_examples_raupe_actuator" name="FuncTaskRunnableSlot4" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NFuncTaskRunnableSlot4+NPkgfzi_mottem_examples_raupe_actuator" offset="196" sourceFile="+LFfzi.mottem.examples.raupe.actuator\TASKs.c" length="23" lineNumber="18"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NFuncTaskRunnableSlot5+NPkgfzi_mottem_examples_raupe_actuator" name="FuncTaskRunnableSlot5" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NFuncTaskRunnableSlot5+NPkgfzi_mottem_examples_raupe_actuator" offset="254" sourceFile="+LFfzi.mottem.examples.raupe.actuator\TASKs.c" length="23" lineNumber="23"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nempty_FUNC+NPkgfzi_mottem_examples_raupe_actuator" name="empty_FUNC" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nempty_FUNC+NPkgfzi_mottem_examples_raupe_actuator" offset="317" sourceFile="+LFfzi.mottem.examples.raupe.actuator\TASKs.c" length="10" lineNumber="28"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nmain+NPkgfzi_mottem_examples_raupe_actuator" name="main" dataType="+Nint32+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nmain+NPkgfzi_mottem_examples_raupe_actuator" offset="112" sourceFile="+LFfzi.mottem.examples.raupe.actuator\main.c" length="4" lineNumber="10"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NCom_Init+NPkgfzi_mottem_examples_raupe_actuator" name="Com_Init" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NCom_Init+NPkgfzi_mottem_examples_raupe_actuator" offset="170" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_ComA\ek_ComS.c" length="8" lineNumber="12"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nek_CANx_Init+NPkgfzi_mottem_examples_raupe_actuator" name="ek_CANx_Init" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nek_CANx_Init+NPkgfzi_mottem_examples_raupe_actuator" offset="57" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_ComA\ek_ComHwA\ek_CAN_init.c" length="12" lineNumber="3"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Na_curv+NPkgfzi_mottem_examples_raupe_actuator" name="a_curv" dataType="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Na_curv+NPkgfzi_mottem_examples_raupe_actuator" offset="106" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.c" length="6" lineNumber="10"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nb_curv+NPkgfzi_mottem_examples_raupe_actuator" name="b_curv" dataType="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nb_curv+NPkgfzi_mottem_examples_raupe_actuator" offset="132" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.c" length="6" lineNumber="11"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nc_curv+NPkgfzi_mottem_examples_raupe_actuator" name="c_curv" dataType="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nc_curv+NPkgfzi_mottem_examples_raupe_actuator" offset="157" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.c" length="6" lineNumber="12"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Ny_curv+NPkgfzi_mottem_examples_raupe_actuator" name="y_curv" dataType="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Ny_curv+NPkgfzi_mottem_examples_raupe_actuator" offset="199" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.c" length="6" lineNumber="15"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NSpannungADC+NPkgfzi_mottem_examples_raupe_actuator" name="SpannungADC" dataType="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NSpannungADC+NPkgfzi_mottem_examples_raupe_actuator" offset="218" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.c" length="11" lineNumber="17"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NSpannungVolt+NPkgfzi_mottem_examples_raupe_actuator" name="SpannungVolt" dataType="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NSpannungVolt+NPkgfzi_mottem_examples_raupe_actuator" offset="244" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.c" length="12" lineNumber="18"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NIoHwA_Init+NPkgfzi_mottem_examples_raupe_actuator" name="IoHwA_Init" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NIoHwA_Init+NPkgfzi_mottem_examples_raupe_actuator" offset="740" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.c" length="10" lineNumber="36"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Ndist_sampleIR+NPkgfzi_mottem_examples_raupe_actuator" name="dist_sampleIR" dataType="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Ndist_sampleIR+NPkgfzi_mottem_examples_raupe_actuator" offset="1180" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.c" length="13" lineNumber="55"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Ndist_sampleUS+NPkgfzi_mottem_examples_raupe_actuator" name="dist_sampleUS" dataType="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Ndist_sampleUS+NPkgfzi_mottem_examples_raupe_actuator" offset="1204" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.c" length="13" lineNumber="56"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Ndist_sampleIRFiltered+NPkgfzi_mottem_examples_raupe_actuator" name="dist_sampleIRFiltered" dataType="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Ndist_sampleIRFiltered+NPkgfzi_mottem_examples_raupe_actuator" offset="1230" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.c" length="21" lineNumber="58"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Ndist_sampleUSFiltered+NPkgfzi_mottem_examples_raupe_actuator" name="dist_sampleUSFiltered" dataType="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Ndist_sampleUSFiltered+NPkgfzi_mottem_examples_raupe_actuator" offset="1262" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.c" length="21" lineNumber="59"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nold_dist_sample+NPkgfzi_mottem_examples_raupe_actuator" name="old_dist_sample" dataType="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nold_dist_sample+NPkgfzi_mottem_examples_raupe_actuator" offset="1296" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.c" length="15" lineNumber="61"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nold_dist_sampleIRFiltered+NPkgfzi_mottem_examples_raupe_actuator" name="old_dist_sampleIRFiltered" dataType="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nold_dist_sampleIRFiltered+NPkgfzi_mottem_examples_raupe_actuator" offset="1322" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.c" length="25" lineNumber="62"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nold_dist_sampleUSFiltered+NPkgfzi_mottem_examples_raupe_actuator" name="old_dist_sampleUSFiltered" dataType="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nold_dist_sampleUSFiltered+NPkgfzi_mottem_examples_raupe_actuator" offset="1358" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.c" length="25" lineNumber="63"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nek_sharpIF+NPkgfzi_mottem_examples_raupe_actuator" name="ek_sharpIF" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nek_sharpIF+NPkgfzi_mottem_examples_raupe_actuator" offset="1558" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.c" length="10" lineNumber="73"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nek_setDistanceMeasurementStatusIF+NPkgfzi_mottem_examples_raupe_actuator" name="ek_setDistanceMeasurementStatusIF" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nek_setDistanceMeasurementStatusIF+NPkgfzi_mottem_examples_raupe_actuator" offset="2774" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.c" length="33" lineNumber="122"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nek_setDistanceMeasurementStatusUS+NPkgfzi_mottem_examples_raupe_actuator" name="ek_setDistanceMeasurementStatusUS" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nek_setDistanceMeasurementStatusUS+NPkgfzi_mottem_examples_raupe_actuator" offset="2884" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.c" length="33" lineNumber="127"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nek_srf02_US+NPkgfzi_mottem_examples_raupe_actuator" name="ek_srf02_US" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nek_srf02_US+NPkgfzi_mottem_examples_raupe_actuator" offset="3363" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.c" length="11" lineNumber="154"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NDelay_Init+NPkgfzi_mottem_examples_raupe_actuator" name="Delay_Init" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NDelay_Init+NPkgfzi_mottem_examples_raupe_actuator" offset="143" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\add_lib\ek_sw_struct.c" length="10" lineNumber="10"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NDelayMicroS+NPkgfzi_mottem_examples_raupe_actuator" name="DelayMicroS" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NDelayMicroS+NPkgfzi_mottem_examples_raupe_actuator" offset="423" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\add_lib\ek_sw_struct.c" length="11" lineNumber="21"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nfilter_init+NPkgfzi_mottem_examples_raupe_actuator" name="filter_init" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nfilter_init+NPkgfzi_mottem_examples_raupe_actuator" offset="1990" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\add_lib\ek_sw_struct.c" length="11" lineNumber="78"/>
+    <localvariables xmi:id="+Ni+Nfilter_init+NPkgfzi_mottem_examples_raupe_actuator" name="i" dataType="+Nint32+NPkgfzi_mottem_examples_raupe_actuator">
+      <declarationLocation xmi:id="+LS+Ni+Nfilter_init+NPkgfzi_mottem_examples_raupe_actuator" offset="2043" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\add_lib\ek_sw_struct.c" length="1" lineNumber="80"/>
+    </localvariables>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nfilter+NPkgfzi_mottem_examples_raupe_actuator" name="filter" dataType="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nfilter+NPkgfzi_mottem_examples_raupe_actuator" offset="3016" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\add_lib\ek_sw_struct.c" length="6" lineNumber="107"/>
+    <localvariables xmi:id="+Nnew_value+Nfilter+NPkgfzi_mottem_examples_raupe_actuator" name="new_value" dataType="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator" functionParameter="true">
+      <declarationLocation xmi:id="+LS+Nnew_value+Nfilter+NPkgfzi_mottem_examples_raupe_actuator" offset="3030" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\add_lib\ek_sw_struct.c" length="9" lineNumber="107"/>
+    </localvariables>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nek_ADC_Init+NPkgfzi_mottem_examples_raupe_actuator" name="ek_ADC_Init" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nek_ADC_Init+NPkgfzi_mottem_examples_raupe_actuator" offset="172" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\ek_IoHwA\ek_ADC_init.c" length="11" lineNumber="12"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NADC3_CH12_DMA_Config+NPkgfzi_mottem_examples_raupe_actuator" name="ADC3_CH12_DMA_Config" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NADC3_CH12_DMA_Config+NPkgfzi_mottem_examples_raupe_actuator" offset="422" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\ek_IoHwA\ek_ADC_init.c" length="20" lineNumber="22"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nek_I2C1_Init+NPkgfzi_mottem_examples_raupe_actuator" name="ek_I2C1_Init" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nek_I2C1_Init+NPkgfzi_mottem_examples_raupe_actuator" offset="387" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\ek_IoHwA\ek_I2C_init.c" length="12" lineNumber="18"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NsetSensorI2CAddress+NPkgfzi_mottem_examples_raupe_actuator" name="setSensorI2CAddress" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NsetSensorI2CAddress+NPkgfzi_mottem_examples_raupe_actuator" offset="5317" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\ek_IoHwA\ek_I2C_init.c" length="19" lineNumber="190"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NinitUltrasonicSensorI2C+NPkgfzi_mottem_examples_raupe_actuator" name="initUltrasonicSensorI2C" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NinitUltrasonicSensorI2C+NPkgfzi_mottem_examples_raupe_actuator" offset="5689" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\ek_IoHwA\ek_I2C_init.c" length="23" lineNumber="197"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nek_PWM3_Init+NPkgfzi_mottem_examples_raupe_actuator" name="ek_PWM3_Init" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nek_PWM3_Init+NPkgfzi_mottem_examples_raupe_actuator" offset="141" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\ek_IoHwA\ek_PWM_init.c" length="12" lineNumber="10"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nek_setPWM3_DutyCycle+NPkgfzi_mottem_examples_raupe_actuator" name="ek_setPWM3_DutyCycle" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nek_setPWM3_DutyCycle+NPkgfzi_mottem_examples_raupe_actuator" offset="3434" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\ek_IoHwA\ek_PWM_init.c" length="20" lineNumber="99"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nek_GPIOx_Init+NPkgfzi_mottem_examples_raupe_actuator" name="ek_GPIOx_Init" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nek_GPIOx_Init+NPkgfzi_mottem_examples_raupe_actuator" offset="148" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\ek_MCAL\ek_GPIOx_init.c" length="13" lineNumber="12"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NRte_Vfb_Init+NPkgfzi_mottem_examples_raupe_actuator" name="Rte_Vfb_Init" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NRte_Vfb_Init+NPkgfzi_mottem_examples_raupe_actuator" offset="577" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_RTE\Rte_Vfb.c" length="12" lineNumber="25"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NRte_Vfb_write+NPkgfzi_mottem_examples_raupe_actuator" name="Rte_Vfb_write" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NRte_Vfb_write+NPkgfzi_mottem_examples_raupe_actuator" offset="817" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_RTE\Rte_Vfb.c" length="13" lineNumber="40"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Ndistance_value+NPkgfzi_mottem_examples_raupe_actuator" name="distance_value" dataType="+Nuint32+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Ndistance_value+NPkgfzi_mottem_examples_raupe_actuator" offset="235" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_SW_Component\SWC_Controller.c" length="14" lineNumber="11"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Ndistance_change+NPkgfzi_mottem_examples_raupe_actuator" name="distance_change" dataType="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Ndistance_change+NPkgfzi_mottem_examples_raupe_actuator" offset="262" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_SW_Component\SWC_Controller.c" length="15" lineNumber="12"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Ncurrent_distance+NPkgfzi_mottem_examples_raupe_actuator" name="current_distance" dataType="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Ncurrent_distance+NPkgfzi_mottem_examples_raupe_actuator" offset="290" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_SW_Component\SWC_Controller.c" length="16" lineNumber="13"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nprev_distance+NPkgfzi_mottem_examples_raupe_actuator" name="prev_distance" dataType="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nprev_distance+NPkgfzi_mottem_examples_raupe_actuator" offset="319" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_SW_Component\SWC_Controller.c" length="13" lineNumber="14"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NreturnDistance+NPkgfzi_mottem_examples_raupe_actuator" name="returnDistance" dataType="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NreturnDistance+NPkgfzi_mottem_examples_raupe_actuator" offset="368" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_SW_Component\SWC_Controller.c" length="14" lineNumber="16"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NstartSearchMode+NPkgfzi_mottem_examples_raupe_actuator" name="startSearchMode" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NstartSearchMode+NPkgfzi_mottem_examples_raupe_actuator" offset="500" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_SW_Component\SWC_Controller.c" length="15" lineNumber="23"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NrunnableSWC_Controller+NPkgfzi_mottem_examples_raupe_actuator" name="runnableSWC_Controller" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+NrunnableSWC_Controller+NPkgfzi_mottem_examples_raupe_actuator" offset="587" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_SW_Component\SWC_Controller.c" length="22" lineNumber="30"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nsearch_control+NPkgfzi_mottem_examples_raupe_actuator" name="search_control" dataType="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator">
+    <declarationLocation xmi:id="+LS+Nsearch_control+NPkgfzi_mottem_examples_raupe_actuator" offset="1874" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_SW_Component\SWC_Controller.c" length="14" lineNumber="100"/>
+    <localvariables xmi:id="+Ndistance+Nsearch_control+NPkgfzi_mottem_examples_raupe_actuator" name="distance" dataType="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator" functionParameter="true">
+      <declarationLocation xmi:id="+LS+Ndistance+Nsearch_control+NPkgfzi_mottem_examples_raupe_actuator" offset="1895" sourceFile="+LFfzi.mottem.examples.raupe.actuator\ek_SW_Component\SWC_Controller.c" length="8" lineNumber="100"/>
+    </localvariables>
+  </symbols>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ISR.c" sourceCodeLocations="+LS+Nsystick_handler+NPkgfzi_mottem_examples_raupe_actuator +LS+NISR2_systick_handler+NPkgfzi_mottem_examples_raupe_actuator +LS+Ncan_handler+NPkgfzi_mottem_examples_raupe_actuator +LS+NISR2_can_handler+NPkgfzi_mottem_examples_raupe_actuator" filePath="fzi.mottem.examples.raupe.actuator\ISR.c"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ISR.h" filePath="fzi.mottem.examples.raupe.actuator\ISR.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\TASKs.c" sourceCodeLocations="+LS+NFuncTaskRunnableSlot1+NPkgfzi_mottem_examples_raupe_actuator +LS+NFuncTaskRunnableSlot2+NPkgfzi_mottem_examples_raupe_actuator +LS+NFuncTaskRunnableSlot3+NPkgfzi_mottem_examples_raupe_actuator +LS+NFuncTaskRunnableSlot4+NPkgfzi_mottem_examples_raupe_actuator +LS+NFuncTaskRunnableSlot5+NPkgfzi_mottem_examples_raupe_actuator +LS+Nempty_FUNC+NPkgfzi_mottem_examples_raupe_actuator" filePath="fzi.mottem.examples.raupe.actuator\TASKs.c"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\TASKs.h" filePath="fzi.mottem.examples.raupe.actuator\TASKs.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\main.c" sourceCodeLocations="+LS+Nmain+NPkgfzi_mottem_examples_raupe_actuator" filePath="fzi.mottem.examples.raupe.actuator\main.c"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\Debug\eecfg.c" filePath="fzi.mottem.examples.raupe.actuator\Debug\eecfg.c"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\Debug\eecfg.h" filePath="fzi.mottem.examples.raupe.actuator\Debug\eecfg.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ee_Types\Compiler.h" filePath="fzi.mottem.examples.raupe.actuator\ee_Types\Compiler.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ee_Types\Platform_Types.h" filePath="fzi.mottem.examples.raupe.actuator\ee_Types\Platform_Types.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ee_Types\Std_Types.h" filePath="fzi.mottem.examples.raupe.actuator\ee_Types\Std_Types.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_ComA\ek_ComS.c" sourceCodeLocations="+LS+NCom_Init+NPkgfzi_mottem_examples_raupe_actuator" filePath="fzi.mottem.examples.raupe.actuator\ek_ComA\ek_ComS.c"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_ComA\ek_ComS.h" filePath="fzi.mottem.examples.raupe.actuator\ek_ComA\ek_ComS.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_ComA\ek_ComStack_Types.h" filePath="fzi.mottem.examples.raupe.actuator\ek_ComA\ek_ComStack_Types.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_ComA\ek_ComHwA\ek_CAN_init.c" sourceCodeLocations="+LS+Nek_CANx_Init+NPkgfzi_mottem_examples_raupe_actuator" filePath="fzi.mottem.examples.raupe.actuator\ek_ComA\ek_ComHwA\ek_CAN_init.c"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_ComA\ek_ComHwA\ek_CAN_init.h" filePath="fzi.mottem.examples.raupe.actuator\ek_ComA\ek_ComHwA\ek_CAN_init.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.c" sourceCodeLocations="+LS+Na_curv+NPkgfzi_mottem_examples_raupe_actuator +LS+Nb_curv+NPkgfzi_mottem_examples_raupe_actuator +LS+Nc_curv+NPkgfzi_mottem_examples_raupe_actuator +LS+Ny_curv+NPkgfzi_mottem_examples_raupe_actuator +LS+NSpannungADC+NPkgfzi_mottem_examples_raupe_actuator +LS+NSpannungVolt+NPkgfzi_mottem_examples_raupe_actuator +LS+NIoHwA_Init+NPkgfzi_mottem_examples_raupe_actuator +LS+Ndist_sampleIR+NPkgfzi_mottem_examples_raupe_actuator +LS+Ndist_sampleUS+NPkgfzi_mottem_examples_raupe_actuator +LS+Ndist_sampleIRFiltered+NPkgfzi_mottem_examples_raupe_actuator +LS+Ndist_sampleUSFiltered+NPkgfzi_mottem_examples_raupe_actuator +LS+Nold_dist_sample+NPkgfzi_mottem_examples_raupe_actuator +LS+Nold_dist_sampleIRFiltered+NPkgfzi_mottem_examples_raupe_actuator +LS+Nold_dist_sampleUSFiltered+NPkgfzi_mottem_examples_raupe_actuator +LS+Nek_sharpIF+NPkgfzi_mottem_examples_raupe_actuator +LS+Nek_setDistanceMeasurementStatusIF+NPkgfzi_mottem_examples_raupe_actuator +LS+Nek_setDistanceMeasurementStatusUS+NPkgfzi_mottem_examples_raupe_actuator +LS+Nek_srf02_US+NPkgfzi_mottem_examples_raupe_actuator" filePath="fzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.c"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.h" filePath="fzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA_API.h" filePath="fzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA_API.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA_Types.h" filePath="fzi.mottem.examples.raupe.actuator\ek_EcuA\IoHwA_Types.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\add_lib\SRF02.h" filePath="fzi.mottem.examples.raupe.actuator\ek_EcuA\add_lib\SRF02.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\add_lib\ek_sw_struct.c" sourceCodeLocations="+LS+NDelay_Init+NPkgfzi_mottem_examples_raupe_actuator +LS+NDelayMicroS+NPkgfzi_mottem_examples_raupe_actuator +LS+Nfilter_init+NPkgfzi_mottem_examples_raupe_actuator +LS+Ni+Nfilter_init+NPkgfzi_mottem_examples_raupe_actuator +LS+Nfilter+NPkgfzi_mottem_examples_raupe_actuator +LS+Nnew_value+Nfilter+NPkgfzi_mottem_examples_raupe_actuator" filePath="fzi.mottem.examples.raupe.actuator\ek_EcuA\add_lib\ek_sw_struct.c"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\add_lib\ek_sw_struct.h" filePath="fzi.mottem.examples.raupe.actuator\ek_EcuA\add_lib\ek_sw_struct.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\ek_IoHwA\ek_ADC_init.c" sourceCodeLocations="+LS+Nek_ADC_Init+NPkgfzi_mottem_examples_raupe_actuator +LS+NADC3_CH12_DMA_Config+NPkgfzi_mottem_examples_raupe_actuator" filePath="fzi.mottem.examples.raupe.actuator\ek_EcuA\ek_IoHwA\ek_ADC_init.c"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\ek_IoHwA\ek_ADC_init.h" filePath="fzi.mottem.examples.raupe.actuator\ek_EcuA\ek_IoHwA\ek_ADC_init.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\ek_IoHwA\ek_I2C_init.c" sourceCodeLocations="+LS+Nek_I2C1_Init+NPkgfzi_mottem_examples_raupe_actuator +LS+NsetSensorI2CAddress+NPkgfzi_mottem_examples_raupe_actuator +LS+NinitUltrasonicSensorI2C+NPkgfzi_mottem_examples_raupe_actuator" filePath="fzi.mottem.examples.raupe.actuator\ek_EcuA\ek_IoHwA\ek_I2C_init.c"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\ek_IoHwA\ek_I2C_init.h" filePath="fzi.mottem.examples.raupe.actuator\ek_EcuA\ek_IoHwA\ek_I2C_init.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\ek_IoHwA\ek_PWM_init.c" sourceCodeLocations="+LS+Nek_PWM3_Init+NPkgfzi_mottem_examples_raupe_actuator +LS+Nek_setPWM3_DutyCycle+NPkgfzi_mottem_examples_raupe_actuator" filePath="fzi.mottem.examples.raupe.actuator\ek_EcuA\ek_IoHwA\ek_PWM_init.c"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\ek_IoHwA\ek_PWM_init.h" filePath="fzi.mottem.examples.raupe.actuator\ek_EcuA\ek_IoHwA\ek_PWM_init.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\ek_MCAL\ek_GPIOx_init.c" sourceCodeLocations="+LS+Nek_GPIOx_Init+NPkgfzi_mottem_examples_raupe_actuator" filePath="fzi.mottem.examples.raupe.actuator\ek_EcuA\ek_MCAL\ek_GPIOx_init.c"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_EcuA\ek_MCAL\ek_GPIOx_init.h" filePath="fzi.mottem.examples.raupe.actuator\ek_EcuA\ek_MCAL\ek_GPIOx_init.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_RTE\Rte.h" filePath="fzi.mottem.examples.raupe.actuator\ek_RTE\Rte.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_RTE\Rte_Cfg.h" filePath="fzi.mottem.examples.raupe.actuator\ek_RTE\Rte_Cfg.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_RTE\Rte_Main.c" filePath="fzi.mottem.examples.raupe.actuator\ek_RTE\Rte_Main.c"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_RTE\Rte_Main.h" filePath="fzi.mottem.examples.raupe.actuator\ek_RTE\Rte_Main.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_RTE\Rte_SwC.h" filePath="fzi.mottem.examples.raupe.actuator\ek_RTE\Rte_SwC.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_RTE\Rte_Type.h" filePath="fzi.mottem.examples.raupe.actuator\ek_RTE\Rte_Type.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_RTE\Rte_Vfb.c" sourceCodeLocations="+LS+NRte_Vfb_Init+NPkgfzi_mottem_examples_raupe_actuator +LS+NRte_Vfb_write+NPkgfzi_mottem_examples_raupe_actuator" filePath="fzi.mottem.examples.raupe.actuator\ek_RTE\Rte_Vfb.c"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_RTE\Rte_Vfb.h" filePath="fzi.mottem.examples.raupe.actuator\ek_RTE\Rte_Vfb.h"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_SW_Component\SWC_Controller.c" sourceCodeLocations="+LS+Ndistance_value+NPkgfzi_mottem_examples_raupe_actuator +LS+Ndistance_change+NPkgfzi_mottem_examples_raupe_actuator +LS+Ncurrent_distance+NPkgfzi_mottem_examples_raupe_actuator +LS+Nprev_distance+NPkgfzi_mottem_examples_raupe_actuator +LS+NreturnDistance+NPkgfzi_mottem_examples_raupe_actuator +LS+NstartSearchMode+NPkgfzi_mottem_examples_raupe_actuator +LS+NrunnableSWC_Controller+NPkgfzi_mottem_examples_raupe_actuator +LS+Nsearch_control+NPkgfzi_mottem_examples_raupe_actuator +LS+Ndistance+Nsearch_control+NPkgfzi_mottem_examples_raupe_actuator" filePath="fzi.mottem.examples.raupe.actuator\ek_SW_Component\SWC_Controller.c"/>
+  <sourceFiles xmi:id="+LFfzi.mottem.examples.raupe.actuator\ek_SW_Component\SWC_Controller.h" filePath="fzi.mottem.examples.raupe.actuator\ek_SW_Component\SWC_Controller.h"/>
+  <dataTypes xsi:type="fzi.mottem.model.codemodel:DTVoid" xmi:id="+Nvoid+NPkgfzi_mottem_examples_raupe_actuator" name="void"/>
+  <dataTypes xsi:type="fzi.mottem.model.codemodel:DTInteger" xmi:id="+Nint32+NPkgfzi_mottem_examples_raupe_actuator" name="int32" isSigned="true" bitSize="32"/>
+  <dataTypes xsi:type="fzi.mottem.model.codemodel:DTFloatingPoint" xmi:id="+Nfloat+NPkgfzi_mottem_examples_raupe_actuator" name="float" exponentBitSize="8" significandBitSize="23"/>
+  <dataTypes xsi:type="fzi.mottem.model.codemodel:DTInteger" xmi:id="+Nuint32+NPkgfzi_mottem_examples_raupe_actuator" name="uint32" bitSize="32"/>
+</fzi.mottem.model.codemodel:CodeInstance>

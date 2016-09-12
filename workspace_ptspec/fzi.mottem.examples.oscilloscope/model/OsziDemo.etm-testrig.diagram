@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pi:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms" visible="true" gridUnit="10" diagramTypeId="editor" name="OsziDemo" snapToGrid="true" pictogramLinks="//@children.0/@link //@children.0/@children.0/@link //@children.0/@children.1/@link //@children.1/@children.0/@link //@children.1/@link //@connections.0/@link" version="0.11.0">
+  <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.0" lineWidth="1" transparency="0.0" width="1000" height="1000"/>
+  <link>
+    <businessObjects href="OsziDemo.etm-testrig#+NOsziDemo"/>
+  </link>
+  <children xsi:type="pi:ContainerShape" visible="true" active="true">
+    <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineWidth="1" filled="true" transparency="0.0" width="151" height="150" x="190" y="60">
+      <graphicsAlgorithmChildren xsi:type="al:Image" lineWidth="1" transparency="0.0" width="15" height="20" x="2" y="2" id="fzi.mottem.editor.UUT" stretchH="false" stretchV="false" proportional="false"/>
+      <graphicsAlgorithmChildren xsi:type="al:Text" lineWidth="1" filled="false" transparency="0.0" width="150" height="20" x="20" y="5" value="FuncGen"/>
+    </graphicsAlgorithm>
+    <link>
+      <businessObjects href="OsziDemo.etm-testrig#+R[B@7f08c0"/>
+    </link>
+    <anchors xsi:type="pi:ChopboxAnchor"/>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="13" height="15" x="30" y="60" id="fzi.mottem.editor.IOPIN" stretchH="false" stretchV="false" proportional="false"/>
+      <link>
+        <businessObjects href="OsziDemo.etm-testrig#+R[B@7f6b32"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.0"/>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="13" height="15" x="100" y="60" id="fzi.mottem.editor.IOPIN" stretchH="false" stretchV="false" proportional="false"/>
+      <link>
+        <businessObjects href="OsziDemo.etm-testrig#+R[B@1ca91fd"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+    </children>
+  </children>
+  <children xsi:type="pi:ContainerShape" visible="true" active="true">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="65" x="60" y="60">
+      <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" lineWidth="1" filled="true" transparency="0.0" width="60" height="50">
+        <graphicsAlgorithmChildren xsi:type="al:Text" foreground="//@colors.4" lineWidth="1" filled="false" transparency="0.0" width="50" height="20" x="5" y="5" value="Oscilloscope"/>
+      </graphicsAlgorithmChildren>
+    </graphicsAlgorithm>
+    <link>
+      <businessObjects href="OsziDemo.etm-testrig#+R[B@249c93"/>
+    </link>
+    <anchors xsi:type="pi:ChopboxAnchor"/>
+    <children visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.4" lineWidth="1" filled="true" transparency="0.0" width="10" height="15" x="25" y="50"/>
+      <link>
+        <businessObjects href="OsziDemo.etm-testrig#+R[B@5ba462"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.0"/>
+    </children>
+  </children>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" start="//@children.1/@children.0/@anchors.0" end="//@children.0/@children.0/@anchors.0">
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.4" width="1"/>
+    <link>
+      <businessObjects href="OsziDemo.etm-testrig#+R[B@11a2c9f"/>
+    </link>
+    <bendpoints x="90" y="169"/>
+    <bendpoints x="226" y="169"/>
+  </connections>
+  <colors red="227" green="238" blue="249"/>
+  <colors red="255" green="255" blue="255"/>
+  <colors red="154" green="205" blue="50"/>
+  <colors red="200" green="200" blue="200"/>
+  <colors/>
+</pi:Diagram>

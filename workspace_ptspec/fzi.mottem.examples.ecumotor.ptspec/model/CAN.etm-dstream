@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fzi.mottem.model.datastreammodel:DataStreamInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:fzi.mottem.model.datastreammodel="http://www.fzi.de/mottem/model/datastreammodel" xmi:id="_9liowOyTEeOrd4av19tOtw" name="CAN">
+  <signals xmi:id="__JhkAOyTEeOrd4av19tOtw" name="Drehzahl" physicalUnit="U⋅min⁻¹" canMessage="+R[B@c9b364">
+    <conversion xmi:id="+R[B@2259490" byteOrder="MSF"/>
+  </signals>
+  <signals xmi:id="+R[B@1e0fe174" name="Drehzahl_Messung" physicalUnit="U⋅min⁻¹" direction="Output" canMessage="+R[B@d745f2" canID="4">
+    <conversion xmi:id="+R[B@1eee885c" byteOrder="MSF" baseType="Float"/>
+  </signals>
+  <canMessages xmi:id="+R[B@c9b364" name="Msg0" byteCount="4" signals="__JhkAOyTEeOrd4av19tOtw"/>
+  <canMessages xmi:id="+R[B@d745f2" name="Msg4" canID="4" byteCount="8" signals="+R[B@1e0fe174"/>
+</fzi.mottem.model.datastreammodel:DataStreamInstance>

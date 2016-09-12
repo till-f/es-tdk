@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fzi.mottem.model.datastreammodel:DataStreamInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:fzi.mottem.model.datastreammodel="http://www.fzi.de/mottem/model/datastreammodel" xmi:id="+R[B@2ed250fa" name="CAN">
+  <signals xmi:id="+R[B@162ea06f" name="Temperatur" physicalUnit="K" canMessage="+R[B@23605c01">
+    <conversion xmi:id="+R[B@4955115d"/>
+  </signals>
+  <signals xmi:id="+R[B@31ae2cf" name="Druck" physicalUnit="bar" bitOffset="32" canMessage="+R[B@23605c01">
+    <conversion xmi:id="+R[B@293cd1e8"/>
+  </signals>
+  <signals xmi:id="+R[B@8dcab1" name="OutputTest" physicalUnit="t" bitOffset="32" direction="Output" canMessage="+R[B@5d087e">
+    <conversion xmi:id="+R[B@be810b"/>
+  </signals>
+  <canMessages xmi:id="+R[B@23605c01" name="Message0" signals="+R[B@162ea06f +R[B@31ae2cf"/>
+  <canMessages xmi:id="+R[B@5d087e" name="Message1" canID="1" signals="+R[B@8dcab1"/>
+</fzi.mottem.model.datastreammodel:DataStreamInstance>

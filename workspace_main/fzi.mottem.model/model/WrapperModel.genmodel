@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/fzi.mottem.model/src-model" editDirectory="/fzi.mottem.model/src-edit"
+    editorDirectory="/fzi.mottem.model.simpleeditors/src" modelPluginID="fzi.mottem.model"
+    modelName="WrapperModel" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    testsDirectory="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
+    copyrightFields="false" classNamePattern="" operationReflection="true" importOrganizing="true">
+  <foreignModel>WrapperModel.ecore</foreignModel>
+  <genPackages prefix="WrapperModel" basePackage="fzi.mottem.model" disposableProviderFactory="true"
+      generateExampleClass="false" generateModelWizard="false" ecorePackage="WrapperModel.ecore#/">
+    <nestedGenPackages prefix="Baseelements" basePackage="fzi.mottem.model" resource="XMI"
+        disposableProviderFactory="true" fileExtensions="etm-base" ecorePackage="WrapperModel.ecore#//baseelements">
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/INamed">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//baseelements/INamed/name"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/IIndexed">
+        <genOperations ecoreOperation="WrapperModel.ecore#//baseelements/IIndexed/getIndex"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/ICommentable">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//baseelements/ICommentable/comment"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/IExecutor">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference WrapperModel.ecore#//baseelements/IExecutor/symbolContainer"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/IInspectable">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference WrapperModel.ecore#//baseelements/IInspectable/inspectorConnector"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/ITestReferenceable"/>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/ITestWriteable"/>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/ITestReadable"/>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/ITestCallable"/>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/IReferenceableContainer"/>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/IInspector">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//baseelements/IInspector/runtimeInspectorClass"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//baseelements/IInspector/traceControllerClass"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference WrapperModel.ecore#//baseelements/IInspector/inspectorConnector"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference WrapperModel.ecore#//baseelements/IInspector/symbolContainer"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/IInspectorConnector">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference WrapperModel.ecore#//baseelements/IInspectorConnector/inspector"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference WrapperModel.ecore#//baseelements/IInspectorConnector/inspectable"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/INetwork">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference WrapperModel.ecore#//baseelements/INetwork/networkConnector"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/INetworkConnector">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference WrapperModel.ecore#//baseelements/INetworkConnector/network"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference WrapperModel.ecore#//baseelements/INetworkConnector/networkPort"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/INetworkPort">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference WrapperModel.ecore#//baseelements/INetworkPort/networkConnector"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/ISymbolContainer"/>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/IWrappedReferenceable">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference WrapperModel.ecore#//baseelements/IWrappedReferenceable/innerObject"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//baseelements/TRWrapperRW"/>
+      <genClasses ecoreClass="WrapperModel.ecore#//baseelements/TRWrapperCallable"/>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/ISignal">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//baseelements/ISignal/physicalUnit"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/IMessage"/>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Codemodel" basePackage="fzi.mottem.model" resource="XMI"
+        disposableProviderFactory="true" fileExtensions="etm-code" ecorePackage="WrapperModel.ecore#//codemodel">
+      <genClasses ecoreClass="WrapperModel.ecore#//codemodel/CodeInstance">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/CodeInstance/symbols"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/CodeInstance/sourceFiles"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/CodeInstance/dataTypes"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/CodeInstance/cClasses"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//codemodel/CodeInstance/cProjectName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//codemodel/CodeInstance/binaryFile"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//codemodel/CodeInstance/symbolInfoFile"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//codemodel/Function">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/Function/localvariables"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//codemodel/Variable">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/Variable/function"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//codemodel/Variable/functionParameter"/>
+        <genOperations ecoreOperation="WrapperModel.ecore#//codemodel/Variable/getIsGlobal"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//codemodel/Symbol">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/Symbol/declarationLocation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/Symbol/binaryLocation"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/Symbol/codeInstance"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/Symbol/dataType"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/Symbol/cClass"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//codemodel/SourceCodeLocation">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//codemodel/SourceCodeLocation/offset"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/SourceCodeLocation/sourceFile"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/SourceCodeLocation/symbol"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/SourceCodeLocation/cClass"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//codemodel/SourceCodeLocation/length"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//codemodel/SourceCodeLocation/lineNumber"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//codemodel/BinaryLocation">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/BinaryLocation/symbol"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//codemodel/BinaryLocation/address"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//codemodel/SourceFile">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/SourceFile/codeInstance"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/SourceFile/sourceCodeLocations"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//codemodel/SourceFile/filePath"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//codemodel/DataType">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/DataType/codeInstance"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//codemodel/DTInteger">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//codemodel/DTInteger/isSigned"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//codemodel/DTInteger/bitSize"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//codemodel/DTFloatingPoint">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//codemodel/DTFloatingPoint/exponentBitSize"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//codemodel/DTFloatingPoint/significandBitSize"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//codemodel/DTReference">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/DTReference/targetType"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//codemodel/DTEnum">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/DTEnum/enumValues"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//codemodel/EnumValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//codemodel/EnumValue/integerValue"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/EnumValue/dtEnum"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//codemodel/DTVoid"/>
+      <genClasses ecoreClass="WrapperModel.ecore#//codemodel/DTClass">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/DTClass/cClass"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//codemodel/CClass">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/CClass/codeInstance"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/CClass/declarationLocation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/CClass/members"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/CClass/subClasses"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//codemodel/CClass/parentClass"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Datastreammodel" basePackage="fzi.mottem.model" resource="XMI"
+        disposableProviderFactory="true" fileExtensions="etm-dstream" ecorePackage="WrapperModel.ecore#//datastreammodel">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="WrapperModel.ecore#//datastreammodel/EByteOrder">
+        <genEnumLiterals ecoreEnumLiteral="WrapperModel.ecore#//datastreammodel/EByteOrder/LSF"/>
+        <genEnumLiterals ecoreEnumLiteral="WrapperModel.ecore#//datastreammodel/EByteOrder/MSF"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="WrapperModel.ecore#//datastreammodel/EDirection">
+        <genEnumLiterals ecoreEnumLiteral="WrapperModel.ecore#//datastreammodel/EDirection/Input"/>
+        <genEnumLiterals ecoreEnumLiteral="WrapperModel.ecore#//datastreammodel/EDirection/Output"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="WrapperModel.ecore#//datastreammodel/EBaseType">
+        <genEnumLiterals ecoreEnumLiteral="WrapperModel.ecore#//datastreammodel/EBaseType/Integer"/>
+        <genEnumLiterals ecoreEnumLiteral="WrapperModel.ecore#//datastreammodel/EBaseType/Float"/>
+      </genEnums>
+      <genClasses ecoreClass="WrapperModel.ecore#//datastreammodel/DataStreamInstance">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//datastreammodel/DataStreamInstance/signals"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//datastreammodel/DataStreamInstance/canMessages"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//datastreammodel/MessageSignal">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//datastreammodel/MessageSignal/dataStreamInstance"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//datastreammodel/MessageSignal/bitOffset"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//datastreammodel/MessageSignal/bitLength"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//datastreammodel/MessageSignal/conversion"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//datastreammodel/MessageSignal/direction"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference WrapperModel.ecore#//datastreammodel/MessageSignal/canMessage"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//datastreammodel/Conversion">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//datastreammodel/Conversion/factor"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//datastreammodel/Conversion/offset"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//datastreammodel/Conversion/signal"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//datastreammodel/Conversion/byteOrder"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//datastreammodel/Conversion/baseType"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//datastreammodel/CANMessage">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//datastreammodel/CANMessage/dataStreamInstance"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//datastreammodel/CANMessage/canID"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//datastreammodel/CANMessage/byteCount"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference WrapperModel.ecore#//datastreammodel/CANMessage/signals"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Environmentdatamodel" basePackage="fzi.mottem.model"
+        resource="XMI" disposableProviderFactory="true" fileExtensions="etm-env" ecorePackage="WrapperModel.ecore#//environmentdatamodel"
+        publicationLocation="">
+      <genClasses ecoreClass="WrapperModel.ecore#//environmentdatamodel/EnvironmentDataInstance">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//environmentdatamodel/EnvironmentDataInstance/signals"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//environmentdatamodel/EnvironmentSignal">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//environmentdatamodel/EnvironmentSignal/edmInstance"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Testrigmodel" basePackage="fzi.mottem.model" resource="XMI"
+        disposableProviderFactory="true" fileExtensions="etm-testrig" ecorePackage="WrapperModel.ecore#//testrigmodel">
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/TestRigInstance">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/TestRigInstance/uuts"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/TestRigInstance/inspectors"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/TestRigInstance/networks"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/TestRigInstance/connectors"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/TestRigInstance/networkConnectors"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/TestRigInstance/environment"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/UUT">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/UUT/testRigInstance"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/UUT/processors"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/UUT/ioPorts"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/UUT/ioPins"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//testrigmodel/SoftwareExecutor"/>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/Thread">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/Thread/processorCore"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/ProcessorCore">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/ProcessorCore/threads"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/ProcessorCore/processor"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//testrigmodel/IOPort">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/IOPort/uut"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/IOPin">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/IOPin/uut"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/IOPin/pinSignals"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//testrigmodel/InspectorContainer">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/InspectorContainer/testRigInstance"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//testrigmodel/CodeInspectorContainer"/>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//testrigmodel/StreamInspectorContainer"/>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//testrigmodel/PinInspectorContainer"/>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//testrigmodel/ISystemInspectorContainer">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//testrigmodel/ISystemInspectorContainer/workspacePath"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/IC5000">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/IC5000/port"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/IOne">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/IOne/port"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/CANInspectorConnector"/>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/EthernetInspectorConnector"/>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/JTAGInspectorConnector"/>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/TraceInspectorConnector"/>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//testrigmodel/CodeConnector"/>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//testrigmodel/StreamConnector"/>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//testrigmodel/VectorInspectorContainer"/>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/VN7600">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/VN7600/canPorts"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/CANBus"/>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/Ethernet"/>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/CANPort"/>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/EthernetPort"/>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/CANInspectorPort">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//testrigmodel/CANInspectorPort/channelNumber"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/IC5000Port"/>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/IOnePort"/>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/CANPortConnector"/>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/EthernetPortConnector"/>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/HostInspectorContainer">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/HostInspectorContainer/ports"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/CDIInspectorPort"/>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/Processor">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/Processor/processorCores"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/Processor/uut"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/AgilentInspectorContainer">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/AgilentInspectorContainer/agilentPins"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//testrigmodel/AgilentInspectorContainer/connectURL"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/AgilentInspector">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/AgilentInspector/agilentContainer"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/PinConnector"/>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/PinSignal">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/PinSignal/iopin"/>
+      </genClasses>
+      <genClasses ecoreClass="WrapperModel.ecore#//testrigmodel/Environment">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference WrapperModel.ecore#//testrigmodel/Environment/testriginstance"/>
+      </genClasses>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

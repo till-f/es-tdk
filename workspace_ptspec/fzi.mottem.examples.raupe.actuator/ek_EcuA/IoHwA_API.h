@@ -1,0 +1,28 @@
+/*
+ * IoHwA_API.h
+ *
+ *  Created on: Feb 17, 2016
+ *      Author: lore_
+ */
+
+#ifndef EK_ECUA_IOHWA_API_H_
+#define EK_ECUA_IOHWA_API_H_
+
+//START_PICOSAR_API_SETTINGS
+#define IOHWA_DISTANCE_IR //IOHWA_DISTANCE_US
+//END_PICOSAR_API_SETTINGS
+
+
+//START_IOHWA_API_FUNKTIONS
+#define SETTING_DISTANCE_INFRARED //SETTING_DISTANCE_ULTRASONIC ##SETTING_DISTANCE_INFRARED
+//STOP_IOHWA_API_FUNKTIONS
+
+
+
+//START_PICOSAR_API_FUNCTIONS
+uint32_t ECU_Get_Distance();
+uint32_t ECU_Set_MotorSpeed(uint16_t timerChannel, uint16_t directionPin, int32_t value);
+//END_PICOSAR_API_FUNCTIONS
+
+
+#endif /* EK_ECUA_IOHWA_API_H_ */

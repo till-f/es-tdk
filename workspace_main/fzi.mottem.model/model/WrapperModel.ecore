@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="wrappermodel" nsURI="http://www.fzi.de/mottem/model/wrappermodel"
+    nsPrefix="fzi.mottem.model.wrappermodel">
+  <eSubpackages name="baseelements" nsURI="http://www.fzi.de/mottem/model/baseelements"
+      nsPrefix="fzi.mottem.model.baseelements">
+    <eClassifiers xsi:type="ecore:EClass" name="INamed" abstract="true" interface="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+        <details key="constraints" value="nameValid"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IIndexed" abstract="true" interface="true">
+      <eOperations name="getIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ICommentable" abstract="true" interface="true">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="comment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IExecutor" abstract="true" interface="true"
+        eSuperTypes="#//baseelements/ITestReferenceable">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="symbolContainer" eType="#//baseelements/ISymbolContainer"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IInspectable" abstract="true" interface="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="inspectorConnector" eType="#//baseelements/IInspectorConnector"
+          eOpposite="#//baseelements/IInspectorConnector/inspectable"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ITestReferenceable" abstract="true"
+        interface="true" eSuperTypes="#//baseelements/INamed"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ITestWriteable" abstract="true" interface="true"
+        eSuperTypes="#//baseelements/ITestReferenceable"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ITestReadable" abstract="true" interface="true"
+        eSuperTypes="#//baseelements/ITestReferenceable"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ITestCallable" abstract="true" interface="true"
+        eSuperTypes="#//baseelements/ITestReferenceable"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IReferenceableContainer" abstract="true"
+        interface="true" eSuperTypes="#//baseelements/ITestReferenceable"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IInspector" abstract="true" interface="true"
+        eSuperTypes="#//baseelements/INamed">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="runtimeInspectorClass"
+          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="traceControllerClass"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="inspectorConnector" eType="#//baseelements/IInspectorConnector"
+          eOpposite="#//baseelements/IInspectorConnector/inspector"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="symbolContainer" eType="#//baseelements/ISymbolContainer"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IInspectorConnector" abstract="true"
+        interface="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="inspector" lowerBound="1"
+          eType="#//baseelements/IInspector" eOpposite="#//baseelements/IInspector/inspectorConnector"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="inspectable" lowerBound="1"
+          eType="#//baseelements/IInspectable" eOpposite="#//baseelements/IInspectable/inspectorConnector"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="INetwork" abstract="true" interface="true"
+        eSuperTypes="#//baseelements/INamed">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="networkConnector" upperBound="-1"
+          eType="#//baseelements/INetworkConnector" eOpposite="#//baseelements/INetworkConnector/network"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="INetworkConnector" abstract="true"
+        interface="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="network" lowerBound="1"
+          eType="#//baseelements/INetwork" eOpposite="#//baseelements/INetwork/networkConnector"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="networkPort" lowerBound="1"
+          eType="#//baseelements/INetworkPort" eOpposite="#//baseelements/INetworkPort/networkConnector"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="INetworkPort" abstract="true" interface="true"
+        eSuperTypes="#//baseelements/INamed">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="networkConnector" eType="#//baseelements/INetworkConnector"
+          eOpposite="#//baseelements/INetworkConnector/networkPort"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ISymbolContainer" abstract="true"
+        interface="true" eSuperTypes="#//baseelements/IReferenceableContainer"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IWrappedReferenceable" abstract="true"
+        interface="true" eSuperTypes="#//baseelements/ITestReferenceable">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="innerObject" lowerBound="1"
+          eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TRWrapperRW" eSuperTypes="#//baseelements/ITestReadable #//baseelements/ITestWriteable #//baseelements/IWrappedReferenceable"/>
+    <eClassifiers xsi:type="ecore:EClass" name="TRWrapperCallable" eSuperTypes="#//baseelements/ITestCallable #//baseelements/ITestReadable #//baseelements/IWrappedReferenceable"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ISignal" abstract="true" interface="true"
+        eSuperTypes="#//baseelements/ITestWriteable #//baseelements/ITestReadable">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="physicalUnit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IMessage" abstract="true" interface="true"
+        eSuperTypes="#//baseelements/ITestWriteable #//baseelements/ITestReadable"/>
+  </eSubpackages>
+  <eSubpackages name="codemodel" nsURI="http://www.fzi.de/mottem/model/codemodel"
+      nsPrefix="fzi.mottem.model.codemodel">
+    <eClassifiers xsi:type="ecore:EClass" name="CodeInstance" eSuperTypes="#//baseelements/ICommentable #//baseelements/ISymbolContainer">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+        <details key="constraints" value="nameValid"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="symbols" upperBound="-1"
+          eType="#//codemodel/Symbol" containment="true" eOpposite="#//codemodel/Symbol/codeInstance"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="sourceFiles" upperBound="-1"
+          eType="#//codemodel/SourceFile" containment="true" eOpposite="#//codemodel/SourceFile/codeInstance"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="dataTypes" upperBound="-1"
+          eType="#//codemodel/DataType" containment="true" eOpposite="#//codemodel/DataType/codeInstance"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="cClasses" upperBound="-1"
+          eType="#//codemodel/CClass" containment="true" eOpposite="#//codemodel/CClass/codeInstance"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="cProjectName" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="binaryFile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="symbolInfoFile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Function" eSuperTypes="#//codemodel/Symbol #//baseelements/ITestCallable #//baseelements/ITestReadable">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="localvariables" upperBound="-1"
+          eType="#//codemodel/Variable" containment="true" eOpposite="#//codemodel/Variable/function"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//codemodel/Symbol #//baseelements/ITestReadable #//baseelements/ITestWriteable">
+      <eOperations name="getIsGlobal" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="function" eType="#//codemodel/Function"
+          eOpposite="#//codemodel/Function/localvariables"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="functionParameter" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Symbol" abstract="true" eSuperTypes="#//baseelements/ITestReferenceable">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="declarationLocation"
+          lowerBound="1" eType="#//codemodel/SourceCodeLocation" containment="true"
+          eOpposite="#//codemodel/SourceCodeLocation/symbol"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="binaryLocation" eType="#//codemodel/BinaryLocation"
+          containment="true" eOpposite="#//codemodel/BinaryLocation/symbol"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="codeInstance" eType="#//codemodel/CodeInstance"
+          eOpposite="#//codemodel/CodeInstance/symbols"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="dataType" lowerBound="1"
+          eType="#//codemodel/DataType"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="cClass" eType="#//codemodel/CClass"
+          eOpposite="#//codemodel/CClass/members"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SourceCodeLocation">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="offset" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="sourceFile" lowerBound="1"
+          eType="#//codemodel/SourceFile" eOpposite="#//codemodel/SourceFile/sourceCodeLocations"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="symbol" eType="#//codemodel/Symbol"
+          eOpposite="#//codemodel/Symbol/declarationLocation"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="cClass" eType="#//codemodel/CClass"
+          eOpposite="#//codemodel/CClass/declarationLocation"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="lineNumber" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="BinaryLocation">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="symbol" lowerBound="1"
+          eType="#//codemodel/Symbol" eOpposite="#//codemodel/Symbol/binaryLocation"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SourceFile">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="codeInstance" lowerBound="1"
+          eType="#//codemodel/CodeInstance" eOpposite="#//codemodel/CodeInstance/sourceFiles"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="sourceCodeLocations"
+          upperBound="-1" eType="#//codemodel/SourceCodeLocation" eOpposite="#//codemodel/SourceCodeLocation/sourceFile"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="filePath" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DataType" abstract="true" eSuperTypes="#//baseelements/INamed">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="codeInstance" lowerBound="1"
+          eType="#//codemodel/CodeInstance" eOpposite="#//codemodel/CodeInstance/dataTypes"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DTInteger" eSuperTypes="#//codemodel/DataType">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="isSigned" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="bitSize" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DTFloatingPoint" eSuperTypes="#//codemodel/DataType">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="exponentBitSize" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="significandBitSize" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DTReference" eSuperTypes="#//codemodel/DataType">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="targetType" lowerBound="1"
+          eType="#//codemodel/DataType"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DTEnum" eSuperTypes="#//codemodel/DataType">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="enumValues" upperBound="-1"
+          eType="#//codemodel/EnumValue" containment="true" eOpposite="#//codemodel/EnumValue/dtEnum"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EnumValue" eSuperTypes="#//baseelements/INamed">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="integerValue" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="dtEnum" lowerBound="1"
+          eType="#//codemodel/DTEnum" eOpposite="#//codemodel/DTEnum/enumValues"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DTVoid" eSuperTypes="#//codemodel/DataType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="DTClass" eSuperTypes="#//codemodel/DataType">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="cClass" eType="#//codemodel/CClass"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CClass" eSuperTypes="#//baseelements/IReferenceableContainer">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="codeInstance" eType="#//codemodel/CodeInstance"
+          eOpposite="#//codemodel/CodeInstance/cClasses"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="declarationLocation"
+          lowerBound="1" eType="#//codemodel/SourceCodeLocation" containment="true"
+          eOpposite="#//codemodel/SourceCodeLocation/cClass"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
+          eType="#//codemodel/Symbol" containment="true" eOpposite="#//codemodel/Symbol/cClass"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="subClasses" upperBound="-1"
+          eType="#//codemodel/CClass" containment="true" eOpposite="#//codemodel/CClass/parentClass"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parentClass" eType="#//codemodel/CClass"
+          eOpposite="#//codemodel/CClass/subClasses"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="datastreammodel" nsURI="http://www.fzi.de/mottem/model/datastreammodel"
+      nsPrefix="fzi.mottem.model.datastreammodel">
+    <eClassifiers xsi:type="ecore:EClass" name="DataStreamInstance" eSuperTypes="#//baseelements/ICommentable #//baseelements/ISymbolContainer">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+        <details key="constraints" value="nameValid"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="signals" upperBound="-1"
+          eType="#//datastreammodel/MessageSignal" containment="true" eOpposite="#//datastreammodel/MessageSignal/dataStreamInstance"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="canMessages" upperBound="-1"
+          eType="#//datastreammodel/CANMessage" containment="true" eOpposite="#//datastreammodel/CANMessage/dataStreamInstance"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MessageSignal" eSuperTypes="#//baseelements/ISignal">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="dataStreamInstance" lowerBound="1"
+          eType="#//datastreammodel/DataStreamInstance" eOpposite="#//datastreammodel/DataStreamInstance/signals"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="bitOffset" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="bitLength" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="32"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="conversion" lowerBound="1"
+          eType="#//datastreammodel/Conversion" containment="true" eOpposite="#//datastreammodel/Conversion/signal"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" lowerBound="1"
+          eType="#//datastreammodel/EDirection" defaultValueLiteral="Input"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="canMessage" eType="#//datastreammodel/CANMessage"
+          eOpposite="#//datastreammodel/CANMessage/signals"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Conversion">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="factor" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+          defaultValueLiteral="1.0"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="offset" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+          defaultValueLiteral="0.0"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="signal" lowerBound="1"
+          eType="#//datastreammodel/MessageSignal" eOpposite="#//datastreammodel/MessageSignal/conversion"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="byteOrder" lowerBound="1"
+          eType="#//datastreammodel/EByteOrder" defaultValueLiteral="LSF"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="baseType" lowerBound="1"
+          eType="#//datastreammodel/EBaseType"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="EByteOrder">
+      <eLiterals name="LSF"/>
+      <eLiterals name="MSF" value="1"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="EDirection">
+      <eLiterals name="Input"/>
+      <eLiterals name="Output" value="1"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="EBaseType">
+      <eLiterals name="Integer"/>
+      <eLiterals name="Float" value="1"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CANMessage" eSuperTypes="#//baseelements/IMessage">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="dataStreamInstance" lowerBound="1"
+          eType="#//datastreammodel/DataStreamInstance" eOpposite="#//datastreammodel/DataStreamInstance/canMessages"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="canID" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="byteCount" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="signals" upperBound="-1"
+          eType="#//datastreammodel/MessageSignal" eOpposite="#//datastreammodel/MessageSignal/canMessage"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="environmentdatamodel" nsURI="http://www.fzi.de/mottem/model/environmentdatamodel"
+      nsPrefix="fzi.mottem.model.environmentdatamodel">
+    <eClassifiers xsi:type="ecore:EClass" name="EnvironmentDataInstance" eSuperTypes="#//baseelements/ICommentable #//baseelements/ISymbolContainer">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+        <details key="constraints" value="nameValid"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="signals" upperBound="-1"
+          eType="#//environmentdatamodel/EnvironmentSignal" containment="true" eOpposite="#//environmentdatamodel/EnvironmentSignal/edmInstance"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EnvironmentSignal" eSuperTypes="#//baseelements/ISignal">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="edmInstance" lowerBound="1"
+          eType="#//environmentdatamodel/EnvironmentDataInstance" eOpposite="#//environmentdatamodel/EnvironmentDataInstance/signals"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="testrigmodel" nsURI="http://www.fzi.de/mottem/model/testrigmodel"
+      nsPrefix="fzi.mottem.model.testrigmodel">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+      <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+      <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="TestRigInstance" eSuperTypes="#//baseelements/INamed #//baseelements/ICommentable">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+        <details key="constraints" value="nameValid"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="uuts" upperBound="-1"
+          eType="#//testrigmodel/UUT" containment="true" eOpposite="#//testrigmodel/UUT/testRigInstance"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="inspectors" upperBound="-1"
+          eType="#//testrigmodel/InspectorContainer" containment="true" eOpposite="#//testrigmodel/InspectorContainer/testRigInstance"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="networks" upperBound="-1"
+          eType="#//baseelements/INetwork" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="connectors" upperBound="-1"
+          eType="#//baseelements/IInspectorConnector" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="networkConnectors" upperBound="-1"
+          eType="#//baseelements/INetworkConnector" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="environment" eType="#//testrigmodel/Environment"
+          containment="true" eOpposite="#//testrigmodel/Environment/testriginstance"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="UUT" eSuperTypes="#//baseelements/INamed">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="testRigInstance" lowerBound="1"
+          eType="#//testrigmodel/TestRigInstance" eOpposite="#//testrigmodel/TestRigInstance/uuts"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="processors" upperBound="-1"
+          eType="#//testrigmodel/Processor" containment="true" eOpposite="#//testrigmodel/Processor/uut"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ioPorts" upperBound="-1"
+          eType="#//testrigmodel/IOPort" containment="true" eOpposite="#//testrigmodel/IOPort/uut"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ioPins" upperBound="-1"
+          eType="#//testrigmodel/IOPin" containment="true" eOpposite="#//testrigmodel/IOPin/uut"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SoftwareExecutor" abstract="true"
+        eSuperTypes="#//baseelements/IExecutor"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Thread" eSuperTypes="#//testrigmodel/SoftwareExecutor">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="processorCore" eType="#//testrigmodel/ProcessorCore"
+          eOpposite="#//testrigmodel/ProcessorCore/threads"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ProcessorCore" eSuperTypes="#//testrigmodel/SoftwareExecutor">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="threads" upperBound="-1"
+          eType="#//testrigmodel/Thread" containment="true" eOpposite="#//testrigmodel/Thread/processorCore"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="processor" eType="#//testrigmodel/Processor"
+          eOpposite="#//testrigmodel/Processor/processorCores"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IOPort" abstract="true" eSuperTypes="#//baseelements/IExecutor #//baseelements/INetworkPort">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="uut" lowerBound="1" eType="#//testrigmodel/UUT"
+          eOpposite="#//testrigmodel/UUT/ioPorts"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IOPin" eSuperTypes="#//baseelements/IInspectable #//baseelements/IExecutor #//baseelements/ISymbolContainer">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="uut" lowerBound="1" eType="#//testrigmodel/UUT"
+          eOpposite="#//testrigmodel/UUT/ioPins"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="pinSignals" upperBound="-1"
+          eType="#//testrigmodel/PinSignal" containment="true" eOpposite="#//testrigmodel/PinSignal/iopin"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="InspectorContainer" abstract="true"
+        eSuperTypes="#//baseelements/INamed">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="testRigInstance" lowerBound="1"
+          eType="#//testrigmodel/TestRigInstance" eOpposite="#//testrigmodel/TestRigInstance/inspectors"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CodeInspectorContainer" abstract="true"
+        eSuperTypes="#//testrigmodel/InspectorContainer"/>
+    <eClassifiers xsi:type="ecore:EClass" name="StreamInspectorContainer" abstract="true"
+        eSuperTypes="#//testrigmodel/InspectorContainer"/>
+    <eClassifiers xsi:type="ecore:EClass" name="PinInspectorContainer" abstract="true"
+        eSuperTypes="#//testrigmodel/InspectorContainer"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ISystemInspectorContainer" abstract="true"
+        eSuperTypes="#//testrigmodel/CodeInspectorContainer">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="workspacePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IC5000" eSuperTypes="#//testrigmodel/ISystemInspectorContainer">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="port" eType="#//testrigmodel/IC5000Port"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IOne" eSuperTypes="#//testrigmodel/ISystemInspectorContainer">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="port" eType="#//testrigmodel/IOnePort"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CANInspectorConnector" eSuperTypes="#//testrigmodel/StreamConnector"/>
+    <eClassifiers xsi:type="ecore:EClass" name="EthernetInspectorConnector" eSuperTypes="#//testrigmodel/StreamConnector"/>
+    <eClassifiers xsi:type="ecore:EClass" name="JTAGInspectorConnector" eSuperTypes="#//testrigmodel/CodeConnector"/>
+    <eClassifiers xsi:type="ecore:EClass" name="TraceInspectorConnector" eSuperTypes="#//testrigmodel/CodeConnector"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CodeConnector" abstract="true" eSuperTypes="#//baseelements/IInspectorConnector"/>
+    <eClassifiers xsi:type="ecore:EClass" name="StreamConnector" abstract="true" eSuperTypes="#//baseelements/IInspectorConnector"/>
+    <eClassifiers xsi:type="ecore:EClass" name="VectorInspectorContainer" abstract="true"
+        eSuperTypes="#//testrigmodel/StreamInspectorContainer"/>
+    <eClassifiers xsi:type="ecore:EClass" name="VN7600" eSuperTypes="#//testrigmodel/VectorInspectorContainer">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="canPorts" upperBound="-1"
+          eType="#//testrigmodel/CANInspectorPort" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CANBus" eSuperTypes="#//baseelements/IInspectable #//baseelements/INetwork"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Ethernet" eSuperTypes="#//baseelements/IInspectable #//baseelements/INetwork"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CANPort" eSuperTypes="#//testrigmodel/IOPort"/>
+    <eClassifiers xsi:type="ecore:EClass" name="EthernetPort" eSuperTypes="#//testrigmodel/IOPort"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CANInspectorPort" eSuperTypes="#//baseelements/IInspector">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="channelNumber" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IC5000Port" eSuperTypes="#//baseelements/IInspector"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IOnePort" eSuperTypes="#//baseelements/IInspector"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CANPortConnector" eSuperTypes="#//baseelements/INetworkConnector"/>
+    <eClassifiers xsi:type="ecore:EClass" name="EthernetPortConnector" eSuperTypes="#//baseelements/INetworkConnector"/>
+    <eClassifiers xsi:type="ecore:EClass" name="HostInspectorContainer" eSuperTypes="#//testrigmodel/CodeInspectorContainer">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ports" upperBound="-1"
+          eType="#//testrigmodel/CDIInspectorPort" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CDIInspectorPort" eSuperTypes="#//baseelements/IInspector"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Processor" eSuperTypes="#//baseelements/IInspectable #//baseelements/INamed">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="processorCores" upperBound="-1"
+          eType="#//testrigmodel/ProcessorCore" containment="true" eOpposite="#//testrigmodel/ProcessorCore/processor"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="uut" lowerBound="1" eType="#//testrigmodel/UUT"
+          eOpposite="#//testrigmodel/UUT/processors"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AgilentInspectorContainer" eSuperTypes="#//testrigmodel/PinInspectorContainer">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="agilentPins" upperBound="-1"
+          eType="#//testrigmodel/AgilentInspector" containment="true" eOpposite="#//testrigmodel/AgilentInspector/agilentContainer"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectURL" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AgilentInspector" eSuperTypes="#//baseelements/IInspector">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="agilentContainer" lowerBound="1"
+          eType="#//testrigmodel/AgilentInspectorContainer" eOpposite="#//testrigmodel/AgilentInspectorContainer/agilentPins"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PinConnector" eSuperTypes="#//baseelements/IInspectorConnector"/>
+    <eClassifiers xsi:type="ecore:EClass" name="PinSignal" eSuperTypes="#//baseelements/ISignal">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="iopin" lowerBound="1"
+          eType="#//testrigmodel/IOPin" eOpposite="#//testrigmodel/IOPin/pinSignals"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Environment" eSuperTypes="#//baseelements/IExecutor #//baseelements/IInspectable">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="testriginstance" lowerBound="1"
+          eType="#//testrigmodel/TestRigInstance" eOpposite="#//testrigmodel/TestRigInstance/environment"/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>

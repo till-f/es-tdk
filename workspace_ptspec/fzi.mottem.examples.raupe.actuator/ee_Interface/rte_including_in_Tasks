@@ -1,0 +1,27 @@
+Aufgaben:
+
+//1. VFB Tracing Module   						<-> 3.
+2. Exclusive Areas Manage Module 				<-> 3.
+3. RTE Main Module (Life Cycle)					<-> !=Set_Alarm, i=RTE_Start, i=RTE_Stop
+4. RTE Task Module (RTE Task 1, RTE Task 2,...) <-> !=BSW-EventProcess,  i=APP-RunnableCall, 1., 2. 
+5. RTE Communication Management Module			<-> !=BSW-Com_Service, i=ComApp
+
+//aufbau fuer eine Tasks mit gluecode
+TASK(Task1)
+{
+	Rte_GetResource(); //gluecodeInt
+	
+	
+	Rte_ImplicitBufs.o1._Task1.sbuf0.value = Rte_RxBuf_2;
+	
+	Rte_memcpy(&Rte_ImplicitBufs.o1._Task1.sbuf1.value, &Rte_RxBuf=0, sizeof(String8));
+	
+	Rte_ImplicitBufs.o1._Task1.sbuf2.value = Rte_RxBuf_1;
+	
+	Rte_memcpy(&Rte_ImplicitBufs.o1. Task1.sbuf1.value, &Rte_RxBuf=0, sizeof(String8));
+	
+	
+	Rte_ReleaseResource(); //gluecodeExt
+
+	TerminateTask();
+}
