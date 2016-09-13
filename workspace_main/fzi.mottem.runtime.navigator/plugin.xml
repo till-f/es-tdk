@@ -7,125 +7,63 @@
 	      id="org.eclipse.ui.articles.action.contribution.popup.object"
 	   objectClass="fzi.mottem.ptspec.dsl.pTSpec.PTSTestDeclaration">
 	      <action
-	         id="customnavigator.run" 
-	         label="Run"
+	         id="fzi.mottem.runtime.navigator.run" 
+	         label="Execute Test"
 	         icon="icons/run_test.gif"
-	         menubarPath="additions" 
-	      class="fzi.mottem.runtime.navigator.commands.RunTest"> 
+	         menubarPath="additions"
+	         class="fzi.mottem.runtime.navigator.commands.RunTest"> 
 	      </action> 
 	   </objectContribution> 
 	   <objectContribution 
 	      id="org.eclipse.ui.articles.action.contribution.popup.object"
 	   objectClass="fzi.mottem.ptspec.dsl.pTSpec.PTSTestSuiteDeclaration">
 	      <action
-	         id="customnavigator.runall" 
-	         label="Run All Tests"
+	         id="fzi.mottem.runtime.navigator.runall" 
+	         label="Execute All Tests"
 	         icon="icons/run_test.gif"
-	         menubarPath="additions" 
-	      class="fzi.mottem.runtime.navigator.commands.RunAllTests"> 
+	         menubarPath="additions"
+	         class="fzi.mottem.runtime.navigator.commands.RunAllTests">
 	      </action> 
 	   </objectContribution> 
-	   
 	</extension>
 	
-	<extension
-         point="org.eclipse.core.expressions.definitions">
-      <definition
-            id="fzi.mottem.runtime.navigator.elementSelected">
-         <with
-               variable="selection">
-            <iterate
-                  ifEmpty="false"
-                  operator="or">
-               <instanceof
-                     value="org.eclipse.core.resources.IFile">
-               </instanceof>
-            </iterate>
-         </with>
-      </definition>
-      <definition
-            id="fzi.mottem.runtime.navigator.projectSelected">
-         <with
-               variable="selection">
-            <iterate
-                  ifEmpty="false"
-                  operator="or">
-               <instanceof
-                     value="org.eclipse.core.resources.IProject">
-               </instanceof>
-            </iterate>
-         </with>
-      </definition>
-   </extension>
-	
-	
-	<!--
-   <extension
-         point="org.eclipse.ui.navigator.viewer" >  
-      <viewerContentBinding
-            viewerId="customplugin.navigator" >
-         <includes>
-            <contentExtension
-                  pattern="customnavigator.navigatorContent">
-            </contentExtension>
-         </includes>
-      </viewerContentBinding>
-   </extension>
-   <extension
+    <extension
          point="org.eclipse.ui.navigator.navigatorContent">
       <navigatorContent
-            contentProvider="fzi.mottem.runtime.navigator.navigator.ContentProvider"
-            id="customnavigator.navigatorContent"
-            labelProvider="fzi.mottem.runtime.navigator.navigator.LabelProvider"
-            name="ETSpec Content">
-         <triggerPoints>
-            <instanceof
-                  value="org.eclipse.core.internal.resources.WorkspaceRoot">
-            </instanceof>
-         </triggerPoints>
-      </navigatorContent>
-   </extension>
-  
-   -->
-   
-   <extension
-         point="org.eclipse.ui.navigator.navigatorContent">
-      <navigatorContent
+            id="fzi.mottem.runtime.navigator.navigatorContent"
+            name="ES TDK Elements"
             activeByDefault="true"
-            contentProvider="fzi.mottem.runtime.navigator.navigator.ContentProvider2"
-            id="customnavigator.navigatorContent2"
-            labelProvider="fzi.mottem.runtime.navigator.navigator.LabelProvider"
-            name="ETSpec Content"
-            priority="normal">         <triggerPoints>
+            contentProvider="fzi.mottem.runtime.navigator.PTSpecContentProvider"
+            labelProvider="fzi.mottem.ptspec.dsl.ui.PTSpecExecutableExtensionFactory:fzi.mottem.ptspec.dsl.ui.labeling.PTSpecLabelProvider"
+            priority="highest">
+		<triggerPoints>
          	<or> 
-			<instanceof value="org.eclipse.core.resources.IResource"/> 
-			<instanceof value="org.eclipse.core.resources.IFile"/> 
-			<instanceof value="fzi.mottem.ptspec.dsl.pTSpec.PTSTargetDeclaration"/> 
-			<instanceof value="fzi.mottem.ptspec.dsl.pTSpec.PTSTestDeclaration"/> 
-			<instanceof value="fzi.mottem.ptspec.dsl.pTSpec.PTSTestSuiteDeclaration"/> 
-			<instanceof value="fzi.mottem.ptspec.dsl.pTSpec.PTSPackageDeclaration"/> 
+				<instanceof value="org.eclipse.core.resources.IResource"/> 
+				<instanceof value="org.eclipse.core.resources.IFile"/> 
+				<instanceof value="fzi.mottem.ptspec.dsl.pTSpec.PTSTargetDeclaration"/>
+				<instanceof value="fzi.mottem.ptspec.dsl.pTSpec.PTSTestDeclaration"/>
+				<instanceof value="fzi.mottem.ptspec.dsl.pTSpec.PTSTestSuiteDeclaration"/>
+				<instanceof value="fzi.mottem.ptspec.dsl.pTSpec.PTSPackageDeclaration"/>
 			</or> 
 		</triggerPoints> 
-		<possibleChildren> 
+		<possibleChildren>
 			<or> 
-				<instanceof value="org.eclipse.emf.ecore.resource.Resource"/> 
-				<instanceof value="fzi.mottem.ptspec.dsl.pTSpec.PTSRoot"/> 
-				<instanceof value="fzi.mottem.ptspec.dsl.pTSpec.PTSTargetDeclaration"/> 
-				<instanceof value="fzi.mottem.ptspec.dsl.pTSpec.PTSTestDeclaration"/> 
-				<instanceof value="fzi.mottem.ptspec.dsl.pTSpec.PTSTestSuiteDeclaration"/> 
-				<instanceof value="fzi.mottem.ptspec.dsl.pTSpec.PTSPackageDeclaration"/> 
-			</or> 
-		</possibleChildren>  
+				<instanceof value="fzi.mottem.ptspec.dsl.pTSpec.PTSTargetDeclaration"/>
+				<instanceof value="fzi.mottem.ptspec.dsl.pTSpec.PTSTestDeclaration"/>
+				<instanceof value="fzi.mottem.ptspec.dsl.pTSpec.PTSTestSuiteDeclaration"/>
+				<instanceof value="fzi.mottem.ptspec.dsl.pTSpec.PTSPackageDeclaration"/>
+			</or>
+		</possibleChildren>
       </navigatorContent>
    </extension>
    
    <extension
-         point="org.eclipse.ui.navigator.viewer" >  
+         point="org.eclipse.ui.navigator.viewer">  
       <viewerContentBinding
-            viewerId="org.eclipse.ui.navigator.ProjectExplorer" >
+            viewerId="org.eclipse.ui.navigator.ProjectExplorer">
          <includes>
             <contentExtension
-                  pattern="customnavigator.navigatorContent2">
+                  pattern="fzi.mottem.runtime.navigator.navigatorContent">
             </contentExtension>
          </includes>
       </viewerContentBinding>

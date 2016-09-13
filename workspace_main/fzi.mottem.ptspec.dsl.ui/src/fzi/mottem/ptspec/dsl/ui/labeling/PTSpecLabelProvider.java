@@ -18,6 +18,7 @@ import fzi.mottem.ptspec.dsl.pTSpec.PTSPackageVariable;
 import fzi.mottem.ptspec.dsl.pTSpec.PTSPackageVariableDeclaration;
 import fzi.mottem.ptspec.dsl.pTSpec.PTSTargetDeclaration;
 import fzi.mottem.ptspec.dsl.pTSpec.PTSTestDeclaration;
+import fzi.mottem.ptspec.dsl.pTSpec.PTSTestSuiteDeclaration;
 import fzi.mottem.ptspec.dsl.pTSpec.PTSTestVariableDeclaration;
 import fzi.util.ecore.EcoreUtils;
 
@@ -70,6 +71,11 @@ public class PTSpecLabelProvider extends org.eclipse.xtext.ui.label.DefaultEObje
 		return PTSpecUtils.getImageName(ele.eClass());
 	}
 	
+	String image(PTSTestSuiteDeclaration ele)
+	{
+		return PTSpecUtils.getImageName(ele.eClass());
+	}
+	
 	String text(PTSTestVariableDeclaration ele)
 	{
 		PTSDeclarator declarator = EcoreUtils.getContainerInstanceOf(ele, PTSDeclarator.class);
@@ -93,18 +99,4 @@ public class PTSpecLabelProvider extends org.eclipse.xtext.ui.label.DefaultEObje
 		PTSPackageFuncParameter param = EcoreUtils.getContainerInstanceOf(ele, PTSPackageFuncParameter.class);
 		return PTSpecUtils.getDisplayName(param.getDataType()) + " " + ele.getName();
 	}
-	
-	
-//	Labels can be computed like this:
-//
-//	String text(MyModelElement ele) {
-//		return "This is a " + ele.getName();
-//	}
-
-//	Icons can be computed like this:
-//
-//	String image(MyModelElement ele) {
-//		return "MyIcon.gif";
-//	}
-
 }
