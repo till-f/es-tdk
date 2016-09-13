@@ -1,11 +1,11 @@
 Introduction
 ============
 
-The Embedded Software Test Development Kit eases the implementation of test for embedded software 
-(focusing on C code). It can be used like a unit test framework, but also supports advanced test 
-scenarios for embedded systems including timing analysis and Hardware-in-the-Loop (HiL) testing. 
-The ES TDK comes with a new test programming language called ETSpec providing a consistent view on 
-heterogeneous test environments.
+The Embedded Software Test Development Kit (see www.es-tdk.org) eases the implementation of test for
+embedded software. It focuses on C-code and can be used like a unit test framework, but also supports
+advanced test scenarios for embedded systems including timing analysis and Hardware-in-the-Loop (HiL) 
+testing. The ES TDK comes with a new test programming language called ETSpec providing a consistent
+view on heterogeneous test environments.
 
 The tested software is executed on the real device. Test execution is controlled and the behavior 
 is observed using the debug and trace interfaces of the processor hardware. In principle any 
