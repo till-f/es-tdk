@@ -68,24 +68,6 @@ public class ControllerWidgetLink extends AbstractWidgetExchangeLink {
 		}
 		return type;
 	}
-	
-	
-	/**
-	 * 
-	 * This method should be called when the user wants to dispose of the whole
-	 * controller widget.
-	 */
-	public void delete() {
-		canvas.dispose();
-		lws = null;
-		if (figure != null) {
-			figure.erase();
-		}
-		figure = null;
-		if (!dashboard.isDisposed() && dashboard != null) {
-			dashboard.layout(true);
-		}
-	}
 
 	@Override
 	public void applyRepresentation(boolean applySignal, boolean applyFigure, boolean applyCanvas) {

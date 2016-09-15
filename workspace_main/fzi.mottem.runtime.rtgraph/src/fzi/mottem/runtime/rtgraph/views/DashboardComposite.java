@@ -119,7 +119,6 @@ public class DashboardComposite extends Dashboard {
 
 	WidgetUpdater widgetUpdater;
 	public ArrayList<AbstractWidgetExchangeLink> widgetLinks = new ArrayList<AbstractWidgetExchangeLink>();
-	public ArrayList<ControllerWidgetLink> controllerLinks = new ArrayList<ControllerWidgetLink>();
 
 	private Image bg_image;
 	private boolean dirty = false;
@@ -679,10 +678,6 @@ public class DashboardComposite extends Dashboard {
 
 	public void updateBgData() {
 		bg_image = getBackgroundImage();
-	}
-
-	public ArrayList<ControllerWidgetLink> getControllerLinks() {
-		return controllerLinks;
 	}
 
 	public void setName(String name) {
