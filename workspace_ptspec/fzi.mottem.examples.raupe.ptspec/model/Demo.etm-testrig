@@ -7,6 +7,30 @@
       </processorCores>
     </processors>
     <ioPorts xsi:type="fzi.mottem.model.testrigmodel:CANPort" xmi:id="+R[B@924c1c" name="CANPort" networkConnector="+R[B@9afc70"/>
+    <ioPins xmi:id="+R[B@4b132d" name="CanH">
+      <pinSignals xmi:id="+R[B@1501428" name="Value"/>
+    </ioPins>
+    <ioPins xmi:id="+R[B@928732" name="CanL">
+      <pinSignals xmi:id="+R[B@5dd698" name="Value"/>
+    </ioPins>
+    <ioPins xmi:id="+R[B@eee08" name="CanTx">
+      <pinSignals xmi:id="+R[B@8153e1" name="Value"/>
+    </ioPins>
+    <ioPins xmi:id="+R[B@b42a25" name="CanRx">
+      <pinSignals xmi:id="+R[B@5220ea" name="Value"/>
+    </ioPins>
+    <ioPins xmi:id="+R[B@f34b20" name="pwmLeft">
+      <pinSignals xmi:id="+R[B@777d4d" name="Value"/>
+    </ioPins>
+    <ioPins xmi:id="+R[B@1c608c" name="pwmRight">
+      <pinSignals xmi:id="+R[B@f4c5c3" name="Value"/>
+    </ioPins>
+    <ioPins xmi:id="+R[B@1729c09" name="dirLeft">
+      <pinSignals xmi:id="+R[B@7722bd" name="Value"/>
+    </ioPins>
+    <ioPins xmi:id="+R[B@1453e13" name="dirRight">
+      <pinSignals xmi:id="+R[B@19d9ed6" name="Value"/>
+    </ioPins>
   </uuts>
   <uuts xmi:id="+R[B@16ad296" name="SensorBoard">
     <processors xmi:id="+R[B@1607072" name="STM32F4">
@@ -15,6 +39,21 @@
       </processorCores>
     </processors>
     <ioPorts xsi:type="fzi.mottem.model.testrigmodel:CANPort" xmi:id="+R[B@191020b" name="CANPort" networkConnector="+R[B@c399fd"/>
+    <ioPins xmi:id="+R[B@21741c" name="CanH">
+      <pinSignals xmi:id="+R[B@1c3a3c2" name="Value"/>
+    </ioPins>
+    <ioPins xmi:id="+R[B@a0cb0d" name="CanL">
+      <pinSignals xmi:id="+R[B@f28c35" name="Value"/>
+    </ioPins>
+    <ioPins xmi:id="+R[B@1434534" name="CanTx">
+      <pinSignals xmi:id="+R[B@1db4c82" name="Value"/>
+    </ioPins>
+    <ioPins xmi:id="+R[B@b7e021" name="CanRx">
+      <pinSignals xmi:id="+R[B@16ca65a" name="Value"/>
+    </ioPins>
+    <ioPins xmi:id="+R[B@1a67b7b" name="IR_analog">
+      <pinSignals xmi:id="+R[B@1065bc2" name="Value"/>
+    </ioPins>
   </uuts>
   <inspectors xsi:type="fzi.mottem.model.testrigmodel:IOne" xmi:id="+R[B@53bd89" name="IOne" workspacePath="fzi.mottem.examples.raupe.actuator/_winIDEA/Example.xjrf">
     <port xmi:id="+R[B@8b57d3" name="IOnePort" runtimeInspectorClass="fzi.mottem.runtime.rti.isystem.ISYSTEMAccessDriver" inspectorConnector="+R[B@17b34a3"/>
