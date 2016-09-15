@@ -7,16 +7,8 @@ package fzi.mottem.runtime.interfaces;
  * the Composite class and therefore can not extend any other classes.
  */
 
-public interface IObservableView<T> {
+public interface IObservableView {
 	
-	/*void addObserver(T o);
-	
-	void deleteObserver(T o);
-	
-	void deleteObservers();
-	
-	void notifyObservers();
-	*/
 	
 	boolean hasChanged();
 	

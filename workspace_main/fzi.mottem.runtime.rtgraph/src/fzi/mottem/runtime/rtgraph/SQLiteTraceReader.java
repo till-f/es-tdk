@@ -91,7 +91,6 @@ public class SQLiteTraceReader {
 		Signal s = new Signal("unnamed", "unnamed");
 		String uid = "";
 
-		ArrayList<DEMessage> messages = new ArrayList<DEMessage>();
 		HashMap<String, ArrayList<DEMessage>> msgMap = new HashMap<String, ArrayList<DEMessage>>();
 
 		try {
@@ -128,9 +127,6 @@ public class SQLiteTraceReader {
 
 		Connection c = null;
 		Statement stmt = null;
-
-		Signal s = new Signal("unnamed", "unnamed");
-		String uid = "";
 
 		try {
 			Class.forName("org.sqlite.JDBC");

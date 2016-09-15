@@ -23,6 +23,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 import fzi.mottem.runtime.dataexchanger.Signal;
@@ -307,13 +308,13 @@ public class WidgetSettingsUI extends Composite {
 		textFieldLabel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 2, 1));
 
 		textField = new Text(this, SWT.BORDER | SWT.MULTI);
-		GridData textgd = new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1);
+
 		// textgd.w
 		textField.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
-		int columns = 20;
+
 		GC gc = new GC(textField);
 		FontMetrics fm = gc.getFontMetrics();
-		int width = columns * fm.getAverageCharWidth();
+
 		int height = fm.getHeight();
 		gc.dispose();
 		textField.setSize(this.getSize().x - 4, height);
@@ -428,10 +429,6 @@ public class WidgetSettingsUI extends Composite {
 			@Override
 			public void handleEvent(Event event) {
 				updateLinkFigureRange(current_link);
-
-				ArrayList<String> uids = ViewCoordinator.getSignalsConsumedByUI();
-
-				uids = ViewCoordinator.getSignalsProducedByUI();
 			}
 		};
 
@@ -444,9 +441,12 @@ public class WidgetSettingsUI extends Composite {
 			public void handleEvent(Event event) {
 				li = links_combo.getSelectionIndex();
 				if (li != -1 && current_link != null) {
-					current_link.getDashboard().removeCurrentLink();
+					removeCurrentLink();
+					if (getParent() instanceof Shell) {
+						((Shell) getParent()).close();
+					}
+					SetupUI.deFocusWidget();
 				}
-
 			}
 		};
 
@@ -596,6 +596,7 @@ public class WidgetSettingsUI extends Composite {
 		dashboard.setCurrentLink(current_link);
 
 		refreshCombos();
+		removeButton.setEnabled(true);
 
 		/*
 		 * if (advUI != null) advUI.dispose();
@@ -686,12 +687,12 @@ public class WidgetSettingsUI extends Composite {
 			signals_combo.select(selection);
 		} else {
 			signals_combo.setText("---Signal---");
-	}
+		}
 		layout(true);
 	}
 
 	public void refreshCombos() {
-		System.out.println("WS: refreshCombos");
+		System.out.println("WS: refreshCombos, current link = " + current_link);
 		int li = -1;
 
 		links_combo.removeAll();
@@ -703,12 +704,15 @@ public class WidgetSettingsUI extends Composite {
 			for (int i = 0; i < links.size(); i++) {
 				link = links.get(i);
 				links_combo.add(i + " " + link.getDescription());
-				if (current_link == links.get(i)) {
+				if (current_link != null && current_link.equals(links.get(i))) {
 					li = i;
 				}
-		}
-			if (li > -1)
+			}
+			if (li > -1) {
 				links_combo.select(li);
+			} else {
+				removeButton.setEnabled(false);
+			}
 		}
 
 		if (current_link != null) {
@@ -742,8 +746,14 @@ public class WidgetSettingsUI extends Composite {
 			valueFormatText.setText(link.getFigure().getValueLabelFormat());
 
 		} catch (Exception e) {
-			System.err.println("WidgetSettingsUI error: "  + e.getMessage());
+			System.err.println("WidgetSettingsUI error: " + e.getMessage());
 		}
+	}
+	
+	public void removeCurrentLink() {
+		current_link.delete();
+		current_link = null;
+		System.out.println("Widget Settings: removed current link : " + current_link);
 	}
 
 	public void resetCurrentLink() {
@@ -762,6 +772,7 @@ public class WidgetSettingsUI extends Composite {
 	}
 
 	public void deFocus() {
+		current_link = null;
 		signals_combo.clearSelection();
 		signals_combo.setText("---Signal---");
 		types_combo.clearSelection();
@@ -769,6 +780,7 @@ public class WidgetSettingsUI extends Composite {
 		links_combo.clearSelection();
 		links_combo.removeAll();
 		links_combo.setText("---Widget---");
+		System.out.println("WS: defocused, current link = " + current_link);
 	}
 
 	public void setEnabled(boolean enabled) {
@@ -807,23 +819,25 @@ public class WidgetSettingsUI extends Composite {
 	}
 
 	private void callImageDialog() {
-	/*	Shell shell = new Shell(Display.getCurrent());
-		FileDialog dialog = new FileDialog(shell, SWT.OPEN);
-		dialog.setFilterExtensions(new String[] { "*.*", "*.gif", "*.png", "*.jpeg", "*.bmp", "*.jpg"});
-
-		dialog.setFilterPath("c:\\");*/
+		/*
+		 * Shell shell = new Shell(Display.getCurrent()); FileDialog dialog =
+		 * new FileDialog(shell, SWT.OPEN); dialog.setFilterExtensions(new
+		 * String[] { "*.*", "*.gif", "*.png", "*.jpeg", "*.bmp", "*.jpg"});
+		 * 
+		 * dialog.setFilterPath("c:\\");
+		 */
 		String result = current_link.getDashboard().callImageDialog();
 
 		if (result != null) {
-		
-			//force image dimension when loading it for the first time
+
+			// force image dimension when loading it for the first time
 			ImageData imgData = new ImageData(result);
 			current_link.getRepresentation().setHeight(imgData.height);
 			current_link.getRepresentation().setWidth(imgData.width);
-			
+
 			textField.setText(result);
 			current_link.setText(result);
-	}
+		}
 	}
 
 }

@@ -67,7 +67,7 @@ public class DashboardComposite extends Dashboard {
 	Menu signalsMenu;
 
 	DashboardComposite thisDC;
-	
+
 	ArrayList<MenuItem> signalsMenuItems = new ArrayList<MenuItem>();
 
 	Rectangle highlight;
@@ -86,24 +86,24 @@ public class DashboardComposite extends Dashboard {
 	}
 
 	public void removeWidgetLink(AbstractWidgetExchangeLink link) {
-		
+
 		if (widgetLinks.contains(link)) {
-				
+
 			System.out.println("Dashboard: removing link " + link);
-			link.drop();
-			link.delete();
+			
+			
 			widgetLinks.remove(link);
-			if(current_widget.equals(link)) {
-				if(widgetLinks.size() > 0) {
+			if (current_widget.equals(link)) {
+				if (widgetLinks.size() > 0) {
 					current_widget = widgetLinks.get(0);
 				} else {
 					current_widget = null;
 				}
 			}
 			link = null;
-			SetupUI.resetCurrentLink();
-			System.out.println("Dashboard: Links size after removing a link: " + widgetLinks.size());
-			
+			System.out.println("Link removed : " + link);
+			// SetupUI.resetCurrentLink(); //uncomment if you need automatic
+			// link selection after removal
 		}
 	}
 
@@ -138,7 +138,8 @@ public class DashboardComposite extends Dashboard {
 
 	public void setDirty(boolean dirty) {
 		this.dirty = dirty;
-		if(editor != null) editor.fireChange();
+		if (editor != null)
+			editor.fireChange();
 	}
 
 	@Override
@@ -179,7 +180,6 @@ public class DashboardComposite extends Dashboard {
 			wcons.updateRepresentation();
 			representation.figureRepresentations.add(wcons.getRepresentation());
 		}
-		
 
 		/*
 		 * representation.controllerRepresentations.clear(); for
@@ -225,7 +225,7 @@ public class DashboardComposite extends Dashboard {
 		if (newRep == null) {
 			newRep = new WidgetRepresentation();
 		}
-		
+
 		newRep.setWidgetType(WidgetType.W_INDICATOR);
 		AbstractMarkedWidgetFigure figure = createIndicatorFigure(newRep.getType());
 
@@ -239,8 +239,8 @@ public class DashboardComposite extends Dashboard {
 		l.getCanvas().addListener(SWT.MouseMove, dragListener);
 
 		DataExchanger.registerConsumer(newRep.getSignalUID(), l);
-		
-		//SetupUI.refresh();
+
+		// SetupUI.refresh();
 		setDirty(true);
 	}
 
@@ -249,7 +249,7 @@ public class DashboardComposite extends Dashboard {
 		if (newRep == null) {
 			newRep = new WidgetRepresentation();
 		}
-		
+
 		newRep.setWidgetType(WidgetType.W_CONTROLLER);
 		AbstractMarkedWidgetFigure figure = createControllerFigure(newRep.getType());
 
@@ -260,8 +260,8 @@ public class DashboardComposite extends Dashboard {
 		l.getCanvas().addMouseListener(new CallControllerSettingsListener(l));
 		l.getCanvas().addListener(SWT.MouseDown, listener);
 		l.getCanvas().addListener(SWT.MouseMove, listener);
-		
-		//SetupUI.refresh();
+
+		// SetupUI.refresh();
 		setDirty(true);
 	}
 
@@ -269,36 +269,35 @@ public class DashboardComposite extends Dashboard {
 
 		AbstractMarkedWidgetFigure figure = null;
 
-		
-			switch (type) {
-			case Constants.WIDGET_THERMO:
-				figure = new ThermometerFigure();
-				break;
-			case Constants.WIDGET_GAUGE:
-				figure = new GaugeFigure();
-				figure.setBackgroundColor(XYGraphMediaFactory.getInstance().getColor(0, 0, 0));
-				figure.setForegroundColor(XYGraphMediaFactory.getInstance().getColor(255, 255, 255));
-				// ((GaugeFigure) figure).setTransparent(true);
-				break;
-			case Constants.WIDGET_METER:
-				figure = new MeterFigure();
-				break;
-			case Constants.WIDGET_PROGRESS:
-				figure = new ProgressBarFigure();
-				((ProgressBarFigure) figure).setHorizontal(true);
-				break;
-			case Constants.WIDGET_TANK:
-				figure = new TankFigure();
-				break;
-			case Constants.WIDGET_TEXT:
-				figure = new TextFigure();
-				break;
-			case Constants.WIDGET_IMAGE:
-				figure = new ImageFigure();
-				break;
-			default:
-				figure = new GaugeFigure();
-			}
+		switch (type) {
+		case Constants.WIDGET_THERMO:
+			figure = new ThermometerFigure();
+			break;
+		case Constants.WIDGET_GAUGE:
+			figure = new GaugeFigure();
+			figure.setBackgroundColor(XYGraphMediaFactory.getInstance().getColor(0, 0, 0));
+			figure.setForegroundColor(XYGraphMediaFactory.getInstance().getColor(255, 255, 255));
+			// ((GaugeFigure) figure).setTransparent(true);
+			break;
+		case Constants.WIDGET_METER:
+			figure = new MeterFigure();
+			break;
+		case Constants.WIDGET_PROGRESS:
+			figure = new ProgressBarFigure();
+			((ProgressBarFigure) figure).setHorizontal(true);
+			break;
+		case Constants.WIDGET_TANK:
+			figure = new TankFigure();
+			break;
+		case Constants.WIDGET_TEXT:
+			figure = new TextFigure();
+			break;
+		case Constants.WIDGET_IMAGE:
+			figure = new ImageFigure();
+			break;
+		default:
+			figure = new GaugeFigure();
+		}
 
 		return figure;
 	}
@@ -321,27 +320,26 @@ public class DashboardComposite extends Dashboard {
 		default:
 			figure = new KnobFigure();
 		}
-		
+
 		/*
-		 * because for some reason initializing and switching 
-		 * controller figures (switching slider to knob) causes
-		 * the font to be null -> an exception is thrown and
-		 * the figure can no longer be used
+		 * because for some reason initializing and switching controller figures
+		 * (switching slider to knob) causes the font to be null -> an exception
+		 * is thrown and the figure can no longer be used
 		 */
-		figure.setFont(XYGraphMediaFactory.getInstance().getFont(
-				new FontData("Arial", 9, SWT.NORMAL))); 
-		
+		figure.setFont(XYGraphMediaFactory.getInstance().getFont(new FontData("Arial", 9, SWT.NORMAL)));
+
 		return figure;
 	}
 
 	public void setFigureType(int link_index, int figure_type) {
-		//current_link instead of link index?
+		// current_link instead of link index?
 		AbstractWidgetExchangeLink link = widgetLinks.get(link_index);
 		final AbstractMarkedWidgetFigure figure;
-		
-		switch(link.getWidgetType()) {
+
+		switch (link.getWidgetType()) {
 		case W_ABSTRACT:
-			figure = createIndicatorFigure(figure_type);;
+			figure = createIndicatorFigure(figure_type);
+			;
 			break;
 		case W_CONTROLLER:
 			figure = createControllerFigure(figure_type);
@@ -350,13 +348,13 @@ public class DashboardComposite extends Dashboard {
 			figure = createIndicatorFigure(figure_type);
 			break;
 		default:
-			figure = createIndicatorFigure(figure_type);;
-			break;	
+			figure = createIndicatorFigure(figure_type);
+			;
+			break;
 		}
-		
-		
+
 		widgetLinks.get(link_index).updateFigure(figure);
-		
+
 	}
 
 	public void refreshBgImage() {
@@ -439,13 +437,13 @@ public class DashboardComposite extends Dashboard {
 
 			@Override
 			public void mouseDown(MouseEvent e) {
-				
-				DashboardComposite dashboard = (DashboardComposite) e.getSource(); 
+
+				DashboardComposite dashboard = (DashboardComposite) e.getSource();
 				dashboard.mousePosX = e.x;
 				dashboard.mousePosY = e.y;
-				
+
 				SetupUI.focusOnDashboard(dashboard, e.x, e.y);
-			
+
 				mousePosX = e.x;
 				mousePosY = e.y;
 			}
@@ -535,38 +533,39 @@ public class DashboardComposite extends Dashboard {
 			});
 			controllerItems.add(mi);
 		}
-		
+
 		MenuItem addImageItem = new MenuItem(popupMenu, SWT.CASCADE);
 		addImageItem.setText("Add Image");
 		addImageItem.setImage(AbstractUIPlugin
 				.imageDescriptorFromPlugin("fzi.mottem.runtime.rtgraph", "/icons/icon-image-16.png").createImage());
-		
+
 		addImageItem.addSelectionListener(new SelectionListener() {
-			
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				WidgetRepresentation wr = new WidgetRepresentation();
 				wr.setType(Constants.WIDGET_IMAGE);
 				String result = callImageDialog();
-				if(result != null) wr.setText(result);
+				if (result != null)
+					wr.setText(result);
 				wr.setX(mousePosX);
 				wr.setY(mousePosY);
-				
-				//force image dimension when loading it for the first time
+
+				// force image dimension when loading it for the first time
 				ImageData imgData = new ImageData(result);
 				wr.setHeight(imgData.height);
 				wr.setWidth(imgData.width);
-				
+
 				addIndicatorWidget(wr);
 				SetupUI.refresh();
 			}
-			
+
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 
 			}
 		});
-		
+
 		new MenuItem(popupMenu, SWT.SEPARATOR);
 
 		MenuItem setBackgroundItem = new MenuItem(popupMenu, SWT.NONE);
@@ -574,16 +573,13 @@ public class DashboardComposite extends Dashboard {
 		setBackgroundItem.setImage(AbstractUIPlugin
 				.imageDescriptorFromPlugin("fzi.mottem.runtime.rtgraph", "/icons/folder-picture-icon.png")
 				.createImage());
-		
+
 		new MenuItem(popupMenu, SWT.SEPARATOR);
-		
+
 		openSettingsViewItem = new MenuItem(popupMenu, SWT.NONE);
 		openSettingsViewItem.setText("Open Settings View");
 		openSettingsViewItem.setImage(AbstractUIPlugin
-				.imageDescriptorFromPlugin("fzi.mottem.runtime.rtgraph", "/icons/settings-icon.png")
-				.createImage());
-		
-		
+				.imageDescriptorFromPlugin("fzi.mottem.runtime.rtgraph", "/icons/settings-icon.png").createImage());
 
 		setMenu(popupMenu);
 
@@ -591,7 +587,7 @@ public class DashboardComposite extends Dashboard {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				
+
 			}
 
 			@Override
@@ -604,7 +600,7 @@ public class DashboardComposite extends Dashboard {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				
+
 			}
 
 			@Override
@@ -625,24 +621,24 @@ public class DashboardComposite extends Dashboard {
 				// TODO Auto-generated method stub
 			}
 		});
-		
+
 		openSettingsViewItem.addSelectionListener(new SelectionListener() {
-			
+
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				ViewCoordinator.showSettingsViewpart();
 				SetupUI.focusOnDashboard(thisDC);
 			}
-			
+
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
 
 	}
-	
+
 	public String callImageDialog() {
 		Shell shell = new Shell(Display.getCurrent());
 		FileDialog dialog = new FileDialog(shell, SWT.OPEN);
@@ -654,9 +650,9 @@ public class DashboardComposite extends Dashboard {
 	}
 
 	public void callBackgroundDialog() {
-		
+
 		String result = callImageDialog();
-		
+
 		if (result != null && !representation.background_path.equals(result)) {
 			System.out.println("Dashboard: Settings background to " + result);
 			representation.background_path = result;
@@ -676,7 +672,6 @@ public class DashboardComposite extends Dashboard {
 		parent.layout(true);
 	}
 
-
 	public void startRunnables() {
 		widgetUpdater = new WidgetUpdater(widgetLinks, representation.widget_polling_delay);
 		Display.getCurrent().timerExec(0, widgetUpdater);
@@ -692,26 +687,23 @@ public class DashboardComposite extends Dashboard {
 
 	public void setName(String name) {
 		this.name = name;
-		//representation.setName(name);
-		//setDirty(true);
+		// representation.setName(name);
+		// setDirty(true);
 	}
-	
+
 	public String getName() {
 		return this.name;
 	}
-	
-/*
-	@Override
-	public void notifyObservers() {
-		for (WidgetViewObserver o : observers) {
-			o.update(this);
-		}
-	}*/
-	
+
+	/*
+	 * @Override public void notifyObservers() { for (WidgetViewObserver o :
+	 * observers) { o.update(this); } }
+	 */
+
 	private void init() {
 		setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		initContainer();
-		//addObserver(new WidgetViewObserver());
+		// addObserver(new WidgetViewObserver());
 		startRunnables();
 	}
 

@@ -374,23 +374,6 @@ public class IndicatorWidgetLink extends AbstractWidgetExchangeLink {
 		return type;
 	}
 
-	/**
-	 * 
-	 * This method should be called when the user wants to dispose of GUI widget
-	 * instance; To disconnect it from the DataExchanger, use link.drop().
-	 */
-	public void delete() {
-		canvas.dispose();
-		lws = null;
-		if (figure != null) {
-			figure.erase();
-		}
-		figure = null;
-		if (!dashboard.isDisposed() && dashboard != null) {
-			dashboard.layout(true);
-		}
-	}
-
 	@Override
 	public void consume(DEMessage message) {
 		updated = true;

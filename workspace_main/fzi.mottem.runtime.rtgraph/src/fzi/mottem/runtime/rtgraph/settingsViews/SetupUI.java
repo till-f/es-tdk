@@ -39,6 +39,8 @@ public class SetupUI {
 	private static Group ssgroup;
 
 	private static boolean isOpen;
+	
+	
 
 	private SetupUI() {
 	}
@@ -167,10 +169,11 @@ public class SetupUI {
 
 	public static void focusOnDashboard(DashboardComposite dashboard) {
 		if (isOpen()) {
-			
-			widgetSettings.setEnabled(true);
-			widgetSettings.setAndFocusDashboard(dashboard);
-			dashboardSettings.setDashboard(dashboard);
+			if(widgetSettings != null) {
+				widgetSettings.setEnabled(true);
+				widgetSettings.setAndFocusDashboard(dashboard);
+				dashboardSettings.setDashboard(dashboard);
+			}	
 		}
 	}
 
@@ -198,9 +201,15 @@ public class SetupUI {
 
 	public static void focusOnLink(AbstractWidgetExchangeLink link) {
 		if (isOpen()) {
-			widgetSettings.setEnabled(true);
 			widgetSettings.focusOnLink(link);
+			widgetSettings.setEnabled(true);
 		}
+	}
 
+	public static void deFocusWidget() {
+		if(isOpen()) {
+			widgetSettings.deFocus();
+			widgetSettings.refreshCombos();
+		}
 	}
 }

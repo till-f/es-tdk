@@ -151,8 +151,23 @@ public abstract class AbstractWidgetExchangeLink extends ExchangeLink implements
 	}
 
 	@Override
+	/**
+	 * 
+	 * This method should be called when the user wants to dispose of GUI widget
+	 * instance; To disconnect it from the DataExchanger, use link.drop().
+	 */
 	public void delete() {
-		// TODO Auto-generated method stub
+		drop();
+		canvas.dispose();
+		lws = null;
+		if (figure != null) {
+			figure.erase();
+		}
+		figure = null;
+		if (!dashboard.isDisposed() && dashboard != null) {
+			dashboard.removeWidgetLink(this);
+			dashboard.layout(true);
+		}
 	}
 
 	@Override

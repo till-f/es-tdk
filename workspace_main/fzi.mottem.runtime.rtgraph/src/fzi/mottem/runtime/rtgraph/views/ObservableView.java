@@ -11,8 +11,6 @@ public abstract class ObservableView<R> extends Composite implements IObservable
 		super(parent, style);
 	}
 	
-	//ArrayList<T> observers = new ArrayList<T>();
-	
 	boolean hasChanged;
 
 	@Override
@@ -30,20 +28,5 @@ public abstract class ObservableView<R> extends Composite implements IObservable
 		hasChanged = true;
 		//notifyObservers();
 	}
-/*
-	@Override
-	public void addObserver(T o) {
-		observers.add(o);
-	}
-
-	@Override
-	public void deleteObserver(T o) {
-		observers.remove(o);	
-	}
-
-	@Override
-	public void deleteObservers() {
-		observers.removeAll(observers);
-	}*/
 
 }

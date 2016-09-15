@@ -25,10 +25,6 @@ public class ProfileUtils {
 	static Marshaller graphViewMarshaller;
 	static Unmarshaller graphViewUnMarshaller;
 
-	private static JAXBContext profileContext;
-	private static Marshaller profileMarshaller;
-	private static Unmarshaller profileUnmarschaller;
-
 	static {
 		init();
 	}
@@ -59,44 +55,6 @@ public class ProfileUtils {
 			e.printStackTrace();
 		}
 
-	}
-
-	/**
-	 * A method that will read a GraphView representation File and delegate the
-	 * creation of a GraphView ViewPart.
-	 * 
-	 * @param representationFile
-	 *            the GraphView representation file.
-	 */
-	public static void loadGraphView(File representationFile) {
-		GraphViewRepresentation representation;
-		try {
-			try {
-				// ViewCoordinator.closeGraphViewparts();
-				try {
-					representation = (GraphViewRepresentation) graphViewUnMarshaller
-							.unmarshal(new FileReader(representationFile));
-				} catch (UnmarshalException e) {
-					representation = new GraphViewRepresentation();
-				}
-
-				representation.setPath(representationFile.getAbsolutePath());
-
-				GraphView gv = ViewCoordinator.showGraphViewpart(representationFile.getName());
-				gv.setRepresentation(representation);
-				// also applies the representation
-
-				// m.marshal(profile, System.out);
-				// success = true;
-
-			} catch (JAXBException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	public static void saveDashboardXML(DashboardRepresentation repr, String OSPath) {

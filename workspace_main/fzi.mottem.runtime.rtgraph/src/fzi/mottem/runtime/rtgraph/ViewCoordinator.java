@@ -83,6 +83,7 @@ public class ViewCoordinator {
 			page = activeWindow.getActivePage();
 			if (page != null)
 				found = (page.findViewReference(view_settings_id) != null);
+			
 		}
 
 		return found;
@@ -396,7 +397,7 @@ public class ViewCoordinator {
 			
 			if(saved) {
 				File repFile = new File(representationPath);
-				IFileStore fileStore = EFS.getLocalFileSystem().getStore(repFile.toURI());
+				
 				//IFile ifile= workspace.getRoot().getFileForLocation(location);
 				try {
 					

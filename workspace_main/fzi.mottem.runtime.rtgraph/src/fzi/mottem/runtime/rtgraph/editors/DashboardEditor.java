@@ -191,7 +191,8 @@ public class DashboardEditor extends EditorPart {
 			public void handleEvent(Event e) {
 				if (isActive) {
 					if (e.keyCode == SWT.DEL) {
-						dashboard.removeCurrentLink();
+						dashboard.getCurrent_link().delete();
+						SetupUI.deFocusWidget();
 					} //else if (e.keyCode == SWT.ESC) {
 						
 				//	}
