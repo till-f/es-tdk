@@ -62,7 +62,7 @@
             <numberFormat></numberFormat>
             <rangeHigh>75.0</rangeHigh>
             <rangeLow>25.0</rangeLow>
-            <text>C:\Git\daves\workspace_ptspec\fzi.mottem.examples.ecumotor.ptspec\img\background_roehre.png</text>
+            <text>C:\Git\es-tdk\workspace_ptspec\fzi.mottem.examples.ecumotor.ptspec\img\background_roehre.png</text>
             <widgetType>W_INDICATOR</widgetType>
         </widget>
         <widget>

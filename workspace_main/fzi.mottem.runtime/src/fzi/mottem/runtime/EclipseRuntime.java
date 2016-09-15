@@ -144,9 +144,11 @@ public abstract class EclipseRuntime implements IRuntime
 	{
 		cancelAllAsyncExecutions();
 		
+		DataExchanger.removeConsumer(_consumer);
+
 		if (SIMULATION_MODE)
 			return;
-
+		
 		for (Entry<String, AbstractAccessDriver> entry : _accessDrivers.entrySet())
 		{
 			entry.getValue().cleanup();
