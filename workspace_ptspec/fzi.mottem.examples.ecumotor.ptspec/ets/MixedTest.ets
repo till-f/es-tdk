@@ -38,16 +38,16 @@ test MixedTest_PWM : PWMIntegration
 {
     Common.bootToMain();
     
-    scope Core0 { updatePWM(); }
-    
-    realtime
+    Core0.pwm_dc = 0.0;
+
+    realtime timeout 5s
     {
-    	run Core0;
-    	run Core1;
+    	PWM0.Value:TriggerAbove = 0.5;
+
+    	Core0.updatePWM();
     }
-    plot PWMGraph
+    plot Signalverlauf
     {
-        PWM0: PWM0.Value;
+    	PWM0: PWM0.Value;
     }
-    
 }

@@ -47,7 +47,7 @@
      <LnkAdditionalOutExt></LnkAdditionalOutExt>
      <NewInvoke>0</NewInvoke>
      <PathSeparator>/</PathSeparator>
-     <RootDir>C:\Git\daves\workspace_ptspec\fzi.mottem.examples.ecumotor.impl\</RootDir>
+     <RootDir>C:\Git\es-tdk\workspace_ptspec\fzi.mottem.examples.ecumotor.impl\</RootDir>
      <RunAfterAsm></RunAfterAsm>
      <RunAfterAsmParam></RunAfterAsmParam>
      <RunAfterComp></RunAfterComp>

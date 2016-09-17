@@ -42,11 +42,7 @@ test DemoRunControlCANOnly_quiet : Demonstrator_CAN default CANPort
 		wait 1s;
 	
 		report info : "Drehzahl 0";
-		Drehzahl = 0 U⋅min⁻¹;
-		wait 1s;
-	
-		report info : "Drehzahl 1000";
-		Drehzahl = -500 U⋅min⁻¹;
+		Drehzahl = 800 U⋅min⁻¹;
 		wait 1s;
 	}
 }
