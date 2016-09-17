@@ -17,4 +17,6 @@
  	
  	unit m;
  	unit km [m = km * 1000];
+ 	
+ 	unit V;
  }

@@ -6,6 +6,7 @@
 include "pkg/Targets.ets";
 include "pkg/Units.ets";
 include "pkg/Common.ets";
+include "pkg/SignalAnalyzer.ets";
 
 /*
  * timing test for etimer00ISR()
@@ -34,20 +35,27 @@ test MixedTest_TimingISR0 : Demonstrator_PPC default Core0
 /*
  * HW / SW integration test for PWM module
  */
-test MixedTest_PWM : PWMIntegration
+test MixedTest_PWM : PWMIntegration default PWM0
 {
     Common.bootToMain();
     
-    Core0.pwm_dc = 0.0;
+    Core0.pwm_dc = 0.5;
 
     realtime timeout 5s
     {
-    	PWM0.Value:TriggerAbove = 0.5;
+    	Value:TriggerAbove = 0.1;
 
     	Core0.updatePWM();
     }
-    plot Signalverlauf
+    analyze
     {
-    	PWM0: PWM0.Value;
+    	physical[s] t0 = SignalAnalyzer.findRisingEdge(ref Value, 0 s, 0.1 V);
+    	physical[s] t1 = SignalAnalyzer.findRisingEdge(ref Value, t0, 0.1 V);
+    	physical[s] t2 = SignalAnalyzer.findRisingEdge(ref Value, t1, 0.1 V);
+    	
+	    physical[s] period = t2-t0;
+	    double duty = <double>((period-(t2-t1))/period);
+	    assert ((duty > 0.49) && (duty < 0.51)) error;
+	    assert ((period > 24us) && (period < 26us)) error;
     }
 }

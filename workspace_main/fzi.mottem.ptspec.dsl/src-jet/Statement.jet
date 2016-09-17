@@ -48,20 +48,20 @@
 		String retExpr = stm.getExpression() != null ? expressionWorker.getCodeFor(stm.getExpression()) : "";
 		if (pkgFunc.isAnalyzeFunc())
 		{
-			if (pkgFunc.getReturnDataType().getIntegralType() == PTS_EINTEGRALDATATYPE.VOID)
-			{
-%>
-<%= PTS2JavaUtil.getJavaTraceProviderName(stm) %>.popTimeStack();
-return;
-<%
-			}
-			else
-			{
+		    if (pkgFunc.getReturnDataType().isPhysicalType() || pkgFunc.getReturnDataType().getIntegralType() != PTS_EINTEGRALDATATYPE.VOID)
+		    {
 				String dTypeStr = PTS2JavaUtil.getJavaDataType(pkgFunc.getReturnDataType(), false, false);
 %>
 <%= dTypeStr %> _pts_tmp = (<%= dTypeStr %>)(<%= retExpr %>);
 <%= PTS2JavaUtil.getJavaTraceProviderName(stm) %>.popTimeStack();
 return _pts_tmp;
+<%
+		    }
+			else
+			{
+%>
+<%= PTS2JavaUtil.getJavaTraceProviderName(stm) %>.popTimeStack();
+return;
 <%
 			}
 		}
