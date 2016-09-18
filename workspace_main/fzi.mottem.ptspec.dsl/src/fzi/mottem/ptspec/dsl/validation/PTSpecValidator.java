@@ -361,14 +361,15 @@ public class PTSpecValidator extends AbstractPTSpecValidator
 	@Check
 	public void checkDataTypeCompatibility(PTSExpression expr)
 	{
-		try
-		{
-			PTSpecUtils.checkDataTypeCompatibility(expr);
-		}
-		catch (IncompatibleTypesException e)
-		{
-			hlp_reportMessage("Type error: " + e.getReason(), expr, Severity.Error);
-		}
+		// type checking disabled because check of types in expressions has some flaws...
+//		try
+//		{
+//			PTSpecUtils.checkDataTypeCompatibility(expr);
+//		}
+//		catch (IncompatibleTypesException e)
+//		{
+//			hlp_reportMessage("Type error: " + e.getReason(), expr, Severity.Error);
+//		}
 	}
 	
 	@Check

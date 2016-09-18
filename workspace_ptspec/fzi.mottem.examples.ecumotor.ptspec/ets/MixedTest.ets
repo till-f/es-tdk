@@ -40,12 +40,11 @@ test MixedTest_PWM : PWMIntegration default PWM0
     Common.bootToMain();
     
     Core0.pwm_dc = 0.5;
+   	Core0.updatePWM();
 
     realtime timeout 5s
     {
-    	Value:TriggerAbove = 0.1;
-
-    	Core0.updatePWM();
+    	Value:TriggerAbove = 0.1 V;
     }
     analyze
     {
