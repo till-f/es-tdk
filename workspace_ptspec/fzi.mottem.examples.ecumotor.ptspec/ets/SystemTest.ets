@@ -1,0 +1,28 @@
+include "pkg/Targets.ets";
+include "pkg/Units.ets";
+include "pkg/Common.ets";
+include "pkg/SignalAnalyzer.ets";
+
+test ControllerTest : Demonstrator default Core0
+{
+    Common.bootToMain();
+	
+	realtime timeout 8s
+	{
+        Core0.run_app();
+        Core1.run_app();
+        wait 1s;
+        CANPort.Drehzahl = 2000 U⋅min⁻¹;
+	}
+	analyze
+	{
+        // Finde Extremwerte der Drehzahl im Bereich
+        // 2 Sekunden bis Ende der Aufzeichnung
+		float maxRpm = SignalAnalyzer.getMaximumAfter(ref rpm, 2s);
+		float minRpm = SignalAnalyzer.getMinimumAfter(ref rpm, 2s);
+
+        // Erwartung: maximale Abweichung von Sollwert ist 50 U/min
+		assert((maxRpm - 2000) <= 50) error;
+		assert((2000 - minRpm) <= 50) error;
+	}
+}
