@@ -33,18 +33,21 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import fzi.mottem.runtime.dataexchanger.DataExchanger;
 import fzi.mottem.runtime.dataexchanger.Signal;
 import fzi.mottem.runtime.rtgraph.Constants;
 import fzi.mottem.runtime.rtgraph.SetupUnit;
 import fzi.mottem.runtime.rtgraph.TraceExchangeLink;
+import fzi.mottem.runtime.rtgraph.ViewCoordinator;
 import fzi.mottem.runtime.rtgraph.XML.GraphViewRepresentation;
 import fzi.mottem.runtime.rtgraph.XML.TraceRepresentation;
 import fzi.mottem.runtime.rtgraph.editors.GraphViewEditor;
 import fzi.mottem.runtime.rtgraph.listeners.GraphMouseWheelListener;
 import fzi.mottem.runtime.rtgraph.runnables.AutoScaler;
 import fzi.mottem.runtime.rtgraph.settingsViews.GraphSettingsUI;
+import fzi.mottem.runtime.rtgraph.settingsViews.SetupUI;
 
 public class GraphView extends ObservableView<GraphViewRepresentation> {
 
@@ -88,6 +91,7 @@ public class GraphView extends ObservableView<GraphViewRepresentation> {
 
 	private boolean dirty = false;
 	private GraphViewEditor editor;
+	private MenuItem openSettingsViewItem;
 
 	public boolean isDirty() {
 		return dirty;
@@ -543,6 +547,25 @@ public class GraphView extends ObservableView<GraphViewRepresentation> {
 			}
 		});
 		graphCanvas.setMenu(popupMenu);
+		
+		openSettingsViewItem = new MenuItem(popupMenu, SWT.NONE);
+		openSettingsViewItem.setText("Open Settings View");
+		openSettingsViewItem.setImage(AbstractUIPlugin
+				.imageDescriptorFromPlugin("fzi.mottem.runtime.rtgraph", "/icons/settings-icon.png").createImage());
+		
+		openSettingsViewItem.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				ViewCoordinator.showSettingsViewpart();
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 
 	}
 

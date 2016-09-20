@@ -10,6 +10,7 @@ import org.csstudio.swt.widgets.figures.TankFigure;
 import org.csstudio.swt.widgets.figures.ThermometerFigure;
 import org.eclipse.draw2d.LightweightSystem;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.SWTException;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
@@ -190,19 +191,41 @@ public class IndicatorWidgetLink extends AbstractWidgetExchangeLink {
 		} else if (getType() == Constants.WIDGET_IMAGE) {
 			if (text.length() > 0 && !oldtext.equals(text)) {
 				canvas.setToolTipText(text);
-
-				ImageData imgData = new ImageData(text);
-
-				this.image = new Image(Display.getCurrent(), imgData);
-
-				canvas.setBounds(representation.getX(), representation.getY(), representation.getWidth(),
-						representation.getHeight());
-						// canvas.setBackgroundImage(img);
 				
-				
-				// ((ImageFigure)figure).setImage(this.image);
-				updateCanvasImage();
+				try {
+					ImageData imgData = new ImageData(text);
+					this.image = new Image(Display.getCurrent(), imgData);
 
+					canvas.setBounds(representation.getX(), representation.getY(), representation.getWidth(),
+							representation.getHeight());
+					
+					updateCanvasImage();
+					
+				} catch (SWTException e) {
+					String result = dashboard.callImageDialog();
+					
+					if (result != null) {
+						canvas.setToolTipText(result);
+						// force image dimension when loading it for the first time
+						ImageData imgData = new ImageData(result);
+						this.image = new Image(Display.getCurrent(), imgData);
+						
+						getRepresentation().setHeight(imgData.height);
+						getRepresentation().setWidth(imgData.width);
+						getRepresentation().setText(result);
+						
+						canvas.setBounds(representation.getX(), representation.getY(), representation.getWidth(),
+								representation.getHeight());
+		
+						updateCanvasImage();
+						
+			
+					} else {
+						canvas.setBounds(representation.getX(), representation.getY(), representation.getWidth(),
+								representation.getHeight());
+						canvas.setToolTipText("Image not found!");
+					}
+				}
 			}
 		} else {
 			if (text.length() > 0) {

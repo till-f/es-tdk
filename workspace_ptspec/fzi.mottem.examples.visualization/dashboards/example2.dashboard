@@ -2,6 +2,22 @@
 <Dashboard>
     <widgetList>
         <widget>
+            <height>274</height>
+            <rangeMax>100.0</rangeMax>
+            <rangeMin>0.0</rangeMin>
+            <signalUID>-uid-</signalUID>
+            <type>6</type>
+            <width>184</width>
+            <x>586</x>
+            <y>450</y>
+            <logarithmic>false</logarithmic>
+            <numberFormat></numberFormat>
+            <rangeHigh>75.0</rangeHigh>
+            <rangeLow>25.0</rangeLow>
+            <text>C:\Work\Star_Wars.jpg</text>
+            <widgetType>W_INDICATOR</widgetType>
+        </widget>
+        <widget>
             <height>77</height>
             <rangeMax>100.0</rangeMax>
             <rangeMin>0.0</rangeMin>
@@ -133,9 +149,8 @@
     <widget_height_hint>200</widget_height_hint>
     <widget_width_hint>200</widget_width_hint>
     <widget_polling_delay>50</widget_polling_delay>
-    <background_path>/fzi/mottem/runtime/rtgraph/img/gray.jpg</background_path>
+    <background_path>C:\Work\technology-information-transfer-powerpoint-backgrounds2.jpg</background_path>
     <scale_background_x>false</scale_background_x>
     <scale_background_y>false</scale_background_y>
-    <name></name>
-    <path>C:\Git\daves\workspace_ptspec\fzi.mottem.examples.visualization\dashboards\example2.dashboard</path>
+    <path>C:\Work\FZI\git\daves\workspace_ptspec\fzi.mottem.examples.visualization\dashboards\example2.dashboard</path>
 </Dashboard>

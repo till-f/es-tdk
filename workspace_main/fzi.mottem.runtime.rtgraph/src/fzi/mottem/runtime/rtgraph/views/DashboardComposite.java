@@ -17,9 +17,12 @@ import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.graphics.PaletteData;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
@@ -161,10 +164,10 @@ public class DashboardComposite extends Dashboard {
 
 		} catch (SWTException e) {
 			// TODO Auto-generated catch block
+			
 			System.out.println("Could not load background image from " + representation.background_path);
-			setBackgroundImage(
-					new Image(Display.getCurrent(), SetupUnit.class.getResourceAsStream(Constants.gray_icon)));
-			setBackground_path(SetupUnit.class.getResource(Constants.gray_icon).getPath());
+			setEmptyBackground();
+			
 		}
 
 		generateWidgets();
@@ -572,6 +575,12 @@ public class DashboardComposite extends Dashboard {
 		setBackgroundItem.setImage(AbstractUIPlugin
 				.imageDescriptorFromPlugin("fzi.mottem.runtime.rtgraph", "/icons/folder-picture-icon.png")
 				.createImage());
+		
+		MenuItem removeBackgroundItem = new MenuItem(popupMenu, SWT.NONE);
+		removeBackgroundItem.setText("Remove Background");
+		removeBackgroundItem.setImage(AbstractUIPlugin
+				.imageDescriptorFromPlugin("fzi.mottem.runtime.rtgraph", "/icons/remove.png")
+				.createImage());
 
 		new MenuItem(popupMenu, SWT.SEPARATOR);
 
@@ -581,6 +590,21 @@ public class DashboardComposite extends Dashboard {
 				.imageDescriptorFromPlugin("fzi.mottem.runtime.rtgraph", "/icons/settings-icon.png").createImage());
 
 		setMenu(popupMenu);
+		
+		openSettingsViewItem.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				ViewCoordinator.showSettingsViewpart();
+				SetupUI.focusOnDashboard(thisDC);
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 
 		addIndicatorItem.addSelectionListener(new SelectionListener() {
 
@@ -620,24 +644,36 @@ public class DashboardComposite extends Dashboard {
 				// TODO Auto-generated method stub
 			}
 		});
-
-		openSettingsViewItem.addSelectionListener(new SelectionListener() {
+		
+		removeBackgroundItem.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				ViewCoordinator.showSettingsViewpart();
-				SetupUI.focusOnDashboard(thisDC);
+				representation.background_path = "";
+				setEmptyBackground();
+				layout(true);
+				setDirty(true);
 			}
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
-
 			}
 		});
+		
 
 	}
-
+	
+	private void setEmptyBackground() {
+		Display display = Display.getCurrent();
+		
+	    Color gray = display.getSystemColor(SWT.COLOR_GRAY);
+	    bg_image = null;		
+	    setBackgroundImage(null);
+	    setBackground(gray);
+	    
+	}
+	
 	public String callImageDialog() {
 		Shell shell = new Shell(Display.getCurrent());
 		FileDialog dialog = new FileDialog(shell, SWT.OPEN);
