@@ -24,9 +24,9 @@ public class SettingsViewPart extends ViewPart {
 		
 		mainHolder.setSize(800, 800);
 		
-		SetupUnit.presentSetupUI(mainHolder);	
+		SetupUI.makeUI(mainHolder);
+		SetupUI.refresh();
 		SetupUI.setOpen(true);
-		
 		
 	}
 

@@ -39,6 +39,7 @@ import fzi.mottem.runtime.dataexchanger.DataExchanger;
 import fzi.mottem.runtime.rtgraph.Constants;
 import fzi.mottem.runtime.rtgraph.SQLiteTraceReader;
 import fzi.mottem.runtime.rtgraph.TraceExchangeLink;
+import fzi.mottem.runtime.rtgraph.ViewCoordinator;
 import fzi.mottem.runtime.rtgraph.XML.GraphViewRepresentation;
 import fzi.mottem.runtime.rtgraph.XML.ProfileUtils;
 import fzi.mottem.runtime.rtgraph.commands.CreateDBOptions;
@@ -166,6 +167,9 @@ public class GraphViewEditor extends EditorPart {
 				}
 			}
 		});
+		
+		view.setDirty(false);
+		ViewCoordinator.showSettingsViewpart();
 	}
 
 	private void initializeMainHolder(Composite parent) {
