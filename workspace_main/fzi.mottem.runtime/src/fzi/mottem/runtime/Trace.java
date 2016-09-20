@@ -522,7 +522,7 @@ public class Trace implements ITrace
 		if(milliSeconds < 0)
 			return;
 		
-		Double target = _timeStamp + Math.round(milliSeconds);
+		Double target = _timeStamp + milliSeconds;
 		_timeStamp = target;
 	}
 
