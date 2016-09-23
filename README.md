@@ -1,22 +1,22 @@
 Introduction
 ============
 
-The Embedded Software Test Development Kit (see www.es-tdk.org) eases the implementation of test for
+The Embedded Software Test Development Kit (see www.es-tdk.org) eases the implementation of tests for
 embedded software. It focuses on C-code and can be used like a unit test framework, but also supports
 advanced test scenarios for embedded systems including timing analysis and Hardware-in-the-Loop (HiL) 
-testing. The ES TDK comes with a new test programming language called ETSpec providing a consistent
-view on heterogeneous test environments.
+tests. The ES TDK comes with a new test programming language called ETSpec providing a consistent view
+on heterogeneous test environments.
 
-The tested software is executed on the real device. Test execution is controlled and the behavior 
-is observed using the debug and trace interfaces of the processor hardware. In principle any 
-microcontroller is supported (especially multicore controllers). Aggregation of data obtained from 
-different targets and other sources (communication networks, analog signals, simulated environment) 
-is also supported. The ES TDK is independent of any operating system and does not require any 
-software support on the target device.
+The tested software is executed on the real device. Test execution is controlled and the behavior is 
+observed using the debug and trace interfaces of the processor hardware. In principle any microcontroller
+is supported (especially multicore controllers). Aggregation of data obtained from different targets and
+other sources (communication networks, analog signals, simulated environment) is also supported. The ES
+TDK is independent of the operating system used on the target and does not require target-side software
+support.
 
-The first version of the language was called "PTSpec" and has been developed in the research project
-"MoTTeM" (www.mottem.fzi.de) funded by the BMWI (German Federal Ministry for Economic Affairs). This
-explains the occurence of the phrases "pts", "ptspec" and "mottem" in the source code.
+The idea of this project was developed in the research project "MoTTeM" (www.mottem.fzi.de) funded by the
+BMWI (German Federal Ministry for Economic Affairs). This explains the occurence of the phrases "mottem" at
+some places (this should be changed in the future).
 
 
 Main Folders
