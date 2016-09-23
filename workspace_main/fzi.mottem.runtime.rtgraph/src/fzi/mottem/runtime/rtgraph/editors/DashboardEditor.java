@@ -23,6 +23,7 @@ import org.eclipse.ui.part.EditorPart;
 import org.eclipse.ui.part.FileEditorInput;
 
 import fzi.mottem.runtime.rtgraph.Constants;
+import fzi.mottem.runtime.rtgraph.ViewCoordinator;
 import fzi.mottem.runtime.rtgraph.XML.DashboardRepresentation;
 import fzi.mottem.runtime.rtgraph.XML.ProfileUtils;
 import fzi.mottem.runtime.rtgraph.settingsViews.SetupUI;
@@ -204,6 +205,7 @@ public class DashboardEditor extends EditorPart {
 		
 		display.addFilter(SWT.KeyDown, keyListener);
 		dashboard.setDirty(false);
+		ViewCoordinator.showSettingsViewpart();
 	}
 	
 	private void setName(String name) {

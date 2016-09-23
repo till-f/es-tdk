@@ -109,21 +109,10 @@ public class SetupUI {
 		SetupUnit.refreshSignals();
 	}
 
-	public static void makeUI(boolean applicationTest, Composite parent) {
-
+	public static void makeUI(Composite parent) {
 		shell = parent;
 		initShell();
-
 		refresh();
-		if (applicationTest) {
-			Display display = Display.getCurrent();
-			while (!shell.isDisposed()) {
-				if (!display.readAndDispatch())
-					display.sleep();
-			}
-			display.dispose();
-		}
-
 	}
 
 	public static void deSelect() {

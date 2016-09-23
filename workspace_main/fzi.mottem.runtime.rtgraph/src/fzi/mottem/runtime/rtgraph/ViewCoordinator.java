@@ -56,14 +56,14 @@ public class ViewCoordinator {
 		final IWorkbenchWindow activeWindow;
 		activeWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 		page = activeWindow.getActivePage();
-		if (page.findViewReference(view_settings_id) == null) {
+		//if (page.findViewReference(view_settings_id) == null) {
 			try {
 				page.showView(view_settings_id);
 			} catch (PartInitException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		//}
 	}
 
 	/**

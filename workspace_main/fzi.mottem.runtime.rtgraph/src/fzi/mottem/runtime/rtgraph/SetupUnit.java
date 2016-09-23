@@ -90,6 +90,7 @@ public class SetupUnit {
 	}
 
 	private SetupUnit() {
+		
 	}
 	
 
@@ -198,13 +199,6 @@ public class SetupUnit {
 		for (int i = 0; i < graphViews.size(); i++) {
 			graphViews.get(i).registerLinks();
 		}
-	}
-
-	public static void presentSetupUI(Composite parent) {
-		// TODO Fix this! SetupUnit should not be initialized and setupUI
-		// should not be dependent on a SetupUnit object! almost fixed
-		SetupUI.makeUI(testMode, parent);
-		SetupUI.refresh();
 	}
 
 	public static void disconnectWidgetLink(IndicatorWidgetLink link) {
