@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GraphView>
+    <traceList>
+        <trace>
+            <blue>26</blue>
+            <bufferSize>16384</bufferSize>
+            <green>26</green>
+            <logarithmic>false</logarithmic>
+            <max_range>100.0</max_range>
+            <min_range>0.0</min_range>
+            <name>Drehzahl_Messung</name>
+            <pointStyle>POINT</pointStyle>
+            <pollingDelay>10</pollingDelay>
+            <red>242</red>
+            <signalUID>/fzi.mottem.examples.ecumotor.ptspec/model/CAN.etm-dstream/+R[B@1e0fe174</signalUID>
+            <traceName>Drehzahl_Messung</traceName>
+            <type>SOLID_LINE</type>
+        </trace>
+    </traceList>
+    <maxPrimaryXrange>7.37309374479E11</maxPrimaryXrange>
+    <minPrimaryXrange>-7.37309071763E11</minPrimaryXrange>
+    <path>C:\Git\es-tdk\workspace_ptspec\fzi.mottem.examples.ecumotor.ptspec\dasboards\rt-trace.graphview</path>
+    <primaryXLogarithmic>false</primaryXLogarithmic>
+</GraphView>

@@ -2,35 +2,35 @@
 <Dashboard>
     <widgetList>
         <widget>
-            <height>21</height>
-            <rangeMax>100.0</rangeMax>
-            <rangeMin>0.0</rangeMin>
-            <signalUID>-uid-</signalUID>
-            <type>5</type>
-            <width>160</width>
-            <x>301</x>
-            <y>208</y>
-            <logarithmic>false</logarithmic>
-            <numberFormat></numberFormat>
-            <rangeHigh>75.0</rangeHigh>
-            <rangeLow>25.0</rangeLow>
-            <text>Ist</text>
-            <widgetType>W_INDICATOR</widgetType>
-        </widget>
-        <widget>
             <height>19</height>
             <rangeMax>100.0</rangeMax>
             <rangeMin>0.0</rangeMin>
             <signalUID>-uid-</signalUID>
             <type>5</type>
-            <width>122</width>
-            <x>18</x>
-            <y>205</y>
+            <width>92</width>
+            <x>36</x>
+            <y>482</y>
             <logarithmic>false</logarithmic>
             <numberFormat></numberFormat>
             <rangeHigh>75.0</rangeHigh>
             <rangeLow>25.0</rangeLow>
-            <text>Soll</text>
+            <text>temperature</text>
+            <widgetType>W_INDICATOR</widgetType>
+        </widget>
+        <widget>
+            <height>207</height>
+            <rangeMax>100.0</rangeMax>
+            <rangeMin>0.0</rangeMin>
+            <signalUID>-uid-</signalUID>
+            <type>0</type>
+            <width>130</width>
+            <x>13</x>
+            <y>261</y>
+            <logarithmic>false</logarithmic>
+            <numberFormat></numberFormat>
+            <rangeHigh>75.0</rangeHigh>
+            <rangeLow>25.0</rangeLow>
+            <text></text>
             <widgetType>W_INDICATOR</widgetType>
         </widget>
         <widget>
@@ -40,8 +40,8 @@
             <signalUID>/fzi.mottem.examples.ecumotor.ptspec/model/CAN.etm-dstream/+R[B@1e0fe174</signalUID>
             <type>1</type>
             <width>163</width>
-            <x>299</x>
-            <y>238</y>
+            <x>166</x>
+            <y>64</y>
             <logarithmic>false</logarithmic>
             <numberFormat></numberFormat>
             <rangeHigh>3000.0</rangeHigh>
@@ -50,19 +50,35 @@
             <widgetType>W_INDICATOR</widgetType>
         </widget>
         <widget>
-            <height>172</height>
+            <height>19</height>
             <rangeMax>100.0</rangeMax>
             <rangeMin>0.0</rangeMin>
             <signalUID>-uid-</signalUID>
-            <type>6</type>
-            <width>368</width>
-            <x>57</x>
-            <y>18</y>
+            <type>5</type>
+            <width>66</width>
+            <x>48</x>
+            <y>12</y>
             <logarithmic>false</logarithmic>
             <numberFormat></numberFormat>
             <rangeHigh>75.0</rangeHigh>
             <rangeLow>25.0</rangeLow>
-            <text>C:\Git\es-tdk\workspace_ptspec\fzi.mottem.examples.ecumotor.ptspec\img\background_roehre.png</text>
+            <text>desired</text>
+            <widgetType>W_INDICATOR</widgetType>
+        </widget>
+        <widget>
+            <height>20</height>
+            <rangeMax>100.0</rangeMax>
+            <rangeMin>0.0</rangeMin>
+            <signalUID>-uid-</signalUID>
+            <type>5</type>
+            <width>95</width>
+            <x>201</x>
+            <y>36</y>
+            <logarithmic>false</logarithmic>
+            <numberFormat></numberFormat>
+            <rangeHigh>75.0</rangeHigh>
+            <rangeLow>25.0</rangeLow>
+            <text>measurement</text>
             <widgetType>W_INDICATOR</widgetType>
         </widget>
         <widget>
@@ -72,8 +88,8 @@
             <signalUID>/fzi.mottem.examples.ecumotor.ptspec/model/CAN.etm-dstream/__JhkAOyTEeOrd4av19tOtw</signalUID>
             <type>1</type>
             <width>124</width>
-            <x>17</x>
-            <y>228</y>
+            <x>13</x>
+            <y>38</y>
             <logarithmic>false</logarithmic>
             <numberFormat></numberFormat>
             <rangeHigh>3000.0</rangeHigh>
@@ -85,8 +101,8 @@
     <widget_height_hint>200</widget_height_hint>
     <widget_width_hint>200</widget_width_hint>
     <widget_polling_delay>50</widget_polling_delay>
-    <background_path>/fzi/mottem/runtime/rtgraph/img/gray.jpg</background_path>
+    <background_path>C:\Git\es-tdk\workspace_ptspec\fzi.mottem.examples.ecumotor.ptspec\img\background_gray.png</background_path>
     <scale_background_x>false</scale_background_x>
     <scale_background_y>false</scale_background_y>
-    <path>C:\Git\daves\workspace_ptspec\fzi.mottem.examples.ecumotor.ptspec\dasboards\Visualization.dashboard</path>
+    <path>C:\Git\es-tdk\workspace_ptspec\fzi.mottem.examples.ecumotor.ptspec\dasboards\Visualization.dashboard</path>
 </Dashboard>
