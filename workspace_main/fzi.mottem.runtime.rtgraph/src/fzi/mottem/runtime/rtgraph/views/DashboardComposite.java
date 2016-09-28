@@ -11,6 +11,7 @@ import org.csstudio.swt.widgets.figures.ScaledSliderFigure;
 import org.csstudio.swt.widgets.figures.TankFigure;
 import org.csstudio.swt.widgets.figures.ThermometerFigure;
 import org.csstudio.swt.xygraph.util.XYGraphMediaFactory;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTException;
 import org.eclipse.swt.events.MouseEvent;
@@ -96,6 +97,7 @@ public class DashboardComposite extends Dashboard {
 			
 			
 			widgetLinks.remove(link);
+			
 			if (current_widget.equals(link)) {
 				if (widgetLinks.size() > 0) {
 					current_widget = widgetLinks.get(0);
@@ -104,7 +106,9 @@ public class DashboardComposite extends Dashboard {
 				}
 			}
 			link = null;
-			System.out.println("Link removed : " + link);
+			//System.out.println("Link removed : " + link);
+			setDirty(true);
+			
 			// SetupUI.resetCurrentLink(); //uncomment if you need automatic
 			// link selection after removal
 		}
@@ -679,7 +683,7 @@ public class DashboardComposite extends Dashboard {
 		FileDialog dialog = new FileDialog(shell, SWT.OPEN);
 		dialog.setFilterExtensions(new String[] { "*.*", "*.jpg", "*.gif", "*.png", "*.jpeg", "*.bmp" });
 
-		dialog.setFilterPath("c:\\");
+		dialog.setFilterPath(Platform.getLocation().toOSString());
 		String result = dialog.open();
 		return result;
 	}

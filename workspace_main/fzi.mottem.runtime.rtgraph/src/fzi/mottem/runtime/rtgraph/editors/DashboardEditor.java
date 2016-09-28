@@ -192,20 +192,23 @@ public class DashboardEditor extends EditorPart {
 			public void handleEvent(Event e) {
 				if (isActive) {
 					if (e.keyCode == SWT.DEL) {
-						dashboard.getCurrent_link().delete();
-						SetupUI.deFocusWidget();
+						if(dashboard.getCurrent_link() != null) {
+							dashboard.getCurrent_link().delete(); 
+							SetupUI.deFocusWidget();	
+						}
 					} //else if (e.keyCode == SWT.ESC) {
-						
 				//	}
 				}
 			}
 		};
 		
-
-		
 		display.addFilter(SWT.KeyDown, keyListener);
 		dashboard.setDirty(false);
-		ViewCoordinator.showSettingsViewpart();
+		if(SetupUI.isOpen()) { //only activate the settings view if it is 
+			//already is created
+			ViewCoordinator.showSettingsViewpart();
+		}
+		
 	}
 	
 	private void setName(String name) {
