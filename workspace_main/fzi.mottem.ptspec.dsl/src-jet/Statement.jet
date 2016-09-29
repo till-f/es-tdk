@@ -417,6 +417,7 @@ if (!(<%= expressionWorker.getCodeFor(stm.getExpression()) %>))
 		, "<%= stm.eResource().getURI().toString() %>"
 		, <%= NodeModelUtils.findActualNodeFor(stm).getOffset() %>
 		, <%= NodeModelUtils.findActualNodeFor(stm).getLength() %>
+		, <%= NodeModelUtils.findActualNodeFor(stm).getStartLine() %>
 		, "<%= PTSCompilerUtil.getStringCompatibleOriginalSyntax(stm.getExpression()) %>"
 		, <%= stm.getSeverity().getValue() %>
 		<%= stm.getMessageExpr() != null ? ", " + expressionWorker.getCodeFor(stm.getMessageExpr()) : "" %>
@@ -438,6 +439,7 @@ if (!(<%= expressionWorker.getCodeFor(stm.getExpression()) %>))
 		, "<%= stm.eResource().getURI().toString() %>"
 		, <%= NodeModelUtils.findActualNodeFor(stm).getOffset() %>
 		, <%= NodeModelUtils.findActualNodeFor(stm).getLength() %>
+		, <%= NodeModelUtils.findActualNodeFor(stm).getStartLine() %>
 		, <%= stm.getSeverity().getValue() %>
 		<%= stm.getMessageExpr() != null ? ", " + expressionWorker.getCodeFor(stm.getMessageExpr()) : "" %>
 		<%= stm.getContextExpr() != null ? ", " + expressionWorker.getCodeFor(stm.getContextExpr()) : "" %>);

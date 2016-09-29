@@ -29,7 +29,7 @@ import fzi.util.ecore.EcoreUtils;
 
 public class OpenFileCommand {
 
-	public static void open(String fileStr, int line)
+	public static void open(String fileStr, int offset, int length)
 	{
 		IWorkspaceRoot myWorkspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
 		IWorkbench wb = PlatformUI.getWorkbench();
@@ -54,7 +54,7 @@ public class OpenFileCommand {
 		try
 		{
 			IEditorPart editorpart = page.openEditor(new FileEditorInput(file), desc.getId());
-			revealInEditor(editorpart, line, 6);
+			revealInEditor(editorpart, offset, length);
 		}
 		catch (PartInitException e)
 		{

@@ -6,14 +6,18 @@ class ProblemsComparator implements Comparator<Object> {
 	
 	  public static final int DATE = 0;
 
-	  public static final int FILEPATH = 1;
+	  public static final int MESSAGE = 1;
 
-	  public static final int LINE = 2;
+	  public static final int SEVERITY = 2;
 	  
-	  public static final int MESSAGE = 3;
+	  public static final int FILEPATH = 3;
 	  
-	  public static final int TYPE = 4;
+	  public static final int LINENUMBER = 4;
 
+	  public static final int OFFSET = 5;
+
+	  public static final int LENGTH = 6;
+	  
 	  /** Constant for ascending */
 	  public static final int ASCENDING = 0;
 
@@ -45,16 +49,16 @@ class ProblemsComparator implements Comparator<Object> {
 	    	  rc = (p1.getArrivalInd() < p2.getArrivalInd()) ? -1 : 1;
 	      }
 	      break;
-	    case FILEPATH:
+	    case MESSAGE:
 	      rc = p1.getFilepath().compareTo(p2.getFilepath());
 	      break;
-	    case LINE:
+	    case SEVERITY:
 	      rc = (p1.getLine() < p2.getLine()) ? -1 : 1;
 	      break;
-	    case MESSAGE:
+	    case FILEPATH:
 	      rc = p1.getMessage().compareTo(p2.getMessage());
 	      break;
-	    case TYPE: 
+	    case LINENUMBER: 
 	    	rc = p1.getType().compareTo(p2.getType());
 	    	break;
 	    }

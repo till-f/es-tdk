@@ -6,16 +6,20 @@ public abstract class ProblemEvent {
 
 	private String date;
 	private String message;
+	private int offset;
+	private int length;
 	private int line;
 	private String filepath;
 	private Color clr;
 	private int arrivalInd;
 	private String type;
 	
-	public ProblemEvent(String date, int arrivalInd, String filepath, int line, String message, Color clrnum, String type) {
+	public ProblemEvent(String date, int arrivalInd, String filepath, int offset, int length, int line, String message, Color clrnum, String type) {
 		this.date = date;
 		this.arrivalInd = arrivalInd;
 		this.filepath = filepath;
+		this.offset = offset;
+		this.length = length;
 		this.line = line;
 		this.message = message;
 		this.type = type;
@@ -27,6 +31,12 @@ public abstract class ProblemEvent {
 	}
 	public String getMessage() {
 		return message;
+	}
+	public int getOffset() {
+		return offset;
+	}
+	public int getLength() {
+		return length;
 	}
 	public int getLine() {
 		return line;

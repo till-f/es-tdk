@@ -4,7 +4,7 @@
  */
 test LogTest
 {
-	for (int32 i=0; i<100; i+=1)
+	for (int32 i=0; i<20; i+=1)
 	{
 		wait 100;
 		report info: "test " + i;

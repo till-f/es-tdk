@@ -65,7 +65,7 @@ td, th {
 %>
 	<h1><img src="<%=pathToImage%>"> Test <%= test.getName() %></h1>
 
-	<p style="font-size: 14px; font-family: Arial, Helvetica, sans-serif;"> Link to source: <a href="../pts/<%=filename%>"><%= test.getProject() %>/pts/<%=filename %>/<%=test.getName() %></a></p>
+	<p style="font-size: 14px; font-family: Arial, Helvetica, sans-serif;"> Source file: <%= test.getSourceFileUri() %></p>
 	
 	<h2>Message Statistic</h2>
 
@@ -116,7 +116,7 @@ td, th {
 				<th width=80>State</th>
 				<th width=80>Timestamp</th>
 				<th width=300>Message</th>
-				<th width=80>Offset</th>
+				<th width=80>Line</th>
 			</tr>
 		
 			<% for (IReportMessage rm: test.getReportMessages()) { %>
@@ -135,7 +135,7 @@ td, th {
 				<% } %>
 				<td> <%= rm.getTimestamp() %> </td>
 				<td> <%= rm.getMessage() %> </td>
-				<td> <%= rm.getOffset() %> </td>
+				<td> <%= rm.getLine() %> </td>
 			</tr>
 			<% } %>
 		</tbody>
@@ -152,7 +152,7 @@ td, th {
 				<th width=80>Timestamp</th>
 				<th width=300>Expression</th>
 				<th width=300>Message</th>
-				<th width=80>Offset</th>
+				<th width=80>Line</th>
 			</tr>
 
 			<% for (IFailedAssertion fa : test.getFailedAssertions()) { %>
@@ -172,7 +172,7 @@ td, th {
 				<td> <%= fa.getTimestamp() %> </td>
 				<td> <%= fa.getPtsCode() %> </td>
 				<td> <%= fa.getMessage() %> </td>
-				<td> <%= fa.getOffset() %> </td>
+				<td> <%= fa.getLine() %> </td>
 			</tr>
 			<% } %>
 

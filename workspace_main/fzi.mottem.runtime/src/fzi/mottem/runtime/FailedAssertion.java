@@ -10,17 +10,19 @@ public class FailedAssertion implements IFailedAssertion
 	String _timestamp;
 	int _offset;
 	int _length;
+	int _lineNr;
 	String _ptsCode;
 	String _message;
 	Object _context;
 	PTS_ESEVERITY _severity;
 	
-	public FailedAssertion(String timestamp,String sourceEcoreURI, int offset, int length, String ptsCode, PTS_ESEVERITY severity, String message, Object context)
+	public FailedAssertion(String timestamp,String sourceEcoreURI, int offset, int length, int lineNr, String ptsCode, PTS_ESEVERITY severity, String message, Object context)
 	{
 		_timestamp = timestamp;
 		_sourceEcoreURI = sourceEcoreURI;
 		_offset = offset;
 		_length = length;
+		_lineNr = lineNr;
 		_ptsCode = ptsCode;
 		_message = message;
 		_context = context;
@@ -50,6 +52,11 @@ public class FailedAssertion implements IFailedAssertion
 	@Override
 	public int getLength() {
 		return _length;
+	}
+	
+	@Override
+	public int getLine() {
+		return _lineNr;
 	}
 	
 	@Override 

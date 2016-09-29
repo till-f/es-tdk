@@ -216,19 +216,19 @@ public abstract class EclipseRuntime implements IRuntime
 	// Logging
 	
 	@Override
-	public void assertionFailed(IReportSource test, String sourceEcoreURI, int offset, int length, String ptsCode, int severity)
+	public void assertionFailed(IReportSource test, String sourceEcoreURI, int offset, int length, int lineNr, String ptsCode, int severity)
 	{
-		assertionFailed(test, sourceEcoreURI, offset, length, ptsCode, severity, null);
+		assertionFailed(test, sourceEcoreURI, offset, length, lineNr, ptsCode, severity, null);
 	}
 
 	@Override
-	public void assertionFailed(IReportSource test, String sourceEcoreURI, int offset, int length, String ptsCode, int severity, String message)
+	public void assertionFailed(IReportSource test, String sourceEcoreURI, int offset, int length, int lineNr, String ptsCode, int severity, String message)
 	{
-		assertionFailed(test, sourceEcoreURI, offset, length, ptsCode, severity, message, null);
+		assertionFailed(test, sourceEcoreURI, offset, length, lineNr, ptsCode, severity, message, null);
 	}
 
 	@Override
-	public void assertionFailed(IReportSource test, String sourceEcoreURI, int offset, int length, String ptsCode, int severity, String message, Object context)
+	public void assertionFailed(IReportSource test, String sourceEcoreURI, int offset, int length, int lineNr, String ptsCode, int severity, String message, Object context)
 	{
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 		Date date = new Date();
@@ -236,22 +236,22 @@ public abstract class EclipseRuntime implements IRuntime
 		if (message == null)
 			message = "";
 		
-		FailedAssertion fa = new FailedAssertion(dateFormat.format(date),sourceEcoreURI, offset, length, ptsCode, PTS_ESEVERITY.get(severity), message, context);
+		FailedAssertion fa = new FailedAssertion(dateFormat.format(date),sourceEcoreURI, offset, length, lineNr, ptsCode, PTS_ESEVERITY.get(severity), message, context);
 
 		if (test instanceof ITest) 
 			((ITest)test).addFailedAssertion(fa);
 
-		printPTSpecLog(PTS_ESEVERITY.get(severity), sourceEcoreURI, offset, length, message);
+		printPTSpecLog(PTS_ESEVERITY.get(severity), sourceEcoreURI, offset, lineNr, length, message);
 	}
 
 	@Override
-	public void report(IReportSource test, String sourceEcoreURI, int offset, int length, int severity, String message)
+	public void report(IReportSource test, String sourceEcoreURI, int offset, int length, int lineNr, int severity, String message)
 	{
-		report(test, sourceEcoreURI, offset, length, severity, message, null);
+		report(test, sourceEcoreURI, offset, length, lineNr, severity, message, null);
 	}
 
 	@Override
-	public void report(IReportSource test, String sourceEcoreURI, int offset, int length, int severity, String message, Object context)
+	public void report(IReportSource test, String sourceEcoreURI, int offset, int length, int lineNr, int severity, String message, Object context)
 	{
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 		Date date = new Date();
@@ -259,22 +259,20 @@ public abstract class EclipseRuntime implements IRuntime
 		if (message == null)
 			message = "";
 		
-		ReportMessage rm = new ReportMessage(dateFormat.format(date), sourceEcoreURI, offset, length, PTS_ESEVERITY.get(severity), message, context);
+		ReportMessage rm = new ReportMessage(dateFormat.format(date), sourceEcoreURI, offset, length, lineNr, PTS_ESEVERITY.get(severity), message, context);
 		
 		if (test instanceof ITest)
 			((ITest)test).addReportMessage(rm);
 
-		printPTSpecLog(PTS_ESEVERITY.get(severity), sourceEcoreURI, offset, length, message);
+		printPTSpecLog(PTS_ESEVERITY.get(severity), sourceEcoreURI, offset, length, lineNr, message);
 	}
 
-	public void printPTSpecLog(PTS_ESEVERITY severity, String sourceEcoreURI, int offset, int length, String message)
+	public void printPTSpecLog(PTS_ESEVERITY severity, String sourceEcoreURI, int offset, int length, int lineNr, String message)
 	{
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 		Date date = new Date();
-		if (ProblemsView.isActive()) {
-			ProblemsView.addProblem(severity, dateFormat.format(date),sourceEcoreURI, offset, message);
-		}
-		
+		ProblemsView.addProblem(severity, dateFormat.format(date),sourceEcoreURI, offset, length, lineNr, message);
+		//PTSpecConsole.getInstance().println_background(str);
 	}
 	
 

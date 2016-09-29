@@ -8,17 +8,19 @@ public class ReportMessage implements IReportMessage
 	String _sourceEcoreURI;
 	int _offset;
 	int _length;
+	int _lineNr;
 	String _message;
 	Object _context;
 	String _timestamp;
 	PTS_ESEVERITY _severity;
 	
-	public ReportMessage(String timestamp, String sourceEcoreURI, int offset, int length, PTS_ESEVERITY severity, String message, Object context)
+	public ReportMessage(String timestamp, String sourceEcoreURI, int offset, int length, int lineNr, PTS_ESEVERITY severity, String message, Object context)
 	{
 		_timestamp = timestamp;
 		_sourceEcoreURI = sourceEcoreURI;
 		_offset = offset;
 		_length = length;
+		_lineNr = lineNr;
 		_message = message;
 		_context = context;
 		_severity = severity;
@@ -39,6 +41,11 @@ public class ReportMessage implements IReportMessage
 		return _length;
 	}
 
+	@Override
+	public int getLine() {
+		return _lineNr;
+	}
+	
 	@Override
 	public String getMessage() {
 		return _message;

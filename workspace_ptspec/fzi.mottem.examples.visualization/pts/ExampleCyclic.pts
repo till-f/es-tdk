@@ -30,8 +30,3 @@ test ExampleCyclicDummy
 		wait 100 ms;
 	}
 }
-
-test Bla
-{
-	
-}

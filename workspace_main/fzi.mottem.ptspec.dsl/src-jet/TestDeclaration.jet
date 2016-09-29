@@ -65,6 +65,7 @@ public class <%= className %> extends AbstractTest
 	private final String SOURCE_FILE_URI = "<%= testUri.toPlatformString(true) %>";
 	private final int    SOURCE_OFFEST   = <%= NodeModelUtils.findActualNodeFor(testDeclaration).getOffset() %>;
 	private final int    SOURCE_LENGTH   = <%= NodeModelUtils.findActualNodeFor(testDeclaration).getLength() %>;
+	private final int    SOURCE_LINE     = <%= NodeModelUtils.findActualNodeFor(testDeclaration).getStartLine() %>;
 
 	// Access provider for runtime
 	private final IRuntime <%= PTS2JavaUtil.RUNTIME_INSTANCE_NAME %>;
@@ -138,7 +139,7 @@ public class <%= className %> extends AbstractTest
 		}
 		catch (ExecutionInterruptedException e)
 		{
-			<%= PTS2JavaUtil.RUNTIME_INSTANCE_NAME %>.report(this, "<%= testUri.toString() %>", SOURCE_OFFEST, SOURCE_LENGTH, <%= PTS_ESEVERITY.WARNING_VALUE %>, "Cancelation of test execution requested");
+			<%= PTS2JavaUtil.RUNTIME_INSTANCE_NAME %>.report(this, "<%= testUri.toString() %>", SOURCE_OFFEST, SOURCE_LENGTH, SOURCE_LINE, <%= PTS_ESEVERITY.WARNING_VALUE %>, "Cancelation of test execution requested");
 			return;
 		}
 	}
