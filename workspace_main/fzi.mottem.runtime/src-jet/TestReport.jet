@@ -60,8 +60,6 @@ td, th {
 
 <% 
 	String pathToImage = ReportHelper.getSeverityImagePath(test);
-	String[] path = test.getSourceFileUri().split("/");
-	String filename = path[path.length-1];
 %>
 	<h1><img src="<%=pathToImage%>"> Test <%= test.getName() %></h1>
 

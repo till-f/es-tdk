@@ -94,10 +94,10 @@ Example Applications
 The source code for two example applications (target code) is included in this project.
 To build and run these examples specific hardware and software is required.
 
-* The "raupe" example consists of two STM32F4 micro controllers communicating over CAN. They are
+* The "raupe" example targets two STM32F4 micro controllers communicating over CAN. They are
   assembled on a crawler vehicle. One STM32F4 controls the speed, the other measures the distance
   to an obstacle ahead of the vehicle using an IR sensor.
-* The "ecumotor" example consists of one MPC5643L micro controller with two processor cores. One core
+* The "ecumotor" example targets an MPC5643L micro controller with two processor cores. One core
   contains a realtime critical control algorithm for a brushless DC motor (reading hall sensors,
   commutation), the other core is responsible for CAN communication.
 
