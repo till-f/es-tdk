@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
@@ -152,5 +153,22 @@ public class IntegrationUtils
 	{
 		IWorkspace ws = ResourcesPlugin.getWorkspace();
 		return ws.getRoot().getLocation().append(workspacePath);
+	}
+	
+	public static void checkAndcreateFolder(IFolder folder)
+	{
+		if (!folder.exists())
+		{
+			try
+			{
+				folder.create(true, true, null);
+			}
+			catch (CoreException e)
+			{
+				if (!folder.exists())
+					throw new RuntimeException("Could not create output folder for geneated sources");
+			}
+			while (!folder.exists());
+		}
 	}
 }

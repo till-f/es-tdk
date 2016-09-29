@@ -10,6 +10,7 @@ import org.eclipse.core.runtime.IPath;
 import fzi.mottem.jjet.interfaces.IJJETCompiler;
 import fzi.mottem.jjet.interfaces.IJJETContext;
 import fzi.mottem.jjet.interfaces.IJJETTemplate;
+import fzi.util.eclipse.IntegrationUtils;
 
 /*
  * This provides custom context information (can be seen as replacement of JET2Context).
@@ -71,37 +72,19 @@ public class JJETContext implements IJJETContext
 			throw new RuntimeException("JJETContext.setOutputFile() must not be called more than once");
 		
 		if (_compiler.getBaseFolder() == null)
-			throw new RuntimeException("JJETContext.setOutputFile() requires baseFilder in Compiler");
+			throw new RuntimeException("JJETContext.setOutputFile() requires baseFolder of compiler being set");
 		
 		IFolder folder = _compiler.getBaseFolder();
 
-		try
-		{
-			if (!folder.exists())
-				folder.create(true, true, null);
-	
-			for (String subFolder : path.segments())
-			{
-				folder = folder.getFolder(subFolder);
-				
-				if (!folder.exists())
-				{
-					try
-					{
-						folder.create(false, true, null);
-					}
-					catch(CoreException e)
-					{
-						// silently ignore if folder cannot be created
-					}
-				}
+		IntegrationUtils.checkAndcreateFolder(folder);
 
-				getCompiler().resourceGenerated(folder);
-			}
-		}
-		catch (CoreException e)
+		for (String subFolder : path.segments())
 		{
-			e.printStackTrace();
+			folder = folder.getFolder(subFolder);
+			
+			IntegrationUtils.checkAndcreateFolder(folder);
+
+			getCompiler().resourceGenerated(folder);
 		}
 		
 		_outFile = folder.getFile(name);

@@ -35,14 +35,16 @@ Primary Requirements
 --------------------
 
 * Java Development Kit (JDK) 1.8
-* Eclipse Neon (4.6.0) with the following plugins
+* Eclipse Neon.1 (4.6.1) with the following plugins
+  * preferred approach is installing "Eclipse for DSL developers" and then
+    adding the remaining plugins (Eclipse SDK, Graphiti SDK, C/C++ SDK)
   
 | Eclipse Plugin                          | Version |
 |-----------------------------------------|---------|
-| Eclipse Plug-in Development Environment | 3.12.0  |
-| Eclipse Modeling Framework Xcore        | 1.4.0   |
+| EMF Framework SDK                       | 2.12.0  |
 | Xtext SDK                               | 2.10.0  |
-| Graphiti SDK                            | 0.13.0  |
+| Eclipse SDK                             | 4.6.1   |
+| Graphiti SDK                            | 0.13.1  |
 | C/C++ Development Tools SDK             | 9.1.0   |
 
 
@@ -50,7 +52,7 @@ Configure build environment
 ---------------------------
 
 * Set `JAVA_HOME` environment variable to point to your JDK installation
-  * e.g. C:\Program Files\Java\jdk1.8.0_25
+  * e.g. C:\Program Files\Java\jdk1.8.0_101
 
 * Start Eclipse and select "workspace_main" as workspace.
   * Do not use another folder, i.e. do not try to copy the projects into another folder.
@@ -67,7 +69,7 @@ Configure build environment
 * Import projects
   * Right-click in Project/Package Explorer -> Import -> General -> Existing projects into Workspace
     -> "Next" -> "Browse..." -> "OK" -> (all projects should be selected) -> "Finish"
-  * After loading you will find a large number of error in the code, this is expected. We have to
+  * After loading you will find a large number of errors in the code, this is expected. We have to
     trigger code generation first (see next step).
 
 
@@ -83,7 +85,7 @@ Build and run the ES TDK
   * A shortcut can be found under "Run Configurations" in the Eclipse toolbar after the first run.
   
 * DONE! Try out the plugin:
-  * Right-click "fzi.mottem.model/MoTTeM Plugin.launch" -> Run As -> MoTTeM Plugin.
+  * Right-click "fzi.mottem.runtime/ES TDK.launch" -> Run As -> ES TDK.
 
 
 Example Applications
