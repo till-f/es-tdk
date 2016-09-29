@@ -2,51 +2,19 @@
 <Dashboard>
     <widgetList>
         <widget>
-            <height>19</height>
+            <height>20</height>
             <rangeMax>100.0</rangeMax>
             <rangeMin>0.0</rangeMin>
             <signalUID>-uid-</signalUID>
             <type>5</type>
-            <width>92</width>
-            <x>36</x>
-            <y>482</y>
+            <width>95</width>
+            <x>201</x>
+            <y>36</y>
             <logarithmic>false</logarithmic>
             <numberFormat></numberFormat>
             <rangeHigh>75.0</rangeHigh>
             <rangeLow>25.0</rangeLow>
-            <text>temperature</text>
-            <widgetType>W_INDICATOR</widgetType>
-        </widget>
-        <widget>
-            <height>207</height>
-            <rangeMax>100.0</rangeMax>
-            <rangeMin>0.0</rangeMin>
-            <signalUID>-uid-</signalUID>
-            <type>0</type>
-            <width>130</width>
-            <x>13</x>
-            <y>261</y>
-            <logarithmic>false</logarithmic>
-            <numberFormat></numberFormat>
-            <rangeHigh>75.0</rangeHigh>
-            <rangeLow>25.0</rangeLow>
-            <text></text>
-            <widgetType>W_INDICATOR</widgetType>
-        </widget>
-        <widget>
-            <height>160</height>
-            <rangeMax>3500.0</rangeMax>
-            <rangeMin>-3500.0</rangeMin>
-            <signalUID>/fzi.mottem.examples.ecumotor.ptspec/model/CAN.etm-dstream/+R[B@1e0fe174</signalUID>
-            <type>1</type>
-            <width>163</width>
-            <x>166</x>
-            <y>64</y>
-            <logarithmic>false</logarithmic>
-            <numberFormat></numberFormat>
-            <rangeHigh>3000.0</rangeHigh>
-            <rangeLow>-3000.0</rangeLow>
-            <text></text>
+            <text>measurement</text>
             <widgetType>W_INDICATOR</widgetType>
         </widget>
         <widget>
@@ -66,19 +34,19 @@
             <widgetType>W_INDICATOR</widgetType>
         </widget>
         <widget>
-            <height>20</height>
-            <rangeMax>100.0</rangeMax>
-            <rangeMin>0.0</rangeMin>
-            <signalUID>-uid-</signalUID>
-            <type>5</type>
-            <width>95</width>
-            <x>201</x>
-            <y>36</y>
+            <height>160</height>
+            <rangeMax>3500.0</rangeMax>
+            <rangeMin>-3500.0</rangeMin>
+            <signalUID>/fzi.mottem.examples.ecumotor.ptspec/model/CAN.etm-dstream/+R[B@1e0fe174</signalUID>
+            <type>1</type>
+            <width>163</width>
+            <x>166</x>
+            <y>64</y>
             <logarithmic>false</logarithmic>
             <numberFormat></numberFormat>
-            <rangeHigh>75.0</rangeHigh>
-            <rangeLow>25.0</rangeLow>
-            <text>measurement</text>
+            <rangeHigh>3000.0</rangeHigh>
+            <rangeLow>-3000.0</rangeLow>
+            <text></text>
             <widgetType>W_INDICATOR</widgetType>
         </widget>
         <widget>

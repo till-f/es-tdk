@@ -30,6 +30,8 @@ public class RefreshCommand extends AbstractHandler
 	@Override
 	public Object execute(ExecutionEvent event) 
 	{
+		DataExchanger.dropAllSignals();
+		
     	try
     	{
     		for (IProject ptsProject : ResourcesPlugin.getWorkspace().getRoot().getProjects())
@@ -67,11 +69,6 @@ public class RefreshCommand extends AbstractHandler
             				}
             				
                 			DataExchanger.setUpSignal(uid, readable.getName(), type);
-                			
-                			// !TODO: Register Readables at DataExchanger. DataExchanger should use UID as identifier
-                			//        and not the object. Producers / Consumer later have to register using the same
-                			//        UID to produce / consume the signal. The lifetime of the UID must be longer than
-                			//        the lifetime of the identified object (i.e. Signal)
                 			
                 			// !TODO: Register Readables which are auto-updated (event driven) differently from
                 			//        Readables that must be polled by the GUI (advanced use-case, not important atm)
