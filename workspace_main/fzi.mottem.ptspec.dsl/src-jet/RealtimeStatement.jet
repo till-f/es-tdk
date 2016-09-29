@@ -83,6 +83,13 @@
 		_pts_plotDB.insertMetaInfo("GLOBAL", "max", String.valueOf(<%= ptsExpressionWorker.getCodeFor(tpBlock.getRangeExpr().getEndOffset()) %>));
 <%
 		}
+		else
+		{
+%>
+		_pts_plotDB.insertMetaInfo("GLOBAL", "autoscale", "true");
+<%
+		}
+		
 		for (PTSStatement stm : tpBlock.getTimePlotStatements())
 		{
 			PTSTimePlotStatement tpStm = (PTSTimePlotStatement)stm;
