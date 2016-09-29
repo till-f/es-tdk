@@ -3,9 +3,9 @@
  * Created on 20.11.2014 15:55:13
  */
 
-include "pkg/Targets.ets";
-include "pkg/Units.ets";
-include "pkg/Common.ets";
+include "pkg/Targets.pts";
+include "pkg/Units.pts";
+include "pkg/Common.pts";
 
 test DemoRunControlCAN : Demonstrator default CANPort
 {

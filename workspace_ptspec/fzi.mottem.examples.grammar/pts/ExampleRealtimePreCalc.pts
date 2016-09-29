@@ -5,7 +5,7 @@
 
 include "../model/Demo.etm-testrig";
 
-include "Units.ets";
+include "Units.pts";
 
 target Target
 {

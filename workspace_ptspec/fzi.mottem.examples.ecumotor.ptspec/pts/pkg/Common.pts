@@ -1,6 +1,6 @@
-include "Targets.ets";
+include "Targets.pts";
 
-include "Units.ets";
+include "Units.pts";
  
 package Common : Demonstrator_PPC
 {

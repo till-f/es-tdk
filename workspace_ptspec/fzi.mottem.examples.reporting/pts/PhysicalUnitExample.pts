@@ -3,7 +3,7 @@
  * Created on 13.06.2016 20:13:40
  */
 
-include "Units.ets";
+include "Units.pts";
 
 package UnitTest
 {

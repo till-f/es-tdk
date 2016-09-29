@@ -1,12 +1,12 @@
 /*
- * DemoMixedTest.ets
+ * DemoMixedTest.pts
  * Created on 17.07.2016 11:41:50
  */
 
-include "pkg/Targets.ets";
-include "pkg/Units.ets";
-include "pkg/Common.ets";
-include "pkg/SignalAnalyzer.ets";
+include "pkg/Targets.pts";
+include "pkg/Units.pts";
+include "pkg/Common.pts";
+include "pkg/SignalAnalyzer.pts";
 
 /*
  * timing test for etimer00ISR()

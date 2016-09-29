@@ -10,10 +10,10 @@
             class="fzi.mottem.ptspec.dsl.ui.PTSpecExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
-            extensions="ets"
+            extensions="pts"
             icon="icons/pts_file.gif"
             id="fzi.mottem.ptspec.dsl.PTSpec"
-            name="ETSpec Editor">
+            name="PTSpec Editor">
         </editor>
     </extension>
 
@@ -216,13 +216,13 @@
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
 			class="fzi.mottem.ptspec.dsl.ui.PTSpecExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
-			type="ets">
+			type="pts">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
         <resourceServiceProvider
             class="fzi.mottem.ptspec.dsl.ui.PTSpecExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
-            uriExtension="ets">
+            uriExtension="pts">
         </resourceServiceProvider>
     </extension>
 
@@ -230,21 +230,21 @@
 	<!-- marker definitions for fzi.mottem.ptspec.dsl.PTSpec -->
 	<extension
 	        id="ptspec.check.fast"
-	        name="ETSpec Problem"
+	        name="PTSpec Problem"
 	        point="org.eclipse.core.resources.markers">
 	    <super type="org.eclipse.xtext.ui.check.fast"/>
 	    <persistent value="true"/>
 	</extension>
 	<extension
 	        id="ptspec.check.normal"
-	        name="ETSpec Problem"
+	        name="PTSpec Problem"
 	        point="org.eclipse.core.resources.markers">
 	    <super type="org.eclipse.xtext.ui.check.normal"/>
 	    <persistent value="true"/>
 	</extension>
 	<extension
 	        id="ptspec.check.expensive"
-	        name="ETSpec Problem"
+	        name="PTSpec Problem"
 	        point="org.eclipse.core.resources.markers">
 	    <super type="org.eclipse.xtext.ui.check.expensive"/>
 	    <persistent value="true"/>
@@ -380,19 +380,19 @@
   <extension point="org.eclipse.compare.contentViewers">
     <viewer id="fzi.mottem.ptspec.dsl.PTSpec.compare.contentViewers"
             class="fzi.mottem.ptspec.dsl.ui.PTSpecExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="ets">
+            extensions="pts">
     </viewer>
   </extension>
   <extension point="org.eclipse.compare.contentMergeViewers">
     <viewer id="fzi.mottem.ptspec.dsl.PTSpec.compare.contentMergeViewers"
             class="fzi.mottem.ptspec.dsl.ui.PTSpecExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="ets" label="ETSpec Compare">
+            extensions="pts" label="PTSpec Compare">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">
     <provider id="fzi.mottem.ptspec.dsl.PTSpec.editors.documentProviders"
             class="fzi.mottem.ptspec.dsl.ui.PTSpecExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
-            extensions="ets">
+            extensions="pts">
     </provider>
   </extension>
   <extension
@@ -406,7 +406,7 @@
            class="fzi.mottem.ptspec.dsl.ui.wizards.NewPTSpecWizard"
            icon="icons/new_ptspec_file.gif"
            id="fzi.mottem.ptspec.dsl.ui.wizards.NewPTSpecWizard"
-           name="ETSpec File">
+           name="PTSpec File">
      </wizard>
   </extension>
   <extension
@@ -416,7 +416,7 @@
             class="fzi.mottem.ptspec.dsl.ui.PTSpecExecutableExtensionFactory:fzi.mottem.ptspec.dsl.ui.wizard.PTSpecNewProjectWizard"
             id="fzi.mottem.ptspec.dsl.ui.wizard.PTSpecNewProjectWizard"
             icon="icons/pts_project.gif"
-            name="ETSpec Project"
+            name="ES TDK Project"
             project="true">
       </wizard>
    </extension>

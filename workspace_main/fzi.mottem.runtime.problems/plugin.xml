@@ -8,7 +8,7 @@
             class="fzi.mottem.runtime.problems.ProblemsView"
             icon="icons/searching45.png"
             id="fzi.mottem.runtime.problems.problems"
-            name="ETSpec Log"
+            name="ES TDK Log"
             restorable="true">
       </view>
    </extension>

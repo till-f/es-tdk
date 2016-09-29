@@ -25,7 +25,7 @@ public class PTSpecConsole
 
 	private PTSpecConsole()
 	{
-		_messageConsole = new MessageConsole("ETSpec Console", null);
+		_messageConsole = new MessageConsole("ES TDK Console", null);
 		ConsolePlugin.getDefault().getConsoleManager().addConsoles(new IConsole[]{ _messageConsole });
 		
 		_messageConsoleStream = new MessageConsoleStream(_messageConsole);

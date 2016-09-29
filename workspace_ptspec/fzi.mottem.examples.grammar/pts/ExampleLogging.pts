@@ -1,4 +1,4 @@
-include "Units.ets";
+include "Units.pts";
 
 test ExampleLogging
 {

@@ -1,10 +1,10 @@
 /*
- * Suits.ets
+ * Suits.pts
  * Created on 17.07.2016 12:37:09
  */
 
-include "../DemoTraceCANStimCAN.ets";
-include "../DemoTraceCPUStimCAN.ets";
-include "../DemoTraceCPUStimCPU.ets";
+include "../DemoTraceCANStimCAN.pts";
+include "../DemoTraceCPUStimCAN.pts";
+include "../DemoTraceCPUStimCPU.pts";
 
 suite AllTracingDemos { DemoTraceCANStimCAN, DemoTraceCPUStimCAN, DemoTraceCPUStimCPU }

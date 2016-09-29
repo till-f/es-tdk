@@ -23,7 +23,7 @@ public class PTSpecNewProjectWizard extends org.eclipse.xtext.ui.wizard.XtextNew
 	 */
 	public void addPages() {
 		mainPage = new WizardNewProjectCreationPage("basicNewProjectPage");
-		mainPage.setTitle("ETSpec Project");
+		mainPage.setTitle("ES TDK Project");
 		mainPage.setDescription("Create a new PTSpec project.");
 		addPage(mainPage);
 	}

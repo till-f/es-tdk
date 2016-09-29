@@ -5,7 +5,7 @@ import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
 var grammarURI = "classpath:/fzi/mottem/ptspec/dsl/PTSpec.xtext"
-var fileExtensions = "ets"
+var fileExtensions = "pts"
 var projectName = "fzi.mottem.ptspec.dsl"
 var runtimeProject = "../${projectName}"
 

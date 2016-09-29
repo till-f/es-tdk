@@ -9,7 +9,7 @@
             id="fzi.mottem.ptspec">
       </category>
       <view
-            name="ETSpec UI Settings"
+            name="ES TDK UI Settings"
             icon="icons/settings-icon.png"
             category="fzi.mottem.ptspec"
             class="fzi.mottem.runtime.rtgraph.settingsViews.SettingsViewPart"

@@ -1,6 +1,6 @@
 include "../model/Demo.etm-testrig";
 
-include "Units.ets";
+include "Units.pts";
 
 import fzi.mottem.examples.grammar.MeineKlasse;
 

@@ -8,7 +8,7 @@
 «ENDDEFINE»
 
 «DEFINE examplePtsPkgFile FOR PTSpecProjectInfo»
-«FILE "ets/Units.ets"-»
+«FILE "ets/Units.pts"-»
 package Units
 {
 	// base unit for time MUST be 'ms'
@@ -21,7 +21,7 @@ package Units
 «ENDDEFINE»
 
 «DEFINE examplePtsFile FOR PTSpecProjectInfo»
-«FILE "ets/Example.ets"-»
+«FILE "ets/Example.pts"-»
 // This is an exemplary PTS file.
 // You have to set up a valid test rig model first.
 // See "model/Demo.etm-testrig.diagram" for an example.
@@ -33,7 +33,7 @@ include "../model/Demo.etm-testrig";
 
 
 // Other source files are loaded in the same way.
-include "Units.ets";
+include "Units.pts";
 
 
 // Java classes are loaded using 'import'. 

@@ -1,6 +1,6 @@
-include "Helpers.ets";
+include "Helpers.pts";
 
-include "Units.ets";
+include "Units.pts";
 
 import java.lang.Math;
 import fzi.mottem.examples.visualization.Random;

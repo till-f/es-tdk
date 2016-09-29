@@ -3,9 +3,9 @@
  * Created on 04.11.2015 09:26:17
  */
 
-include "pkg/Targets.ets";
-include "pkg/Units.ets";
-include "pkg/Common.ets";
+include "pkg/Targets.pts";
+include "pkg/Units.pts";
+include "pkg/Common.pts";
 
 /*
  * unit test for update_sector()

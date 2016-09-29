@@ -5,8 +5,8 @@
 
 include "../model/Demo.etm-testrig";
 
-include "Units.ets";
-include "Globals.ets";
+include "Units.pts";
+include "Globals.pts";
 
 test ConcurrentExample
 {
