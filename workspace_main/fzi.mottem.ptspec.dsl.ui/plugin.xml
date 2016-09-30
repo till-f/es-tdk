@@ -544,7 +544,7 @@
          </property>
          <property
                name="startupForegroundColor"
-               value="51f544">
+               value="808080">
          </property>
          <property
                name="startupProgressRect"

@@ -133,6 +133,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <plugins>
       <plugin id="biz.junginger.ExploreFS"/>
+      <plugin id="com.google.gson"/>
       <plugin id="com.google.guava"/>
       <plugin id="com.google.inject"/>
       <plugin id="com.ibm.icu"/>
@@ -171,6 +172,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="org.apache.batik.xml"/>
       <plugin id="org.apache.commons.cli"/>
       <plugin id="org.apache.commons.codec"/>
+      <plugin id="org.apache.commons.jxpath"/>
       <plugin id="org.apache.commons.lang"/>
       <plugin id="org.apache.commons.logging"/>
       <plugin id="org.apache.felix.gogo.command"/>
@@ -193,6 +195,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="org.eclipse.cdt.codan.ui"/>
       <plugin id="org.eclipse.cdt.codan.ui.cxx"/>
       <plugin id="org.eclipse.cdt.core"/>
+      <plugin id="org.eclipse.cdt.core.native"/>
       <plugin id="org.eclipse.cdt.core.win32" fragment="true"/>
       <plugin id="org.eclipse.cdt.core.win32.x86_64" fragment="true"/>
       <plugin id="org.eclipse.cdt.debug.core"/>
@@ -241,8 +244,10 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="org.eclipse.e4.core.commands"/>
       <plugin id="org.eclipse.e4.core.contexts"/>
       <plugin id="org.eclipse.e4.core.di"/>
+      <plugin id="org.eclipse.e4.core.di.annotations"/>
       <plugin id="org.eclipse.e4.core.di.extensions"/>
       <plugin id="org.eclipse.e4.core.services"/>
+      <plugin id="org.eclipse.e4.emf.xpath"/>
       <plugin id="org.eclipse.e4.ui.bindings"/>
       <plugin id="org.eclipse.e4.ui.css.core"/>
       <plugin id="org.eclipse.e4.ui.css.swt"/>
@@ -410,9 +415,11 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="org.eclipse.jface.text"/>
       <plugin id="org.eclipse.jsch.core"/>
       <plugin id="org.eclipse.jsch.ui"/>
+      <plugin id="org.eclipse.launchbar.core"/>
       <plugin id="org.eclipse.ltk.core.refactoring"/>
       <plugin id="org.eclipse.ltk.ui.refactoring"/>
       <plugin id="org.eclipse.osgi"/>
+      <plugin id="org.eclipse.osgi.compatibility.state" fragment="true"/>
       <plugin id="org.eclipse.osgi.services"/>
       <plugin id="org.eclipse.osgi.util"/>
       <plugin id="org.eclipse.pde"/>
@@ -444,6 +451,8 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="org.eclipse.team.cvs.ui"/>
       <plugin id="org.eclipse.team.ui"/>
       <plugin id="org.eclipse.text"/>
+      <plugin id="org.eclipse.tools.templates.core"/>
+      <plugin id="org.eclipse.tools.templates.ui"/>
       <plugin id="org.eclipse.ui"/>
       <plugin id="org.eclipse.ui.browser"/>
       <plugin id="org.eclipse.ui.cheatsheets"/>
@@ -454,6 +463,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="org.eclipse.ui.ide"/>
       <plugin id="org.eclipse.ui.ide.application"/>
       <plugin id="org.eclipse.ui.intro"/>
+      <plugin id="org.eclipse.ui.intro.quicklinks"/>
       <plugin id="org.eclipse.ui.intro.universal"/>
       <plugin id="org.eclipse.ui.navigator"/>
       <plugin id="org.eclipse.ui.navigator.resources"/>
@@ -472,7 +482,9 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="org.eclipse.xtend.doc"/>
       <plugin id="org.eclipse.xtend.examples"/>
       <plugin id="org.eclipse.xtend.ide"/>
+      <plugin id="org.eclipse.xtend.ide.common"/>
       <plugin id="org.eclipse.xtend.lib"/>
+      <plugin id="org.eclipse.xtend.lib.macro"/>
       <plugin id="org.eclipse.xtend.m2e"/>
       <plugin id="org.eclipse.xtend.standalone"/>
       <plugin id="org.eclipse.xtend.typesystem.emf"/>
@@ -489,6 +501,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="org.eclipse.xtext.doc"/>
       <plugin id="org.eclipse.xtext.ecore"/>
       <plugin id="org.eclipse.xtext.generator"/>
+      <plugin id="org.eclipse.xtext.ide"/>
       <plugin id="org.eclipse.xtext.junit4"/>
       <plugin id="org.eclipse.xtext.logging" fragment="true"/>
       <plugin id="org.eclipse.xtext.purexbase"/>
@@ -501,18 +514,24 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="org.eclipse.xtext.ui.shared"/>
       <plugin id="org.eclipse.xtext.util"/>
       <plugin id="org.eclipse.xtext.xbase"/>
+      <plugin id="org.eclipse.xtext.xbase.ide"/>
       <plugin id="org.eclipse.xtext.xbase.junit"/>
       <plugin id="org.eclipse.xtext.xbase.lib"/>
       <plugin id="org.eclipse.xtext.xbase.ui"/>
+      <plugin id="org.eclipse.xtext.xtext.generator"/>
       <plugin id="org.eclipse.xtext.xtext.ui"/>
       <plugin id="org.eclipse.xtext.xtext.ui.examples"/>
       <plugin id="org.eclipse.xtext.xtext.ui.graph"/>
+      <plugin id="org.eclipse.xtext.xtext.wizard"/>
       <plugin id="org.hamcrest.core"/>
       <plugin id="org.junit"/>
       <plugin id="org.objectweb.asm"/>
+      <plugin id="org.objectweb.asm.tree"/>
       <plugin id="org.sat4j.core"/>
       <plugin id="org.sat4j.pb"/>
+      <plugin id="org.tukaani.xz"/>
       <plugin id="org.w3c.css.sac"/>
+      <plugin id="org.w3c.dom.events"/>
       <plugin id="org.w3c.dom.smil"/>
       <plugin id="org.w3c.dom.svg"/>
    </plugins>
