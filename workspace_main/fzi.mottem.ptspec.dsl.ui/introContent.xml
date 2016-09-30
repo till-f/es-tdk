@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<introContent>
+    <!-- Root page -->
+    <page id="root" style="html/style.css"  style-id="page">	    
+        <title style-id="intro-header">ES TDK Intro</title>
+        <link url="http://org.eclipse.ui.intro/switchToLaunchBar" label="Go to theWorkbench" id="workbench" />
+        <link label="Link to ES TDK website" url="http://www.es-tdk.org" id="website" />
+    </page>
+	
+    <!-- Tutorials page -->
+	<page id="tutorials" style= "html/style.css" style-id="page">
+        <title style-id="intro-header">Tutorials</title>	
+        <text>This page under construction</text>
+    </page>   
+</introContent>

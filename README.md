@@ -14,9 +14,8 @@ other sources (communication networks, analog signals, simulated environment) is
 TDK is independent of the operating system used on the target and does not require target-side software
 support.
 
-The idea of this project was developed in the research project "MoTTeM" (www.mottem.fzi.de) funded by the
-BMWI (German Federal Ministry for Economic Affairs). This explains the occurence of the phrases "mottem" at
-some places (this should be changed in the future).
+The idea of this project was developed in the research project "MoTTeM" at the FZI Forschungszentrum
+Informatik (www.mottem.fzi.de) funded by the BMWi (German Federal Ministry for Economic Affairs).
 
 
 Main Folders

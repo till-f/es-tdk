@@ -24,7 +24,8 @@ Require-Bundle: org.eclipse.xtext.ui,
  fzi.util,
  fzi.mottem.model,
  fzi.mottem.jjet,
- fzi.mottem.ptspec.dsl;visibility:=reexport
+ fzi.mottem.ptspec.dsl;visibility:=reexport,
+ org.eclipse.ui.intro
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

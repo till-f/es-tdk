@@ -495,4 +495,35 @@
       </menuContribution>
    </extension>
    
+   <!-- Intro -->
+    
+   <extension
+         point="org.eclipse.ui.intro">
+      <intro
+            class="org.eclipse.ui.intro.config.CustomizableIntroPart"
+            id="fzi.mottem.ptspec.dsl.ui.intro"
+            label="ES TDK Intro">
+      </intro>
+      <introProductBinding
+            introId="fzi.mottem.ptspec.dsl.ui.intro"
+            productId="org.eclipse.platform.ide">
+      </introProductBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.intro.config">
+      <config
+            content="introContent.xml"
+            id="fzi.mottem.ptspec.dsl.ui.introConfigId"
+            introId="fzi.mottem.ptspec.dsl.ui.intro">
+         <presentation
+               home-page-id="root">
+            <implementation
+                  kind="html"
+                  os="win32,linux,macosx"
+                  style="content/shared.css">
+            </implementation>
+         </presentation>
+      </config>
+   </extension>
+   
 </plugin>
