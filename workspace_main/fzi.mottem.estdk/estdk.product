@@ -33,7 +33,8 @@ Licensed under EPL 1.0
       startupForegroundColor="808080" />
    <launcher name="es-tdk">
       <solaris/>
-      <win useIco="false">
+      <win useIco="true">
+         <ico path="/fzi.mottem.estdk/estdk.ico"/>
          <bmp/>
       </win>
    </launcher>
