@@ -147,6 +147,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="com.sun.el"/>
       <plugin id="fzi.mottem.cdt2ecore"/>
       <plugin id="fzi.mottem.editor"/>
+      <plugin id="fzi.mottem.estdk"/>
       <plugin id="fzi.mottem.jjet"/>
       <plugin id="fzi.mottem.model"/>
       <plugin id="fzi.mottem.model.simpleeditors"/>
@@ -443,7 +444,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="org.eclipse.pde.ua.ui"/>
       <plugin id="org.eclipse.pde.ui"/>
       <plugin id="org.eclipse.pde.ui.templates"/>
-      <plugin id="org.eclipse.platform"/>
       <plugin id="org.eclipse.platform.doc.isv"/>
       <plugin id="org.eclipse.platform.doc.user"/>
       <plugin id="org.eclipse.rcp"/>
