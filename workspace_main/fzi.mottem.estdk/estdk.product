@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Embedded Software Test Development Kit" id="fzi.mottem.estdk.ide" application="org.eclipse.ui.ide.workbench" version="0.1.0.qualifier" useFeatures="false" includeLaunchers="true">
+<product name="ES TDK" id="fzi.mottem.estdk.ide" application="org.eclipse.ui.ide.workbench" version="0.1.0.qualifier" useFeatures="false" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/fzi.mottem.estdk/estdk_about.png"/>
       <text>
-         ES TDK
-Embedded Software Test Development Kit
-Licensed under EPL 1.0
+         %productBlurb
       </text>
    </aboutInfo>
 
@@ -152,6 +150,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="fzi.mottem.cdt2ecore"/>
       <plugin id="fzi.mottem.editor"/>
       <plugin id="fzi.mottem.estdk"/>
+      <plugin id="fzi.mottem.estdk.doc"/>
       <plugin id="fzi.mottem.jjet"/>
       <plugin id="fzi.mottem.model"/>
       <plugin id="fzi.mottem.model.simpleeditors"/>
