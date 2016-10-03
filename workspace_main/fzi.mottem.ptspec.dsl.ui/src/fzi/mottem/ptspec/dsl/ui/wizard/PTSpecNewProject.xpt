@@ -8,7 +8,7 @@
 «ENDDEFINE»
 
 «DEFINE examplePtsPkgFile FOR PTSpecProjectInfo»
-«FILE "ets/Units.pts"-»
+«FILE "pts/Units.pts"-»
 package Units
 {
 	// base unit for time MUST be 'ms'
@@ -21,7 +21,7 @@ package Units
 «ENDDEFINE»
 
 «DEFINE examplePtsFile FOR PTSpecProjectInfo»
-«FILE "ets/Example.pts"-»
+«FILE "pts/Example.pts"-»
 // This is an exemplary PTS file.
 // You have to set up a valid test rig model first.
 // See "model/Demo.etm-testrig.diagram" for an example.
