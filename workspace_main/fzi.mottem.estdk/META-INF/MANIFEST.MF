@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bundle-SymbolicName: org.eclipse.platform; singleton:=true
+Bundle-SymbolicName: fzi.mottem.estdk;singleton:=true
 Archiver-Version: Plexus Archiver
 Built-By: genie.releng
 Require-Bundle: org.eclipse.ui.intro;bundle-version="[3.2.0,4.0.0)",or
@@ -8,15 +8,14 @@ Require-Bundle: org.eclipse.ui.intro;bundle-version="[3.2.0,4.0.0)",or
  n:=optional,org.eclipse.ui;bundle-version="[3.2.0,4.0.0)";resolution:
  =optional,org.eclipse.core.runtime;bundle-version="[3.2.0,4.0.0)"
 Bundle-ManifestVersion: 2
-Bundle-RequiredExecutionEnvironment: J2SE-1.4,CDC-1.0/Foundation-1.0,J
- 2SE-1.3
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/platfo
  rm/eclipse.platform.git;path="platform/org.eclipse.platform";tag="M20
  160629-1300";commitId=b715ac9cd058efbe6acfe86b38e4366ddef6b88b
-Bundle-Vendor: %providerName
+Bundle-Vendor: Till Fischer
 Export-Package: org.eclipse.platform.internal;x-internal:=true
-Bundle-Name: %pluginName
-Bundle-Version: 4.6.1.v20160907-1200
+Bundle-Name: fzi.mottem.estdk
+Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: platform.jar
 Bundle-Localization: plugin
 Created-By: Apache Maven 3.3.3

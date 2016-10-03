@@ -5,8 +5,8 @@
      <extension id="ide" point="org.eclipse.core.runtime.products"> 
       <product name="Embedded Software Test Development Kit" application="org.eclipse.ui.ide.workbench" description="%productBlurb"> 
           <!-- For documentation on updating icons, see http://wiki.eclipse.org/Platform-releng/Updating_Branding -->
-          <property name="windowImages" value="estdk_icon16.png,estdk_icon32.png,estdk_icon48.png,estdk_icon64.png"/> 
-          <property name="aboutImage" value="estdk_about.png"/> 
+          <property name="windowImages" value="/org.eclipse.platform/estdk_icon16.png,/org.eclipse.platform/estdk_icon32.png,/org.eclipse.platform/estdk_icon48.png,/org.eclipse.platform/estdk_icon64.png"/> 
+          <property name="aboutImage" value="/org.eclipse.platform/estdk_about.png"/> 
           <property name="appName" value="Embedded Software Test Development Kit"/> 
          <property
           		name="introTitle"
@@ -68,7 +68,7 @@
 		point="org.eclipse.ui.intro">
       <introProductBinding
             introId="org.eclipse.ui.intro.universal"
-            productId="org.eclipse.platform.ide">
+            productId="fzi.mottem.estdk.ide">
       </introProductBinding>
     </extension>
 
