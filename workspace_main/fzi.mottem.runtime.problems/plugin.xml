@@ -6,7 +6,7 @@
       <view
             category="fzi.mottem.ptspec"
             class="fzi.mottem.runtime.problems.ProblemsView"
-            icon="icons/searching45.png"
+            icon="icons/estdk_log_view.png"
             id="fzi.mottem.runtime.problems.problems"
             name="ES TDK Log"
             restorable="true">

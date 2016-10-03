@@ -14,8 +14,6 @@
    </configIni>
 
    <launcherArgs>
-      <programArgs>-consoleLog
-      </programArgs>
       <vmArgs>-Xms64m -Xmx512m
       </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
@@ -27,7 +25,7 @@
    <splash
       location="fzi.mottem.estdk"
       startupProgressRect="2,290,448,10"
-      startupMessageRect="7,265,320,20"
+      startupMessageRect="7,272,320,15"
       startupForegroundColor="808080" />
    <launcher name="es-tdk">
       <solaris/>
