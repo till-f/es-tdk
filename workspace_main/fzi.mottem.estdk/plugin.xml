@@ -64,10 +64,6 @@
                 name="aboutText"
                 value="ES TDK&#x0A;Embedded Software Test Development Kit&#x0A;Licensed under EPL 1.0">
           </property>
-          <property
-                name="preferenceCustomization"
-                value="plugin_customization.ini">
-          </property>
 
       </product> 
    </extension> 

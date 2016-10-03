@@ -444,6 +444,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="org.eclipse.pde.ua.ui"/>
       <plugin id="org.eclipse.pde.ui"/>
       <plugin id="org.eclipse.pde.ui.templates"/>
+      <plugin id="org.eclipse.platform"/>
       <plugin id="org.eclipse.platform.doc.isv"/>
       <plugin id="org.eclipse.platform.doc.user"/>
       <plugin id="org.eclipse.rcp"/>
