@@ -4,15 +4,15 @@
       label="Embedded Software Test Development Kit"
       version="0.1.0.qualifier"
       provider-name="Till Fischer"
-      plugin="fzi.mottem.ptspec.dsl.ui"
+      plugin="fzi.mottem.estdk"
       os="win32"
       ws="win32"
       arch="x86,x86_64">
 
    <description>
-      The Embedded Software Test Development Kit eases the implementation of test for embedded software (focusing on C code). It can be used like a unit test framework, but also supports advanced test scenarios for embedded systems including timing analysis and Hardware-in-the-Loop (HiL) testing. The ES TDK comes with a new test programming language called ETSpec providing a consistent view on heterogeneous test environments.
+      The Embedded Software Test Development Kit eases the implementation of tests for embedded software. It focuses on C-code and can be used like a unit test framework, but also supports advanced test scenarios for embedded systems including timing analysis and Hardware-in-the-Loop (HiL) tests. The ES TDK comes with a new test programming language called PTSpec providing a consistent view on heterogeneous test environments.
 
-The tested software is executed on the real device. Test execution is controlled and the behavior is observed using the debug and trace interfaces of the processor hardware. In principle any microcontroller is supported (especially multicore controllers). Aggregation of data obtained from different targets and other sources (communication networks, analog signals, simulated environment) is also supported. The ES TDK is independent of any operating system and does not require any software support on the target device.
+The tested software is executed on the real device. Test execution is controlled and the behavior is observed using the debug and trace interfaces of the processor hardware. In principle any microcontroller is supported (especially multicore controllers). Aggregation of data obtained from different targets and other sources (communication networks, analog signals, simulated environment) is also supported. The ES TDK is independent of the operating system used on the target and does not require target-side software support.
    </description>
 
    <copyright>
@@ -268,6 +268,12 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <plugin
          id="fzi.mottem.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.1.0.qualifier"/>
+
+   <plugin
+         id="fzi.mottem.estdk"
          download-size="0"
          install-size="0"
          version="0.1.0.qualifier"/>

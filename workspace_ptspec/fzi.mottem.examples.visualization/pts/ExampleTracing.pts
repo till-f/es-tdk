@@ -1,0 +1,41 @@
+include "Helpers.pts";
+
+include "Units.pts";
+
+import java.lang.Math;
+import fzi.mottem.examples.visualization.Random;
+
+test ExampleTracing
+{
+	report info: "started";
+	
+	realtime timeout 5s
+	{
+	}
+	analyze
+	{
+		capture double fakeSignal;
+		while(Runtime:Timestamp < 100ms)
+		{
+			fakeSignal = Java.Math.sin(Runtime:Timestamp * 0.1) + Java.Random.getNext(-0.1,0.1);
+			wait 0.5ms;
+		}
+		
+		capture double smoothedSignal;
+		Helpers.SmoothAverage(ref fakeSignal, ref smoothedSignal, 2ms);
+	}
+	plot Testgraph2
+	{
+		InputSignal   : fakeSignal     range [-1.5, 1.5] dots;
+		SmoothedSignal: smoothedSignal range [-2.0, 2.0] hold;
+	} 
+	plot Testgraph3 range [0s, 100ms]
+	{
+		InputSignal   : fakeSignal     range [-1.5, 1.5] ln;
+		SmoothedSignal: smoothedSignal range [-2.0, 2.0] ln;
+	}
+	
+	report info: "finished" ;
+	
+	assert (false) info: "ah, it's ok" ;
+}

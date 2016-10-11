@@ -19,11 +19,11 @@ public class IVITraceDriver extends AbstractTraceDriver
 	@SuppressWarnings("unused")
 	private class Parameters
 	{
-		double SampleRate;
-		double UpperThreshold;
-		double LowerThreshold;
-		boolean TriggerRising;
-		boolean TriggerFalling;
+		double SampleRate = Double.NaN;
+		double UpperThreshold = Double.NaN;
+		double LowerThreshold = Double.NaN;
+		boolean TriggerRising = false;
+		boolean TriggerFalling = false;
 	}
 	
 	private Parameters _parameters = null;
@@ -120,40 +120,57 @@ public class IVITraceDriver extends AbstractTraceDriver
 	@Override
 	public void runAndTrace()
 	{
-		// !TODO refactor _iviWrapper functions to use "_parameters" configured above
+		_sampleData = new double[0];
+
+		// !TODO the JNI wrapper for IVI driver needs refactoring!
 		
-		_sampleData = _iviWrapper.getWaveform();
+		if (_parameters.UpperThreshold != Double.NaN)
+		{
+			// The jniTrigger function sets a trigger and fetches waveform (but does not seem to wait for trigger!)
+			// first parameter is trigger value.
+			// second parameters seems to be rising / falling (?!)
+			_sampleData = _iviWrapper.trigger(_parameters.UpperThreshold, true);
+		}
+		else if (_parameters.LowerThreshold != Double.NaN)
+		{
+			// The jniTrigger function sets a trigger and fetches waveform (but does not seem to wait for trigger!)
+			// first parameter is trigger value.
+			// second parameters seems to be rising / falling (?!)
+			_sampleData = _iviWrapper.trigger(_parameters.UpperThreshold, false);
+		}
+		else
+		{
+			// This simply fetches the waveform, but also does autoscaling (?!)
+			_sampleData = _iviWrapper.getWaveform();
+		}
 	}
 	
 	@Override
 	public void fillTraceDB()
 	{
-		// why back and forth copy?
-		_iviWrapper.setResults(_sampleData);
-		
 		String uid = PTSpecUtils.getElementUID(getSingleSignal());
-		 
-		double sr = _iviWrapper.getSampleRate();
-		long time = 0;
+
+		// this shuld calculate correct offset to start of measurement and delta between two samples.
+//		double sr = _iviWrapper.getSampleRate();
+//		long time = 0;
+//		time = (1000000*_iviWrapper.getTriggerDelay());
+//		// (1ns/SampleRate) * 50 * , da wir 1 von 50 werte in java bekommen, * reducefactor nochmal.
+//		long delta = (long)(1000000000/sr) * 50 * _iviWrapper.getSampleRateReduceFactor(); 
+//		time += (long) _iviWrapper.getStartTime(); 
+//		time -= _sampleData.length*delta;
 		
-		time = (1000000*_iviWrapper.getTriggerDelay());
-		
-		// (1ns/SampleRate) * 200 * , da wir 1 von 50 werte in java bekommen, *reducefactor nochmal.
-		long delta = (long)(1000000000/sr)*50*_iviWrapper.getSampleRateReduceFactor(); 
-		time += (long) _iviWrapper.getStartTime(); 
-		time -= _iviWrapper.getResults().length*delta;
-		
-		double curve[] = _iviWrapper.getResults();
-		
-		for (int i = 0; i < curve.length; i++)
+		double timeMS = 0;
+		for (int i = 0; i < _sampleData.length; i++)
 		{
-			time += delta;
-			_trace.getTraceDB().insertValueMS(Double.valueOf(((double)time/1000/1000)), TraceDBEvent.Write, uid, String.valueOf(curve[i]));
+			// time calculated above is in nanoseconds, so we need ((double)time)/1000/1000 for milliseonds
+			// time += delta;
+			
+			timeMS += 1;
+			_trace.getTraceDB().insertValueMS(timeMS, TraceDBEvent.Write, uid, String.valueOf(_sampleData[i]));
 		}
 		
 	}
 
-	
 	private PinSignal getSingleSignal()
 	{
 		IOPin ioPin = (IOPin)(ModelUtils.getInspectable(_accessDriver.getInspector()));

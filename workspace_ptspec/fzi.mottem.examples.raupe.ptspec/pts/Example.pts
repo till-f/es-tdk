@@ -1,0 +1,29 @@
+include "../model/Demo.etm-testrig";
+include "Units.pts";
+
+target Target
+{
+	MotorDemo.ActuatorBoard.STM32F4.Core0
+}
+
+
+// Tests can be started from the popup shown when
+// the mouse is placed over the test name, or from
+// the PTSpec Navigator.
+test Example : Target default Core0
+{
+	report info: "Starting...";
+
+	run until main;
+	
+	concurrent
+	{
+		while (true)
+		{
+			report info: "Current distance: " + current_distance;
+			wait 2s;
+		}
+	}
+	
+	run;
+}

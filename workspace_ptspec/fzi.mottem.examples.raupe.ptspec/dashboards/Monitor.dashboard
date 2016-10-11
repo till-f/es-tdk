@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dashboard>
+    <widgetList>
+        <widget>
+            <height>200</height>
+            <rangeMax>100.0</rangeMax>
+            <rangeMin>0.0</rangeMin>
+            <signalUID>/fzi.mottem.examples.raupe.ptspec/model/fzi.mottem.examples.raupe.actuator.etm-code/+Ndistance_value+NPkgfzi_mottem_examples_raupe_actuator</signalUID>
+            <type>4</type>
+            <width>200</width>
+            <x>18</x>
+            <y>17</y>
+            <logarithmic>false</logarithmic>
+            <numberFormat></numberFormat>
+            <rangeHigh>75.0</rangeHigh>
+            <rangeLow>25.0</rangeLow>
+            <text></text>
+            <widgetType>W_INDICATOR</widgetType>
+        </widget>
+    </widgetList>
+    <widget_height_hint>200</widget_height_hint>
+    <widget_width_hint>200</widget_width_hint>
+    <widget_polling_delay>50</widget_polling_delay>
+    <background_path>C:\</background_path>
+    <scale_background_x>false</scale_background_x>
+    <scale_background_y>false</scale_background_y>
+    <path>C:\Git\es-tdk\workspace_ptspec\fzi.mottem.examples.raupe.ptspec\dashboards\Monitor.dashboard</path>
+</Dashboard>

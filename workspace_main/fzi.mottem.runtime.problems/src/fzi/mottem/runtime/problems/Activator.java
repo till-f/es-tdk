@@ -10,6 +10,8 @@ public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "fzi.mottem.runtime.problems"; //$NON-NLS-1$
+	
+	public static final String VIEWER_ID = "fzi.mottem.runtime.problems.problems";
 
 	// The shared instance
 	private static Activator plugin;

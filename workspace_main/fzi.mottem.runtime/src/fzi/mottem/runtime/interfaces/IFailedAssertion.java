@@ -10,6 +10,7 @@ public interface IFailedAssertion
 	public Object getContext();
 	public int getOffset();
 	public int getLength();
+	public int getLine();
 	public String getTimestamp();
 	public PTS_ESEVERITY getSeverity();
 }

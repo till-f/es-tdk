@@ -1,0 +1,32 @@
+include "../model/Demo.etm-testrig";
+
+include "Units.pts";
+
+import fzi.mottem.examples.visualization.SimpleDataProvider;
+
+target Target
+{
+    Demo.EvalBoard.CAN_A
+}
+
+suite Suite { ExampleCyclic, ExampleCyclicDummy }
+
+test ExampleCyclic : Target default CAN_A
+{
+	for (double dummyCtr = 0; dummyCtr <= 1000; dummyCtr += 1)
+	{
+		Java.SimpleDataProvider.staticSend(ref Temperatur, dummyCtr);
+		Java.SimpleDataProvider.staticSend(ref Druck, 2 * dummyCtr);
+		wait 100 ms;
+	}
+}
+
+test ExampleCyclicDummy
+{
+	for (double dummyCtr = 0; dummyCtr <= 800; dummyCtr += 1)
+	{
+		Java.SimpleDataProvider.staticSend("/fzi.mottem.examples.visualization/model/CAN.etm-dstream/+R[B@162ea06f", dummyCtr);
+		Java.SimpleDataProvider.staticSend("/fzi.mottem.examples.visualization/model/CAN.etm-dstream/+R[B@31ae2cf", 2 * dummyCtr);
+		wait 100 ms;
+	}
+}

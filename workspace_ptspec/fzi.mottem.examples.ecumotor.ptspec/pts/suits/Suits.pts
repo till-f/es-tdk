@@ -1,0 +1,10 @@
+/*
+ * Suits.pts
+ * Created on 17.07.2016 12:37:09
+ */
+
+include "../DemoTraceCANStimCAN.pts";
+include "../DemoTraceCPUStimCAN.pts";
+include "../DemoTraceCPUStimCPU.pts";
+
+suite AllTracingDemos { DemoTraceCANStimCAN, DemoTraceCPUStimCAN, DemoTraceCPUStimCPU }

@@ -1,0 +1,24 @@
+/*
+ * SimpleSuite.pts
+ * Created on 18.07.2016 09:34:14
+ */
+
+suite SimpleTests { Case1, Case2, Case3 }
+
+test Case1
+{
+	int32 x = 0;
+	assert (x == 0) error;
+}
+
+test Case2
+{
+	int32 x = 4;
+	assert (x == 0) warning;
+}
+test Case3
+{
+	int32 x = 4;
+	assert (x == 0) error;
+}
+

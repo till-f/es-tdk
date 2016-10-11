@@ -1,0 +1,58 @@
+/*
+ * ExampleIOSignal.pts
+ * Created on 08.07.2016 16:01:58
+ */
+
+include "../model/Demo.etm-testrig";
+
+include "Units.pts";
+
+target Target
+{
+    Demo.EvalBoard.PinA1
+}
+
+test ExampleRealtimePreCalc : Target
+{
+    event myEvent;
+    
+    realtime
+    {
+        concurrent T1
+        {
+            PinA1.Value:TriggerAbove = 1.0;
+
+            wait 5s;
+            PinA1.Value:TriggerAbove = 1.5;
+            trigger myEvent;
+
+            wait 1s;
+            PinA1.Value:TriggerAbove = 1.6;
+        }
+
+        concurrent T2
+        {
+            PinA1.Value:TriggerAbove = 2.0;
+
+            wait 2s;
+            PinA1.Value:TriggerAbove = 2.2;
+
+            wait 2s;
+            PinA1.Value:TriggerAbove = 2.4;
+
+            wait 2s;
+            PinA1.Value:TriggerAbove = 2.6;
+        }
+
+        concurrent T3
+        {
+            wait until myEvent;
+            
+            PinA1.Value:TriggerAbove = 3.5;
+        }
+    }
+    plot Curve
+    {
+        PinA1: PinA1.Value;
+    }
+}

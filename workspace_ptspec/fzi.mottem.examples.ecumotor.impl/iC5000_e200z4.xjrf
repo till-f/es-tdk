@@ -28,9 +28,9 @@
       </PI.1>
       <PI.2>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <L>47</L>
+       <L>11</L>
        <P>src\core1\tables.S</P>
-       <VL>23</VL>
+       <VL>11</VL>
       </PI.2>
       <PI.3>
        <Bookmarks_num_>0</Bookmarks_num_>
@@ -40,8 +40,7 @@
       </PI.3>
       <PI.4>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>12</C>
-       <L>300</L>
+       <L>298</L>
        <P>src\core1\app.c</P>
        <VL>279</VL>
       </PI.4>

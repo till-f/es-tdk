@@ -16,7 +16,7 @@
       </History>
       <PI.0>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <L>23</L>
+       <L>53</L>
        <P>src\crt0.S</P>
        <VL>23</VL>
       </PI.0>
@@ -165,10 +165,9 @@
       </PI.39>
       <PI.4>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>11</C>
-       <L>387</L>
+       <L>264</L>
        <P>src\core0\app.c</P>
-       <VL>381</VL>
+       <VL>264</VL>
       </PI.4>
       <PI.40>
        <Bookmarks_num_>0</Bookmarks_num_>
@@ -522,6 +521,267 @@
         </PaneStat>
        </PRWndData>
       </ANGUIData.0>
+      <ANGUIData.1>
+       <Filetime type="B">GHLOBOJLNLBANCAB</Filetime>
+       <GUID type="B">APHKMCOMPEGAMBEBIEDHFLIIDPJMJKOC</GUID>
+       <Docks>
+        <ActiveTab>0</ActiveTab>
+        <ID>-1</ID>
+        <Tab>0</Tab>
+        <Array.0>
+         <Docks.0>
+          <ActiveTab>0</ActiveTab>
+          <ID>1</ID>
+          <Tab>0</Tab>
+          <Array.0>
+           <Rect>
+            <Bottom>10000</Bottom>
+            <Left>0</Left>
+            <Right>10000</Right>
+            <Top>0</Top>
+           </Rect>
+          </Array.0>
+          <Array.1>
+           <Rect>
+            <Bottom>10000</Bottom>
+            <Left>0</Left>
+            <Right>10000</Right>
+            <Top>0</Top>
+           </Rect>
+          </Array.1>
+          <Array.2>
+           <Rect>
+            <Bottom>10000</Bottom>
+            <Left>0</Left>
+            <Right>10000</Right>
+            <Top>0</Top>
+           </Rect>
+          </Array.2>
+          <Array.3>
+           <Rect>
+            <Bottom>10000</Bottom>
+            <Left>0</Left>
+            <Right>10000</Right>
+            <Top>0</Top>
+           </Rect>
+          </Array.3>
+          <Rect>
+           <Bottom>5000</Bottom>
+           <Left>0</Left>
+           <Right>10000</Right>
+           <Top>0</Top>
+          </Rect>
+         </Docks.0>
+         <Rect>
+          <Bottom>5000</Bottom>
+          <Left>0</Left>
+          <Right>10000</Right>
+          <Top>0</Top>
+         </Rect>
+        </Array.0>
+        <Array.1>
+         <Rect>
+          <Bottom>10000</Bottom>
+          <Left>0</Left>
+          <Right>10000</Right>
+          <Top>0</Top>
+         </Rect>
+        </Array.1>
+        <Array.2>
+         <Docks.0>
+          <ActiveTab>0</ActiveTab>
+          <ID>3</ID>
+          <Tab>0</Tab>
+          <Array.0>
+           <Rect>
+            <Bottom>10000</Bottom>
+            <Left>0</Left>
+            <Right>10000</Right>
+            <Top>0</Top>
+           </Rect>
+          </Array.0>
+          <Array.1>
+           <Rect>
+            <Bottom>10000</Bottom>
+            <Left>0</Left>
+            <Right>10000</Right>
+            <Top>0</Top>
+           </Rect>
+          </Array.1>
+          <Array.2>
+           <Rect>
+            <Bottom>10000</Bottom>
+            <Left>0</Left>
+            <Right>10000</Right>
+            <Top>0</Top>
+           </Rect>
+          </Array.2>
+          <Array.3>
+           <Rect>
+            <Bottom>10000</Bottom>
+            <Left>0</Left>
+            <Right>10000</Right>
+            <Top>0</Top>
+           </Rect>
+          </Array.3>
+          <Rect>
+           <Bottom>10000</Bottom>
+           <Left>0</Left>
+           <Right>10000</Right>
+           <Top>5000</Top>
+          </Rect>
+         </Docks.0>
+         <Rect>
+          <Bottom>10000</Bottom>
+          <Left>0</Left>
+          <Right>10000</Right>
+          <Top>5000</Top>
+         </Rect>
+        </Array.2>
+        <Array.3>
+         <Rect>
+          <Bottom>10000</Bottom>
+          <Left>0</Left>
+          <Right>10000</Right>
+          <Top>0</Top>
+         </Rect>
+        </Array.3>
+        <Rect>
+         <Bottom>10000</Bottom>
+         <Left>0</Left>
+         <Right>10000</Right>
+         <Top>0</Top>
+        </Rect>
+       </Docks>
+       <PRWndData>
+        <AutoSync>False</AutoSync>
+        <ColHistVisibleHistory>True</ColHistVisibleHistory>
+        <ColHistVisibleName>True</ColHistVisibleName>
+        <ColHistVisibleValue>True</ColHistVisibleValue>
+        <ColStatVisibleCount>True</ColStatVisibleCount>
+        <ColStatVisibleName>True</ColStatVisibleName>
+        <ColStatVisibleTimeCall>False</ColStatVisibleTimeCall>
+        <ColStatVisibleTimeCallAverage>False</ColStatVisibleTimeCallAverage>
+        <ColStatVisibleTimeCallMax>False</ColStatVisibleTimeCallMax>
+        <ColStatVisibleTimeCallMin>False</ColStatVisibleTimeCallMin>
+        <ColStatVisibleTimeGross>False</ColStatVisibleTimeGross>
+        <ColStatVisibleTimeGrossAverage>False</ColStatVisibleTimeGrossAverage>
+        <ColStatVisibleTimeGrossMax>False</ColStatVisibleTimeGrossMax>
+        <ColStatVisibleTimeGrossMin>False</ColStatVisibleTimeGrossMin>
+        <ColStatVisibleTimeNet>True</ColStatVisibleTimeNet>
+        <ColStatVisibleTimeNetAverage>False</ColStatVisibleTimeNetAverage>
+        <ColStatVisibleTimeNetMax>False</ColStatVisibleTimeNetMax>
+        <ColStatVisibleTimeNetMin>False</ColStatVisibleTimeNetMin>
+        <ColStatVisibleTimePeriodAverage>False</ColStatVisibleTimePeriodAverage>
+        <ColStatVisibleTimePeriodMax>False</ColStatVisibleTimePeriodMax>
+        <ColStatVisibleTimePeriodMin>False</ColStatVisibleTimePeriodMin>
+        <DisplayPartition>0</DisplayPartition>
+        <FitChart>False</FitChart>
+        <FunctionTransitions>0</FunctionTransitions>
+        <HideAreasWithNoActivity>False</HideAreasWithNoActivity>
+        <HistoryFindSnap>True</HistoryFindSnap>
+        <HistoryMax type="B">AAAAAAAAAAAAAAAA</HistoryMax>
+        <HistoryMin type="B">AAAAAAAAAAAAAAAA</HistoryMin>
+        <HistoryScrollPos type="B">AAAAAAAAAAAAAAAA</HistoryScrollPos>
+        <HistoryZoomLevel type="B">ABAAAAAAAAAAAAAA</HistoryZoomLevel>
+        <LinesRelativeToFunction>False</LinesRelativeToFunction>
+        <UseTraceTimescale>0</UseTraceTimescale>
+        <PaneHist>
+         <AreaAux>
+          <Height>0</Height>
+          <Filter>
+           <Text></Text>
+           <Visible>0</Visible>
+          </Filter>
+          <Sort>
+           <Column>0</Column>
+           <SmallFirst>1</SmallFirst>
+          </Sort>
+         </AreaAux>
+         <AreaCode>
+          <Height>50</Height>
+          <Filter>
+           <Text></Text>
+           <Visible>0</Visible>
+          </Filter>
+          <Sort>
+           <Column>0</Column>
+           <SmallFirst>1</SmallFirst>
+          </Sort>
+         </AreaCode>
+         <AreaData>
+          <Height>50</Height>
+          <Filter>
+           <Text></Text>
+           <Visible>0</Visible>
+          </Filter>
+          <Sort>
+           <Column>0</Column>
+           <SmallFirst>1</SmallFirst>
+          </Sort>
+         </AreaData>
+         <ColumnWidth.0>
+          <Pos type="D">0.0000000000000000</Pos>
+          <Width>0</Width>
+         </ColumnWidth.0>
+         <ColumnWidth.1>
+          <Pos type="D">35.0000000000000000</Pos>
+          <Width>0</Width>
+         </ColumnWidth.1>
+         <ColumnWidth.2>
+          <Pos type="D">38.0000000000000000</Pos>
+          <Width>0</Width>
+         </ColumnWidth.2>
+        </PaneHist>
+        <PaneStat>
+         <AreaAux>
+          <Height>0</Height>
+          <Filter>
+           <Text></Text>
+           <Visible>0</Visible>
+          </Filter>
+          <Sort>
+           <Column>0</Column>
+           <SmallFirst>1</SmallFirst>
+          </Sort>
+         </AreaAux>
+         <AreaCode>
+          <Height>50</Height>
+          <Filter>
+           <Text></Text>
+           <Visible>0</Visible>
+          </Filter>
+          <Sort>
+           <Column>0</Column>
+           <SmallFirst>1</SmallFirst>
+          </Sort>
+         </AreaCode>
+         <AreaData>
+          <Height>50</Height>
+          <Filter>
+           <Text></Text>
+           <Visible>0</Visible>
+          </Filter>
+          <Sort>
+           <Column>0</Column>
+           <SmallFirst>1</SmallFirst>
+          </Sort>
+         </AreaData>
+         <ColumnWidth.0>
+          <Pos type="D">0.0000000000000000</Pos>
+          <Width>0</Width>
+         </ColumnWidth.0>
+         <ColumnWidth.1>
+          <Pos type="D">20.0000000000000000</Pos>
+          <Width>0</Width>
+         </ColumnWidth.1>
+         <ColumnWidth.2>
+          <Pos type="D">40.0000000000000000</Pos>
+          <Width>0</Width>
+         </ColumnWidth.2>
+        </PaneStat>
+       </PRWndData>
+      </ANGUIData.1>
      </REG_ROOT>
     </LAOptions>
    </LA>
@@ -543,7 +803,7 @@
        <RelativeFileName>src\crt0.S</RelativeFileName>
       </ActiveDocument>
       <Editor.0>
-       <FileBarIndex>0</FileBarIndex>
+       <FileBarIndex>1</FileBarIndex>
        <RectPosBottom>690</RectPosBottom>
        <RectPosLeft>75</RectPosLeft>
        <RectPosRight>554</RectPosRight>
@@ -551,7 +811,7 @@
        <RelativeFileName>src\core0\app.c</RelativeFileName>
       </Editor.0>
       <Editor.1>
-       <FileBarIndex>1</FileBarIndex>
+       <FileBarIndex>2</FileBarIndex>
        <RectPosBottom>715</RectPosBottom>
        <RectPosLeft>100</RectPosLeft>
        <RectPosRight>579</RectPosRight>
@@ -559,7 +819,7 @@
        <RelativeFileName>src\core0\interrupt_handlers.S</RelativeFileName>
       </Editor.1>
       <Editor.2>
-       <FileBarIndex>2</FileBarIndex>
+       <FileBarIndex>3</FileBarIndex>
        <RectPosBottom>715</RectPosBottom>
        <RectPosLeft>100</RectPosLeft>
        <RectPosRight>579</RectPosRight>
@@ -567,7 +827,7 @@
        <RelativeFileName>src\core0\main.c</RelativeFileName>
       </Editor.2>
       <Editor.3>
-       <FileBarIndex>3</FileBarIndex>
+       <FileBarIndex>4</FileBarIndex>
        <RectPosBottom>740</RectPosBottom>
        <RectPosLeft>125</RectPosLeft>
        <RectPosRight>604</RectPosRight>
@@ -575,7 +835,7 @@
        <RelativeFileName>src\core0\tables.S</RelativeFileName>
       </Editor.3>
       <Editor.4>
-       <FileBarIndex>4</FileBarIndex>
+       <FileBarIndex>5</FileBarIndex>
        <RectPosBottom>665</RectPosBottom>
        <RectPosLeft>50</RectPosLeft>
        <RectPosRight>736</RectPosRight>

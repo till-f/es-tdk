@@ -19,7 +19,6 @@
     </traceList>
     <maxPrimaryXrange>126868.22172661868</maxPrimaryXrange>
     <minPrimaryXrange>83193.62172661867</minPrimaryXrange>
-    <name>Visualization.graphview</name>
-    <path>C:\Git\daves\workspace_ptspec\fzi.mottem.examples.ecumotor.ptspec\dasboards\Visualization.graphview</path>
+    <path>C:\Git\es-tdk\workspace_ptspec\fzi.mottem.examples.ecumotor.ptspec\dasboards\Visualization.graphview</path>
     <primaryXLogarithmic>false</primaryXLogarithmic>
 </GraphView>

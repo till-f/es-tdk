@@ -1,22 +1,21 @@
 Introduction
 ============
 
-The Embedded Software Test Development Kit (see www.es-tdk.org) eases the implementation of test for
+The Embedded Software Test Development Kit (see www.es-tdk.org) eases the implementation of tests for
 embedded software. It focuses on C-code and can be used like a unit test framework, but also supports
 advanced test scenarios for embedded systems including timing analysis and Hardware-in-the-Loop (HiL) 
-testing. The ES TDK comes with a new test programming language called ETSpec providing a consistent
-view on heterogeneous test environments.
+tests. The ES TDK comes with a new test programming language called ETSpec providing a consistent view
+on heterogeneous test environments.
 
-The tested software is executed on the real device. Test execution is controlled and the behavior 
-is observed using the debug and trace interfaces of the processor hardware. In principle any 
-microcontroller is supported (especially multicore controllers). Aggregation of data obtained from 
-different targets and other sources (communication networks, analog signals, simulated environment) 
-is also supported. The ES TDK is independent of any operating system and does not require any 
-software support on the target device.
+The tested software is executed on the real device. Test execution is controlled and the behavior is 
+observed using the debug and trace interfaces of the processor hardware. In principle any microcontroller
+is supported (especially multicore controllers). Aggregation of data obtained from different targets and
+other sources (communication networks, analog signals, simulated environment) is also supported. The ES
+TDK is independent of the operating system used on the target and does not require target-side software
+support.
 
-The first version of the language was called "PTSpec" and has been developed in the research project
-"MoTTeM" (www.mottem.fzi.de) funded by the BMWI (German Federal Ministry for Economic Affairs). This
-explains the occurence of the phrases "pts", "ptspec" and "mottem" in the source code.
+The idea of this project was developed in the research project "MoTTeM" at the FZI Forschungszentrum
+Informatik (www.mottem.fzi.de) funded by the BMWi (German Federal Ministry for Economic Affairs).
 
 
 Main Folders
@@ -35,14 +34,16 @@ Primary Requirements
 --------------------
 
 * Java Development Kit (JDK) 1.8
-* Eclipse Neon (4.6.0) with the following plugins
+* Eclipse Neon.1 (4.6.1) with the following plugins
+  * preferred approach is installing "Eclipse for DSL developers" and then
+    adding the remaining plugins (Eclipse SDK, Graphiti SDK, C/C++ SDK)
   
 | Eclipse Plugin                          | Version |
 |-----------------------------------------|---------|
-| Eclipse Plug-in Development Environment | 3.12.0  |
-| Eclipse Modeling Framework Xcore        | 1.4.0   |
+| EMF Framework SDK                       | 2.12.0  |
 | Xtext SDK                               | 2.10.0  |
-| Graphiti SDK                            | 0.13.0  |
+| Eclipse SDK                             | 4.6.1   |
+| Graphiti SDK                            | 0.13.1  |
 | C/C++ Development Tools SDK             | 9.1.0   |
 
 
@@ -50,7 +51,7 @@ Configure build environment
 ---------------------------
 
 * Set `JAVA_HOME` environment variable to point to your JDK installation
-  * e.g. C:\Program Files\Java\jdk1.8.0_25
+  * e.g. C:\Program Files\Java\jdk1.8.0_101
 
 * Start Eclipse and select "workspace_main" as workspace.
   * Do not use another folder, i.e. do not try to copy the projects into another folder.
@@ -67,7 +68,7 @@ Configure build environment
 * Import projects
   * Right-click in Project/Package Explorer -> Import -> General -> Existing projects into Workspace
     -> "Next" -> "Browse..." -> "OK" -> (all projects should be selected) -> "Finish"
-  * After loading you will find a large number of error in the code, this is expected. We have to
+  * After loading you will find a large number of errors in the code, this is expected. We have to
     trigger code generation first (see next step).
 
 
@@ -83,7 +84,7 @@ Build and run the ES TDK
   * A shortcut can be found under "Run Configurations" in the Eclipse toolbar after the first run.
   
 * DONE! Try out the plugin:
-  * Right-click "fzi.mottem.model/MoTTeM Plugin.launch" -> Run As -> MoTTeM Plugin.
+  * Right-click "fzi.mottem.runtime/ES TDK.launch" -> Run As -> ES TDK.
 
 
 Example Applications
@@ -92,10 +93,10 @@ Example Applications
 The source code for two example applications (target code) is included in this project.
 To build and run these examples specific hardware and software is required.
 
-* The "raupe" example consists of two STM32F4 micro controllers communicating over CAN. They are
+* The "raupe" example targets two STM32F4 micro controllers communicating over CAN. They are
   assembled on a crawler vehicle. One STM32F4 controls the speed, the other measures the distance
   to an obstacle ahead of the vehicle using an IR sensor.
-* The "ecumotor" example consists of MPC5643L micro controller with two processor cores. One core
+* The "ecumotor" example targets an MPC5643L micro controller with two processor cores. One core
   contains a realtime critical control algorithm for a brushless DC motor (reading hall sensors,
   commutation), the other core is responsible for CAN communication.
 

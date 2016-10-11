@@ -157,6 +157,7 @@ public class DataExchanger {
 	public static void dropSignal(Signal s) {
 		signalIdHash.remove(s);
 	}
+	
 	/**
 	 * Drops a Signal with the given UID from the DataExchanger.
 	 * Useful if a new Signal with the same UID has to be created.
@@ -167,6 +168,13 @@ public class DataExchanger {
 			if (signal.getId().equals(signalUID))
 				signalIdHash.remove(signal);
 		}
+	}
+
+	/**
+	 * Drops all Signals from the DataExchanger.
+	 */
+	public static void dropAllSignals() {
+		signalIdHash.clear();
 	}
 
 	/**

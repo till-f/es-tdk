@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+     <extension id="ide" point="org.eclipse.core.runtime.products"> 
+      <product name="ES TDK" application="org.eclipse.ui.ide.workbench" description="%productBlurb"> 
+          <!-- For documentation on updating icons, see http://wiki.eclipse.org/Platform-releng/Updating_Branding -->
+          <property name="windowImages" value="estdk_icon16.png,estdk_icon32.png,estdk_icon48.png,estdk_icon64.png"/> 
+          <property name="aboutImage" value="estdk_about.png"/> 
+          <property name="appName" value="ES TDK"/> 
+         <property
+          		name="introTitle"
+          		value="%productIntroTitle"/>
+          <property
+          		name="introBrandingImage"
+          		value="product:estdk_intro.png"/>
+          <property
+          		name="introBrandingImageText"
+          		value="%productIntroBrandingText"/>
+		  <property
+				name="introDescription-overview"
+				value="%introDescription-overview"/>
+		  <property
+				name="applicationXMI"
+				value="org.eclipse.platform/LegacyIDE.e4xmi">
+		  </property>
+		  <property
+				name="cssTheme"
+				value="org.eclipse.e4.ui.css.theme.e4_default">
+		  </property>
+		  <property
+				name="applicationCSSResources"
+          value="platform:/plugin/org.eclipse.ui.themes/images/">
+		  </property>
+
+          <property
+        		name="startupForegroundColor"
+        		value="808080"/>
+          <property
+                name="startupMessageRect"
+                value="7,272,320,15"/>
+          <property
+                name="startupProgressRect"
+                value="2,290,448,10"/>
+          <property
+                name="buildIdLocation"
+                value="0,220">
+          </property>
+          <property
+                name="buildIdSize"
+                value="395,40">
+          </property>
+          <property
+                name="applicationCSS"
+                value="org.eclipse.e4.ui.css.theme.e4_default">
+          </property>
+          <property
+                name="aboutText"
+                value="%productBlurb">
+          </property>
+
+      </product> 
+   </extension> 
+
+   <extension
+		point="org.eclipse.ui.intro">
+      <introProductBinding
+            introId="org.eclipse.ui.intro.universal"
+            productId="fzi.mottem.estdk.ide">
+      </introProductBinding>
+   </extension>
+
+   <extension point="org.eclipse.ui.intro.configExtension">
+      <configExtension
+            configId="org.eclipse.ui.intro.universalConfig"
+            content="$nl$/intro/overviewExtensionContent.xml"/>
+   </extension>
+   
+</plugin>

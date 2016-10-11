@@ -27,7 +27,7 @@ public class PTSpecProjectCreator extends AbstractPluginProjectCreator
 	@Inject
 	private Provider<PTSpecProjectFactory> projectFactoryProvider;
 
-	protected static final String PTS_SOURCE_FILES_ROOT = "ets";
+	protected static final String PTS_SOURCE_FILES_ROOT = "pts";
 	protected final List<String> JAVA_FOLDERS = ImmutableList.of("src-gen");
 	protected final List<String> NON_JAVA_FOLDERS = ImmutableList.of(PTS_SOURCE_FILES_ROOT, "model");
 	protected final List<String> REQUIRED_BUNDLES = ImmutableList.of("fzi.mottem.model", "fzi.mottem.runtime");

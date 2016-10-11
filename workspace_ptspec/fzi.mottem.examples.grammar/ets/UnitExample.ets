@@ -1,7 +1,0 @@
-include "Units.ets";
-
-test UnitExample
-{
-	physical[m] distance = 100 km;
-	physical[m⋅s⁻¹] speed = distance / 1 s;
-}

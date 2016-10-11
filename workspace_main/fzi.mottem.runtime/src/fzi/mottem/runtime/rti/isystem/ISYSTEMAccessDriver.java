@@ -253,24 +253,24 @@ public class ISYSTEMAccessDriver extends AbstractAccessDriver
 				DTFloatingPoint floatType = (DTFloatingPoint)dataType;
 				
 				if ((floatType.getExponentBitSize() == 8 &&
-						floatType.getSignificandBitSize() == 23) && RangeValidator.isInFloatRange((Number)value))
-					{
-						Float value_float = (Float)value;
-						CValueType wrapped_value = new CValueType(value_float);
-						debugFacade.modify(IConnectDebug.EAccessFlags.fRealTime, varName, wrapped_value);
-					}
-					else if ((floatType.getExponentBitSize() == 11 &&
-						     floatType.getSignificandBitSize() == 52) && RangeValidator.isInDoubleRange((Number)value))
-					{
-						Double value_double = (Double)value;
-						CValueType wrapped_value = new CValueType(value_double);
-						debugFacade.modify(IConnectDebug.EAccessFlags.fRealTime, varName, wrapped_value);
-					}
-					else
-					{
-						Double castedValue = Double.valueOf(((Number)value).doubleValue());
-						throw new RuntimeException( castedValue + " is out of range. Please try to use an appropriate datatype");
-					}
+						floatType.getSignificandBitSize() == 23))
+				{
+					Float value_float = (Float)value;
+					CValueType wrapped_value = new CValueType(value_float);
+					debugFacade.modify(IConnectDebug.EAccessFlags.fRealTime, varName, wrapped_value);
+				}
+				else if ((floatType.getExponentBitSize() == 11 &&
+					     floatType.getSignificandBitSize() == 52))
+				{
+					Double value_double = (Double)value;
+					CValueType wrapped_value = new CValueType(value_double);
+					debugFacade.modify(IConnectDebug.EAccessFlags.fRealTime, varName, wrapped_value);
+				}
+				else
+				{
+					Double castedValue = Double.valueOf(((Number)value).doubleValue());
+					throw new RuntimeException( castedValue + " is out of range. Please try to use an appropriate datatype");
+				}
 			}
 			else
 			{

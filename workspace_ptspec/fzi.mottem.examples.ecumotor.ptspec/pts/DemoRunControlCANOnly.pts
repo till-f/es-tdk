@@ -1,0 +1,55 @@
+/*
+ * DemoCANControl.pts
+ * Created on 20.11.2014 15:55:13
+ */
+ 
+include "pkg/Targets.pts";
+include "pkg/Units.pts";
+include "pkg/Common.pts";
+
+test DemoRunControlCANOnly_fast : Demonstrator_CAN default CANPort
+{
+	while (true)
+	{
+		report info : "Drehzahl -2000";
+		Drehzahl = -2000 U⋅min⁻¹;
+		wait 2s;
+	
+		report info : "Drehzahl -1000";
+		Drehzahl = -1000 U⋅min⁻¹;
+		wait 2s;
+	
+		report info : "Drehzahl 1000";
+		Drehzahl = 1000 U⋅min⁻¹;
+		wait 2s;
+	
+		report info : "Drehzahl 2000";
+		Drehzahl = 2000 U⋅min⁻¹;
+		wait 2s;
+	
+		report info : "Drehzahl 3000";
+		Drehzahl = 3000 U⋅min⁻¹;
+		wait 2s;
+	}
+}
+
+test DemoRunControlCANOnly_quiet : Demonstrator_CAN default CANPort
+{
+	while (true)
+	{
+		report info : "Drehzahl 500";
+		Drehzahl = 500 U⋅min⁻¹;
+		wait 1s;
+	
+		report info : "Drehzahl 0";
+		Drehzahl = 800 U⋅min⁻¹;
+		wait 1s;
+	}
+}
+
+test DemoRunControlCANOnly_nothing : Demonstrator_CAN default CANPort
+{
+    while (true)
+    {
+    }
+}

@@ -1,0 +1,55 @@
+/*
+ * DemoTraceCAN2.pts
+ * Created on 14.07.2016 19:26:58
+ */
+
+include "pkg/Targets.pts";
+include "pkg/Units.pts";
+include "pkg/Common.pts";
+
+test DemoTraceCANStimCAN : Demonstrator default CANPort
+{
+    Common.bootToMain();
+     
+    // This starts a background task
+    // sending CAN messages via 
+    // Vector VN7600 Logger
+    concurrent
+    {
+        wait 1s;
+        report info: "Started stimulation task.";
+        Drehzahl = 500 U⋅min⁻¹;
+        report info: "Drehzahl gesetzt.";
+        wait 1.5s;
+        Drehzahl = -3000 U⋅min⁻¹;
+        report info: "Drehzahl gesetzt.";
+        wait 1.5s;
+        Drehzahl = 1500 U⋅min⁻¹;
+        report info: "Drehzahl gesetzt.";
+        wait 1.5s;
+        Drehzahl = 3000 U⋅min⁻¹;
+        report info: "Drehzahl gesetzt.";
+    }
+        
+    // This configures and starts a trace session
+    // Both cores should start execution at their
+    // mainLoop. Both cores do not do any work here
+    // as they are interrupt-driven.
+    report info : "Starting trace...";
+    realtime timeout 8s
+    {
+        Core0.run_app();
+        Core1.run_app();
+    }
+
+    // This creates a plot showing the RPM value as
+    // measured by the µController and the internal
+    // target value
+    plot RPM_Analysis range [0s, 10s]
+    {
+        Drehzahl_ist  : CANPort.Drehzahl_Messung range [-3500, 3500] ;
+        Drehzahl_soll : CANPort.Drehzahl         range [-3500, 3500] hold;
+    }
+    
+    report info : "Test execution completed.";
+}
