@@ -62,6 +62,7 @@ public class SignalsSettingsUI extends Composite {
 	private Menu addOutputGVMenu;
 	private MenuItem addOutputToIndicatorItem;
 	private Menu addOutputDbIndicatorMenu;
+	private ArrayList<Signal> bi_signals;
 	
 
 	public SignalsSettingsUI(Composite parent, int style) {
@@ -197,6 +198,11 @@ public class SignalsSettingsUI extends Composite {
 	public void refresh() {
 		in_signals = SetupUnit.getSignals(SignalType.HW_INPUT);
 		out_signals = SetupUnit.getSignals(SignalType.HW_OUTPUT);
+		
+		bi_signals = SetupUnit.getSignals(SignalType.BIDIRECTIONAL);
+		
+		in_signals.addAll(bi_signals);
+		out_signals.addAll(bi_signals);
 		
 		in_signals_list.removeAll();
 		out_signals_list.removeAll();
