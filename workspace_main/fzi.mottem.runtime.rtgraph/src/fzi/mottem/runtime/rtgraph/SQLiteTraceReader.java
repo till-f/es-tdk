@@ -15,11 +15,13 @@ import fzi.mottem.runtime.dataexchanger.DataExchanger;
 import fzi.mottem.runtime.dataexchanger.Signal;
 import fzi.mottem.runtime.rtgraph.XML.GraphViewRepresentation;
 import fzi.mottem.runtime.rtgraph.XML.TraceRepresentation;
+import fzi.mottem.runtime.rtgraph.runnables.AutoScaler;
 
 public class SQLiteTraceReader {
 
 	HashMap<String, TraceType> axisValueMapping = new HashMap<String, TraceType>();
 	HashMap<String, PointStyle> pointValueMapping = new HashMap<String, PointStyle>();
+	private boolean graph_autoscale = false;
 
 	public SQLiteTraceReader() {
 		// TODO find better implementation for the mapping
@@ -122,9 +124,15 @@ public class SQLiteTraceReader {
 		}
 		return msgMap;
 	}
-
+	
+	/**
+	 * This method will read the .db meta data, save and apply it to a given graph view
+	 * @param gvr The graph view on which the meta data will be applied
+	 * @param filePath Path to the .db file
+	 */
 	public void applyDBMetaData(GraphViewRepresentation gvr, String filePath) {
-
+		
+		graph_autoscale = false;
 		Connection c = null;
 		Statement stmt = null;
 
@@ -158,6 +166,14 @@ public class SQLiteTraceReader {
 				// and finally apply the graph view representation
 				String value = rsGlobal.getString("value");
 				String key = rsGlobal.getString("key");
+				
+				if(key.equals("autoscale")) {
+					if(value.equals("true")) {
+						graph_autoscale = true;
+					} else {
+						graph_autoscale = false;
+					}
+				}		
 				updateGraphViewRepresentation(gvr, key, value);
 			}
 
@@ -189,7 +205,7 @@ public class SQLiteTraceReader {
 	}
 
 	private void updateTraceRepresentation(TraceRepresentation tr, String key, String value) {
-
+		
 		switch (key) {
 		case "max":
 			tr.setMax_range(Double.valueOf(value));
@@ -209,6 +225,16 @@ public class SQLiteTraceReader {
 		default:
 			break;
 		}
+	}
+	
+	/**
+	 * Return whether the meta data requires an autoscale on the resulting graphview's data points.
+	 * This method should be called after the "updateGraphViewRepresentation" method, otherwise it
+	 * will not necessarily return a correct value.
+	 * @return
+	 */
+	public boolean shouldDBAutoscale() {	
+		return graph_autoscale;
 	}
 
 }

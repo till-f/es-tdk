@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.KeyAdapter;
+import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -359,6 +361,38 @@ public class WidgetSettingsUI extends Composite {
 	}
 
 	protected void initListeners() {
+		
+		/*.addListener(SWT.KeyDown, new Listener() {
+
+			@Override
+			public void handleEvent(Event e) {
+				if ((e.keyCode == SWT.CTRL)) {
+					mouseWheelListener.setZoomXaxis(true);
+					mouseWheelListener.setZoomYaxis(false);
+		
+				}
+				if ((e.keyCode == SWT.SHIFT)) {
+					mouseWheelListener.setZoomXaxis(false);
+					mouseWheelListener.setZoomYaxis(true);
+
+				}
+			}
+		});*/
+		
+		Listener enterPositionListener = new Listener() {
+			@Override
+			public void handleEvent(Event e) {
+				if (e.keyCode == SWT.CR) {
+					updateWidgetPosition();
+				}
+			}
+		};
+
+		x.addListener(SWT.KeyDown, enterPositionListener);
+		y.addListener(SWT.KeyDown, enterPositionListener);
+		h.addListener(SWT.KeyDown, enterPositionListener);
+		w.addListener(SWT.KeyDown, enterPositionListener);
+		
 
 		valueFormatText.addModifyListener(new ModifyListener() {
 			@Override
@@ -377,7 +411,6 @@ public class WidgetSettingsUI extends Composite {
 					if (current_link != null)
 						updateLinkFigureRange(current_link);
 				}
-
 			}
 		};
 
@@ -561,11 +594,30 @@ public class WidgetSettingsUI extends Composite {
 				current_link.setXY(Integer.parseInt(x.getText()), Integer.parseInt(y.getText()),
 						Integer.parseInt(w.getText()), Integer.parseInt(h.getText()));
 			}
-
+			current_link.applyRepresentation();
 			current_link.refresh();
 		}
 
 		links_combo.select(dashboard.getWidgetLinks().indexOf(current_link));
+	}
+
+	public void updateWidgetPosition() {
+		if (current_link != null) {
+			if (x.getText().length() > 0) {
+				current_link.getRepresentation().setX(Integer.parseInt(x.getText()));
+			}
+			if (y.getText().length() > 0) {
+				current_link.getRepresentation().setY(Integer.parseInt(y.getText()));
+			}
+			if (h.getText().length() > 0) {
+				current_link.getRepresentation().setWidth(Integer.parseInt(w.getText()));
+			}
+			if (w.getText().length() > 0) {
+				current_link.getRepresentation().setHeight(Integer.parseInt(h.getText()));
+			}
+			current_link.applyRepresentation(false, false, true);
+		}
+
 	}
 
 	public void clear() {
@@ -749,7 +801,7 @@ public class WidgetSettingsUI extends Composite {
 			System.err.println("WidgetSettingsUI error: " + e.getMessage());
 		}
 	}
-	
+
 	public void removeCurrentLink() {
 		current_link.delete();
 		current_link = null;

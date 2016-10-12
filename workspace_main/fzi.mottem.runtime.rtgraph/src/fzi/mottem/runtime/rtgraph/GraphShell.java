@@ -28,6 +28,7 @@ public class GraphShell {
 	private GraphView view;
 	private Shell shell;
 	private SQLiteTraceReader reader;
+	private boolean autoscale = false;
 	
 	public GraphShell(String p) {
 		path = p;
@@ -51,6 +52,7 @@ public class GraphShell {
 		}
 		view.updateRepresentation();
 		reader.applyDBMetaData(view.getRepresentation(), path);
+		autoscale = reader.shouldDBAutoscale();
 		view.applyRepresentation();
 		
 		for (String uid : messages.keySet()) {
@@ -62,7 +64,7 @@ public class GraphShell {
 	}
 	
 	//returns path to image;
-	public String generatePNG(String path, boolean autoscale) {
+	public String generatePNG(String path) {
 	 
 		String imagename = "";
 	    shell.open();
@@ -82,6 +84,7 @@ public class GraphShell {
 			
 			@Override
 			public void run() {
+				view.getGraph().performAutoScale();
 				// TODO Auto-generated method stub
 				Image i = view.getGraph().getImage();
 			    ImageLoader loader = new ImageLoader();
