@@ -17,6 +17,17 @@ public class CDT2EcoreJob extends Job
 	private final IProject _ptsProject;
 	private final Collection<IProject> _changedCProjects;
 	private final Hashtable<IProject, CDT2EcoreWorker> _cdt2EcoreWorkers = new Hashtable<IProject, CDT2EcoreWorker>();
+	
+    /**
+     * update CodeModel files corresponding to provided list of C/C++ projects
+     * in the provided project (should have PTSpecNature, but this is not ensured).
+     */
+    public static void startCDT2EcoreJob(IProject ptsProject, Collection<IProject> changedCProjects)
+    {
+		CDT2EcoreJob cdt2EcoreJob = new CDT2EcoreJob(ptsProject, changedCProjects);
+		cdt2EcoreJob.setPriority(Job.SHORT);
+		cdt2EcoreJob.schedule(10);
+    }
 
 	public CDT2EcoreJob(IProject ptsProject, Collection<IProject> changedCProjects)
 	{

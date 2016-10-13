@@ -39,7 +39,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
-import fzi.mottem.model.codemodel.BinaryLocation;
 import fzi.mottem.model.codemodel.CodeInstance;
 import fzi.mottem.model.codemodel.CodemodelFactory;
 import fzi.mottem.model.codemodel.DTFloatingPoint;
@@ -60,7 +59,6 @@ public class CDT2EcoreWorker
 	private ICProject _cproject = null;
     private IIndex _cindex = null;
 	private IWorkspace _workspace = null;
-	private ELFSymbolsReader _elfSymoblsReader = null;
     
     /*
      * Creates a new CDTInterface for the provided project
@@ -135,21 +133,6 @@ public class CDT2EcoreWorker
 					throw new IOException("Corrupt CodeModel file: " + modelFile.getFullPath().toString());
 				
 				ModelUtils.clearCodeInstance(codeInstance);
-
-				// parses symbol file and thereby resets the symbol-to-address-mapping
-				if (codeInstance.getSymbolInfoFile() != null)
-				{
-					URI elfSymbolsFileURI = URI.createPlatformResourceURI(codeInstance.getSymbolInfoFile(), true);
-					try
-					{
-						_elfSymoblsReader = new ELFSymbolsReader(elfSymbolsFileURI);
-					}
-					catch (IOException e)
-					{
-						System.err.println("Could not load symbols from specified file; binary locations will not be available");
-					}
-				}
-
 				return codeInstance;
 			}
 			catch (IOException e)
@@ -491,17 +474,17 @@ public class CDT2EcoreWorker
 		
 		codeInstance.getSymbols().add(symbol);
 		
-		if (_elfSymoblsReader != null)
-		{
-			Long address = _elfSymoblsReader.getAddress(symbol.getName());
-
-			if (address != null)
-			{
-				BinaryLocation bLoc = CodemodelFactory.eINSTANCE.createBinaryLocation();
-				bLoc.setAddress(address);
-				symbol.setBinaryLocation(bLoc);
-			}
-		}
+//		if (_elfSymoblsReader != null)
+//		{
+//			Long address = _elfSymoblsReader.getAddress(symbol.getName());
+//
+//			if (address != null)
+//			{
+//				BinaryLocation bLoc = CodemodelFactory.eINSTANCE.createBinaryLocation();
+//				bLoc.setAddress(address);
+//				symbol.setBinaryLocation(bLoc);
+//			}
+//		}
 	}
 
 	private DataType findDataType(CodeInstance ci, String name)
