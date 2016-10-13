@@ -305,9 +305,6 @@ public class GraphViewEditor extends EditorPart {
 			} else {
 				options = new CreateDBOptions();
 			}
-			//GraphShell gs = new GraphShell(path);
-			//String imgname = gs.generatePNG("C:/Work/FZI/git/daves/workspace_ptspec/fzi.mottem.examples.visualization/reports/img/");
-			//System.out.println("Image name: " + imgname);
 			
 			HashMap<String, ArrayList<DEMessage>> msgMap = reader.getDEMessages(path);
 			Shell shell = new Shell(Display.getCurrent());
@@ -350,7 +347,6 @@ public class GraphViewEditor extends EditorPart {
 				} else {
 
 					// first add all needed traces
-
 					if (options.applyMetaData) {
 
 						for (String uid : msgMap.keySet()) {
@@ -362,12 +358,13 @@ public class GraphViewEditor extends EditorPart {
 						reader.applyDBMetaData(view.getRepresentation(), path);
 						view.applyRepresentation();
 						System.out.println("GraphViewEditor: Applying metadata from " + path);
-
 					}
 
 					for (TraceExchangeLink tl : view.getTraceExchangeLinks()) {
-						tl.consumeBurst(msgMap.get(tl.getSignalUID()));
-						Display.getCurrent().asyncExec(tl.getTraceUpdater());
+						if(msgMap.get(tl.getSignalUID()) != null) {
+							tl.consumeBurst(msgMap.get(tl.getSignalUID()));
+							Display.getCurrent().asyncExec(tl.getTraceUpdater());
+						}	
 					}
 					// so far so good
 				}

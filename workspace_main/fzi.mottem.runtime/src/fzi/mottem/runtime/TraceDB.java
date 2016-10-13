@@ -595,7 +595,7 @@ public class TraceDB
 		Display.getDefault().asyncExec(new Runnable() {
 			public void run() {
 				GraphShell gShell = new GraphShell(_dbFile.getRawLocation().toOSString());
-				gShell.generatePNG(_plotImageFile.getRawLocation().toOSString(), false);
+				gShell.generatePNG(_plotImageFile.getRawLocation().toOSString());
 			}
 		});
 	}

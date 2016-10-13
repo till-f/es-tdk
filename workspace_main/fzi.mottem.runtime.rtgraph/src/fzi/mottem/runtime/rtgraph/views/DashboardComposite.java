@@ -10,6 +10,7 @@ import org.csstudio.swt.widgets.figures.ProgressBarFigure;
 import org.csstudio.swt.widgets.figures.ScaledSliderFigure;
 import org.csstudio.swt.widgets.figures.TankFigure;
 import org.csstudio.swt.widgets.figures.ThermometerFigure;
+import org.csstudio.swt.xygraph.figures.XYGraph;
 import org.csstudio.swt.xygraph.util.XYGraphMediaFactory;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.swt.SWT;
@@ -328,7 +329,7 @@ public class DashboardComposite extends Dashboard {
 		}
 
 		/*
-		 * because for some reason initializing and switching controller figures
+		 * because for some reason initialising and switching controller figures
 		 * (switching slider to knob) causes the font to be null -> an exception
 		 * is thrown and the figure can no longer be used
 		 */
@@ -338,7 +339,6 @@ public class DashboardComposite extends Dashboard {
 	}
 
 	public void setFigureType(int link_index, int figure_type) {
-		// current_link instead of link index?
 		AbstractWidgetExchangeLink link = widgetLinks.get(link_index);
 		final AbstractMarkedWidgetFigure figure;
 
@@ -664,17 +664,16 @@ public class DashboardComposite extends Dashboard {
 				// TODO Auto-generated method stub
 			}
 		});
-		
-
 	}
 	
 	private void setEmptyBackground() {
 		Display display = Display.getCurrent();
-		
-	    Color gray = display.getSystemColor(SWT.COLOR_GRAY);
+
+	    Color bg_gray_widget = new Color(display,248,248,248); 
+	    //this is also the widget background color as of right now  
 	    bg_image = null;		
 	    setBackgroundImage(null);
-	    setBackground(gray);
+	    setBackground(bg_gray_widget);
 	    
 	}
 	
@@ -722,23 +721,15 @@ public class DashboardComposite extends Dashboard {
 
 	public void setName(String name) {
 		this.name = name;
-		// representation.setName(name);
-		// setDirty(true);
 	}
 
 	public String getName() {
 		return this.name;
 	}
 
-	/*
-	 * @Override public void notifyObservers() { for (WidgetViewObserver o :
-	 * observers) { o.update(this); } }
-	 */
-
 	private void init() {
 		setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		initContainer();
-		// addObserver(new WidgetViewObserver());
 		startRunnables();
 	}
 
