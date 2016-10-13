@@ -43,6 +43,7 @@ import fzi.mottem.runtime.rtgraph.AbstractWidgetExchangeLink;
 import fzi.mottem.runtime.rtgraph.AbstractWidgetExchangeLink.WidgetType;
 import fzi.mottem.runtime.rtgraph.Constants;
 import fzi.mottem.runtime.rtgraph.ControllerWidgetLink;
+import fzi.mottem.runtime.rtgraph.EclipseFileSystemHelper;
 import fzi.mottem.runtime.rtgraph.IndicatorWidgetLink;
 import fzi.mottem.runtime.rtgraph.SetupUnit;
 import fzi.mottem.runtime.rtgraph.ViewCoordinator;
@@ -678,6 +679,8 @@ public class DashboardComposite extends Dashboard {
 	}
 	
 	public String callImageDialog() {
+		EclipseFileSystemHelper helper = new EclipseFileSystemHelper();
+		
 		Shell shell = new Shell(Display.getCurrent());
 		FileDialog dialog = new FileDialog(shell, SWT.OPEN);
 		dialog.setFilterExtensions(new String[] { "*.*", "*.jpg", "*.gif", "*.png", "*.jpeg", "*.bmp" });
@@ -693,7 +696,7 @@ public class DashboardComposite extends Dashboard {
 
 		if (result != null && !representation.background_path.equals(result)) {
 			System.out.println("Dashboard: Settings background to " + result);
-			representation.background_path = result;
+			representation.background_path = result; //result is the full path!
 			bg_image = new Image(Display.getCurrent(), result);
 			setBackgroundImage(bg_image);
 			refreshBgImage();

@@ -190,10 +190,26 @@ public class IndicatorWidgetLink extends AbstractWidgetExchangeLink {
 			canvas.setToolTipText(this.simpleName + "\n" + signalUID);
 		} else if (getType() == Constants.WIDGET_IMAGE) {
 			if (text.length() > 0 && !oldtext.equals(text)) {
-				canvas.setToolTipText(text);
 				
+				EclipseFileSystemHelper helper = new EclipseFileSystemHelper();
+				
+				String img_result = text;
+						
+				if(helper.fileIsInWorkspace(text)) {
+					if(helper.isAbsolutePath(text)) {
+						img_result = text;
+						canvas.setToolTipText(helper.getWorkspaceRelativeFromAbsolute(text));
+						representation.setText(helper.getWorkspaceRelativeFromAbsolute(text));
+					} else {
+						img_result = helper.getAbsoluteFromWorkspaceRelative(text);
+						canvas.setToolTipText(text);
+						representation.setText(text);
+					}
+				}
+	
 				try {
-					ImageData imgData = new ImageData(text);
+					
+					ImageData imgData = new ImageData(img_result);
 					this.image = new Image(Display.getCurrent(), imgData);
 
 					canvas.setBounds(representation.getX(), representation.getY(), representation.getWidth(),
@@ -205,14 +221,23 @@ public class IndicatorWidgetLink extends AbstractWidgetExchangeLink {
 					String result = dashboard.callImageDialog();
 					
 					if (result != null) {
-						canvas.setToolTipText(result);
+						
+						//result is absolute
+						String img_path = null;
+						if(helper.fileIsInWorkspace(result)) {
+							img_path = helper.getWorkspaceRelativeFromAbsolute(result);
+						} else {
+							img_path = result;
+						}
+
 						// force image dimension when loading it for the first time
 						ImageData imgData = new ImageData(result);
 						this.image = new Image(Display.getCurrent(), imgData);
 						
 						getRepresentation().setHeight(imgData.height);
 						getRepresentation().setWidth(imgData.width);
-						getRepresentation().setText(result);
+						getRepresentation().setText(img_path);
+						canvas.setToolTipText(img_path);
 						
 						canvas.setBounds(representation.getX(), representation.getY(), representation.getWidth(),
 								representation.getHeight());
