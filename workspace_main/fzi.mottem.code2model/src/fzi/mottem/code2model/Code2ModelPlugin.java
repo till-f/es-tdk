@@ -1,19 +1,19 @@
-package fzi.mottem.cdt2ecore;
+package fzi.mottem.code2model;
 
 import org.eclipse.ui.IStartup;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
-public class CDT2EcorePlugin extends AbstractUIPlugin implements IStartup
+public class Code2ModelPlugin extends AbstractUIPlugin implements IStartup
 {
 
 	public static final String PLUGIN_ID = "fzi.mottem.cdt2ecore"; //$NON-NLS-1$
 
-	public static CDT2EcorePlugin Instance = null;
+	public static Code2ModelPlugin Instance = null;
 	
-	private CDT2Ecore _cdt2Ecore = null;
+	private Code2Model _cdt2Ecore = null;
 
-	public CDT2EcorePlugin() 
+	public Code2ModelPlugin() 
 	{
 	}
 
@@ -21,7 +21,7 @@ public class CDT2EcorePlugin extends AbstractUIPlugin implements IStartup
 	{
 		super.start(context);
 		
-		_cdt2Ecore = new CDT2Ecore(this);
+		_cdt2Ecore = new Code2Model(this);
 		
 		Instance = this;
 	}
@@ -35,7 +35,7 @@ public class CDT2EcorePlugin extends AbstractUIPlugin implements IStartup
 		super.stop(context);
 	}
 	
-    public CDT2Ecore getCDT2Ecore()
+    public Code2Model getCDT2Ecore()
     {
         return _cdt2Ecore;
     }

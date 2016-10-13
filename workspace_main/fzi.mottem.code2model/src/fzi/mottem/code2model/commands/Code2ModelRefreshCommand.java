@@ -1,4 +1,4 @@
-package fzi.mottem.cdt2ecore.commands;
+package fzi.mottem.code2model.commands;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -10,11 +10,11 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 
-import fzi.mottem.cdt2ecore.util.CDT2EcoreJob;
+import fzi.mottem.code2model.cdt2ecore.CDTExtractorJob;
 import fzi.mottem.ptspec.dsl.ui.nature.PTSpecNature;
 import fzi.util.eclipse.IntegrationUtils;
 
-public class RefreshCommand extends AbstractHandler 
+public class Code2ModelRefreshCommand extends AbstractHandler 
 {
 
 	@Override
@@ -41,7 +41,7 @@ public class RefreshCommand extends AbstractHandler
 				}
 				
 				// option 1
-				CDT2EcoreJob.startCDT2EcoreJob(ptsProject, cProjects);
+				CDTExtractorJob.startCDT2EcoreJob(ptsProject, cProjects);
 			}
 		}
     	catch (Exception e)

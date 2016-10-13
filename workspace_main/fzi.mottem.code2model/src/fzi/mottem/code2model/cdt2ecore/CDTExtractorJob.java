@@ -1,4 +1,4 @@
-package fzi.mottem.cdt2ecore.util;
+package fzi.mottem.code2model.cdt2ecore;
 
 import java.util.Collection;
 import java.util.Hashtable;
@@ -11,12 +11,12 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 
-public class CDT2EcoreJob extends Job
+public class CDTExtractorJob extends Job
 {
 
 	private final IProject _ptsProject;
 	private final Collection<IProject> _changedCProjects;
-	private final Hashtable<IProject, CDT2EcoreWorker> _cdt2EcoreWorkers = new Hashtable<IProject, CDT2EcoreWorker>();
+	private final Hashtable<IProject, CDTExtractor> _cdt2EcoreWorkers = new Hashtable<IProject, CDTExtractor>();
 	
     /**
      * update CodeModel files corresponding to provided list of C/C++ projects
@@ -24,12 +24,12 @@ public class CDT2EcoreJob extends Job
      */
     public static void startCDT2EcoreJob(IProject ptsProject, Collection<IProject> changedCProjects)
     {
-		CDT2EcoreJob cdt2EcoreJob = new CDT2EcoreJob(ptsProject, changedCProjects);
+		CDTExtractorJob cdt2EcoreJob = new CDTExtractorJob(ptsProject, changedCProjects);
 		cdt2EcoreJob.setPriority(Job.SHORT);
 		cdt2EcoreJob.schedule(10);
     }
 
-	public CDT2EcoreJob(IProject ptsProject, Collection<IProject> changedCProjects)
+	public CDTExtractorJob(IProject ptsProject, Collection<IProject> changedCProjects)
 	{
 		super("Refreshing CodeModel(s) for " + ptsProject.getName());
 		
@@ -60,7 +60,7 @@ public class CDT2EcoreJob extends Job
         {
             try
             {
-            	CDT2EcoreWorker cdti;
+            	CDTExtractor cdti;
             	
             	if (_cdt2EcoreWorkers.containsKey(p))
             	{
@@ -68,7 +68,7 @@ public class CDT2EcoreJob extends Job
             	}
             	else
             	{
-                    cdti = new CDT2EcoreWorker(p);
+                    cdti = new CDTExtractor(p);
                     _cdt2EcoreWorkers.put(p, cdti);
             	}
 

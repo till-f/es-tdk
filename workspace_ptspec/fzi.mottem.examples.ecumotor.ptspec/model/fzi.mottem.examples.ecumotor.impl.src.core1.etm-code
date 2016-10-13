@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<fzi.mottem.model.codemodel:CodeInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fzi.mottem.model.codemodel="http://www.fzi.de/mottem/model/codemodel" xmi:id="+NPkgsrc_core1" name="Pkgsrc_core1" cProjectName="fzi.mottem.examples.ecumotor.impl" binaryFile="fzi.mottem.examples.ecumotor.impl/bin/MPC5643L_core0.elf">
+<fzi.mottem.model.codemodel:CodeInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fzi.mottem.model.codemodel="http://www.fzi.de/mottem/model/codemodel" xmi:id="+NPkgsrc_core1" name="Pkgsrc_core1" cProjectName="fzi.mottem.examples.ecumotor.impl" binaryFile="fzi.mottem.examples.ecumotor.impl/bin/MPC5643L_core1.elf">
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nrpm_act+NPkgsrc_core1" name="rpm_act" dataType="+Nfloat+NPkgsrc_core1">
     <declarationLocation xmi:id="+LS+Nrpm_act+NPkgsrc_core1" offset="155" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core1\app.c" length="7" lineNumber="10"/>
   </symbols>

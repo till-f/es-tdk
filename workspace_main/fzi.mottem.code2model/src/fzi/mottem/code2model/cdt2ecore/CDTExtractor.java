@@ -1,4 +1,4 @@
-package fzi.mottem.cdt2ecore.util;
+package fzi.mottem.code2model.cdt2ecore;
 
 import java.io.File;
 import java.io.IOException;
@@ -54,7 +54,7 @@ import fzi.mottem.model.util.ModelUtils;
 import fzi.util.ecore.EcoreUtils;
 
 @SuppressWarnings("restriction")
-public class CDT2EcoreWorker
+public class CDTExtractor
 {
 	private ICProject _cproject = null;
     private IIndex _cindex = null;
@@ -63,7 +63,7 @@ public class CDT2EcoreWorker
     /*
      * Creates a new CDTInterface for the provided project
      */
-	public CDT2EcoreWorker(IProject project) throws CoreException
+	public CDTExtractor(IProject project) throws CoreException
 	{
 	    _cproject = CoreModel.getDefault().create(project);
 	    _cindex = CCorePlugin.getIndexManager().getIndex(_cproject);

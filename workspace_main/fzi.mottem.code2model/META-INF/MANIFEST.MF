@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: fzi.mottem.cdt2ecore
-Bundle-SymbolicName: fzi.mottem.cdt2ecore;singleton:=true
+Bundle-Name: fzi.mottem.code2model
+Bundle-SymbolicName: fzi.mottem.code2model;singleton:=true
 Bundle-Version: 0.1.0.qualifier
-Bundle-Activator: fzi.mottem.cdt2ecore.CDT2EcorePlugin
+Bundle-Activator: fzi.mottem.code2model.Code2ModelPlugin
 Bundle-Vendor: Till Fischer
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

@@ -1,17 +1,15 @@
-package fzi.mottem.cdt2ecore;
+package fzi.mottem.code2model;
 
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 
-import fzi.mottem.cdt2ecore.util.PTSpecResourceChangeVisitor;
-
-public class CDT2Ecore implements IResourceChangeListener
+public class Code2Model implements IResourceChangeListener
 {
     
-    private CDT2EcorePlugin _activator = null;
-    public CDT2EcorePlugin getActivator()
+    private Code2ModelPlugin _activator = null;
+    public Code2ModelPlugin getActivator()
     {
         return _activator;
     }
@@ -19,7 +17,7 @@ public class CDT2Ecore implements IResourceChangeListener
     /**
      * The Constructor
      */
-    public CDT2Ecore(CDT2EcorePlugin a)
+    public Code2Model(Code2ModelPlugin a)
     {
         ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
     }
@@ -48,7 +46,7 @@ public class CDT2Ecore implements IResourceChangeListener
 	        case IResourceChangeEvent.POST_CHANGE:
 				try
 				{
-					PTSpecResourceChangeVisitor changeVisitor = new PTSpecResourceChangeVisitor();
+					Code2ModelResourceDeltaVisitor changeVisitor = new Code2ModelResourceDeltaVisitor();
 					event.getDelta().accept(changeVisitor);
 				}
 				catch (CoreException e1)
