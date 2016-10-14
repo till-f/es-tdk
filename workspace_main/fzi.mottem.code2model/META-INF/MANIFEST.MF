@@ -12,6 +12,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.cdt.ui,
  fzi.util,
  fzi.mottem.model,
- fzi.mottem.ptspec.dsl.ui
+ fzi.mottem.ptspec.dsl.ui,
+ com.bicirikdwarf;bundle-version="1.0.0",
+ com.bicirikdwarf.emf;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

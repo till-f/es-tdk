@@ -1,5 +1,10 @@
 package fzi.mottem.code2model;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 import java.util.LinkedList;
 
 import org.eclipse.cdt.core.model.CoreModel;
@@ -8,9 +13,17 @@ import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
+
+import com.bicirikdwarf.dwarf.Dwarf32Context;
+import com.bicirikdwarf.elf.Elf32Context;
+import com.bicirikdwarf.emf.DwarfModelFactory;
+import com.bicirikdwarf.emf.dwarf.DwarfModel;
 
 import fzi.mottem.code2model.cdt2ecore.CDTExtractorJob;
 import fzi.mottem.ptspec.dsl.ui.nature.PTSpecNature;
+import fzi.util.eclipse.IntegrationUtils;
 
 /**
  * This IResourceDeltaVisitor reacts on changes in C/C++ files or binary files
@@ -37,14 +50,15 @@ public class Code2ModelResourceDeltaVisitor implements IResourceDeltaVisitor
 		//       (only process changed resoures). This requires architecture
 		//       change (interface to emf is currently simply writing model files
 		//       into file system - combination requires proper update of models)
-		return option1(delta);
-		//return option2(delta);
+		//return option1(delta);
+		return option2(delta);
 	}
 	
 	/**
 	 * extract symbols from C/C++ code using CDT. Simply triggers CDTExtractor for every
 	 * PTSpec project.
 	 */
+	@SuppressWarnings("unused")
 	private boolean option1(IResourceDelta delta)
     {
     	IProject project = delta.getResource().getProject();
@@ -81,7 +95,6 @@ public class Code2ModelResourceDeltaVisitor implements IResourceDeltaVisitor
     /**
      * extract symbols from ELF file with addresses.
      */
-	@SuppressWarnings("unused")
 	private boolean option2(IResourceDelta delta)
 	{
 		if (delta.getResource() == null ||
@@ -92,7 +105,40 @@ public class Code2ModelResourceDeltaVisitor implements IResourceDeltaVisitor
 		}
 
 		// found an updated ELF file
-    	System.err.println("Option 2 currently not supported (ELF file " + delta.getResource().getFullPath().toPortableString() + " updated)");
+		String elfPathStr = IntegrationUtils.getStringSystemPathForWorkspaceRelativePath(delta.getResource().getFullPath());
+		File elfFile = new File(elfPathStr);
+
+		RandomAccessFile raFile = null;
+		DwarfModel model = null;
+		try
+		{
+			raFile = new RandomAccessFile(elfFile, "r");
+			FileChannel elfFileChannel = raFile.getChannel();
+			MappedByteBuffer buffer = elfFileChannel.map(FileChannel.MapMode.READ_ONLY, 0, elfFileChannel.size());
+	    	Elf32Context elfContext = new Elf32Context(buffer);
+	    	Dwarf32Context dwarfContext = new Dwarf32Context(elfContext);
+	    	model = DwarfModelFactory.createModel(dwarfContext);
+		}
+		catch (IOException e)
+		{
+			return true;
+		} 
+		finally
+		{
+			try {
+				raFile.close();
+			} catch (IOException e1) {
+				return true;
+			}
+		}
+
+    	TreeIterator<EObject> iterator = model.eAllContents();
+		while (iterator.hasNext())
+		{
+			EObject obj = iterator.next();
+			//System.out.println(obj.getClass().getSimpleName());
+			// !TODO: create and fill code model file
+		}
 		
 		return false;
 	}
