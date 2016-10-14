@@ -155,7 +155,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="fzi.mottem.ptspec.dsl"/>
       <plugin id="fzi.mottem.ptspec.dsl.resources"/>
       <plugin id="fzi.mottem.ptspec.dsl.resources.ui"/>
-      <plugin id="fzi.mottem.ptspec.dsl.tests"/>
       <plugin id="fzi.mottem.ptspec.dsl.ui"/>
       <plugin id="fzi.mottem.runtime"/>
       <plugin id="fzi.mottem.runtime.dataexchanger"/>

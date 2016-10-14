@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: fzi.mottem.code2model
 Bundle-SymbolicName: fzi.mottem.code2model;singleton:=true
-Bundle-Version: 0.1.0.qualifier
+Bundle-Version: 0.1.1.qualifier
 Bundle-Activator: fzi.mottem.code2model.Code2ModelPlugin
 Bundle-Vendor: Till Fischer
 Require-Bundle: org.eclipse.ui,

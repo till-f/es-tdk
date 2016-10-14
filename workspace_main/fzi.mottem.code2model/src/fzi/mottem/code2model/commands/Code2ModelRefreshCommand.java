@@ -14,6 +14,10 @@ import fzi.mottem.code2model.cdt2ecore.CDTExtractorJob;
 import fzi.mottem.ptspec.dsl.ui.nature.PTSpecNature;
 import fzi.util.eclipse.IntegrationUtils;
 
+/**
+ * This command serves debugging purposes only. It triggers re-generation of CodeModel(s) which
+ * normally should occur in the context of a resource change (see Code2ModelResourceDeltaVisitor). 
+ */
 public class Code2ModelRefreshCommand extends AbstractHandler 
 {
 

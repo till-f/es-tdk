@@ -10,7 +10,7 @@
       <command
             categoryId="fzi.mottem.code2model.commandCategory"
             id="fzi.mottem.code2model.commands.refresh"
-            name="(Re-)Load CodeModels">
+            name="(Re-)Generate CodeModels">
       </command>
    </extension>
    

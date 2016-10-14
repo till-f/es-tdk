@@ -25,12 +25,6 @@
                ratio="0.5"
                relative="org.eclipse.ui.views.ProblemView"
                relationship="right"
-               id="fzi.mottem.runtime.rtgraph.views.MainView">
-         </view>
-         <view
-               ratio="0.5"
-               relative="org.eclipse.ui.views.ProblemView"
-               relationship="right"
                id="fzi.mottem.runtime.rtgraph.views.SettingsViewPart">
          </view>
       </perspectiveExtension>
@@ -51,11 +45,6 @@
             categoryId="fzi.mottem.rtgraph.commandCategory"
             id="fzi.mottem.rtgraph.commands.refresh"
             name="(Re-)Load Signals">
-      </command>
-      <command
-            defaultHandler="fzi.mottem.runtime.rtgraph.editors.DashboardEditorCaller"
-            id="fzi.mottem.runtime.rtgraph.openDashboardEditor"
-            name="Open Dashboard Editor">
       </command>
    </extension>
    

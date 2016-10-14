@@ -19,8 +19,6 @@ import fzi.mottem.ptspec.dsl.ui.nature.PTSpecNature;
  */
 public class Code2ModelResourceDeltaVisitor implements IResourceDeltaVisitor
 {
-	private final static int OPTION = 1;
-
 	@Override
 	public boolean visit(IResourceDelta delta) throws CoreException
 	{
@@ -39,17 +37,15 @@ public class Code2ModelResourceDeltaVisitor implements IResourceDeltaVisitor
 		//       (only process changed resoures). This requires architecture
 		//       change (interface to emf is currently simply writing model files
 		//       into file system - combination requires proper update of models)
-		if (OPTION == 1)
-			return option1(delta);
-		else
-			return option2(delta);
+		return option1(delta);
+		//return option2(delta);
 	}
 	
 	/**
 	 * extract symbols from C/C++ code using CDT. Simply triggers CDTExtractor for every
 	 * PTSpec project.
 	 */
-    private boolean option1(IResourceDelta delta)
+	private boolean option1(IResourceDelta delta)
     {
     	IProject project = delta.getResource().getProject();
 
@@ -85,6 +81,7 @@ public class Code2ModelResourceDeltaVisitor implements IResourceDeltaVisitor
     /**
      * extract symbols from ELF file with addresses.
      */
+	@SuppressWarnings("unused")
 	private boolean option2(IResourceDelta delta)
 	{
 		if (delta.getResource() == null ||
