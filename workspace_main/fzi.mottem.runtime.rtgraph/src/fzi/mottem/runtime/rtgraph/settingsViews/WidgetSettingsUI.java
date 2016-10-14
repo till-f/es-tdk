@@ -392,7 +392,6 @@ public class WidgetSettingsUI extends Composite {
 		y.addListener(SWT.KeyDown, enterPositionListener);
 		h.addListener(SWT.KeyDown, enterPositionListener);
 		w.addListener(SWT.KeyDown, enterPositionListener);
-		
 
 		valueFormatText.addModifyListener(new ModifyListener() {
 			@Override
