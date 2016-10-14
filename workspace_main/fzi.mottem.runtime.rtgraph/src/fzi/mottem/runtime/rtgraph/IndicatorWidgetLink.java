@@ -189,14 +189,17 @@ public class IndicatorWidgetLink extends AbstractWidgetExchangeLink {
 			}
 			canvas.setToolTipText(this.simpleName + "\n" + signalUID);
 		} else if (getType() == Constants.WIDGET_IMAGE) {
+
 			if (text.length() > 0 && !oldtext.equals(text)) {
-				
+
+				setWidgetImage(text);
+
 				EclipseFileSystemHelper helper = new EclipseFileSystemHelper();
-				
+
 				String img_result = text;
-						
-				if(helper.fileIsInWorkspace(text)) {
-					if(helper.isAbsolutePath(text)) {
+
+				if (helper.fileIsInWorkspace(text)) {
+					if (helper.isAbsolutePath(text)) {
 						img_result = text;
 						canvas.setToolTipText(helper.getWorkspaceRelativeFromAbsolute(text));
 						representation.setText(helper.getWorkspaceRelativeFromAbsolute(text));
@@ -206,45 +209,43 @@ public class IndicatorWidgetLink extends AbstractWidgetExchangeLink {
 						representation.setText(text);
 					}
 				}
-	
+
 				try {
-					
+
 					ImageData imgData = new ImageData(img_result);
 					this.image = new Image(Display.getCurrent(), imgData);
-
 					canvas.setBounds(representation.getX(), representation.getY(), representation.getWidth(),
 							representation.getHeight());
-					
 					updateCanvasImage();
-					
+
 				} catch (SWTException e) {
 					String result = dashboard.callImageDialog();
-					
+
 					if (result != null) {
-						
-						//result is absolute
+
+						// result is absolute
 						String img_path = null;
-						if(helper.fileIsInWorkspace(result)) {
+						if (helper.fileIsInWorkspace(result)) {
 							img_path = helper.getWorkspaceRelativeFromAbsolute(result);
 						} else {
 							img_path = result;
 						}
 
-						// force image dimension when loading it for the first time
+						// force image dimension when loading it for the first
+						// time
 						ImageData imgData = new ImageData(result);
 						this.image = new Image(Display.getCurrent(), imgData);
-						
+
 						getRepresentation().setHeight(imgData.height);
 						getRepresentation().setWidth(imgData.width);
 						getRepresentation().setText(img_path);
 						canvas.setToolTipText(img_path);
-						
+
 						canvas.setBounds(representation.getX(), representation.getY(), representation.getWidth(),
 								representation.getHeight());
-		
+
 						updateCanvasImage();
-						
-			
+
 					} else {
 						canvas.setBounds(representation.getX(), representation.getY(), representation.getWidth(),
 								representation.getHeight());
@@ -258,6 +259,74 @@ public class IndicatorWidgetLink extends AbstractWidgetExchangeLink {
 			} else {
 				canvas.setToolTipText(this.simpleName + "\n" + signalUID);
 			}
+		}
+
+	}
+
+	private void setWidgetImage(String path) {
+		EclipseFileSystemHelper helper = new EclipseFileSystemHelper();
+		String absolutePath = null;
+		String representationImagePath = null;
+		boolean imageInWorkspace = helper.fileIsInWorkspace(path);
+		boolean isAbsolutePath = helper.isAbsolutePath(path);
+
+		/*
+		 * if the image is in the workspace and the path is absolute then reduce
+		 * to workspace relative path if the path is relative then find the
+		 * absolute path
+		 * 
+		 * If the image is not in the workspace then just use the absolute path
+		 */
+		if (imageInWorkspace) {
+			if (isAbsolutePath) {
+				absolutePath = path;
+				representationImagePath = helper.getWorkspaceRelativeFromAbsolute(path);
+			} else {
+				absolutePath = helper.getAbsoluteFromWorkspaceRelative(path);
+				representationImagePath = path;
+			}
+		} else {
+			absolutePath = path;
+			representationImagePath = path;
+		}
+		
+		try { //try to get the image
+			
+			ImageData imgData = new ImageData(absolutePath);
+			this.image = new Image(Display.getCurrent(), imgData);
+			canvas.setBounds(representation.getX(), representation.getY(), representation.getWidth(),
+					representation.getHeight());
+			representation.setHeight(imgData.height);
+			representation.setWidth(imgData.width);
+			representation.setText(absolutePath);
+			updateCanvasImage();
+			
+		} catch (SWTException e) { //if it fails, call a browse dialog and try again
+			
+			String result = dashboard.callImageDialog();
+
+			if (result != null) {
+				if (helper.fileIsInWorkspace(result)) {
+					representationImagePath = helper.getWorkspaceRelativeFromAbsolute(result);
+					absolutePath = result;
+				} else {
+					absolutePath = result;
+					representationImagePath = result;
+				}
+				
+				ImageData imgData = new ImageData(absolutePath);
+				this.image = new Image(Display.getCurrent(), imgData);
+				
+				representation.setHeight(imgData.height);
+				representation.setWidth(imgData.width);
+				representation.setText(absolutePath);
+				
+			} else {
+				canvas.setBounds(representation.getX(), representation.getY(), representation.getWidth(),
+						representation.getHeight());
+				canvas.setToolTipText("Image not found!");
+			}
+			
 		}
 
 	}
@@ -360,12 +429,12 @@ public class IndicatorWidgetLink extends AbstractWidgetExchangeLink {
 
 		String reptext = new String(representation.getText());
 		System.out.println("Widget Consumer: Applying represetation, text = " + reptext);
-		
+
 		if (applyCanvas) {
 			canvas.setBounds(representation.getX(), representation.getY(), representation.getWidth(),
 					representation.getHeight());
 		}
-		
+
 		if (applyFigure) {
 			figure.setRange(representation.getRangeMin(), representation.getRangeMax());
 			setFigureHi(representation.getRangeHigh());
@@ -374,7 +443,7 @@ public class IndicatorWidgetLink extends AbstractWidgetExchangeLink {
 			figure.setLogScale(representation.isLogarithmic());
 			figure.setValueLabelFormat(representation.getNumberFormat());
 		}
-		
+
 		dashboard.layout(true);
 		if (DataExchanger.getSignal(signalUID) != null) {
 			simpleName = DataExchanger.getSignal(signalUID).getSimpleName();
