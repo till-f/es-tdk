@@ -1,86 +1,60 @@
 package fzi.mottem.code2model.cdt2ecore;
 
-import java.util.Collection;
-import java.util.Hashtable;
-
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 
+import fzi.mottem.code2model.Code2ModelPlugin;
+import fzi.mottem.model.util.ModelUtils;
+import fzi.mottem.ptspec.dsl.ui.nature.PTSpecNature;
+
 public class CDTExtractorJob extends Job
 {
+	private final IProject _cdtProject;
 
-	private final IProject _ptsProject;
-	private final Collection<IProject> _changedCProjects;
-	private final Hashtable<IProject, CDTExtractor> _cdt2EcoreWorkers = new Hashtable<IProject, CDTExtractor>();
-	
-    /**
-     * update CodeModel files corresponding to provided list of C/C++ projects
-     * in the provided project (should have PTSpecNature, but this is not ensured).
-     */
-    public static void startCDT2EcoreJob(IProject ptsProject, Collection<IProject> changedCProjects)
-    {
-		CDTExtractorJob cdt2EcoreJob = new CDTExtractorJob(ptsProject, changedCProjects);
-		cdt2EcoreJob.setPriority(Job.SHORT);
-		cdt2EcoreJob.schedule(10);
-    }
-
-	public CDTExtractorJob(IProject ptsProject, Collection<IProject> changedCProjects)
+	/**
+	 * TODO: This job is inefficient, because the complete model is generated every time.
+	 * The job should only update the data associated with the appropriate file.
+	 */
+	public CDTExtractorJob(IProject cdtProject)
 	{
-		super("Refreshing CodeModel(s) for " + ptsProject.getName());
+		super("Extracting info from soruce code");
 		
-		_ptsProject = ptsProject;
-		_changedCProjects = changedCProjects;
+		_cdtProject = cdtProject;
 	}
 
 	@Override
 	protected IStatus run(IProgressMonitor monitor)
 	{
-    	IFolder modelFolder;
-		try
+		synchronized (Code2ModelPlugin.GLOBAL_CODE_MODEL_LOCK)
 		{
-			modelFolder = _ptsProject.getFolder("model");
-			
-			if (!modelFolder.exists())
-			{
-				return Status.CANCEL_STATUS;
-			}
+	    	for (IProject ptsProject : ResourcesPlugin.getWorkspace().getRoot().getProjects())
+	    	{
+	    		if (!ptsProject.isOpen())
+	    			continue;
+	    		
+	    		try
+	    		{
+					if (ptsProject.hasNature(PTSpecNature.NATURE_ID))
+					{
+						CDTExtractor extractor = new CDTExtractor(_cdtProject);
+						IFolder modelFolder = ptsProject.getFolder(ModelUtils.PTS_MODEL_FILES_ROOT);
+						extractor.extractInto(modelFolder);
+					}
+				}
+	    		catch (CoreException e)
+	    		{
+					e.printStackTrace();
+				}
+	    	}
+	
+			return Status.OK_STATUS;
 		}
-		catch (Exception e)
-		{
-			System.err.println("Cannot refresh CodeModel instances: failure getting active resource: " + e.getMessage());
-			return Status.CANCEL_STATUS;
-		}
-
-        for (IProject p: _changedCProjects)
-        {
-            try
-            {
-            	CDTExtractor cdti;
-            	
-            	if (_cdt2EcoreWorkers.containsKey(p))
-            	{
-            		cdti = _cdt2EcoreWorkers.get(p);
-            	}
-            	else
-            	{
-                    cdti = new CDTExtractor(p);
-                    _cdt2EcoreWorkers.put(p, cdti);
-            	}
-
-            	cdti.refresh(modelFolder);
-            }
-            catch (CoreException e)
-            {
-                e.printStackTrace();
-            }
-        }
-        
-		return Status.OK_STATUS;
 	}
 
 }

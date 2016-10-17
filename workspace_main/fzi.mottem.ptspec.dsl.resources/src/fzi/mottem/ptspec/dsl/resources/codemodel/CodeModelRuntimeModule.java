@@ -4,6 +4,8 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.resource.generic.AbstractGenericResourceRuntimeModule;
 
+import fzi.mottem.model.util.ModelUtils;
+
 public class CodeModelRuntimeModule extends AbstractGenericResourceRuntimeModule {
 
 	@Override
@@ -13,7 +15,7 @@ public class CodeModelRuntimeModule extends AbstractGenericResourceRuntimeModule
  
     @Override
     protected String getFileExtensions() {
-        return "etm-code";
+        return ModelUtils.FILE_EXTENSION_CODE_MODEL;
     }
  
     public Class<? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {

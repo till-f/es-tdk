@@ -2,105 +2,139 @@
 <fzi.mottem.model.codemodel:CodeInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fzi.mottem.model.codemodel="http://www.fzi.de/mottem/model/codemodel" xmi:id="+NPkgsrc_core0" name="Pkgsrc_core0" cProjectName="fzi.mottem.examples.ecumotor.impl" binaryFile="fzi.mottem.examples.ecumotor.impl/bin/MPC5643L_core0.elf">
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nhall_counter+NPkgsrc_core0" name="hall_counter" dataType="+Nuint32+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Nhall_counter+NPkgsrc_core0" offset="311" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="12" lineNumber="12"/>
+    <binaryLocation xmi:id="+LB+Nhall_counter+NPkgsrc_core0" address="123979"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Ncounter+NPkgsrc_core0" name="counter" dataType="+Nuint32+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Ncounter+NPkgsrc_core0" offset="339" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="7" lineNumber="13"/>
+    <binaryLocation xmi:id="+LB+Ncounter+NPkgsrc_core0" address="124013"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nhall_sensors+NPkgsrc_core0" name="hall_sensors" dataType="+Nuint32+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Nhall_sensors+NPkgsrc_core0" offset="374" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="12" lineNumber="14"/>
+    <binaryLocation xmi:id="+LB+Nhall_sensors+NPkgsrc_core0" address="124031"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nsensorsint+NPkgsrc_core0" name="sensorsint" dataType="+Nint32+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Nsensorsint+NPkgsrc_core0" offset="405" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="10" lineNumber="15"/>
+    <binaryLocation xmi:id="+LB+Nsensorsint+NPkgsrc_core0" address="124054"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nsector+NPkgsrc_core0" name="sector" dataType="+Nint32+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Nsector+NPkgsrc_core0" offset="431" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="6" lineNumber="16"/>
+    <binaryLocation xmi:id="+LB+Nsector+NPkgsrc_core0" address="124072"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nsector_old+NPkgsrc_core0" name="sector_old" dataType="+Nint32+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Nsector_old+NPkgsrc_core0" offset="453" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="10" lineNumber="17"/>
+    <binaryLocation xmi:id="+LB+Nsector_old+NPkgsrc_core0" address="124090"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nsector_table+NPkgsrc_core0" name="sector_table" dataType="+Nint32+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Nsector_table+NPkgsrc_core0" offset="470" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="12" lineNumber="18"/>
+    <binaryLocation xmi:id="+LB+Nsector_table+NPkgsrc_core0" address="124124"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Npwm_dc+NPkgsrc_core0" name="pwm_dc" dataType="+Ndouble+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Npwm_dc+NPkgsrc_core0" offset="504" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="6" lineNumber="19"/>
+    <binaryLocation xmi:id="+LB+Npwm_dc+NPkgsrc_core0" address="124142"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Npwm_dc_old+NPkgsrc_core0" name="pwm_dc_old" dataType="+Ndouble+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Npwm_dc_old+NPkgsrc_core0" offset="529" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="10" lineNumber="20"/>
+    <binaryLocation xmi:id="+LB+Npwm_dc_old+NPkgsrc_core0" address="124165"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Npwm_ena+NPkgsrc_core0" name="pwm_ena" dataType="+Nint32+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Npwm_ena+NPkgsrc_core0" offset="555" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="7" lineNumber="21"/>
+    <binaryLocation xmi:id="+LB+Npwm_ena+NPkgsrc_core0" address="124211"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Ndrv_ena+NPkgsrc_core0" name="drv_ena" dataType="+Nint32+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Ndrv_ena+NPkgsrc_core0" offset="587" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="7" lineNumber="22"/>
+    <binaryLocation xmi:id="+LB+Ndrv_ena+NPkgsrc_core0" address="124234"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Ndirection_table+NPkgsrc_core0" name="direction_table" dataType="+Nint32+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Ndirection_table+NPkgsrc_core0" offset="610" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="15" lineNumber="23"/>
+    <binaryLocation xmi:id="+LB+Ndirection_table+NPkgsrc_core0" address="124279"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Ndirection+NPkgsrc_core0" name="direction" dataType="+Nint32+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Ndirection+NPkgsrc_core0" offset="647" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="9" lineNumber="24"/>
+    <binaryLocation xmi:id="+LB+Ndirection+NPkgsrc_core0" address="124297"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nrpm_double+NPkgsrc_core0" name="rpm_double" dataType="+Ndouble+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Nrpm_double+NPkgsrc_core0" offset="666" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="10" lineNumber="25"/>
+    <binaryLocation xmi:id="+LB+Nrpm_double+NPkgsrc_core0" address="124315"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nrpm+NPkgsrc_core0" name="rpm" dataType="+Nfloat+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Nrpm+NPkgsrc_core0" offset="685" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="3" lineNumber="26"/>
+    <binaryLocation xmi:id="+LB+Nrpm+NPkgsrc_core0" address="124333"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nrpm_tar+NPkgsrc_core0" name="rpm_tar" dataType="+Nint32+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Nrpm_tar+NPkgsrc_core0" offset="695" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="7" lineNumber="27"/>
+    <binaryLocation xmi:id="+LB+Nrpm_tar+NPkgsrc_core0" address="124358"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nk_p+NPkgsrc_core0" name="k_p" dataType="+Ndouble+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Nk_p+NPkgsrc_core0" offset="712" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="3" lineNumber="28"/>
+    <binaryLocation xmi:id="+LB+Nk_p+NPkgsrc_core0" address="124376"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nk_i+NPkgsrc_core0" name="k_i" dataType="+Ndouble+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Nk_i+NPkgsrc_core0" offset="725" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="3" lineNumber="29"/>
+    <binaryLocation xmi:id="+LB+Nk_i+NPkgsrc_core0" address="124394"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Ndeviation_i+NPkgsrc_core0" name="deviation_i" dataType="+Ndouble+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Ndeviation_i+NPkgsrc_core0" offset="747" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="11" lineNumber="30"/>
+    <binaryLocation xmi:id="+LB+Ndeviation_i+NPkgsrc_core0" address="124412"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nrpm_act_CAN+NPkgsrc_core0" name="rpm_act_CAN" dataType="+Nfloat+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Nrpm_act_CAN+NPkgsrc_core0" offset="767" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="11" lineNumber="31"/>
+    <binaryLocation xmi:id="+LB+Nrpm_act_CAN+NPkgsrc_core0" address="124430"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Nword_count+NPkgsrc_core0" name="word_count" dataType="+Nint32+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Nword_count+NPkgsrc_core0" offset="787" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="10" lineNumber="33"/>
+    <binaryLocation xmi:id="+LB+Nword_count+NPkgsrc_core0" address="124464"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Ncounter0_record+NPkgsrc_core0" name="counter0_record" dataType="+Nint32+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Ncounter0_record+NPkgsrc_core0" offset="807" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="15" lineNumber="34"/>
+    <binaryLocation xmi:id="+LB+Ncounter0_record+NPkgsrc_core0" address="124498"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Ncounter1_record+NPkgsrc_core0" name="counter1_record" dataType="+Nint32+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Ncounter1_record+NPkgsrc_core0" offset="834" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="15" lineNumber="35"/>
+    <binaryLocation xmi:id="+LB+Ncounter1_record+NPkgsrc_core0" address="124516"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Ncounter2_record+NPkgsrc_core0" name="counter2_record" dataType="+Nint32+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Ncounter2_record+NPkgsrc_core0" offset="861" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="15" lineNumber="36"/>
+    <binaryLocation xmi:id="+LB+Ncounter2_record+NPkgsrc_core0" address="124534"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Ntrivial_counter+NPkgsrc_core0" name="trivial_counter" dataType="+Nint32+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Ntrivial_counter+NPkgsrc_core0" offset="888" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="15" lineNumber="37"/>
+    <binaryLocation xmi:id="+LB+Ntrivial_counter+NPkgsrc_core0" address="124568"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NinitLEDs+NPkgsrc_core0" name="initLEDs" dataType="+Nvoid+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+NinitLEDs+NPkgsrc_core0" offset="987" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="8" lineNumber="42"/>
+    <binaryLocation xmi:id="+LB+NinitLEDs+NPkgsrc_core0" address="123505"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NinitSWIRQs+NPkgsrc_core0" name="initSWIRQs" dataType="+Nvoid+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+NinitSWIRQs+NPkgsrc_core0" offset="1114" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="10" lineNumber="50"/>
+    <binaryLocation xmi:id="+LB+NinitSWIRQs+NPkgsrc_core0" address="123527"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NinitETIMER+NPkgsrc_core0" name="initETIMER" dataType="+Nvoid+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+NinitETIMER+NPkgsrc_core0" offset="1214" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="10" lineNumber="55"/>
+    <binaryLocation xmi:id="+LB+NinitETIMER+NPkgsrc_core0" address="123549"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NinitHall+NPkgsrc_core0" name="initHall" dataType="+Nvoid+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+NinitHall+NPkgsrc_core0" offset="4755" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="8" lineNumber="111"/>
+    <binaryLocation xmi:id="+LB+NinitHall+NPkgsrc_core0" address="123571"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NinitPWM+NPkgsrc_core0" name="initPWM" dataType="+Nvoid+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+NinitPWM+NPkgsrc_core0" offset="5025" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="7" lineNumber="118"/>
+    <binaryLocation xmi:id="+LB+NinitPWM+NPkgsrc_core0" address="123593"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NinitTables+NPkgsrc_core0" name="initTables" dataType="+Nvoid+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+NinitTables+NPkgsrc_core0" offset="7836" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="10" lineNumber="191"/>
+    <binaryLocation xmi:id="+LB+NinitTables+NPkgsrc_core0" address="123615"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NenableIRQ+NPkgsrc_core0" name="enableIRQ" dataType="+Nvoid+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+NenableIRQ+NPkgsrc_core0" offset="10731" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="9" lineNumber="257"/>
+    <binaryLocation xmi:id="+LB+NenableIRQ+NPkgsrc_core0" address="123637"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NupdatePWM+NPkgsrc_core0" name="updatePWM" dataType="+Nvoid+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+NupdatePWM+NPkgsrc_core0" offset="10919" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="9" lineNumber="264"/>
+    <binaryLocation xmi:id="+LB+NupdatePWM+NPkgsrc_core0" address="123660"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nupdate_sector+NPkgsrc_core0" name="update_sector" dataType="+Nvoid+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Nupdate_sector+NPkgsrc_core0" offset="11798" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="13" lineNumber="281"/>
+    <binaryLocation xmi:id="+LB+Nupdate_sector+NPkgsrc_core0" address="123682"/>
     <localvariables xmi:id="+Nh0+Nupdate_sector+NPkgsrc_core0" name="h0" dataType="+Nuint32+NPkgsrc_core0" functionParameter="true">
       <declarationLocation xmi:id="+LS+Nh0+Nupdate_sector+NPkgsrc_core0" offset="11825" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="2" lineNumber="281"/>
     </localvariables>
@@ -113,42 +147,124 @@
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Npi_control+NPkgsrc_core0" name="pi_control" dataType="+Nvoid+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Npi_control+NPkgsrc_core0" offset="11980" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="10" lineNumber="288"/>
+    <binaryLocation xmi:id="+LB+Npi_control+NPkgsrc_core0" address="123752"/>
     <localvariables xmi:id="+Ni+Npi_control+NPkgsrc_core0" name="i" dataType="+Nint32+NPkgsrc_core0" functionParameter="true">
       <declarationLocation xmi:id="+LS+Ni+Npi_control+NPkgsrc_core0" offset="11995" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="1" lineNumber="288"/>
     </localvariables>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Netimer00ISR+NPkgsrc_core0" name="etimer00ISR" dataType="+Nvoid+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Netimer00ISR+NPkgsrc_core0" offset="12642" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="11" lineNumber="309"/>
+    <binaryLocation xmi:id="+LB+Netimer00ISR+NPkgsrc_core0" address="123793"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Netimer01ISR+NPkgsrc_core0" name="etimer01ISR" dataType="+Nvoid+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Netimer01ISR+NPkgsrc_core0" offset="13106" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="11" lineNumber="336"/>
+    <binaryLocation xmi:id="+LB+Netimer01ISR+NPkgsrc_core0" address="123815"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Netimer02ISR+NPkgsrc_core0" name="etimer02ISR" dataType="+Nvoid+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Netimer02ISR+NPkgsrc_core0" offset="13394" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="11" lineNumber="350"/>
+    <binaryLocation xmi:id="+LB+Netimer02ISR+NPkgsrc_core0" address="123837"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+NSwIrq3ISR+NPkgsrc_core0" name="SwIrq3ISR" dataType="+Nvoid+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+NSwIrq3ISR+NPkgsrc_core0" offset="13737" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="9" lineNumber="367"/>
+    <binaryLocation xmi:id="+LB+NSwIrq3ISR+NPkgsrc_core0" address="123859"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Ninit_app+NPkgsrc_core0" name="init_app" dataType="+Nvoid+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Ninit_app+NPkgsrc_core0" offset="14088" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="8" lineNumber="383"/>
+    <binaryLocation xmi:id="+LB+Ninit_app+NPkgsrc_core0" address="123881"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nrun_app+NPkgsrc_core0" name="run_app" dataType="+Nvoid+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Nrun_app+NPkgsrc_core0" offset="14425" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" length="7" lineNumber="404"/>
+    <binaryLocation xmi:id="+LB+Nrun_app+NPkgsrc_core0" address="123903"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Ninit_modes_and_clocks+NPkgsrc_core0" name="init_modes_and_clocks" dataType="+Nvoid+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Ninit_modes_and_clocks+NPkgsrc_core0" offset="85" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\finalize_boot.c" length="21" lineNumber="6"/>
+    <binaryLocation xmi:id="+LB+Ninit_modes_and_clocks+NPkgsrc_core0" address="37349"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nstart_core1+NPkgsrc_core0" name="start_core1" dataType="+Nvoid+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Nstart_core1+NPkgsrc_core0" offset="1533" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\finalize_boot.c" length="11" lineNumber="50"/>
+    <binaryLocation xmi:id="+LB+Nstart_core1+NPkgsrc_core0" address="37370"/>
   </symbols>
   <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nmain+NPkgsrc_core0" name="main" dataType="+Nint32+NPkgsrc_core0">
     <declarationLocation xmi:id="+LS+Nmain+NPkgsrc_core0" offset="127" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\main.c" length="4" lineNumber="9"/>
+    <binaryLocation xmi:id="+LB+Nmain+NPkgsrc_core0" address="21894"/>
     <localvariables xmi:id="+Nargc+Nmain+NPkgsrc_core0" name="argc" dataType="+Nint32+NPkgsrc_core0" functionParameter="true">
       <declarationLocation xmi:id="+LS+Nargc+Nmain+NPkgsrc_core0" offset="136" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\main.c" length="4" lineNumber="9"/>
     </localvariables>
     <localvariables xmi:id="+Nargv+Nmain+NPkgsrc_core0" name="argv" dataType="+NRef_char+NPkgsrc_core0" functionParameter="true">
       <declarationLocation xmi:id="+LS+Nargv+Nmain+NPkgsrc_core0" offset="148" sourceFile="+LFfzi.mottem.examples.ecumotor.impl\src\core0\main.c" length="4" lineNumber="9"/>
     </localvariables>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Netimer00ISRCtr+NPkgsrc_core0" name="etimer00ISRCtr" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+Netimer00ISRCtr+NPkgsrc_core0" address="123925"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Netimer01ISRCtr+NPkgsrc_core0" name="etimer01ISRCtr" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+Netimer01ISRCtr+NPkgsrc_core0" address="123943"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+Netimer02ISRCtr+NPkgsrc_core0" name="etimer02ISRCtr" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+Netimer02ISRCtr+NPkgsrc_core0" address="123961"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Nclear_wdg+NPkgsrc_core0" name="clear_wdg" dataType="+Nvoid+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+Nclear_wdg+NPkgsrc_core0" address="21510"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Function" xmi:id="+Ninit_interrupt_controller+NPkgsrc_core0" name="init_interrupt_controller" dataType="+Nvoid+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+Ninit_interrupt_controller+NPkgsrc_core0" address="21531"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NIVOR0trap+NPkgsrc_core0" name="IVOR0trap" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+NIVOR0trap+NPkgsrc_core0" address="21552"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NIVOR1trap+NPkgsrc_core0" name="IVOR1trap" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+NIVOR1trap+NPkgsrc_core0" address="21565"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NIVOR2trap+NPkgsrc_core0" name="IVOR2trap" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+NIVOR2trap+NPkgsrc_core0" address="21578"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NIVOR3trap+NPkgsrc_core0" name="IVOR3trap" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+NIVOR3trap+NPkgsrc_core0" address="21591"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NIVOR4trap+NPkgsrc_core0" name="IVOR4trap" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+NIVOR4trap+NPkgsrc_core0" address="21604"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NIVOR5trap+NPkgsrc_core0" name="IVOR5trap" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+NIVOR5trap+NPkgsrc_core0" address="21617"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NIVOR6trap+NPkgsrc_core0" name="IVOR6trap" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+NIVOR6trap+NPkgsrc_core0" address="21630"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NIVOR7trap+NPkgsrc_core0" name="IVOR7trap" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+NIVOR7trap+NPkgsrc_core0" address="21643"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NIVOR8trap+NPkgsrc_core0" name="IVOR8trap" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+NIVOR8trap+NPkgsrc_core0" address="21656"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NIVOR9trap+NPkgsrc_core0" name="IVOR9trap" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+NIVOR9trap+NPkgsrc_core0" address="21669"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NIVOR10trap+NPkgsrc_core0" name="IVOR10trap" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+NIVOR10trap+NPkgsrc_core0" address="21682"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NIVOR11trap+NPkgsrc_core0" name="IVOR11trap" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+NIVOR11trap+NPkgsrc_core0" address="21695"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NIVOR12trap+NPkgsrc_core0" name="IVOR12trap" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+NIVOR12trap+NPkgsrc_core0" address="21708"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NIVOR13trap+NPkgsrc_core0" name="IVOR13trap" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+NIVOR13trap+NPkgsrc_core0" address="21721"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NIVOR14trap+NPkgsrc_core0" name="IVOR14trap" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+NIVOR14trap+NPkgsrc_core0" address="21734"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NIVOR15trap+NPkgsrc_core0" name="IVOR15trap" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+NIVOR15trap+NPkgsrc_core0" address="21747"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NIVOR32trap+NPkgsrc_core0" name="IVOR32trap" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+NIVOR32trap+NPkgsrc_core0" address="21760"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NIVOR33trap+NPkgsrc_core0" name="IVOR33trap" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+NIVOR33trap+NPkgsrc_core0" address="21773"/>
+  </symbols>
+  <symbols xsi:type="fzi.mottem.model.codemodel:Variable" xmi:id="+NIVOR34trap+NPkgsrc_core0" name="IVOR34trap" dataType="+Nuint32+NPkgsrc_core0">
+    <binaryLocation xmi:id="+LB+NIVOR34trap+NPkgsrc_core0" address="21786"/>
   </symbols>
   <sourceFiles xmi:id="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.c" sourceCodeLocations="+LS+Nhall_counter+NPkgsrc_core0 +LS+Ncounter+NPkgsrc_core0 +LS+Nhall_sensors+NPkgsrc_core0 +LS+Nsensorsint+NPkgsrc_core0 +LS+Nsector+NPkgsrc_core0 +LS+Nsector_old+NPkgsrc_core0 +LS+Nsector_table+NPkgsrc_core0 +LS+Npwm_dc+NPkgsrc_core0 +LS+Npwm_dc_old+NPkgsrc_core0 +LS+Npwm_ena+NPkgsrc_core0 +LS+Ndrv_ena+NPkgsrc_core0 +LS+Ndirection_table+NPkgsrc_core0 +LS+Ndirection+NPkgsrc_core0 +LS+Nrpm_double+NPkgsrc_core0 +LS+Nrpm+NPkgsrc_core0 +LS+Nrpm_tar+NPkgsrc_core0 +LS+Nk_p+NPkgsrc_core0 +LS+Nk_i+NPkgsrc_core0 +LS+Ndeviation_i+NPkgsrc_core0 +LS+Nrpm_act_CAN+NPkgsrc_core0 +LS+Nword_count+NPkgsrc_core0 +LS+Ncounter0_record+NPkgsrc_core0 +LS+Ncounter1_record+NPkgsrc_core0 +LS+Ncounter2_record+NPkgsrc_core0 +LS+Ntrivial_counter+NPkgsrc_core0 +LS+NinitLEDs+NPkgsrc_core0 +LS+NinitSWIRQs+NPkgsrc_core0 +LS+NinitETIMER+NPkgsrc_core0 +LS+NinitHall+NPkgsrc_core0 +LS+NinitPWM+NPkgsrc_core0 +LS+NinitTables+NPkgsrc_core0 +LS+NenableIRQ+NPkgsrc_core0 +LS+NupdatePWM+NPkgsrc_core0 +LS+Nupdate_sector+NPkgsrc_core0 +LS+Nh0+Nupdate_sector+NPkgsrc_core0 +LS+Nh1+Nupdate_sector+NPkgsrc_core0 +LS+Nh2+Nupdate_sector+NPkgsrc_core0 +LS+Npi_control+NPkgsrc_core0 +LS+Ni+Npi_control+NPkgsrc_core0 +LS+Netimer00ISR+NPkgsrc_core0 +LS+Netimer01ISR+NPkgsrc_core0 +LS+Netimer02ISR+NPkgsrc_core0 +LS+NSwIrq3ISR+NPkgsrc_core0 +LS+Ninit_app+NPkgsrc_core0 +LS+Nrun_app+NPkgsrc_core0" filePath="fzi.mottem.examples.ecumotor.impl\src\core0\app.c"/>
   <sourceFiles xmi:id="+LFfzi.mottem.examples.ecumotor.impl\src\core0\app.h" filePath="fzi.mottem.examples.ecumotor.impl\src\core0\app.h"/>

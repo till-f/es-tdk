@@ -155,6 +155,12 @@ public class IntegrationUtils
 		return ws.getRoot().getLocation().append(workspacePath);
 	}
 	
+	public static String getStringSystemPathForWorkspaceRelativePath(IPath workspacePath)
+	{
+		IPath iPath = IntegrationUtils.getSystemPathForWorkspaceRelativePath(workspacePath);
+		return iPath.toOSString();
+	}
+	
 	public static void checkAndcreateFolder(IFolder folder)
 	{
 		if (!folder.exists())

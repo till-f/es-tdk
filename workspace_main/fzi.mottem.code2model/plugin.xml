@@ -14,13 +14,6 @@
       </command>
    </extension>
    
-   <extension point="org.eclipse.ui.handlers">
-      <handler
-            class="fzi.mottem.code2model.commands.Code2ModelRefreshCommand"
-            commandId="fzi.mottem.code2model.commands.refresh">
-      </handler>
-   </extension>
-   
    <extension point="org.eclipse.ui.menus">
       <menuContribution locationURI="menu:fzi.mottem.ptspec.menu?after=UtilAdditions">
          <command
