@@ -139,6 +139,8 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="ch.qos.logback.classic"/>
       <plugin id="ch.qos.logback.core"/>
       <plugin id="ch.qos.logback.slf4j" fragment="true"/>
+      <plugin id="com.bicirikdwarf"/>
+      <plugin id="com.bicirikdwarf.emf"/>
       <plugin id="com.google.gson"/>
       <plugin id="com.google.guava"/>
       <plugin id="com.google.inject"/>
@@ -297,6 +299,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="org.eclipse.emf.ecore.change.edit"/>
       <plugin id="org.eclipse.emf.ecore.edit"/>
       <plugin id="org.eclipse.emf.ecore.editor"/>
+      <plugin id="org.eclipse.emf.ecore.xcore.lib"/>
       <plugin id="org.eclipse.emf.ecore.xmi"/>
       <plugin id="org.eclipse.emf.edit"/>
       <plugin id="org.eclipse.emf.edit.ui"/>
