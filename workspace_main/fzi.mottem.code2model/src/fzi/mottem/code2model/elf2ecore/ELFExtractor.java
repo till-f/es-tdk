@@ -1,0 +1,128 @@
+package fzi.mottem.code2model.elf2ecore;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+
+import org.eclipse.core.resources.IResource;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
+
+import com.bicirikdwarf.dwarf.Dwarf32Context;
+import com.bicirikdwarf.elf.Elf32Context;
+import com.bicirikdwarf.emf.DwarfModelFactory;
+import com.bicirikdwarf.emf.dwarf.BaseType;
+import com.bicirikdwarf.emf.dwarf.DwarfModel;
+import com.bicirikdwarf.emf.dwarf.Subprogram;
+
+import fzi.mottem.model.codemodel.BinaryLocation;
+import fzi.mottem.model.codemodel.CodeInstance;
+import fzi.mottem.model.codemodel.CodemodelFactory;
+import fzi.mottem.model.codemodel.DataType;
+import fzi.mottem.model.codemodel.Function;
+import fzi.mottem.model.codemodel.Variable;
+import fzi.mottem.model.util.ModelUtils;
+import fzi.util.eclipse.IntegrationUtils;
+
+public class ELFExtractor
+{
+	private DwarfModel _dwarfModel = null;
+	
+	public ELFExtractor(IResource elfResource)
+	{
+		String absoluteElfPathStr = IntegrationUtils.getStringSystemPathForWorkspaceRelativePath(elfResource.getFullPath());
+		File elfFile = new File(absoluteElfPathStr);
+
+		RandomAccessFile raFile = null;
+		try
+		{
+			raFile = new RandomAccessFile(elfFile, "r");
+			FileChannel elfFileChannel = raFile.getChannel();
+			MappedByteBuffer buffer = elfFileChannel.map(FileChannel.MapMode.READ_ONLY, 0, elfFileChannel.size());
+	    	Elf32Context elfContext = new Elf32Context(buffer);
+	    	Dwarf32Context dwarfContext = new Dwarf32Context(elfContext);
+	    	_dwarfModel = DwarfModelFactory.createModel(dwarfContext);
+		}
+		catch (IOException e)
+		{
+			return;
+		} 
+		finally
+		{
+			try {
+				raFile.close();
+			} catch (IOException e1) {
+				return;
+			}
+		}
+	}
+
+	public void extractInto(CodeInstance ci)
+	{
+    	TreeIterator<EObject> iterator = _dwarfModel.eAllContents();
+		while (iterator.hasNext())
+		{
+			EObject eObj = iterator.next();
+			if (eObj instanceof com.bicirikdwarf.emf.dwarf.Variable)
+			{
+				String name = ((com.bicirikdwarf.emf.dwarf.Variable) eObj).getName();
+				Integer address = ((com.bicirikdwarf.emf.dwarf.Variable) eObj).getAddress();
+				BaseType baseType = DwarfModelUtils.getBaseType(((com.bicirikdwarf.emf.dwarf.Variable) eObj).getType());
+
+				Variable ciVar = (Variable) ModelUtils.getGlobalSymbol(ci, name);
+				
+				if (ciVar == null)
+				{
+					String typeName = DwarfModelUtils.getTypeName(baseType);
+					DataType dt = ModelUtils.findDataTypeForNameOrCreateDefault(ci, typeName);
+					if (dt == null) continue;
+					
+					ciVar = CodemodelFactory.eINSTANCE.createVariable();
+					ciVar.setName(name);
+					ciVar.setDataType(dt);
+					ci.getSymbols().add(ciVar);
+				}
+				
+				BinaryLocation loc = CodemodelFactory.eINSTANCE.createBinaryLocation();
+				loc.setAddress(address.longValue());
+				ciVar.setBinaryLocation(loc);
+			}
+			else if(eObj instanceof Subprogram)
+			{
+				String name = ((Subprogram) eObj).getName();
+				Integer address = ((Subprogram) eObj).getAddress();
+				BaseType baseType = DwarfModelUtils.getBaseType(((Subprogram) eObj).getReturnType());
+
+				Function ciFunc = (Function) ModelUtils.getGlobalSymbol(ci, name);
+				
+				if (ciFunc == null)
+				{
+					String typeName = DwarfModelUtils.getTypeName(baseType);
+					DataType dt = ModelUtils.findDataTypeForNameOrCreateDefault(ci, typeName);
+					if (dt == null) continue;
+
+					ciFunc = CodemodelFactory.eINSTANCE.createFunction();
+					ciFunc.setName(name);
+					ciFunc.setDataType(dt);
+					ci.getSymbols().add(ciFunc);
+				}
+
+				BinaryLocation loc = CodemodelFactory.eINSTANCE.createBinaryLocation();
+				loc.setAddress(address.longValue());
+				ciFunc.setBinaryLocation(loc);
+			}
+		}
+		
+		try
+		{
+			ci.eResource().save(null);
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+}
