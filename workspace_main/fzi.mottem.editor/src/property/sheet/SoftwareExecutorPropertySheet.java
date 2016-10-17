@@ -34,6 +34,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 import fzi.mottem.model.codemodel.CodeInstance;
 import fzi.mottem.model.testrigmodel.SoftwareExecutor;
+import fzi.mottem.model.util.ModelUtils;
 import fzi.util.eclipse.IntegrationUtils;
 import fzi.util.ecore.EcoreUtils;
 
@@ -97,7 +98,7 @@ public class SoftwareExecutorPropertySheet extends GFPropertySection implements 
 					    final org.eclipse.swt.widgets.List l = new org.eclipse.swt.widgets.List(s, SWT.MULTI | SWT.BORDER);
 					    l.setBounds(50, 50, 450, 150);
 				        IWorkspace workspace = ResourcesPlugin.getWorkspace();
-				        String fileExtension = "etm-code";
+				        String fileExtension = ModelUtils.FILE_EXTENSION_CODE_MODEL;
 						IPath workspacePath = workspace.getRoot().getLocation();
 	
 						codeInstances = IntegrationUtils.getResources(workspacePath, fileExtension);

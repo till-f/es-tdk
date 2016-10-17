@@ -90,11 +90,6 @@ public class EditorFeatureProvider extends DefaultFeatureProviderWithPatterns {
 		if (context.getNewObject() instanceof IFile) {
 			IFile file = (IFile) context.getNewObject();
 			
-			//for Drag&Drop of a code instance onto a software executor.
-//			if(file.getFileExtension().equals("etm-code")){
-//				return new AddCodeInstanceToSoftwareExecutorFeature(this);
-//			}
-			
 			//for Drag&Drop of a data stream file onto an I/O-Port.
 			if(file.getFileExtension().equals("etm-dstream")){
 				return new AddDataStreamInstanceToIOPortFeature(this);

@@ -63,17 +63,17 @@ public class CDTExtractor
     /*
      * Creates a new CDTInterface for the provided project
      */
-	public CDTExtractor(IProject project) throws CoreException
+	public CDTExtractor(IProject cdtProject) throws CoreException
 	{
-	    _cproject = CoreModel.getDefault().create(project);
+	    _cproject = CoreModel.getDefault().create(cdtProject);
 	    _cindex = CCorePlugin.getIndexManager().getIndex(_cproject);
 	    _workspace = ResourcesPlugin.getWorkspace();
 	}
 	
 	/*
-	 * Refreshes/creates .etm-code files for C/C++ projects in the given folder
+	 * Refreshes/creates CodeModel files in the given folder
 	 */
-	public void refresh(IFolder modelFolder)
+	public void extractInto(IFolder modelFolder)
 	{
         ISourceRoot[] sourceRoots;
         
@@ -487,28 +487,6 @@ public class CDTExtractor
 //		}
 	}
 
-	private DataType findDataType(CodeInstance ci, String name)
-	{
-		if (ci == null)
-			throw new RuntimeException("CodeInstance Is Not Supossed To Be Null");
-		
-		for(DataType dt : ci.getDataTypes())
-		{
-			if (dt.getName() == null)
-			{
-				System.err.println("Error Getting DataType Name");
-				continue;
-			}
-			
-			if (dt.getName().equals(name))
-			{
-				return dt;
-			}	
-		}
-		
-		return null;
-	}
-	
 	private DataType getReferenceToReferenceDataType(IASTNode subNode, CodeInstance codeInstance, DataType pointedDataType, String name, int numberOfPointers)
 	{
 		StringBuilder stringBuilder = new StringBuilder();
@@ -534,7 +512,7 @@ public class CDTExtractor
 	private DataType getReferenceDataType(CodeInstance codeInstance, DataType pointedDataType, String name)
 	{	
 		String refDataTypeName = "Ref_" + name;
-		DataType existingRefDataType =  findDataType(codeInstance, refDataTypeName);	
+		DataType existingRefDataType =  ModelUtils.findDataTypeForName(codeInstance, refDataTypeName);	
 		if (existingRefDataType == null)
 		{
 			existingRefDataType =  CodemodelFactory.eINSTANCE.createDTReference();
@@ -563,7 +541,7 @@ public class CDTExtractor
 		{
 			case IASTSimpleDeclSpecifier.t_void:
 				String name =  "void";
-				DataType existingVoidDataType =  findDataType(codeInstance, name);	
+				DataType existingVoidDataType =  ModelUtils.findDataTypeForName(codeInstance, name);	
 				if (existingVoidDataType == null)
 				{
 					existingVoidDataType = CodemodelFactory.eINSTANCE.createDTVoid();
@@ -577,7 +555,7 @@ public class CDTExtractor
 				}
 			case IASTSimpleDeclSpecifier.t_bool:
 				String booleanName = "bool";
-				DataType existingBooleanDataType = findDataType(codeInstance, booleanName);
+				DataType existingBooleanDataType = ModelUtils.findDataTypeForName(codeInstance, booleanName);
 				if(existingBooleanDataType == null)
 				{
 					existingBooleanDataType = CodemodelFactory.eINSTANCE.createDTInteger();
@@ -594,7 +572,7 @@ public class CDTExtractor
 				if (cdtDataType.isUnsigned() == true)
 				{
 					String uCharName = "uint8";
-					DataType existingUCharDataType = findDataType(codeInstance, uCharName);
+					DataType existingUCharDataType = ModelUtils.findDataTypeForName(codeInstance, uCharName);
 					if (existingUCharDataType == null)
 					{
 						existingUCharDataType =  CodemodelFactory.eINSTANCE.createDTInteger();
@@ -612,7 +590,7 @@ public class CDTExtractor
 				else
 				{
 					String charName = "char";
-					DataType charDataType = findDataType(codeInstance, charName);		
+					DataType charDataType = ModelUtils.findDataTypeForName(codeInstance, charName);		
 					if (charDataType == null)
 					{
 						charDataType =  CodemodelFactory.eINSTANCE.createDTInteger();
@@ -631,7 +609,7 @@ public class CDTExtractor
 				if (cdtDataType.isUnsigned() == true)
 				{
 					String uIntName = "uint32";
-					DataType existingUIntDataType = findDataType(codeInstance, uIntName);
+					DataType existingUIntDataType = ModelUtils.findDataTypeForName(codeInstance, uIntName);
 					if (existingUIntDataType == null)
 					{
 						existingUIntDataType = CodemodelFactory.eINSTANCE.createDTInteger();
@@ -649,7 +627,7 @@ public class CDTExtractor
 				else
 				{
 					String intName = "int32";
-					DataType existingIntDataType = findDataType(codeInstance, intName);
+					DataType existingIntDataType = ModelUtils.findDataTypeForName(codeInstance, intName);
 					if (existingIntDataType == null)
 					{
 						existingIntDataType = CodemodelFactory.eINSTANCE.createDTInteger();
@@ -668,7 +646,7 @@ public class CDTExtractor
 				if (cdtDataType.isUnsigned() == true)
 				{
 					String floatName = "unsigned float";
-					DataType existingUFloatDataType = findDataType(codeInstance, floatName);
+					DataType existingUFloatDataType = ModelUtils.findDataTypeForName(codeInstance, floatName);
 					if (existingUFloatDataType == null)
 					{
 						existingUFloatDataType = CodemodelFactory.eINSTANCE.createDTFloatingPoint();
@@ -686,7 +664,7 @@ public class CDTExtractor
 				else
 				{
 					String floatName = "float";
-					DataType existingFloatDataType = findDataType(codeInstance, floatName);
+					DataType existingFloatDataType = ModelUtils.findDataTypeForName(codeInstance, floatName);
 					if (existingFloatDataType == null)
 					{
 						existingFloatDataType = CodemodelFactory.eINSTANCE.createDTFloatingPoint();
@@ -706,7 +684,7 @@ public class CDTExtractor
 				if (cdtDataType.isUnsigned() == true)
 				{
 					String uDoubleName = "unsigned double";
-					DataType existingUDoubleDataType = findDataType(codeInstance, uDoubleName);
+					DataType existingUDoubleDataType = ModelUtils.findDataTypeForName(codeInstance, uDoubleName);
 					if (existingUDoubleDataType == null)
 					{
 						existingUDoubleDataType = CodemodelFactory.eINSTANCE.createDTFloatingPoint();
@@ -724,7 +702,7 @@ public class CDTExtractor
 				else
 				{
 					String doubleName = "double";
-					DataType existingDoubleDataType = findDataType(codeInstance, doubleName);
+					DataType existingDoubleDataType = ModelUtils.findDataTypeForName(codeInstance, doubleName);
 					if (existingDoubleDataType == null)
 					{
 						existingDoubleDataType = CodemodelFactory.eINSTANCE.createDTFloatingPoint();
@@ -745,7 +723,7 @@ public class CDTExtractor
 					if (cdtDataType.isUnsigned() == true)
 					{
 						String unsignedShort = "uint16";
-						DataType existingUShortDataType = findDataType(codeInstance, unsignedShort);
+						DataType existingUShortDataType = ModelUtils.findDataTypeForName(codeInstance, unsignedShort);
 						if (existingUShortDataType == null)
 						{
 							existingUShortDataType = CodemodelFactory.eINSTANCE.createDTInteger();
@@ -764,7 +742,7 @@ public class CDTExtractor
 					else
 					{
 						String kurz = "short";
-						DataType existingShortDataType = findDataType(codeInstance, kurz);
+						DataType existingShortDataType = ModelUtils.findDataTypeForName(codeInstance, kurz);
 						if (existingShortDataType == null)
 						{
 							existingShortDataType = CodemodelFactory.eINSTANCE.createDTInteger();
@@ -786,7 +764,7 @@ public class CDTExtractor
 					if (cdtDataType.isUnsigned() == true)
 					{
 						String unsignedLong = "uint32";
-						DataType existingULongDataType = findDataType(codeInstance, unsignedLong);
+						DataType existingULongDataType = ModelUtils.findDataTypeForName(codeInstance, unsignedLong);
 						if (existingULongDataType == null)
 						{
 							existingULongDataType = CodemodelFactory.eINSTANCE.createDTInteger();
@@ -805,7 +783,7 @@ public class CDTExtractor
 					else
 					{
 						String lang = "int32";
-						DataType existingLongDataType = findDataType(codeInstance, lang);
+						DataType existingLongDataType = ModelUtils.findDataTypeForName(codeInstance, lang);
 						if (existingLongDataType == null)
 						{
 							existingLongDataType = CodemodelFactory.eINSTANCE.createDTInteger();
@@ -827,7 +805,7 @@ public class CDTExtractor
 					if (cdtDataType.isUnsigned() == true)
 					{
 						String uLongLong = "uint64";
-						DataType existingULongLongDataType = findDataType(codeInstance, uLongLong);
+						DataType existingULongLongDataType = ModelUtils.findDataTypeForName(codeInstance, uLongLong);
 						if (existingULongLongDataType == null)
 						{
 							existingULongLongDataType = CodemodelFactory.eINSTANCE.createDTInteger();
@@ -845,7 +823,7 @@ public class CDTExtractor
 					else
 					{
 						String langLang = "int64";
-						DataType existingLongLongDataType = findDataType(codeInstance, langLang);
+						DataType existingLongLongDataType = ModelUtils.findDataTypeForName(codeInstance, langLang);
 						if (existingLongLongDataType == null)
 						{
 							existingLongLongDataType = CodemodelFactory.eINSTANCE.createDTInteger();
@@ -868,10 +846,18 @@ public class CDTExtractor
 	
 	private void saveCodeInstance(IFile modelFile, CodeInstance ci)
 	{
-		URI resourceUri = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
-		ResourceSetImpl resSet = new ResourceSetImpl();
-		Resource res = resSet.createResource(resourceUri);
-		res.getContents().add(ci);
+		Resource res;
+		if (ci.eResource() == null)
+		{
+			URI resourceUri = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
+			ResourceSetImpl resSet = new ResourceSetImpl();
+			res = resSet.createResource(resourceUri);
+			res.getContents().add(ci);
+		}
+		else
+		{
+			res = ci.eResource();
+		}
 
 		try
 		{
@@ -879,7 +865,8 @@ public class CDTExtractor
 		}
 		catch (IOException e)
 		{
-			// ignore silently
+			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 		return;
 	}

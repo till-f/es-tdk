@@ -6,8 +6,14 @@ import java.security.InvalidParameterException;
 import java.util.Date;
 import java.util.LinkedList;
 
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 
 import fzi.mottem.model.baseelements.IExecutor;
@@ -21,6 +27,11 @@ import fzi.mottem.model.baseelements.ISymbolContainer;
 import fzi.mottem.model.baseelements.ITestReferenceable;
 import fzi.mottem.model.codemodel.BinaryLocation;
 import fzi.mottem.model.codemodel.CodeInstance;
+import fzi.mottem.model.codemodel.CodemodelFactory;
+import fzi.mottem.model.codemodel.DTFloatingPoint;
+import fzi.mottem.model.codemodel.DTInteger;
+import fzi.mottem.model.codemodel.DTVoid;
+import fzi.mottem.model.codemodel.DataType;
 import fzi.mottem.model.codemodel.SourceCodeLocation;
 import fzi.mottem.model.codemodel.SourceFile;
 import fzi.mottem.model.codemodel.Symbol;
@@ -38,6 +49,11 @@ import fzi.util.ecore.EcoreUtils;
 
 public class ModelUtils
 {
+	
+	public static final String PTS_SOURCE_FILES_ROOT = "pts";
+	public static final String PTS_MODEL_FILES_ROOT = "model";
+
+	public static final String FILE_EXTENSION_CODE_MODEL = "etm-code";
 	
 	public static void clearCodeInstance(CodeInstance codeInstance)
 	{
@@ -308,5 +324,130 @@ public class ModelUtils
 		}
 		
 		return tRefs;
+	}
+
+	public static LinkedList<CodeInstance> getAllCodeModelsInWorkspace()
+	{
+		LinkedList<CodeInstance> codeInstances = new LinkedList<CodeInstance>();
+		
+		for (IProject project : ResourcesPlugin.getWorkspace().getRoot().getProjects())
+		{
+			if (project.isOpen())
+			{
+				IFolder modelFolder = project.getFolder(PTS_MODEL_FILES_ROOT);
+				
+				if (modelFolder == null || !modelFolder.exists())
+					continue;
+				
+				try 
+				{
+					for (IResource resource : modelFolder.members())
+					{
+						if (FILE_EXTENSION_CODE_MODEL.equals(resource.getFileExtension()))
+						{
+							try
+							{
+								CodeInstance ci = (CodeInstance)EcoreUtils.loadFullEMFModel(URI.createPlatformResourceURI(resource.getFullPath().toString(), true));
+								codeInstances.add(ci);
+							}
+							catch (IOException e) 
+							{
+								e.printStackTrace();
+								continue;
+							}
+						}
+					}
+				}
+				catch (CoreException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return codeInstances;
+	}
+
+	public static Symbol getGlobalSymbol(CodeInstance ci, String name)
+	{
+		if (name == null)
+			return null;
+		
+		for (Symbol s : ci.getSymbols())
+		{
+			if (name.equals(s.getName()))
+				return s;
+		}
+		
+		return null;
+	}
+
+	public static DataType findDataTypeForName(CodeInstance ci, String name)
+	{
+		for(DataType dt : ci.getDataTypes())
+		{
+			if (dt.getName() == null)
+			{
+				continue;
+			}
+			
+			if (dt.getName().equals(name))
+			{
+				return dt;
+			}	
+		}
+		return null;
+	}
+
+	public static DataType findDataTypeForNameOrCreateDefault(CodeInstance ci, String typeName)
+	{
+		DataType dt = findDataTypeForName(ci, typeName);
+		
+		if (dt != null)
+		{
+			return dt;
+		}
+		else
+		{
+			if (typeName.contains("int"))
+			{
+				DTInteger di = CodemodelFactory.eINSTANCE.createDTInteger();
+				di.setName(typeName);
+				di.setIsSigned(!typeName.startsWith("u"));
+				int startOfN = typeName.lastIndexOf("int") + 3;
+				int bitSize = Integer.parseInt(typeName.substring(startOfN));
+				di.setBitSize(bitSize);
+				dt = di;
+			}
+			else if (typeName.contains("float"))
+			{
+				DTFloatingPoint dfp = CodemodelFactory.eINSTANCE.createDTFloatingPoint();
+				dfp.setName(typeName);
+				dfp.setExponentBitSize(8);
+				dfp.setSignificandBitSize(23);
+				dt = dfp;
+			}
+			else if (typeName.contains("double"))
+			{
+				DTFloatingPoint dfp = CodemodelFactory.eINSTANCE.createDTFloatingPoint();
+				dfp.setName(typeName);
+				dfp.setExponentBitSize(11);
+				dfp.setSignificandBitSize(52);
+				dt = dfp;
+			}
+			else if (typeName.contains("void"))
+			{
+				DTVoid dv = CodemodelFactory.eINSTANCE.createDTVoid();
+				dv.setName("void");
+				dt = dv;
+			}
+			else
+			{
+				return null;
+			}
+			
+			ci.getDataTypes().add(dt);
+			return dt;
+		}
 	}
 }

@@ -19,6 +19,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
+import fzi.mottem.model.util.ModelUtils;
 import fzi.mottem.ptspec.dsl.ui.nature.PTSpecNature;
 
 public class PTSpecProjectCreator extends AbstractPluginProjectCreator
@@ -27,9 +28,8 @@ public class PTSpecProjectCreator extends AbstractPluginProjectCreator
 	@Inject
 	private Provider<PTSpecProjectFactory> projectFactoryProvider;
 
-	protected static final String PTS_SOURCE_FILES_ROOT = "pts";
 	protected final List<String> JAVA_FOLDERS = ImmutableList.of("src-gen");
-	protected final List<String> NON_JAVA_FOLDERS = ImmutableList.of(PTS_SOURCE_FILES_ROOT, "model");
+	protected final List<String> NON_JAVA_FOLDERS = ImmutableList.of(ModelUtils.PTS_SOURCE_FILES_ROOT, ModelUtils.PTS_MODEL_FILES_ROOT);
 	protected final List<String> REQUIRED_BUNDLES = ImmutableList.of("fzi.mottem.model", "fzi.mottem.runtime");
 	
 	@Override
@@ -41,7 +41,7 @@ public class PTSpecProjectCreator extends AbstractPluginProjectCreator
 	@Override
 	protected String getModelFolderName()
 	{
-		return PTS_SOURCE_FILES_ROOT;
+		return ModelUtils.PTS_SOURCE_FILES_ROOT;
 	}
 	
 	@Override
