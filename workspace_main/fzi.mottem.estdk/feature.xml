@@ -16,11 +16,11 @@ The tested software is executed on the real device. Test execution is controlled
    </description>
 
    <copyright>
-      (c)2016 Till Fischer
+      (c) Copyright ES TDK contributors 2016.
    </copyright>
 
    <license url="https://opensource.org/licenses/EPL-1.0">
-      Eclipse Public License -v 1.0
+      Eclipse Public License - v 1.0
 
 THE ACCOMPANYING PROGRAM IS PROVIDED UNDER THE TERMS OF THIS ECLIPSE PUBLIC LICENSE (&quot;AGREEMENT&quot;). ANY USE, REPRODUCTION OR DISTRIBUTION OF THE PROGRAM CONSTITUTES RECIPIENT&apos;S ACCEPTANCE OF THIS AGREEMENT.
 
@@ -29,7 +29,6 @@ THE ACCOMPANYING PROGRAM IS PROVIDED UNDER THE TERMS OF THIS ECLIPSE PUBLIC LICE
 &quot;Contribution&quot; means:
 
 a) in the case of the initial Contributor, the initial code and documentation distributed under this Agreement, and
-
 b) in the case of each subsequent Contributor:
 
 i) changes to the Program, and
@@ -115,8 +114,10 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <requires>
       <import plugin="org.eclipse.core.runtime"/>
-      <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.xtext.xbase.lib"/>
+      <import plugin="org.eclipse.emf.ecore.xcore.lib"/>
+      <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.emf.edit.ui"/>
       <import plugin="org.eclipse.emf.ecore.xmi"/>
       <import plugin="org.eclipse.xtext"/>
@@ -132,6 +133,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.emf.workspace"/>
       <import plugin="org.eclipse.ui.views.properties.tabbed"/>
       <import plugin="org.eclipse.xtext.ui"/>
+      <import plugin="org.apache.commons.lang"/>
       <import plugin="org.eclipse.cdt.core"/>
       <import plugin="org.eclipse.cdt.ui"/>
       <import plugin="org.eclipse.ui" version="3.105.0" match="greaterOrEqual"/>
@@ -144,7 +146,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.antlr.runtime"/>
       <import plugin="org.eclipse.ui.workbench"/>
       <import plugin="org.apache.log4j"/>
-      <import plugin="org.eclipse.xtext.xbase.lib"/>
       <import plugin="org.eclipse.xtext" version="2.4.2" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.ui" version="2.4.2" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.ui.shared" version="2.4.2" match="greaterOrEqual"/>
@@ -179,112 +180,120 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.draw2d"/>
       <import plugin="org.eclipse.ui.intro" version="3.2.0" match="compatible"/>
       <import plugin="org.eclipse.core.runtime" version="3.2.0" match="compatible"/>
-      <import plugin="org.apache.commons.lang"/>
-      <import plugin="com.bicirikdwarf" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="com.bicirikdwarf.emf" version="1.0.0" match="greaterOrEqual"/>
    </requires>
+
+   <plugin
+         id="com.bicirikdwarf"
+         download-size="0"
+         install-size="0"
+         version="0.1.1.qualifier"/>
+
+   <plugin
+         id="com.bicirikdwarf.emf"
+         download-size="0"
+         install-size="0"
+         version="0.1.1.qualifier"/>
 
    <plugin
          id="fzi.util"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.1.1.qualifier"/>
 
    <plugin
          id="fzi.mottem.model"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.1.1.qualifier"/>
 
    <plugin
          id="fzi.mottem.model.simpleeditors"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.1.1.qualifier"/>
 
    <plugin
          id="fzi.mottem.editor"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.1.1.qualifier"/>
 
    <plugin
          id="fzi.mottem.code2model"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.1.1.qualifier"/>
 
    <plugin
          id="fzi.mottem.jjet"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.1.1.qualifier"/>
 
    <plugin
          id="fzi.mottem.ptspec.dsl"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.1.1.qualifier"/>
 
    <plugin
          id="fzi.mottem.ptspec.dsl.resources"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.1.1.qualifier"/>
 
    <plugin
          id="fzi.mottem.ptspec.dsl.resources.ui"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.1.1.qualifier"/>
 
    <plugin
          id="fzi.mottem.ptspec.dsl.ui"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.1.1.qualifier"/>
 
    <plugin
          id="fzi.mottem.runtime.dataexchanger"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.1.1.qualifier"/>
 
    <plugin
          id="fzi.mottem.runtime.rtgraph"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.1.1.qualifier"/>
 
    <plugin
          id="fzi.mottem.runtime.navigator"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.1.1.qualifier"/>
 
    <plugin
          id="fzi.mottem.runtime.problems"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.1.1.qualifier"/>
 
    <plugin
          id="fzi.mottem.runtime"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.1.1.qualifier"/>
 
    <plugin
          id="fzi.mottem.estdk"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.1.1.qualifier"/>
 
    <plugin
          id="fzi.mottem.estdk.doc"
          download-size="0"
          install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+         version="0.1.1.qualifier"/>
 
 </feature>

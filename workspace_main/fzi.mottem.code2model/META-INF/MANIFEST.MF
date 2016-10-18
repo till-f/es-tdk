@@ -14,7 +14,7 @@ Require-Bundle: org.apache.commons.lang,
  fzi.util,
  fzi.mottem.model,
  fzi.mottem.ptspec.dsl.ui,
- com.bicirikdwarf;bundle-version="1.0.0",
- com.bicirikdwarf.emf;bundle-version="1.0.0"
+ com.bicirikdwarf,
+ com.bicirikdwarf.emf
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
