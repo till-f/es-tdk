@@ -67,9 +67,10 @@ public class ELFExtractor
 			EObject eObj = iterator.next();
 			if (eObj instanceof com.bicirikdwarf.emf.dwarf.Variable)
 			{
-				String name = ((com.bicirikdwarf.emf.dwarf.Variable) eObj).getName();
-				Integer address = ((com.bicirikdwarf.emf.dwarf.Variable) eObj).getAddress();
-				BaseType baseType = DwarfModelUtils.getBaseType(((com.bicirikdwarf.emf.dwarf.Variable) eObj).getType());
+				com.bicirikdwarf.emf.dwarf.Variable dmVar = (com.bicirikdwarf.emf.dwarf.Variable) eObj;
+				String name = dmVar.getName();
+				Integer address = dmVar.getAddress();
+				BaseType baseType = DwarfModelUtils.getBaseType(dmVar.getType());
 
 				Variable ciVar = (Variable) ModelUtils.getGlobalSymbol(ci, name);
 				
@@ -91,9 +92,10 @@ public class ELFExtractor
 			}
 			else if(eObj instanceof Subprogram)
 			{
-				String name = ((Subprogram) eObj).getName();
-				Integer address = ((Subprogram) eObj).getAddress();
-				BaseType baseType = DwarfModelUtils.getBaseType(((Subprogram) eObj).getReturnType());
+				Subprogram dmFunc = (Subprogram) eObj;
+				String name = dmFunc.getName();
+				Integer address = dmFunc.getAddress();
+				BaseType baseType = DwarfModelUtils.getBaseType(dmFunc.getReturnType());
 
 				Function ciFunc = (Function) ModelUtils.getGlobalSymbol(ci, name);
 				

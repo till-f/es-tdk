@@ -117,8 +117,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Symbol" abstract="true" eSuperTypes="#//baseelements/ITestReferenceable">
       <eStructuralFeatures xsi:type="ecore:EReference" name="declarationLocation"
-          lowerBound="1" eType="#//codemodel/SourceCodeLocation" containment="true"
-          eOpposite="#//codemodel/SourceCodeLocation/symbol"/>
+          eType="#//codemodel/SourceCodeLocation" containment="true" eOpposite="#//codemodel/SourceCodeLocation/symbol"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="binaryLocation" eType="#//codemodel/BinaryLocation"
           containment="true" eOpposite="#//codemodel/BinaryLocation/symbol"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="codeInstance" eType="#//codemodel/CodeInstance"

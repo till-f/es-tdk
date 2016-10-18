@@ -2,28 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
 
-   <extension point="org.eclipse.ui.commands">
-      <category
-            id="fzi.mottem.code2model.commandCategory"
-            name="code2model Commands">
-      </category>
-      <command
-            categoryId="fzi.mottem.code2model.commandCategory"
-            id="fzi.mottem.code2model.commands.refresh"
-            name="(Re-)Generate CodeModels">
-      </command>
-   </extension>
-   
-   <extension point="org.eclipse.ui.menus">
-      <menuContribution locationURI="menu:fzi.mottem.ptspec.menu?after=UtilAdditions">
-         <command
-              commandId="fzi.mottem.code2model.commands.refresh"
-              id="fzi.mottem.code2model.menu.refresh"
-              mnemonic="I">
-         </command>
-      </menuContribution>
-   </extension>
-   
    <extension
          point="org.eclipse.ui.startup">
       <startup

@@ -43,6 +43,12 @@ public class Code2ModelResourceDeltaVisitor implements IResourceDeltaVisitor
     	switch (delta.getKind())
 		{
 			case IResourceDelta.CHANGED:
+				// dismiss all changes but content changes
+				if ((delta.getFlags() & IResourceDelta.CONTENT) == 0 &&
+					(delta.getFlags() & IResourceDelta.REPLACED) == 0)
+				{
+					return true;
+				}
 			case IResourceDelta.ADDED:
 				String fileExtension = delta.getResource().getFileExtension();
 				if (fileExtension == null)
@@ -75,7 +81,7 @@ public class Code2ModelResourceDeltaVisitor implements IResourceDeltaVisitor
     	job.setPriority(Job.LONG);
     	job.schedule();
 
-		return false;
+		return true;
 	}
 
     /**
@@ -88,6 +94,6 @@ public class Code2ModelResourceDeltaVisitor implements IResourceDeltaVisitor
     	job.setPriority(Job.BUILD);
     	job.schedule();
 
-		return false;
+		return true;
 	}
 }

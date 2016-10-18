@@ -29,7 +29,7 @@ public class PTSpecActivatorCustom extends PTSpecActivator
 	{
 		super.start(context);
 		
-		System.out.println("Successful startup of PTSpec UI plugin.");
+		System.out.println("Successful early startup of PTSpec UI plugin.");
 		
 		_contributionsHandler.evaluate();
 	}

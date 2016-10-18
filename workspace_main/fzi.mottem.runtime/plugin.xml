@@ -2,36 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
 
-   <extension point="org.eclipse.ui.commands">
-      <category
-            id="fzi.mottem.runtime.commandCategory"
-            name="Runtime Commands">
-      </category>
-      <command
-            categoryId="fzi.mottem.runtime.commandCategory"
-            id="fzi.mottem.runtime.commands.runall"
-            name="Run all tests">
-      </command>
-   </extension>
-   
-   <extension point="org.eclipse.ui.handlers">
-      <handler
-            class="fzi.mottem.runtime.commands.RunAllCommand"
-            commandId="fzi.mottem.runtime.commands.runall">
-      </handler>
-   </extension>
-   
-   <extension point="org.eclipse.ui.menus">
-      <menuContribution locationURI="menu:fzi.mottem.ptspec.menu?after=RuntimeAdditions">
-         <command
-              commandId="fzi.mottem.runtime.commands.runall"
-              id="fzi.mottem.runtime.menu.runall"
-              mnemonic="I">
-         </command>
-         <separator name="additions" visible="true"/>
-      </menuContribution>
-   </extension>
-   
    <extension
          id="fzi.mottem.runtime.runtestlistener"
          point="fzi.mottem.ptspec.dsl.ui.runtestlistener">
@@ -39,6 +9,5 @@
             class="fzi.mottem.runtime.RunTestListener">
       </client>
    </extension>
-
 
 </plugin>

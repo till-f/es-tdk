@@ -471,7 +471,7 @@
       <command
             categoryId="fzi.mottem.ptspec.compiler.commandsCategory"
             id="fzi.mottem.ptspec.compiler.commands.compileAll"
-            name="Compile all">
+            name="Compile all PTS">
       </command>
    </extension>
 
@@ -487,8 +487,6 @@
                   mnemonic="C">
             </command>
             <separator name="CompilerAdditions" visible="false"/>
-            <separator name="-" visible="true"/>
-            <separator name="RuntimeAdditions" visible="false"/>
             <separator name="-" visible="true"/>
             <separator name="UtilAdditions" visible="false"/>
          </menu>
