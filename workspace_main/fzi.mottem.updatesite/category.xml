@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/fzi.mottem.estdk.feature_0.1.1.qualifier.jar" id="fzi.mottem.estdk.feature" version="0.1.1.qualifier" os="win32" ws="win32" arch="x86,x86_64">
-      <category name="fzi.mottem.ptspec.sdk.category"/>
+   <feature url="features/fzi.mottem.updatesite.feature_0.1.1.qualifier.jar" id="fzi.mottem.updatesite.feature" version="0.1.1.qualifier" os="win32" ws="win32" arch="x86,x86_64">
+      <category name="fzi.mottem.updatesite.category"/>
    </feature>
-   <category-def name="fzi.mottem.ptspec.sdk.category" label="Embedded Software Test Development Kit">
+   <category-def name="fzi.mottem.updatesite.category" label="Embedded Software Test Development Kit">
       <description>
          The Embedded Software Test Development Kit eases the implementation of tests for embedded software. It focuses on C-code and can be used like a unit test framework, but also supports advanced test scenarios for embedded systems including timing analysis and Hardware-in-the-Loop (HiL) tests. The ES TDK comes with a new test programming language called PTSpec providing a consistent view on heterogeneous test environments.
 
