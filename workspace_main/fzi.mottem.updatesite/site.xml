@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/fzi.mottem.updatesite.feature_0.1.1.qualifier.jar" id="fzi.mottem.updatesite.feature" version="0.1.1.qualifier" os="win32" ws="win32" arch="x86,x86_64">
+   <feature url="features/fzi.mottem.feature_0.1.1.qualifier.jar" id="fzi.mottem.feature" version="0.1.1.qualifier" os="win32" ws="win32" arch="x86,x86_64">
       <category name="fzi.mottem.updatesite.category"/>
    </feature>
    <category-def name="fzi.mottem.updatesite.category" label="Embedded Software Test Development Kit">

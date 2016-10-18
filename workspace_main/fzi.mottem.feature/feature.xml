@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="fzi.mottem.updatesite.feature"
+      id="fzi.mottem.feature"
       label="Embedded Software Test Development Kit"
       version="0.1.1.qualifier"
       provider-name="Till Fischer"
