@@ -2,7 +2,7 @@
 <feature
       id="fzi.mottem.feature"
       label="Embedded Software Test Development Kit"
-      version="0.1.1.qualifier"
+      version="0.1.2.qualifier"
       provider-name="Till Fischer"
       plugin="fzi.mottem.estdk"
       os="win32"
@@ -186,114 +186,114 @@ This Agreement is governed by the laws of the State of New York and the intellec
          id="com.bicirikdwarf"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"/>
+         version="0.1.2.qualifier"/>
 
    <plugin
          id="com.bicirikdwarf.emf"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"/>
+         version="0.1.2.qualifier"/>
 
    <plugin
          id="fzi.util"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"/>
+         version="0.1.2.qualifier"/>
 
    <plugin
          id="fzi.mottem.model"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"/>
+         version="0.1.2.qualifier"/>
 
    <plugin
          id="fzi.mottem.model.simpleeditors"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"/>
+         version="0.1.2.qualifier"/>
 
    <plugin
          id="fzi.mottem.editor"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"/>
+         version="0.1.2.qualifier"/>
 
    <plugin
          id="fzi.mottem.code2model"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"/>
+         version="0.1.2.qualifier"/>
 
    <plugin
          id="fzi.mottem.jjet"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"/>
+         version="0.1.2.qualifier"/>
 
    <plugin
          id="fzi.mottem.ptspec.dsl"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"/>
+         version="0.1.2.qualifier"/>
 
    <plugin
          id="fzi.mottem.ptspec.dsl.resources"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"/>
+         version="0.1.2.qualifier"/>
 
    <plugin
          id="fzi.mottem.ptspec.dsl.resources.ui"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"/>
+         version="0.1.2.qualifier"/>
 
    <plugin
          id="fzi.mottem.ptspec.dsl.ui"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"/>
+         version="0.1.2.qualifier"/>
 
    <plugin
          id="fzi.mottem.runtime.dataexchanger"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"/>
+         version="0.1.2.qualifier"/>
 
    <plugin
          id="fzi.mottem.runtime.rtgraph"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"/>
+         version="0.1.2.qualifier"/>
 
    <plugin
          id="fzi.mottem.runtime.navigator"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"/>
+         version="0.1.2.qualifier"/>
 
    <plugin
          id="fzi.mottem.runtime.problems"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"/>
+         version="0.1.2.qualifier"/>
 
    <plugin
          id="fzi.mottem.runtime"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"/>
+         version="0.1.2.qualifier"/>
 
    <plugin
          id="fzi.mottem.estdk"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"/>
+         version="0.1.2.qualifier"/>
 
    <plugin
          id="fzi.mottem.estdk.doc"
          download-size="0"
          install-size="0"
-         version="0.1.1.qualifier"/>
+         version="0.1.2.qualifier"/>
 
 </feature>

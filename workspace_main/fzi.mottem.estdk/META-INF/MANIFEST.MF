@@ -14,7 +14,7 @@ Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/platfo
  160629-1300";commitId=b715ac9cd058efbe6acfe86b38e4366ddef6b88b
 Bundle-Vendor: Till Fischer
 Bundle-Name: fzi.mottem.estdk
-Bundle-Version: 0.1.1.qualifier
+Bundle-Version: 0.1.2.qualifier
 Bundle-ClassPath: platform.jar
 Bundle-Localization: plugin
 Created-By: Apache Maven 3.3.3

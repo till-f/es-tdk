@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="ES TDK" id="fzi.mottem.estdk.ide" application="org.eclipse.ui.ide.workbench" version="0.1.1.qualifier" useFeatures="false" includeLaunchers="true">
+<product name="ES TDK" id="fzi.mottem.estdk.ide" application="org.eclipse.ui.ide.workbench" version="0.1.2.qualifier" useFeatures="false" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/fzi.mottem.estdk/estdk_about.png"/>
