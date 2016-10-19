@@ -33,6 +33,9 @@ public class ELFExtractorJob extends Job
 			LinkedList<CodeInstance> relevantCodeInstances = new LinkedList<CodeInstance>();
 			for (CodeInstance ci : ModelUtils.getAllCodeModelsInWorkspace())
 			{
+				if (ci.getBinaryFile() == null)
+					continue;
+				
 				if (fullELFPathStr.endsWith(ci.getBinaryFile()))
 				{
 					relevantCodeInstances.add(ci);
