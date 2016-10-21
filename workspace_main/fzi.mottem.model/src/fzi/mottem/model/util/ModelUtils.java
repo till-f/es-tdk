@@ -55,14 +55,6 @@ public class ModelUtils
 
 	public static final String FILE_EXTENSION_CODE_MODEL = "etm-code";
 	
-	public static void clearCodeInstance(CodeInstance codeInstance)
-	{
-		codeInstance.getSymbols().clear();
-		codeInstance.getCClasses().clear();
-		codeInstance.getDataTypes().clear();
-		codeInstance.getSourceFiles().clear();
-	}
-	
 	public static IInspector getInspector(IExecutor exec)
 	{
 		if (exec instanceof IInspectable)

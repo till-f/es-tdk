@@ -2,6 +2,7 @@ package fzi.mottem.code2model.cdt2ecore;
 
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -15,17 +16,19 @@ import fzi.mottem.ptspec.dsl.ui.nature.PTSpecNature;
 
 public class CDTExtractorJob extends Job
 {
-	private final IProject _cdtProject;
+	private final IResource _cdtResource;
+	private final boolean _isRemoved;
 
 	/**
 	 * TODO: This job is inefficient, because the complete model is generated every time.
 	 * The job should only update the data associated with the appropriate file.
 	 */
-	public CDTExtractorJob(IProject cdtProject)
+	public CDTExtractorJob(IResource cdtResource, boolean isRemoved)
 	{
 		super("Extracting info from soruce code");
 		
-		_cdtProject = cdtProject;
+		_cdtResource = cdtResource;
+		_isRemoved = isRemoved;
 	}
 
 	@Override
@@ -42,7 +45,7 @@ public class CDTExtractorJob extends Job
 	    		{
 					if (ptsProject.hasNature(PTSpecNature.NATURE_ID))
 					{
-						CDTExtractor extractor = new CDTExtractor(_cdtProject);
+						CDTExtractor extractor = new CDTExtractor(_cdtResource, _isRemoved);
 						IFolder modelFolder = ptsProject.getFolder(ModelUtils.PTS_MODEL_FILES_ROOT);
 						extractor.extractInto(modelFolder);
 					}
