@@ -72,7 +72,7 @@ public class Code2ModelResourceDeltaVisitor implements IResourceDeltaVisitor
 		{
 			return parseCFileAndAddToModel(delta);
 		}
-		else if (fileExtension.equals("elf"))
+		else if (fileExtension.toLowerCase().equals("elf"))
 		{
 			return parseElfAndAddToModel(delta);
 		}

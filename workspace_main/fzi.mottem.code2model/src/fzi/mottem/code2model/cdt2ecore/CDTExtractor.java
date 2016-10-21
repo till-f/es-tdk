@@ -145,7 +145,7 @@ public class CDTExtractor
 		for (String segment : relativePath.segments())
 		{
 			String extension = FileUtils.getExtension(segment);
-			if (ArrayUtils.contains(Code2ModelResourceDeltaVisitor.C_FILE_EXTENSIONS, extension))
+			if (ArrayUtils.contains(Code2ModelResourceDeltaVisitor.C_FILE_EXTENSIONS, extension.toLowerCase()))
 			{
 				return rootContainer.getTranslationUnit(segment);
 			}
@@ -250,29 +250,16 @@ public class CDTExtractor
         }
 	}
 	
-//	private String getRelativePath(String tuFilePath)
-//	{
-//		File workspaceDirectory = _workspace.getRoot().getLocation().toFile();
-//
-//		File srcFile = new File (tuFilePath);
-//		
-//		String filePath = srcFile.getAbsolutePath();
-//		String workspacePath = workspaceDirectory.getAbsolutePath();
-//		
-//		if (!filePath.startsWith(workspacePath))
-//			return null;
-//		
-//		return filePath.substring(workspacePath.length() + 1);
-//	}
-
-
 	private void cleanupSourceFile(CodeInstance ci, String filePath)
 	{
+		SourceFile foundFile = null;
+		
 		for (SourceFile sf : ci.getSourceFiles())
 		{
 			if (sf.getFilePath().equals(filePath))
 			{
 				_isModelFileDirty = true;
+				foundFile = sf;
 				
 				// delete all declarations from this file in the model
 				for (SourceCodeLocation scl : sf.getSourceCodeLocations())
@@ -296,9 +283,12 @@ public class CDTExtractor
 						System.err.println("Skipped removing symbol - unexpected container " + sym.eContainer().getClass().getSimpleName());
 					}
 				}
-				
-				ci.getSourceFiles().remove(sf);
 			}
+		}
+		
+		if (foundFile != null)
+		{
+			ci.getSourceFiles().remove(foundFile);
 		}
 	}
 
