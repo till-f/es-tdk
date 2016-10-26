@@ -96,10 +96,9 @@ public class DashboardComposite extends Dashboard {
 		if (widgetLinks.contains(link)) {
 
 			System.out.println("Dashboard: removing link " + link);
-			
-			
+
 			widgetLinks.remove(link);
-			
+
 			if (current_widget.equals(link)) {
 				if (widgetLinks.size() > 0) {
 					current_widget = widgetLinks.get(0);
@@ -108,11 +107,8 @@ public class DashboardComposite extends Dashboard {
 				}
 			}
 			link = null;
-			//System.out.println("Link removed : " + link);
+			// System.out.println("Link removed : " + link);
 			setDirty(true);
-			
-			// SetupUI.resetCurrentLink(); //uncomment if you need automatic
-			// link selection after removal
 		}
 	}
 
@@ -162,22 +158,8 @@ public class DashboardComposite extends Dashboard {
 
 	@Override
 	public void applyRepresentation() {
-
-		try {
-			bg_image = new Image(Display.getCurrent(), representation.background_path);
-			setBackgroundImage(bg_image);
-			setBackground_path(representation.background_path);
-
-		} catch (SWTException e) {
-			// TODO Auto-generated catch block
-			
-			System.out.println("Could not load background image from " + representation.background_path);
-			setEmptyBackground();
-			
-		}
-
+		setDashboardBackgroundImage(representation.background_path);
 		generateWidgets();
-
 	}
 
 	@Override
@@ -188,15 +170,6 @@ public class DashboardComposite extends Dashboard {
 			wcons.updateRepresentation();
 			representation.figureRepresentations.add(wcons.getRepresentation());
 		}
-
-		/*
-		 * representation.controllerRepresentations.clear(); for
-		 * (ControllerWidgetLink wctrl : controllerLinks) {
-		 * wctrl.updateRepresentation();
-		 * representation.controllerRepresentations.add(wctrl.getRepresentation(
-		 * )); }
-		 */
-		// set Dirty(false);
 
 	}
 
@@ -552,7 +525,7 @@ public class DashboardComposite extends Dashboard {
 			public void widgetSelected(SelectionEvent e) {
 				WidgetRepresentation wr = new WidgetRepresentation();
 				wr.setType(Constants.WIDGET_IMAGE);
-				String result = callImageDialog();
+				String result = callImageDialog("Select image source for the Image Widget");
 				if (result != null)
 					wr.setText(result);
 				wr.setX(mousePosX);
@@ -580,12 +553,11 @@ public class DashboardComposite extends Dashboard {
 		setBackgroundItem.setImage(AbstractUIPlugin
 				.imageDescriptorFromPlugin("fzi.mottem.runtime.rtgraph", "/icons/folder-picture-icon.png")
 				.createImage());
-		
+
 		MenuItem removeBackgroundItem = new MenuItem(popupMenu, SWT.NONE);
 		removeBackgroundItem.setText("Remove Background");
 		removeBackgroundItem.setImage(AbstractUIPlugin
-				.imageDescriptorFromPlugin("fzi.mottem.runtime.rtgraph", "/icons/remove.png")
-				.createImage());
+				.imageDescriptorFromPlugin("fzi.mottem.runtime.rtgraph", "/icons/remove.png").createImage());
 
 		new MenuItem(popupMenu, SWT.SEPARATOR);
 
@@ -595,7 +567,7 @@ public class DashboardComposite extends Dashboard {
 				.imageDescriptorFromPlugin("fzi.mottem.runtime.rtgraph", "/icons/settings-icon.png").createImage());
 
 		setMenu(popupMenu);
-		
+
 		openSettingsViewItem.addSelectionListener(new SelectionListener() {
 
 			@Override
@@ -649,7 +621,7 @@ public class DashboardComposite extends Dashboard {
 				// TODO Auto-generated method stub
 			}
 		});
-		
+
 		removeBackgroundItem.addSelectionListener(new SelectionListener() {
 
 			@Override
@@ -666,23 +638,24 @@ public class DashboardComposite extends Dashboard {
 			}
 		});
 	}
-	
+
 	private void setEmptyBackground() {
 		Display display = Display.getCurrent();
 
-	    Color bg_gray_widget = new Color(display,248,248,248); 
-	    //this is also the widget background color as of right now  
-	    bg_image = null;		
-	    setBackgroundImage(null);
-	    setBackground(bg_gray_widget);
-	    
+		Color bg_gray_widget = new Color(display, 248, 248, 248);
+		// this is also the widget background color as of right now
+		bg_image = null;
+		setBackgroundImage(null);
+		setBackground(bg_gray_widget);
+
 	}
-	
-	public String callImageDialog() {
+
+	public String callImageDialog(String title) {
 		EclipseFileSystemHelper helper = new EclipseFileSystemHelper();
-		
+
 		Shell shell = new Shell(Display.getCurrent());
 		FileDialog dialog = new FileDialog(shell, SWT.OPEN);
+		dialog.setText(title);
 		dialog.setFilterExtensions(new String[] { "*.*", "*.jpg", "*.gif", "*.png", "*.jpeg", "*.bmp" });
 
 		dialog.setFilterPath(Platform.getLocation().toOSString());
@@ -691,13 +664,44 @@ public class DashboardComposite extends Dashboard {
 	}
 
 	public void callBackgroundDialog() {
+		String path = callImageDialog("Select a background image for Dashboard " + this.name);
+		setDashboardBackgroundImage(path);
+	}
 
-		String result = callImageDialog();
-
-		if (result != null && !representation.background_path.equals(result)) {
-			System.out.println("Dashboard: Settings background to " + result);
-			representation.background_path = result; //result is the full path!
-			bg_image = new Image(Display.getCurrent(), result);
+	private void setDashboardBackgroundImage(String path) {
+		if (path != null) {
+			
+			EclipseFileSystemHelper helper = new EclipseFileSystemHelper();
+			boolean imageInWorkspace = helper.fileIsInWorkspace(path);
+			boolean isAbsolutePath = helper.isAbsolutePath(path);
+			String absolutePath = null;
+			String representationImagePath = null;
+			
+			if (imageInWorkspace) {
+				if (isAbsolutePath) {
+					absolutePath = path;
+					representationImagePath = helper.getWorkspaceRelativeFromAbsolute(path);
+				} else {
+					absolutePath = helper.getAbsoluteFromWorkspaceRelative(path);
+					representationImagePath = path;
+				}
+			} else {
+				absolutePath = path;
+				representationImagePath = path;
+			}
+			
+			try { //try to get the image
+				
+				ImageData imgData = new ImageData(absolutePath);
+				bg_image = new Image(Display.getCurrent(), imgData);
+				setBackground_path(representationImagePath); //representation.background_path	
+				
+			} catch (SWTException e) {
+				System.out.println("Dashboard " + this.name + " could not load image from path " + path);
+				setEmptyBackground();
+			}
+			
+			bg_image = new Image(Display.getCurrent(), path);
 			setBackgroundImage(bg_image);
 			refreshBgImage();
 			layout(true);

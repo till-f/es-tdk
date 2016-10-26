@@ -38,6 +38,7 @@ import fzi.mottem.runtime.rtgraph.SetupUnit;
 import fzi.mottem.runtime.rtgraph.ViewCoordinator;
 import fzi.mottem.runtime.rtgraph.listeners.DoubleDigitListener;
 import fzi.mottem.runtime.rtgraph.listeners.IntegerListener;
+import fzi.mottem.runtime.rtgraph.views.Dashboard;
 import fzi.mottem.runtime.rtgraph.views.DashboardComposite;
 
 public class WidgetSettingsUI extends Composite {
@@ -877,7 +878,7 @@ public class WidgetSettingsUI extends Composite {
 		 * 
 		 * dialog.setFilterPath("c:\\");
 		 */
-		String result = current_link.getDashboard().callImageDialog();
+		String result = current_link.getDashboard().callImageDialog(Dashboard.SELECT_IMAGE_WIDGET);
 
 		if (result != null) {
 

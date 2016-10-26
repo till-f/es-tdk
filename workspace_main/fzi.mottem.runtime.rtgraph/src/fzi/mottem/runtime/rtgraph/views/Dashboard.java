@@ -34,6 +34,8 @@ import fzi.mottem.runtime.rtgraph.runnables.WidgetUpdater;
 
 public class Dashboard extends ObservableView<DashboardRepresentation> {
 
+	public static final String SELECT_IMAGE_WIDGET = "Select image source for the Image Widget";
+	
 	private String background_path = "c:\\";
 	protected String name = "";
 	Composite parent;
