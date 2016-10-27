@@ -164,10 +164,12 @@ public abstract class AbstractWidgetExchangeLink extends ExchangeLink implements
 			figure.erase();
 		}
 		figure = null;
-		if (!dashboard.isDisposed() && dashboard != null) {
+		if (dashboard != null) {
 			dashboard.removeWidgetLink(this);
-			dashboard.layout(true);
+			dashboard.setDirty(true);
+			if (!dashboard.isDisposed()) dashboard.layout(true);
 		}
+		
 	}
 
 	@Override

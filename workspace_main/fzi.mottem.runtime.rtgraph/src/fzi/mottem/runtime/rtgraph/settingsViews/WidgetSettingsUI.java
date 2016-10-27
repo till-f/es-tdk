@@ -644,28 +644,10 @@ public class WidgetSettingsUI extends Composite {
 		if (current_link.getDashboard() != dashboard) {
 			dashboard = current_link.getDashboard();
 		}
-
 		dashboard.setCurrentLink(current_link);
 
 		refreshCombos();
 		removeButton.setEnabled(true);
-
-		/*
-		 * if (advUI != null) advUI.dispose();
-		 * 
-		 * if (link.getType() == Constants.WIDGET_TEXT) {
-		 * 
-		 * advUI = new AdvancedTextSettingsUI(advancedWidgetSettings, SWT.NONE,
-		 * link); advUI.initLayout(2, 1); advUI.initConten();
-		 * 
-		 * } else {
-		 * 
-		 * advUI = new AdvancedWidgetSettingsUI(advancedWidgetSettings,
-		 * SWT.NONE, link) {
-		 * 
-		 * @Override public void initConten() { // TODO Auto-generated method
-		 * stub } }; }
-		 */
 
 		setWidgetTexts(link);
 	}
@@ -751,12 +733,15 @@ public class WidgetSettingsUI extends Composite {
 		links_combo.setText("--Widget--");
 
 		if (dashboard != null && !dashboard.isDisposed()) {
+			
+			current_link = dashboard.getCurrent_link();
+			
 			AbstractWidgetExchangeLink link;
 			ArrayList<AbstractWidgetExchangeLink> links = dashboard.getWidgetLinks();
 			for (int i = 0; i < links.size(); i++) {
 				link = links.get(i);
 				links_combo.add(i + " " + link.getDescription());
-				if (current_link != null && current_link.equals(links.get(i))) {
+				if (current_link != null && current_link.equals(link)) {
 					li = i;
 				}
 			}
@@ -770,10 +755,9 @@ public class WidgetSettingsUI extends Composite {
 		if (current_link != null) {
 			updateSignalsCombo(current_link);
 			updateTypesCombo(current_link);
+			enableTextOrImage();
 		}
-
-		enableTextOrImage();
-
+		
 		basicSettings.layout(true);
 	}
 

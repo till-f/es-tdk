@@ -45,7 +45,6 @@ public class ExchangeLink implements ITargetDataConsumer {
 	 * Disconnects this ExchangeLink from the DataExchanger
 	 */
 	public void drop() {
-		//DataExchanger.removeExLink() //TODO
 		DataExchanger.removeConsumer(this);
 	}
 	
@@ -60,6 +59,5 @@ public class ExchangeLink implements ITargetDataConsumer {
 	@Override
 	public void consumeBurst(List<DEMessage> messages) {
 		// TODO Auto-generated method stub
-		
 	}
 }

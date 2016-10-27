@@ -196,8 +196,7 @@ public class DashboardEditor extends EditorPart {
 							dashboard.getCurrent_link().delete(); 
 							SetupUI.deFocusWidget();	
 						}
-					} //else if (e.keyCode == SWT.ESC) {
-				//	}
+					} 
 				}
 			}
 		};

@@ -691,21 +691,19 @@ public class DashboardComposite extends Dashboard {
 			}
 			
 			try { //try to get the image
-				
 				ImageData imgData = new ImageData(absolutePath);
 				bg_image = new Image(Display.getCurrent(), imgData);
 				setBackground_path(representationImagePath); //representation.background_path	
+				setBackgroundImage(bg_image);
+				refreshBgImage();
+				layout(true);
+				setDirty(true);
 				
 			} catch (SWTException e) {
 				System.out.println("Dashboard " + this.name + " could not load image from path " + path);
 				setEmptyBackground();
 			}
 			
-			bg_image = new Image(Display.getCurrent(), path);
-			setBackgroundImage(bg_image);
-			refreshBgImage();
-			layout(true);
-			setDirty(true);
 		}
 	}
 
