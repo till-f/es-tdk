@@ -136,14 +136,13 @@ public class SetupUI {
 	public static void refreshSignals() {
 		if (isOpen()) {
 			gatherSignals();
-			// showSignals();
+			//showSignals();
+			signalSettings.refresh();
 			if (widgetSettings != null)
 				widgetSettings.refresh();
 			SetupUnit.autoConnectWidgets();
 			SetupUnit.autoConnectGraphViews();
-
 		}
-
 	}
 
 	private static WidgetSettingsUI getWidgetSettings() throws RuntimeException {

@@ -193,7 +193,7 @@ public class IndicatorWidgetLink extends AbstractWidgetExchangeLink {
 			if (text.length() > 0 && !oldtext.equals(text)) {
 
 				setWidgetImage(text);
-
+				/*
 				EclipseFileSystemHelper helper = new EclipseFileSystemHelper();
 
 				String img_result = text;
@@ -219,7 +219,7 @@ public class IndicatorWidgetLink extends AbstractWidgetExchangeLink {
 					updateCanvasImage();
 
 				} catch (SWTException e) {
-					String result = dashboard.callImageDialog();
+					String result = dashboard.callImageDialog(Dashboard.SELECT_IMAGE_WIDGET);
 
 					if (result != null) {
 
@@ -251,7 +251,7 @@ public class IndicatorWidgetLink extends AbstractWidgetExchangeLink {
 								representation.getHeight());
 						canvas.setToolTipText("Image not found!");
 					}
-				}
+				} */
 			}
 		} else {
 			if (text.length() > 0) {
@@ -298,12 +298,13 @@ public class IndicatorWidgetLink extends AbstractWidgetExchangeLink {
 					representation.getHeight());
 			representation.setHeight(imgData.height);
 			representation.setWidth(imgData.width);
-			representation.setText(absolutePath);
+			representation.setText(representationImagePath);
+			canvas.setToolTipText(representationImagePath);
 			updateCanvasImage();
 			
 		} catch (SWTException e) { //if it fails, call a browse dialog and try again
 			
-			String result = dashboard.callImageDialog();
+			String result = dashboard.callImageDialog(Dashboard.SELECT_IMAGE_WIDGET);
 
 			if (result != null) {
 				if (helper.fileIsInWorkspace(result)) {
@@ -319,7 +320,8 @@ public class IndicatorWidgetLink extends AbstractWidgetExchangeLink {
 				
 				representation.setHeight(imgData.height);
 				representation.setWidth(imgData.width);
-				representation.setText(absolutePath);
+				representation.setText(representationImagePath);
+				canvas.setToolTipText(representationImagePath);
 				
 			} else {
 				canvas.setBounds(representation.getX(), representation.getY(), representation.getWidth(),

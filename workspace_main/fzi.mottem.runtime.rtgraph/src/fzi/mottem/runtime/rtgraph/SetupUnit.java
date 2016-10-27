@@ -21,7 +21,6 @@ import fzi.mottem.runtime.dataexchanger.Signal.SignalType;
 import fzi.mottem.runtime.rtgraph.AbstractWidgetExchangeLink.WidgetType;
 import fzi.mottem.runtime.rtgraph.XML.ProfileUtils;
 import fzi.mottem.runtime.rtgraph.runnables.WidgetUpdater;
-import fzi.mottem.runtime.rtgraph.settingsViews.ControllerSettingsUI;
 import fzi.mottem.runtime.rtgraph.settingsViews.SetupUI;
 import fzi.mottem.runtime.rtgraph.settingsViews.WidgetSettingsUI;
 import fzi.mottem.runtime.rtgraph.views.Dashboard;
@@ -201,21 +200,6 @@ public class SetupUnit {
 		}
 	}
 
-	public static void disconnectWidgetLink(IndicatorWidgetLink link) {
-		link.drop();
-		link.delete();
-	}
-
-	public static void disconnectControllerLink(int index) {
-		ControllerWidgetLink link = controllerLinks.get(index);
-		disconnectControllerLink(link);
-		controllerLinks.remove(index);
-	}
-
-	private static void disconnectControllerLink(ControllerWidgetLink link) {
-		link.delete();
-	}
-
 	public static void connectController(int si, int li) {
 		controllerLinks.get(li).setSignal(signals.get(si));
 	}
@@ -315,25 +299,6 @@ public class SetupUnit {
 		
 	}
 
-	public static void presentControllerSettings(int link_index) {
-		Display display = Display.getCurrent();
-		Shell shell = new Shell(display, SWT.CLOSE | SWT.TITLE | SWT.MIN);
-		shell.setSize(100, 150);
-		shell.setLayout(new GridLayout(2, false));
-		ControllerSettingsUI controllerSettings = new ControllerSettingsUI(shell, SWT.NONE);
-		controllerSettings.refresh();
-		if (controllerLinks.size() > link_index && link_index > -1) {
-			controllerSettings.focusOn(link_index);
-		}
-		controllerSettings.setWidgetsSelectable(false);
-		shell.pack();
-		shell.open();
-	}
-
-	public static void presentControllerSettings(ControllerWidgetLink link) {
-		int link_index = controllerLinks.indexOf(link);
-		presentControllerSettings(link_index);
-	}
 
 	private static AbstractMarkedWidgetFigure createControllerFigure(int type) {
 		final AbstractMarkedWidgetFigure figure;
