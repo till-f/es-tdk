@@ -129,6 +129,8 @@ public class BaseelementsValidator extends EObjectValidator {
 				return validateISignal((ISignal)value, diagnostics, context);
 			case BaseelementsPackage.IMESSAGE:
 				return validateIMessage((IMessage)value, diagnostics, context);
+			case BaseelementsPackage.IDISPLAYABLE:
+				return validateIDisplayable((IDisplayable)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -511,6 +513,15 @@ public class BaseelementsValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(iMessage, diagnostics, context);
 		if (result || diagnostics != null) result &= validateINamed_nameValid(iMessage, diagnostics, context);
 		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateIDisplayable(IDisplayable iDisplayable, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(iDisplayable, diagnostics, context);
 	}
 
 	/**
