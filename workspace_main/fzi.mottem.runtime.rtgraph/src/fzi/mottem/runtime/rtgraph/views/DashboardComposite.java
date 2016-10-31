@@ -656,7 +656,7 @@ public class DashboardComposite extends Dashboard {
 		Shell shell = new Shell(Display.getCurrent());
 		FileDialog dialog = new FileDialog(shell, SWT.OPEN);
 		dialog.setText(title);
-		dialog.setFilterExtensions(new String[] { "*.*", "*.jpg", "*.gif", "*.png", "*.jpeg", "*.bmp" });
+		dialog.setFilterExtensions(new String[] { "*.jpg; *.gif; *.png; *.jpeg; *.bmp", "*.jpg", "*.gif", "*.png", "*.jpeg", "*.bmp", "*.*"});
 
 		dialog.setFilterPath(Platform.getLocation().toOSString());
 		String result = dialog.open();

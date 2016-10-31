@@ -74,6 +74,38 @@ public class WidgetSettingsUI extends Composite {
 			}
 		}
 	}
+	
+	private class PositionButtonListener implements Listener {
+
+		int inc = 10;
+		int widthInc = 0;
+		int heightInc = 0;
+		int li; // widget link index
+
+		public PositionButtonListener(boolean x, boolean plus) {
+			if (!plus) {
+				inc = -10;
+			}
+			if (x) {
+				widthInc = inc;
+			} else {
+				heightInc = inc;
+			}
+		}
+
+		Canvas c;
+
+		@Override
+		public void handleEvent(Event event) {
+			li = links_combo.getSelectionIndex();
+			if (current_link != null && current_link.getCanvas() != null) {
+				c = current_link.getCanvas();
+				c.setBounds(c.getBounds().x + widthInc, c.getBounds().y + heightInc, c.getSize().x, c.getSize().y);
+				current_link.updateRepresentation(false, true, false);
+				setWidgetTexts(current_link);
+			}
+		}
+	}
 
 	// private ArrayList<MarkedFigureExchangeLink> links;
 	private AbstractWidgetExchangeLink current_link;
@@ -85,7 +117,7 @@ public class WidgetSettingsUI extends Composite {
 	Text min, max, lo, hi;
 	Text x, y, w, h;
 
-	Composite advancedWidgetSettings;
+	
 	AdvancedWidgetSettingsUI advUI;
 
 	List<Text> rangeFields;
@@ -127,9 +159,9 @@ public class WidgetSettingsUI extends Composite {
 			+ "%	Prefix or suffix Multiply by 100 and show as percentage\n"
 			+ "An example floating point format with 2 digit precision would be #.#";
 
-	private int colsNum = 1;
+	private int colsNum = 2;
 
-	protected Composite basicSettings;
+	protected Group basicSettings;
 	protected Group rangeSettings;
 	protected Group positionSettings;
 	protected String[] indicator_types = Constants.WIDGET_TYPES;
@@ -140,6 +172,11 @@ public class WidgetSettingsUI extends Composite {
 	private ArrayList<Signal> out_signals;
 	private Text valueFormatText;
 	private Listener rangeKeyListener;
+	private Button xPlus;
+	private Button xMinus;
+	private Button yPlus;
+	private Button yMinus;
+	private Group miscSettings;
 
 	public WidgetSettingsUI(Composite parent, int style) {
 		super(parent, style);
@@ -174,65 +211,66 @@ public class WidgetSettingsUI extends Composite {
 	protected void initLayout() {
 		this.setLayout(new GridLayout(colsNum, false));
 
-		GridData positionsData = new GridData(SWT.DEFAULT, SWT.DEFAULT, true, false, 1, 1);
+		GridData positionsData = new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1);
 
 		GridData data = new GridData();
 		data.horizontalAlignment = SWT.FILL;
 		data.grabExcessHorizontalSpace = true;
 		data.verticalAlignment = SWT.FILL;
 
-		basicSettings = new Composite(this, style);
+		basicSettings = new Group(this, style);
+		basicSettings.setText("Signal and Type");
 		basicSettings.setLayout(new GridLayout(2, false));
+		basicSettings.setLayoutData(data);
+		
+		miscSettings = new Group(this, style);
+		miscSettings.setLayout(new GridLayout(colsNum, false));
+		miscSettings.setLayoutData(positionsData);
+		miscSettings.setText("Misc");
+		
+		positionSettings = new Group(this, style);
+		positionSettings.setLayout(new GridLayout(4, false));
+		positionSettings.setLayoutData(positionsData);
+		positionSettings.setText("Position");
 
 		rangeSettings = new Group(this, style);
 		rangeSettings.setLayout(new GridLayout(2, false));
-		rangeSettings.setLayoutData(new GridData(SWT.FILL, SWT.DEFAULT, true, true, 1, 1));
+		rangeSettings.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 		rangeSettings.setText("Data Range");
 
 		Label logScale = new Label(rangeSettings, SWT.NONE);
 		logScale.setText("Logarithmic:");
 		checkLogarithmicScale = new Button(rangeSettings, SWT.CHECK);
 
-		basicSettings.setLayoutData(data);
-
-		positionSettings = new Group(this, style);
-		positionSettings.setLayout(new GridLayout(4, false));
-		positionSettings.setLayoutData(positionsData);
-		positionSettings.setText("Position");
-
-		advancedWidgetSettings = new Composite(this, SWT.NONE);
-		advancedWidgetSettings.setLayout(new GridLayout(2, false));
-		advancedWidgetSettings.setLayoutData(new GridData(SWT.DEFAULT, SWT.DEFAULT, true, true, 2, 1));
-
 		// rangeSettings.setLayoutData(data);
 	}
 
 	protected void initSizeButtons() {
-		Composite wb = new Composite(positionSettings, SWT.NONE);
+		/*Composite wb = new Composite(positionSettings, SWT.NONE);
 		Label wl = new Label(wb, SWT.NONE);
 		wl.setText("Width");
 
 		wb.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
-		wb.setLayout(new GridLayout(3, false));
-		widthPlus = new Button(wb, SWT.PUSH);
+		wb.setLayout(new GridLayout(3, false));*/
+		/*widthPlus = new Button(wb, SWT.PUSH);
 		widthPlus.setText("+");
 		widthPlus.addListener(SWT.Selection, new SizeButtonListener(true, true));
 		widthMinus = new Button(wb, SWT.PUSH);
 		widthMinus.setText("-");
-		widthMinus.addListener(SWT.Selection, new SizeButtonListener(true, false));
+		widthMinus.addListener(SWT.Selection, new SizeButtonListener(true, false));*/
 
-		Composite hb = new Composite(positionSettings, SWT.NONE);
+		/*Composite hb = new Composite(positionSettings, SWT.NONE);
 		Label hl = new Label(hb, SWT.NONE);
 		hl.setText("Height");
 
 		hb.setLayout(new GridLayout(3, false));
-		hb.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
-		heightPlus = new Button(hb, SWT.PUSH);
+		hb.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));*/
+		/*heightPlus = new Button(hb, SWT.PUSH);
 		heightPlus.setText("+");
 		heightPlus.addListener(SWT.Selection, new SizeButtonListener(false, true));
 		heightMinus = new Button(hb, SWT.PUSH);
 		heightMinus.setText("-");
-		heightMinus.addListener(SWT.Selection, new SizeButtonListener(false, false));
+		heightMinus.addListener(SWT.Selection, new SizeButtonListener(false, false));*/
 	}
 
 	protected void initInnerControls() {
@@ -277,20 +315,59 @@ public class WidgetSettingsUI extends Composite {
 		 * min.setLayoutData(dataText); max.setLayoutData(dataText);
 		 * lo.setLayoutData(dataText); hi.setLayoutData(dataText);
 		 */
-
+		
+		GridData sizeButtonData = new GridData(SWT.FILL, SWT.DEFAULT, true, false);
+		
 		Label lx = new Label(positionSettings, SWT.NONE);
 		lx.setText("x:");
 		x = new Text(positionSettings, SWT.CENTER | SWT.SINGLE | SWT.BORDER);
+		xPlus = new Button(positionSettings, SWT.PUSH);
+		xPlus.setText("+");
+		xPlus.addListener(SWT.Selection, new PositionButtonListener(true, true));
+		xMinus = new Button(positionSettings, SWT.PUSH);
+		xMinus.setText("-");
+		xMinus.addListener(SWT.Selection, new PositionButtonListener(true, false));
+		xPlus.setLayoutData(sizeButtonData);
+		xMinus.setLayoutData(sizeButtonData);
+		
+		
 		Label ly = new Label(positionSettings, SWT.NONE);
 		ly.setText("y:");
 		y = new Text(positionSettings, SWT.CENTER | SWT.SINGLE | SWT.BORDER);
+		yPlus = new Button(positionSettings, SWT.PUSH);
+		yPlus.setText("+");
+		yPlus.addListener(SWT.Selection, new PositionButtonListener(false, true));
+		yMinus = new Button(positionSettings, SWT.PUSH);
+		yMinus.setText("-");
+		yMinus.addListener(SWT.Selection, new PositionButtonListener(false, false));
+		yPlus.setLayoutData(sizeButtonData);
+		yMinus.setLayoutData(sizeButtonData);
+		
 		Label lw = new Label(positionSettings, SWT.NONE);
 		lw.setText("w:");
 		w = new Text(positionSettings, SWT.CENTER | SWT.SINGLE | SWT.BORDER);
+		widthPlus = new Button(positionSettings, SWT.PUSH);
+		widthPlus.setText("+");
+		widthPlus.addListener(SWT.Selection, new SizeButtonListener(true, true));
+		widthMinus = new Button(positionSettings, SWT.PUSH);
+		widthMinus.setText("-");
+		widthMinus.addListener(SWT.Selection, new SizeButtonListener(true, false));
+		widthPlus.setLayoutData(sizeButtonData);
+		widthMinus.setLayoutData(sizeButtonData);
+		
 		Label lh = new Label(positionSettings, SWT.NONE);
 		lh.setText("h:");
 		h = new Text(positionSettings, SWT.CENTER | SWT.SINGLE | SWT.BORDER);
-
+		heightPlus = new Button(positionSettings, SWT.PUSH);
+		heightPlus.setText("+");
+		heightPlus.addListener(SWT.Selection, new SizeButtonListener(false, true));
+		
+		heightMinus = new Button(positionSettings, SWT.PUSH);
+		heightMinus.setText("-");
+		heightMinus.addListener(SWT.Selection, new SizeButtonListener(false, false));
+		heightPlus.setLayoutData(sizeButtonData);
+		heightMinus.setLayoutData(sizeButtonData);
+		
 		x.addVerifyListener(new IntegerListener());
 		x.setLayoutData(dataText);
 		y.addVerifyListener(new IntegerListener());
@@ -302,15 +379,15 @@ public class WidgetSettingsUI extends Composite {
 
 		initSizeButtons();
 
-		browseImageButton = new Button(this, SWT.PUSH);
+		browseImageButton = new Button(miscSettings, SWT.PUSH);
 		browseImageButton.setText("Browse Image");
 		browseImageButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 2, 1));
-
-		textFieldLabel = new Label(this, SWT.None);
+		
+		textFieldLabel = new Label(miscSettings, SWT.None);
 		textFieldLabel.setText("Tooltip/Text: ");
 		textFieldLabel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 2, 1));
 
-		textField = new Text(this, SWT.BORDER | SWT.MULTI);
+		textField = new Text(miscSettings, SWT.BORDER | SWT.MULTI);
 
 		// textgd.w
 		textField.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
@@ -320,9 +397,9 @@ public class WidgetSettingsUI extends Composite {
 
 		int height = fm.getHeight();
 		gc.dispose();
-		textField.setSize(this.getSize().x - 4, height);
+		textField.setSize(miscSettings.getSize().x - 4, height);
 
-		removeButton = new Button(this, SWT.PUSH);
+		removeButton = new Button(miscSettings, SWT.PUSH);
 		removeButton.setText("Remove");
 		removeButton.setLayoutData(new GridData(SWT.FILL, SWT.DEFAULT, true, false));
 
