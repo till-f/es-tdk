@@ -8,8 +8,8 @@
             <signalUID>-uid-</signalUID>
             <type>1</type>
             <width>200</width>
-            <x>364</x>
-            <y>133</y>
+            <x>635</x>
+            <y>89</y>
             <logarithmic>false</logarithmic>
             <numberFormat></numberFormat>
             <rangeHigh>75.0</rangeHigh>
@@ -17,12 +17,28 @@
             <text></text>
             <widgetType>W_INDICATOR</widgetType>
         </widget>
+        <widget>
+            <height>599</height>
+            <rangeMax>100.0</rangeMax>
+            <rangeMin>0.0</rangeMin>
+            <signalUID>-uid-</signalUID>
+            <type>6</type>
+            <width>402</width>
+            <x>116</x>
+            <y>12</y>
+            <logarithmic>false</logarithmic>
+            <numberFormat></numberFormat>
+            <rangeHigh>75.0</rangeHigh>
+            <rangeLow>25.0</rangeLow>
+            <text>images/Mona_Lisa2.jpg</text>
+            <widgetType>W_INDICATOR</widgetType>
+        </widget>
     </widgetList>
     <widget_height_hint>200</widget_height_hint>
     <widget_width_hint>200</widget_width_hint>
     <widget_polling_delay>50</widget_polling_delay>
-    <background_path>/fzi/mottem/runtime/rtgraph/img/gray.jpg</background_path>
-    <scale_background_x>false</scale_background_x>
-    <scale_background_y>false</scale_background_y>
+    <background_path>images/widgets_bg.jpg</background_path>
+    <scale_background_x>true</scale_background_x>
+    <scale_background_y>true</scale_background_y>
     <path>C:\Work\FZI\git\daves\workspace_ptspec\fzi.mottem.examples.visualization\dashboards\example.dashboard</path>
 </Dashboard>
