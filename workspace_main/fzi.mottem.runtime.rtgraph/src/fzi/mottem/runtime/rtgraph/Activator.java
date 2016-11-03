@@ -4,9 +4,14 @@ import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IStartup;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.ui.progress.UIJob;
 import org.osgi.framework.BundleContext;
 
 import fzi.mottem.runtime.rtgraph.commands.RefreshCommand;
@@ -39,8 +44,16 @@ public class Activator extends AbstractUIPlugin implements IStartup, IResourceCh
 		
         ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
 
-		RefreshCommand cmd = new RefreshCommand();
-		cmd.execute(null);
+		UIJob job = new UIJob("(Re)-Load Signals") {
+			@Override
+			public IStatus runInUIThread(IProgressMonitor monitor) {
+				RefreshCommand cmd = new RefreshCommand();
+				cmd.execute(null);
+				return Status.OK_STATUS;
+			}
+		};
+    	job.setPriority(Job.LONG);
+    	job.schedule();
 	}
 
 	/*

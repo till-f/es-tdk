@@ -9,6 +9,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.ui.progress.UIJob;
 
 import fzi.mottem.model.util.ModelUtils;
 import fzi.mottem.ptspec.dsl.ui.nature.PTSpecNature;
@@ -67,9 +68,9 @@ public class RTGrahResourceDeltaVisitor implements IResourceDeltaVisitor
 		}
 		else if (ArrayUtils.contains(MODEL_FILE_EXTENSIONS, fileExtension.toLowerCase()))
 		{
-			Job job = new Job("(Re)-Load Signals") {
+			UIJob job = new UIJob("(Re)-Load Signals") {
 				@Override
-				protected IStatus run(IProgressMonitor monitor) {
+				public IStatus runInUIThread(IProgressMonitor monitor) {
 					RefreshCommand cmd = new RefreshCommand();
 					cmd.execute(null);
 					return Status.OK_STATUS;
