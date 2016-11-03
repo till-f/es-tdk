@@ -35,7 +35,7 @@ public class EvaluateContributionsHandler
 	    }
 	    catch (CoreException ex)
 	    {
-	    	System.out.println(ex.getMessage());
+	    	ex.printStackTrace();
 	    }
     }
 

@@ -20,6 +20,7 @@ import org.eclipse.graphiti.services.IPeService;
 
 import fzi.mottem.model.testrigmodel.TestRigInstance;
 import fzi.mottem.model.testrigmodel.TestrigmodelFactory;
+import fzi.mottem.model.util.ModelUtils;
 
 /**
  * This class gives access to the domain model root element for a diagram.
@@ -30,7 +31,7 @@ import fzi.mottem.model.testrigmodel.TestrigmodelFactory;
 public class ModelService {
     
     /** The Constant FILE_EXTENSION. */
-    public static final String             FILE_EXTENSION = "etm-testrig";
+    public static final String             FILE_EXTENSION = ModelUtils.FILE_EXTENSION_TESTRIG_MODEL;
     
     /** The pe service. */
     protected IPeService                   peService;

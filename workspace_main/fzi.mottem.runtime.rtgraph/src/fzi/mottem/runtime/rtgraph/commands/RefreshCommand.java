@@ -11,12 +11,10 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
 
 import fzi.mottem.model.baseelements.IDisplayable;
-import fzi.mottem.model.baseelements.ISignal;
-import fzi.mottem.model.baseelements.ITestReadable;
-import fzi.mottem.model.codemodel.Variable;
 import fzi.mottem.model.datastreammodel.EDirection;
 import fzi.mottem.model.datastreammodel.MessageSignal;
 import fzi.mottem.model.testrigmodel.TestRigInstance;
+import fzi.mottem.model.util.ModelUtils;
 import fzi.mottem.ptspec.dsl.common.PTSpecUtils;
 import fzi.mottem.ptspec.dsl.ui.nature.PTSpecNature;
 import fzi.mottem.runtime.dataexchanger.DataExchanger;
@@ -44,7 +42,7 @@ public class RefreshCommand extends AbstractHandler
 
         		if (ptsProject.hasNature(PTSpecNature.NATURE_ID))
     			{
-        			List<IResource> modelFiles = IntegrationUtils.getResourcesOfProject(ptsProject, "etm-testrig");
+        			List<IResource> modelFiles = IntegrationUtils.getResourcesOfProject(ptsProject, ModelUtils.FILE_EXTENSION_TESTRIG_MODEL);
         			for(IResource modelFile : modelFiles)
         			{
             			URI codeInstanceURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);

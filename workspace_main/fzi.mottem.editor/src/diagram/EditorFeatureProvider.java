@@ -32,6 +32,7 @@ import patterns.swExecutor.ProcessorCorePattern;
 import patterns.swExecutor.ProcessorPattern;
 import features.AddDataStreamInstanceToIOPortFeature;
 import features.ReconnectionFeature;
+import fzi.mottem.model.util.ModelUtils;
 
 
 /**
@@ -91,7 +92,7 @@ public class EditorFeatureProvider extends DefaultFeatureProviderWithPatterns {
 			IFile file = (IFile) context.getNewObject();
 			
 			//for Drag&Drop of a data stream file onto an I/O-Port.
-			if(file.getFileExtension().equals("etm-dstream")){
+			if(file.getFileExtension().equals(ModelUtils.FILE_EXTENSION_ND_MODEL)){
 				return new AddDataStreamInstanceToIOPortFeature(this);
 			}
 			return null;

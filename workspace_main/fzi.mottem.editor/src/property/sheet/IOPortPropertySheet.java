@@ -34,6 +34,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 import fzi.mottem.model.datastreammodel.DataStreamInstance;
 import fzi.mottem.model.testrigmodel.IOPort;
+import fzi.mottem.model.util.ModelUtils;
 import fzi.util.eclipse.IntegrationUtils;
 //import fzi.util.ecore.EcoreUtils;
 import fzi.util.ecore.EcoreUtils;
@@ -102,7 +103,7 @@ public class IOPortPropertySheet extends GFPropertySection implements ITabbedPro
 				    final org.eclipse.swt.widgets.List l = new org.eclipse.swt.widgets.List(s, SWT.MULTI | SWT.BORDER);
 				    l.setBounds(50, 50, 250, 150);
 			        IWorkspace workspace = ResourcesPlugin.getWorkspace();
-			        String fileExtension = "etm-dstream";
+			        String fileExtension = ModelUtils.FILE_EXTENSION_ND_MODEL;
 					IPath workspacePath = workspace.getRoot().getLocation();
 
 					dataStreamInstances = IntegrationUtils.getResources(workspacePath, fileExtension);
@@ -190,18 +191,7 @@ public class IOPortPropertySheet extends GFPropertySection implements ITabbedPro
      */
     @Override
 	public void setInput(IWorkbenchPart part, ISelection selection) {
-		// TODO Auto-generated method stub
 		super.setInput(part, selection);
-//        IWorkspace workspace = ResourcesPlugin.getWorkspace();
-//        String fileExtension = "etm-dstream";
-//		IPath workspacePath = workspace.getRoot().getLocation();
-//		dataStreamInstances = IntegrationUtils.getResources(workspacePath, fileExtension);
-//		
-////		selectedDataStream.removeAll();
-//		for (IResource file : dataStreamInstances) {
-//			selectedDataStream.add(file.getName());
-//		}
-
 	}
 
 
