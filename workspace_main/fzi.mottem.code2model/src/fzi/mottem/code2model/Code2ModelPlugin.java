@@ -57,7 +57,7 @@ public class Code2ModelPlugin extends AbstractUIPlugin implements IStartup, IRes
     	// Nevertheless deriving from IStartup is needed, so that this plugin
     	// can register a handler for workspace changes (triggering re-load of code models)
 		
-		System.out.println("Successful early startup of CDT2Ecore plugin.");
+		System.out.println("Successful early startup of Code2Model plugin.");
 	}
     
     /**

@@ -50,10 +50,12 @@
                 name="buildIdSize"
                 value="395,40">
           </property>
+          <!--
           <property
                 name="applicationCSS"
                 value="org.eclipse.e4.ui.css.theme.e4_default">
           </property>
+          -->
           <property
                 name="aboutText"
                 value="%productBlurb">
