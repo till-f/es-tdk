@@ -75,7 +75,7 @@ public class SignalsSettingsUI extends Composite {
 		input_signals_group = new Group(this, SWT.None);
 		input_signals_group.setLayout(new GridLayout(1, false));
 		input_signals_group.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
-		input_signals_group.setText("Input");
+		input_signals_group.setText("Readable");
 		
 		in_signals_list = new List(input_signals_group, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
 		
@@ -89,7 +89,7 @@ public class SignalsSettingsUI extends Composite {
 		output_signals_group = new Group(this, SWT.None);
 		output_signals_group.setLayout(new GridLayout(1, false));
 		output_signals_group.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
-		output_signals_group.setText("Output");
+		output_signals_group.setText("Writeable");
 		out_signals_list = new List(output_signals_group, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
 		out_signals_list.setLayoutData(listdata);	
 		
