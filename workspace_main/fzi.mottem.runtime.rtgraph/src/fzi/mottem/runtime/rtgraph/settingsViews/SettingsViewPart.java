@@ -20,10 +20,10 @@ public class SettingsViewPart extends ViewPart {
 	
 		final Composite mainHolder = new Composite(sc1, SWT.NONE);
 		
-		mainHolder.setLayout(new GridLayout());
+		//mainHolder.setLayout(new GridLayout());
 		
 		sc1.setContent(mainHolder);
-		//sc1.setMinSize(800, 600);
+		sc1.setMinSize(960, 480);
 		//TODO Remove listeners @ close
 		sc1.setExpandHorizontal(true);
 	    sc1.setExpandVertical(true);

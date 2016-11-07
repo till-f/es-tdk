@@ -47,7 +47,7 @@ public class SetupUI {
 
 	private static void initShell() {
 		shell.setLayout(new GridLayout(3, false));
-		shell.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		//shell.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		initSignalsContainer();
 		initWidgetSettingsContainer();
 		initDashboardSettingsContainer();
@@ -64,7 +64,7 @@ public class SetupUI {
 		if (signalSettings == null || signalSettings.isDisposed()) {
 			signalSettings = new SignalsSettingsUI(ssgroup, SWT.None);
 			signalSettings.initContainerLayout();
-			signalSettings.setLayoutData(new GridData(SWT.FILL, SWT.DEFAULT, true, true));
+			signalSettings.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		} else {
 			signalSettings.setParent(widgetsGroup);
 		}
