@@ -121,6 +121,7 @@ public class DashboardComposite extends Dashboard {
 	// ------------------------------------------------
 
 	private DashboardRepresentation representation;
+	private int gridPxSize = 10;
 
 	WidgetUpdater widgetUpdater;
 	public ArrayList<AbstractWidgetExchangeLink> widgetLinks = new ArrayList<AbstractWidgetExchangeLink>();
@@ -768,6 +769,19 @@ public class DashboardComposite extends Dashboard {
 
 	public void setEditor(DashboardEditor dashboardEditor) {
 		this.editor = dashboardEditor;
+	}
+	
+	public Rectangle computeBounds(int x, int y, int w, int h) {
+		int newx = x - x%gridPxSize;
+		int newy = y - y%gridPxSize;
+		int neww = w - w%gridPxSize;
+		int newh = h - h%gridPxSize;
+		
+		return new Rectangle(newx, newy, neww, newh);
+	}
+	
+	public Rectangle computeBounds(Rectangle bounds) {
+		return computeBounds(bounds.x, bounds.y, bounds.width, bounds.height);
 	}
 
 }

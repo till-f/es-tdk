@@ -80,8 +80,8 @@ public class SignalsSettingsUI extends Composite {
 		in_signals_list = new List(input_signals_group, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
 		
 		GridData listdata = new GridData(GridData.FILL_BOTH);
-		listdata.heightHint = 5 * in_signals_list.getItemHeight(); // height for 5													// rows
-		listdata.widthHint = 120; // pixels
+		//listdata.heightHint = 8 * in_signals_list.getItemHeight(); // height for 5													// rows
+		//listdata.widthHint = 128; // pixels
 		
 		in_signals_list.setLayoutData(listdata);
 		in_signals_list.add("Test");

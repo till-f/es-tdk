@@ -269,7 +269,7 @@ public class IndicatorWidgetLink extends AbstractWidgetExchangeLink {
 		String representationImagePath = null;
 		boolean imageInWorkspace = helper.fileIsInWorkspace(path);
 		boolean isAbsolutePath = helper.isAbsolutePath(path);
-
+		
 		/*
 		 * if the image is in the workspace and the path is absolute then reduce
 		 * to workspace relative path if the path is relative then find the

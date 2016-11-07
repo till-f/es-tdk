@@ -76,12 +76,13 @@ public class DashboardSettingsUI extends Composite {
 	public void initContainerLayout() {
 		setLayout(new GridLayout(2, false));
 		
+		
 		dashboards = new ArrayList<DashboardComposite>();
 
 		dashboards_label = new Label(this, SWT.None);
 		dashboards_label.setText("Dashboard");
 		dashboards_combo = new Combo(this, SWT.DROP_DOWN);
-		dashboards_combo.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false));
+		dashboards_combo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 
 		polling_label = new Label(this, SWT.None);
 		polling_label.setText("Poll interval (ms)");
@@ -99,7 +100,7 @@ public class DashboardSettingsUI extends Composite {
 
 		background_group = new Group(this, SWT.None);
 		background_group.setLayout(new GridLayout(2, false));
-		background_group.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+		background_group.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
 		background_group.setText("Background");
 
 		Composite c1 = new Composite(background_group, SWT.None);
