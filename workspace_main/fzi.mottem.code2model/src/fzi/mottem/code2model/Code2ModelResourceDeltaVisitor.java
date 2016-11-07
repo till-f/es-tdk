@@ -24,7 +24,7 @@ import fzi.mottem.code2model.elf2ecore.ELFExtractorJob;
  */
 public class Code2ModelResourceDeltaVisitor implements IResourceDeltaVisitor
 {
-	private final static String[] C_FILE_EXTENSIONS = {"c", "cpp", "hpp", "c++", "h++"};   // use lower case only
+	public final static String[] C_FILE_EXTENSIONS = {"c", "cpp", "hpp", "c++", "h++"};   // use lower case only
 	
 	@Override
 	public boolean visit(IResourceDelta delta) throws CoreException
@@ -43,32 +43,40 @@ public class Code2ModelResourceDeltaVisitor implements IResourceDeltaVisitor
     	switch (delta.getKind())
 		{
 			case IResourceDelta.CHANGED:
-				// dismiss all changes but content changes
-				if ((delta.getFlags() & IResourceDelta.CONTENT) == 0 &&
-					(delta.getFlags() & IResourceDelta.REPLACED) == 0)
+				// only react on changes that actually cause different file content
+				if ((delta.getFlags() & IResourceDelta.CONTENT) == IResourceDelta.CONTENT ||
+					(delta.getFlags() & IResourceDelta.REPLACED) == IResourceDelta.REPLACED)
 				{
-					return true;
-				}
-			case IResourceDelta.ADDED:
-				String fileExtension = delta.getResource().getFileExtension();
-				if (fileExtension == null)
-				{
-					return true;
-				}
-				else if (ArrayUtils.contains(C_FILE_EXTENSIONS, fileExtension.toLowerCase()))
-				{
-					return parseCFileAndAddToModel(delta);
-				}
-				else if (fileExtension.equals("elf"))
-				{
-					return parseElfAndAddToModel(delta);
+					handleChange(delta);
 				}
 				return true;
+
+			case IResourceDelta.ADDED:
+			case IResourceDelta.REMOVED:
+				handleChange(delta);
 				
 			default:
 				return true;
 		}
 
+	}
+	
+	private boolean handleChange(IResourceDelta delta)
+	{
+		String fileExtension = delta.getResource().getFileExtension();
+		if (fileExtension == null)
+		{
+			return true;
+		}
+		else if (ArrayUtils.contains(C_FILE_EXTENSIONS, fileExtension.toLowerCase()))
+		{
+			return parseCFileAndAddToModel(delta);
+		}
+		else if (fileExtension.toLowerCase().equals("elf"))
+		{
+			return parseElfAndAddToModel(delta);
+		}
+		return true;
 	}
 	
 	/**
@@ -77,7 +85,7 @@ public class Code2ModelResourceDeltaVisitor implements IResourceDeltaVisitor
 	 */
 	private boolean parseCFileAndAddToModel(IResourceDelta delta)
     {
-    	CDTExtractorJob job = new CDTExtractorJob(delta.getResource().getProject());
+    	CDTExtractorJob job = new CDTExtractorJob(delta.getResource(), delta.getKind() == IResourceDelta.REMOVED);
     	job.setPriority(Job.LONG);
     	job.schedule();
 
@@ -90,6 +98,9 @@ public class Code2ModelResourceDeltaVisitor implements IResourceDeltaVisitor
      */
 	private boolean parseElfAndAddToModel(IResourceDelta delta)
 	{
+		if (delta.getKind() == IResourceDelta.REMOVED)
+			return false;
+		
     	ELFExtractorJob job = new ELFExtractorJob(delta.getResource());
     	job.setPriority(Job.BUILD);
     	job.schedule();

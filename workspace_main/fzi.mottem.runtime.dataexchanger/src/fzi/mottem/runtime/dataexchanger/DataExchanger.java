@@ -90,28 +90,6 @@ public class DataExchanger {
 		return new ArrayList<Signal>(signalIdHash.keySet());
 	}
 
-	// I don't want to make the DataExchanger dependent on the
-	// ptspec/readables framework
-	/**
-	 * Set up a new Signal object for a given UID and a simple name. The Signal
-	 * is <b>biderictional<\b> and can later be retrieved and used through its UID.
-	 * If the UID is already 
-	 * taken then a new Signal will not be added.
-	 * 
-	 * @param uid
-	 *            the unique Signal id
-	 * @param simpleName
-	 *            the simple name
-	 * @return the newly created Signal or the old Signal with this uid
-	 */
-	public static Signal setUpSignal(String uid, String simpleName) {
-		if (getSignal(uid) == null) {
-			return addSignal(uid, simpleName, SignalType.BIDIRECTIONAL);
-		} else {
-			return getSignal(uid);
-		}
-	}
-	
 	/**
 	 * Set up a new Signal object for a given UID and a simple name. The Signal 
 	 * can later be retrieved and used through its UID. If the UID is already 

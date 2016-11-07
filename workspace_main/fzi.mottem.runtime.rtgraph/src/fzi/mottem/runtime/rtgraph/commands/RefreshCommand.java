@@ -10,12 +10,11 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
 
-import fzi.mottem.model.baseelements.ISignal;
-import fzi.mottem.model.baseelements.ITestReadable;
-import fzi.mottem.model.codemodel.Variable;
+import fzi.mottem.model.baseelements.IDisplayable;
 import fzi.mottem.model.datastreammodel.EDirection;
 import fzi.mottem.model.datastreammodel.MessageSignal;
 import fzi.mottem.model.testrigmodel.TestRigInstance;
+import fzi.mottem.model.util.ModelUtils;
 import fzi.mottem.ptspec.dsl.common.PTSpecUtils;
 import fzi.mottem.ptspec.dsl.ui.nature.PTSpecNature;
 import fzi.mottem.runtime.dataexchanger.DataExchanger;
@@ -43,32 +42,29 @@ public class RefreshCommand extends AbstractHandler
 
         		if (ptsProject.hasNature(PTSpecNature.NATURE_ID))
     			{
-        			List<IResource> modelFiles = IntegrationUtils.getResourcesOfProject(ptsProject, "etm-testrig");
+        			List<IResource> modelFiles = IntegrationUtils.getResourcesOfProject(ptsProject, ModelUtils.FILE_EXTENSION_TESTRIG_MODEL);
         			for(IResource modelFile : modelFiles)
         			{
             			URI codeInstanceURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
             			TestRigInstance tri = (TestRigInstance)EcoreUtils.loadFullEMFModel(codeInstanceURI);
 
-            			Collection<ITestReadable> readables = PTSpecUtils.getAllReadables(tri);
+            			Collection<IDisplayable> readables = PTSpecUtils.getAllDisplayables(tri);
             			
-            			for (ITestReadable readable : readables)
+            			for (IDisplayable displayable : readables)
             			{
-            				if (!(readable instanceof ISignal || readable instanceof Variable))
-            					continue;
-
-            				String uid = PTSpecUtils.getElementUID(readable);
+            				String uid = PTSpecUtils.getElementUID(displayable);
             				
             				SignalType type;
-            				if (readable instanceof MessageSignal)
+            				if (displayable instanceof MessageSignal)
             				{
-            					type = ((MessageSignal) readable).getDirection() == EDirection.INPUT ? SignalType.HW_OUTPUT : SignalType.HW_INPUT;
+            					type = ((MessageSignal) displayable).getDirection() == EDirection.INPUT ? SignalType.HW_OUTPUT : SignalType.HW_INPUT;
             				}
             				else
             				{
             					type = SignalType.BIDIRECTIONAL;
             				}
             				
-                			DataExchanger.setUpSignal(uid, readable.getName(), type);
+                			DataExchanger.setUpSignal(uid, displayable.getDisplayName(), type);
                 			
                 			// !TODO: Register Readables which are auto-updated (event driven) differently from
                 			//        Readables that must be polled by the GUI (advanced use-case, not important atm)

@@ -42,8 +42,8 @@ public class NewPTSpecWizardPage extends WizardPage {
 	 */
 	public NewPTSpecWizardPage(ISelection selection) {
 		super("wizardPage");
-		setTitle("Multi-page Editor File");
-		setDescription("This wizard creates a new file with *.pts extension that can be opened by a multi-page editor.");
+		setTitle("New PTSpec file");
+		setDescription("This wizard creates a new PTSpec file (*.pts extension).");
 		this.selection = selection;
 	}
 

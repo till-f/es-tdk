@@ -53,15 +53,10 @@ public class ModelUtils
 	public static final String PTS_SOURCE_FILES_ROOT = "pts";
 	public static final String PTS_MODEL_FILES_ROOT = "model";
 
+	public static final String FILE_EXTENSION_TESTRIG_MODEL = "etm-testrig";
 	public static final String FILE_EXTENSION_CODE_MODEL = "etm-code";
-	
-	public static void clearCodeInstance(CodeInstance codeInstance)
-	{
-		codeInstance.getSymbols().clear();
-		codeInstance.getCClasses().clear();
-		codeInstance.getDataTypes().clear();
-		codeInstance.getSourceFiles().clear();
-	}
+	public static final String FILE_EXTENSION_ND_MODEL = "etm-dstream";
+	public static final String FILE_EXTENSION_ED_MODEL = "etm-env";
 	
 	public static IInspector getInspector(IExecutor exec)
 	{

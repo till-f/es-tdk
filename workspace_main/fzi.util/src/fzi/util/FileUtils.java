@@ -18,6 +18,15 @@ public class FileUtils
 			return "";
 	}
 
+	public static String getExtension(String fileName)
+	{
+		int idx = fileName.lastIndexOf('.');
+		if (idx >= 0)
+			return fileName.substring(idx+1);
+		else
+			return "";
+	}
+
 	public static String getNameWithoutExtension(File file)
 	{
 		if (file.isDirectory())

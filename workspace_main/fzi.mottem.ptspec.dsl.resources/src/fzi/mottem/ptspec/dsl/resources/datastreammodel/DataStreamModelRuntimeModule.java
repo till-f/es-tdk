@@ -4,6 +4,8 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.resource.generic.AbstractGenericResourceRuntimeModule;
 
+import fzi.mottem.model.util.ModelUtils;
+
 public class DataStreamModelRuntimeModule extends AbstractGenericResourceRuntimeModule {
 
 	@Override
@@ -13,7 +15,7 @@ public class DataStreamModelRuntimeModule extends AbstractGenericResourceRuntime
  
     @Override
     protected String getFileExtensions() {
-        return "etm-dstream";
+        return ModelUtils.FILE_EXTENSION_ND_MODEL;
     }
  
     public Class<? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {

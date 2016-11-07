@@ -79,11 +79,14 @@
     <eClassifiers xsi:type="ecore:EClass" name="TRWrapperRW" eSuperTypes="#//baseelements/ITestReadable #//baseelements/ITestWriteable #//baseelements/IWrappedReferenceable"/>
     <eClassifiers xsi:type="ecore:EClass" name="TRWrapperCallable" eSuperTypes="#//baseelements/ITestCallable #//baseelements/ITestReadable #//baseelements/IWrappedReferenceable"/>
     <eClassifiers xsi:type="ecore:EClass" name="ISignal" abstract="true" interface="true"
-        eSuperTypes="#//baseelements/ITestWriteable #//baseelements/ITestReadable">
+        eSuperTypes="#//baseelements/ITestWriteable #//baseelements/ITestReadable #//baseelements/IDisplayable">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="physicalUnit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="IMessage" abstract="true" interface="true"
         eSuperTypes="#//baseelements/ITestWriteable #//baseelements/ITestReadable"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IDisplayable" abstract="true" interface="true">
+      <eOperations name="getDisplayName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
   </eSubpackages>
   <eSubpackages name="codemodel" nsURI="http://www.fzi.de/mottem/model/codemodel"
       nsPrefix="fzi.mottem.model.codemodel">
@@ -108,7 +111,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="localvariables" upperBound="-1"
           eType="#//codemodel/Variable" containment="true" eOpposite="#//codemodel/Variable/function"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//codemodel/Symbol #//baseelements/ITestReadable #//baseelements/ITestWriteable">
+    <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//codemodel/Symbol #//baseelements/ITestReadable #//baseelements/ITestWriteable #//baseelements/IDisplayable">
       <eOperations name="getIsGlobal" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="function" eType="#//codemodel/Function"
           eOpposite="#//codemodel/Function/localvariables"/>

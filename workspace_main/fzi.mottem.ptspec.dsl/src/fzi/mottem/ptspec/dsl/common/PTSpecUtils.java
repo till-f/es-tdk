@@ -24,6 +24,7 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 
+import fzi.mottem.model.baseelements.IDisplayable;
 import fzi.mottem.model.baseelements.IExecutor;
 import fzi.mottem.model.baseelements.IInspector;
 import fzi.mottem.model.baseelements.IMessage;
@@ -392,9 +393,9 @@ public class PTSpecUtils
 	}
 
 	
-	public static Collection<ITestReadable> getAllReadables(TestRigInstance tri)
+	public static Collection<IDisplayable> getAllDisplayables(TestRigInstance tri)
 	{
-		LinkedList<ITestReadable> list = new LinkedList<ITestReadable>();
+		LinkedList<IDisplayable> list = new LinkedList<IDisplayable>();
 		
 		TreeIterator<EObject> allInTestRig = tri.eAllContents();
 		while (allInTestRig.hasNext())
@@ -411,9 +412,9 @@ public class PTSpecUtils
 				while (allInSymbolContainer.hasNext())
 				{
 					EObject sym = allInSymbolContainer.next();
-					if (sym instanceof ITestReadable)
+					if (sym instanceof IDisplayable)
 					{
-						list.add((ITestReadable)sym);
+						list.add((IDisplayable)sym);
 					}
 				}
 			}

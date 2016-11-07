@@ -2,9 +2,15 @@
  */
 package fzi.mottem.model.codemodel.impl;
 
+import fzi.mottem.model.baseelements.BaseelementsPackage;
+import fzi.mottem.model.baseelements.IDisplayable;
+import fzi.mottem.model.baseelements.ITestReadable;
+import fzi.mottem.model.baseelements.ITestWriteable;
+import fzi.mottem.model.codemodel.CodeInstance;
 import fzi.mottem.model.codemodel.CodemodelPackage;
 import fzi.mottem.model.codemodel.Function;
 import fzi.mottem.model.codemodel.Variable;
+import fzi.util.ecore.EcoreUtils;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -149,6 +155,34 @@ public class VariableImpl extends SymbolImpl implements Variable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String getDisplayName() {
+		CodeInstance ci = EcoreUtils.getContainerInstanceOf(this, CodeInstance.class);
+		String containerPrefix;
+		if (ci == null || ci.getName() == null || ci.getName().isEmpty())
+		{
+			containerPrefix = "<Code>.";
+		}
+		else
+		{
+			containerPrefix =  ci.getName() + ".";
+		}
+
+		Function func = EcoreUtils.getContainerInstanceOf(this, Function.class);
+		if (func == null || func.getName() == null || func.getName().isEmpty())
+		{
+			return containerPrefix + getName();
+		}
+		else
+		{
+			return containerPrefix + func.getName() + "()." + getName();
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -264,10 +298,38 @@ public class VariableImpl extends SymbolImpl implements Variable {
 	 * @generated
 	 */
 	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == ITestReadable.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == ITestWriteable.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IDisplayable.class) {
+			switch (baseOperationID) {
+				case BaseelementsPackage.IDISPLAYABLE___GET_DISPLAY_NAME: return CodemodelPackage.VARIABLE___GET_DISPLAY_NAME;
+				default: return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 			case CodemodelPackage.VARIABLE___GET_IS_GLOBAL:
 				return getIsGlobal();
+			case CodemodelPackage.VARIABLE___GET_DISPLAY_NAME:
+				return getDisplayName();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

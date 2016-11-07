@@ -33,6 +33,7 @@
 *.cache
 *.html
 *.ini
+*.etm-code
 Progress.log
 .repos.xml
 

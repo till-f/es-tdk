@@ -4,6 +4,8 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.resource.generic.AbstractGenericResourceRuntimeModule;
 
+import fzi.mottem.model.util.ModelUtils;
+
 public class TestRigModelRuntimeModule extends AbstractGenericResourceRuntimeModule {
 
 	@Override
@@ -13,7 +15,7 @@ public class TestRigModelRuntimeModule extends AbstractGenericResourceRuntimeMod
  
     @Override
     protected String getFileExtensions() {
-        return "etm-testrig";
+        return ModelUtils.FILE_EXTENSION_TESTRIG_MODEL;
     }
  
     public Class<? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {

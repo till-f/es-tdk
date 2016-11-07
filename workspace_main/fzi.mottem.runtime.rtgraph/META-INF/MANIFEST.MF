@@ -4,7 +4,8 @@ Bundle-Name: fzi.mottem.runtime.rtgraph
 Bundle-SymbolicName: fzi.mottem.runtime.rtgraph;singleton:=true
 Bundle-Version: 0.1.2.qualifier
 Bundle-Activator: fzi.mottem.runtime.rtgraph.Activator
-Require-Bundle: org.eclipse.ui,
+Require-Bundle: org.apache.commons.lang,
+ org.eclipse.ui,
  org.eclipse.core.runtime,
  fzi.mottem.runtime.dataexchanger,
  fzi.util,

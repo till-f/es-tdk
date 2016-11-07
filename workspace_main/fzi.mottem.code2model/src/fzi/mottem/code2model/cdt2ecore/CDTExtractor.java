@@ -1,8 +1,8 @@
 package fzi.mottem.code2model.cdt2ecore;
 
-import java.io.File;
 import java.io.IOException;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.dom.ast.IASTDeclSpecifier;
 import org.eclipse.cdt.core.dom.ast.IASTDeclaration;
@@ -23,22 +23,21 @@ import org.eclipse.cdt.core.index.IIndex;
 import org.eclipse.cdt.core.model.CModelException;
 import org.eclipse.cdt.core.model.CoreModel;
 import org.eclipse.cdt.core.model.ICContainer;
-import org.eclipse.cdt.core.model.ICElement;
 import org.eclipse.cdt.core.model.ICProject;
 import org.eclipse.cdt.core.model.ISourceRoot;
 import org.eclipse.cdt.core.model.ITranslationUnit;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTTranslationUnit;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IWorkspace;
-import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
+import fzi.mottem.code2model.Code2ModelResourceDeltaVisitor;
 import fzi.mottem.model.codemodel.CodeInstance;
 import fzi.mottem.model.codemodel.CodemodelFactory;
 import fzi.mottem.model.codemodel.DTFloatingPoint;
@@ -51,70 +50,112 @@ import fzi.mottem.model.codemodel.SourceFile;
 import fzi.mottem.model.codemodel.Symbol;
 import fzi.mottem.model.codemodel.Variable;
 import fzi.mottem.model.util.ModelUtils;
+import fzi.util.FileUtils;
 import fzi.util.ecore.EcoreUtils;
 
 @SuppressWarnings("restriction")
 public class CDTExtractor
 {
-	private ICProject _cproject = null;
-    private IIndex _cindex = null;
-	private IWorkspace _workspace = null;
+	private final IResource _cdtResource;
+	private final boolean _isRemoved;
+	private final String _cdtResourcePath;
+	private final ICProject _cproject;
+    private final IIndex _cindex;
+	
+	private boolean _isModelFileDirty = false;
     
     /*
      * Creates a new CDTInterface for the provided project
      */
-	public CDTExtractor(IProject cdtProject) throws CoreException
+	public CDTExtractor(IResource cdtResource, boolean isRemoved) throws CoreException
 	{
-	    _cproject = CoreModel.getDefault().create(cdtProject);
+		_cdtResource = cdtResource;
+		_isRemoved = isRemoved;
+		_cdtResourcePath = cdtResource.getFullPath().toPortableString();
+	    _cproject = CoreModel.getDefault().create(cdtResource.getProject());
 	    _cindex = CCorePlugin.getIndexManager().getIndex(_cproject);
-	    _workspace = ResourcesPlugin.getWorkspace();
 	}
 	
 	/*
 	 * Refreshes/creates CodeModel files in the given folder
 	 */
-	public void extractInto(IFolder modelFolder)
+	public void extractInto(IFolder targetModelFolder)
 	{
         ISourceRoot[] sourceRoots;
         
         try
         {
             sourceRoots = _cproject.getAllSourceRoots();
+        
+	        if (sourceRoots.length <= 0)
+	        {
+	            System.out.println("Skipped: No source roots");
+	        	return;
+	        }
+	        
+			for (ISourceRoot sourceRoot : sourceRoots)
+	        {
+				ITranslationUnit tu = getTranslationUnit(sourceRoot, _cdtResource);
+				
+				if (tu != null)
+				{
+					IFile modelFile = targetModelFolder.getFile(new Path(
+							sourceRoot.getPath().toString().substring(1).replace('/', '.') + ".etm-code"
+						));
+
+					CodeInstance ci = getCodeModel(modelFile, sourceRoot.getElementName());
+					
+					_isModelFileDirty = false;
+
+					if (_isRemoved)
+					{
+						cleanupSourceFile(ci, _cdtResourcePath);
+					}
+					else
+					{
+						extractAST(ci, tu);
+					}
+
+					if (_isModelFileDirty)
+						saveCodeInstance(modelFile, ci);
+					
+					return;
+				}
+	        }
+			
+            System.err.println("Skipped: File '" + _cdtResourcePath + "' (no TranslationUnit)");
         }
-        catch (Exception ex)
+        catch (CModelException ex)
         {
-            System.err.println("Skipped: Could not get source roots");
+            System.err.println("Skipped: File '" + _cdtResourcePath + "' (internal failure)");
             return;
         }
-        
-        if (sourceRoots.length <= 0)
-        {
-            System.out.println("Skipped: No source roots");
-        	return;
-        }
-        
-		for (ISourceRoot sourceRoot : sourceRoots)
-        {
-			if (sourceRoot.getElementType() == ICElement.C_CCONTAINER)
-			{
-				handleCContainer(modelFolder, sourceRoot);
-				continue;
-			}
-        }
-		
 	}
 	
-	private void handleCContainer(IFolder modelFolder, ICContainer cContainer)
+	private ITranslationUnit getTranslationUnit(ICContainer rootContainer, IResource resource) throws CModelException
 	{
-		IFile modelFile = modelFolder.getFile(new Path(
-				cContainer.getPath().toString().substring(1).replace('/', '.') + ".etm-code"
-			));
-	
-		CodeInstance ci = getCodeModel(modelFile, cContainer.getElementName());
-		iterateCContainer(ci, cContainer);
+		IPath resourcePath = resource.getFullPath();
+		IPath containerPath = rootContainer.getResource().getFullPath();
+
+		if (!containerPath.isPrefixOf(resourcePath))
+			return null; 
+
+		IPath relativePath = resourcePath.makeRelativeTo(containerPath);
 		
-		if (!ci.getSymbols().isEmpty())
-			saveCodeInstance(modelFile, ci);
+		for (String segment : relativePath.segments())
+		{
+			String extension = FileUtils.getExtension(segment);
+			if (ArrayUtils.contains(Code2ModelResourceDeltaVisitor.C_FILE_EXTENSIONS, extension.toLowerCase()))
+			{
+				return rootContainer.getTranslationUnit(segment);
+			}
+			else
+			{
+				rootContainer = rootContainer.getCContainer(segment);
+			}
+		}
+		
+		return null;
 	}
 	
 	private CodeInstance getCodeModel(IFile modelFile, String defaultName)
@@ -132,7 +173,6 @@ public class CDTExtractor
 				if (!_cproject.getProject().getName().equals(codeInstance.getCProjectName()))
 					throw new IOException("Corrupt CodeModel file: " + modelFile.getFullPath().toString());
 				
-				ModelUtils.clearCodeInstance(codeInstance);
 				return codeInstance;
 			}
 			catch (IOException e)
@@ -149,90 +189,49 @@ public class CDTExtractor
 		return codeInstance;
 	}
 	
-	private void iterateCContainer(CodeInstance ci, ICContainer ccontainer)
+	private void extractAST(CodeInstance ci, ITranslationUnit tu)
 	{
-		try
-		{
-			iterateTUs(ci, ccontainer.getTranslationUnits());
-		}
-		catch (CModelException e1)
-		{
-			e1.printStackTrace();
-		}
-
-		try
-		{
-			ICContainer ccontainers[] = ccontainer.getCContainers();
-
-	    	for (ICContainer childCContainer : ccontainers)
-	    	{
-	    		iterateCContainer(ci, childCContainer);
-	    	}
-		}
-		catch (CModelException e2)
-		{
-			e2.printStackTrace();
-		}
-	}
-
-	private void iterateTUs(CodeInstance ci, ITranslationUnit tus[])
-	{
-        for (ITranslationUnit tu : tus)
+        IASTTranslationUnit atu;
+        
+        try
         {
-            IASTTranslationUnit atu;
-                            
-            try
-            {
-                _cindex.acquireReadLock();
-                atu = tu.getAST(_cindex, ITranslationUnit.AST_SKIP_INDEXED_HEADERS);
-                _cindex.releaseReadLock();
-            } 
-            catch (CoreException e)
-            {
-                System.err.println("Skipped: No AST available");
-                continue;
-            }
-            catch (InterruptedException e)
-            {
-                System.err.println("Skipped: Couldn't acquire index lock");
-                continue;
-            }
-            catch (Exception e)
-            {
-                System.err.println("Skipped: Unknown failure");
-                continue;
-            }
-            extractASTInfo(ci, atu);
+            _cindex.acquireReadLock();
+            atu = tu.getAST(_cindex, ITranslationUnit.AST_SKIP_INDEXED_HEADERS);
+            _cindex.releaseReadLock();
+        } 
+        catch (CoreException e)
+        {
+            System.err.println("Skipped: No AST available");
+            return;
         }
+        catch (InterruptedException e)
+        {
+            System.err.println("Skipped: Couldn't acquire C index lock");
+            return;
+        }
+        catch (Exception e)
+        {
+            System.err.println("Skipped: Unknown failure");
+            return;
+        }
+        
+        extractAST(ci, atu);
     }
 	
-	private void extractASTInfo(CodeInstance ci, IASTTranslationUnit atu)
+	private void extractAST(CodeInstance ci, IASTTranslationUnit atu)
 	{
-		File workspaceDirectory = _workspace.getRoot().getLocation().toFile();
-		
 		SourceFile modelSrcFile;
 		
 		if (atu instanceof IASTTranslationUnit ||
 			atu instanceof CASTTranslationUnit)
 		{
-			File srcFile = new File (atu.getFilePath());
-	
-			String filePath = srcFile.getAbsolutePath();
-		    
-			String workspacePath = workspaceDirectory.getAbsolutePath();
+			_isModelFileDirty = true;
+
+			cleanupSourceFile(ci, _cdtResourcePath);
 			
-			if (filePath.startsWith(workspacePath))
-			{
-				String relativePath = filePath.substring(workspacePath.length() + 1);
-				
-				modelSrcFile = CodemodelFactory.eINSTANCE.createSourceFile();	
-				modelSrcFile.setFilePath(relativePath); 
-				ci.getSourceFiles().add(modelSrcFile);
-			}
-			else
-			{
-				return;
-			}
+			modelSrcFile = CodemodelFactory.eINSTANCE.createSourceFile();
+			modelSrcFile.setFilePath(_cdtResourcePath);
+			ci.getSourceFiles().add(modelSrcFile);
 		}
 		else
 		{
@@ -249,6 +248,48 @@ public class CDTExtractor
         {
             getChildrenRecursive(modelSrcFile, d);
         }
+	}
+	
+	private void cleanupSourceFile(CodeInstance ci, String filePath)
+	{
+		SourceFile foundFile = null;
+		
+		for (SourceFile sf : ci.getSourceFiles())
+		{
+			if (sf.getFilePath().equals(filePath))
+			{
+				_isModelFileDirty = true;
+				foundFile = sf;
+				
+				// delete all declarations from this file in the model
+				for (SourceCodeLocation scl : sf.getSourceCodeLocations())
+				{
+					Symbol sym = scl.getSymbol();
+					
+					if (sym.eContainer() == null)
+					{
+						continue;
+					}
+					else if (sym.eContainer() instanceof CodeInstance)
+					{
+						((CodeInstance)sym.eContainer()).getSymbols().remove(sym);
+					}
+					else if (sym.eContainer() instanceof Function)
+					{
+						((Function)sym.eContainer()).getLocalvariables().remove(sym);
+					}
+					else
+					{
+						System.err.println("Skipped removing symbol - unexpected container " + sym.eContainer().getClass().getSimpleName());
+					}
+				}
+			}
+		}
+		
+		if (foundFile != null)
+		{
+			ci.getSourceFiles().remove(foundFile);
+		}
 	}
 
 	private void getChildrenRecursive(SourceFile srcFile, IASTNode node)
@@ -463,28 +504,25 @@ public class CDTExtractor
 	
 	private void addSymbol(CodeInstance codeInstance, Symbol symbol)
 	{
-		// renaming of duplicates
-		int idx = 1;
-		String originalName = symbol.getName();
-		
-		while (ModelUtils.containsElementWithName(codeInstance.getSymbols(), symbol.getName()))
+		if (ModelUtils.containsElementWithName(codeInstance.getSymbols(), symbol.getName()))
 		{
-			symbol.setName(originalName + "_" + idx);
+			SourceCodeLocation scl = symbol.getDeclarationLocation();
+			scl.getSourceFile().getSourceCodeLocations().remove(scl);
+			return;
 		}
 		
-		codeInstance.getSymbols().add(symbol);
+		_isModelFileDirty = true;
+
+		// renaming of duplicates
+		//int idx = 1;
+		//String originalName = symbol.getName();
+		//
+		//while (ModelUtils.containsElementWithName(codeInstance.getSymbols(), symbol.getName()))
+		//{
+		//	symbol.setName(originalName + "_" + idx);
+		//}
 		
-//		if (_elfSymoblsReader != null)
-//		{
-//			Long address = _elfSymoblsReader.getAddress(symbol.getName());
-//
-//			if (address != null)
-//			{
-//				BinaryLocation bLoc = CodemodelFactory.eINSTANCE.createBinaryLocation();
-//				bLoc.setAddress(address);
-//				symbol.setBinaryLocation(bLoc);
-//			}
-//		}
+		codeInstance.getSymbols().add(symbol);
 	}
 
 	private DataType getReferenceToReferenceDataType(IASTNode subNode, CodeInstance codeInstance, DataType pointedDataType, String name, int numberOfPointers)

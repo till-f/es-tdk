@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
+Bundle-Name: com.bicirikdwarf.emf
 Bundle-SymbolicName: com.bicirikdwarf.emf;singleton:=true
 Bundle-Version: 0.1.2.qualifier
 Bundle-ClassPath: .
-Bundle-Vendor: %providerName
+Bundle-Vendor: Aykut Kilic
 Bundle-Localization: plugin
 Export-Package: com.bicirikdwarf.emf,
  com.bicirikdwarf.emf.dwarf,

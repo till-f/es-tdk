@@ -71,6 +71,9 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WrapperModel.ecore#//baseelements/ISignal/physicalUnit"/>
       </genClasses>
       <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/IMessage"/>
+      <genClasses image="false" ecoreClass="WrapperModel.ecore#//baseelements/IDisplayable">
+        <genOperations ecoreOperation="WrapperModel.ecore#//baseelements/IDisplayable/getDisplayName"/>
+      </genClasses>
     </nestedGenPackages>
     <nestedGenPackages prefix="Codemodel" basePackage="fzi.mottem.model" resource="XMI"
         disposableProviderFactory="true" fileExtensions="etm-code" ecorePackage="WrapperModel.ecore#//codemodel">
