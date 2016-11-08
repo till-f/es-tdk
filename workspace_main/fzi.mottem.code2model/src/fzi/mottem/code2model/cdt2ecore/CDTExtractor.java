@@ -15,7 +15,6 @@ import org.eclipse.cdt.core.dom.ast.IASTNamedTypeSpecifier;
 import org.eclipse.cdt.core.dom.ast.IASTNode;
 import org.eclipse.cdt.core.dom.ast.IASTParameterDeclaration;
 import org.eclipse.cdt.core.dom.ast.IASTPointer;
-import org.eclipse.cdt.core.dom.ast.IASTPreprocessorIncludeStatement;
 import org.eclipse.cdt.core.dom.ast.IASTSimpleDeclSpecifier;
 import org.eclipse.cdt.core.dom.ast.IASTSimpleDeclaration;
 import org.eclipse.cdt.core.dom.ast.IASTTranslationUnit;
@@ -231,11 +230,6 @@ public class CDTExtractor
 			modelSrcFile.setFilePath(_cdtResourcePath);
 			ci.getSourceFiles().add(modelSrcFile);
 
-//			for (IASTPreprocessorIncludeStatement inc: atu.getIncludeDirectives())
-//	        {
-//	            getChildrenRecursive(modelSrcFile, inc);
-//	        }
-			
 	        for (IASTDeclaration d: atu.getDeclarations())
 	        {
 	            getChildrenRecursive(modelSrcFile, d);
@@ -251,8 +245,6 @@ public class CDTExtractor
 	private void cleanupSourceFile(CodeInstance ci, String filePath)
 	{
 		SourceFile foundFile = null;
-		
-		System.err.println("---> PATH: " + filePath);
 		
 		for (SourceFile sf : ci.getSourceFiles())
 		{
@@ -304,10 +296,14 @@ public class CDTExtractor
 		}
 		else if (node instanceof IASTFunctionDefinition)
 		{
-			Function function = CodemodelFactory.eINSTANCE.createFunction();
-
 			// Global Functions
+
+			Function function = CodemodelFactory.eINSTANCE.createFunction();
 			addSymbolForDeclaration(srcFile, null, function, node);
+			
+			// function could not be added (not supported), skip adding children
+			if (function.getName() == null)
+				return; 
 
 			for (IASTNode child : node.getChildren())
 			{
@@ -403,6 +399,11 @@ public class CDTExtractor
 			// name of declarator is empty?! We don't want such elements...
 			return;
 		}
+		else if (parentFunc == null && ModelUtils.containsElementWithName(srcFile.getCodeInstance().getSymbols(), declarator.getName().toString()))
+		{
+			// element with duplicate name. should not occur, we simply skip the second occurence.
+			return;
+		}
 		else if (declarator instanceof IASTFunctionDeclarator && !(symbol instanceof Function))
 		{
 			// skip function declarators not found in the context of a function definition
@@ -423,13 +424,13 @@ public class CDTExtractor
 //				System.out.println("DEBUG: " + sig1 + " -- " + sig2);
 //			}
 			
-			// NOTE: Complex types and #typedef types are not supported by PTSpec.
-			//       Respective variables cannot be referenced.
 			if (type == null)
 			{
-				return;
+				// NOTE: Complex types and #typedef types are not supported by PTSpec.
+				//       Respective symbold get "void" data type.
+				type = getDummyDataType(srcFile.getCodeInstance());
 			}
-
+			
 			IASTFileLocation cdtLoc = declarator.getName().getFileLocation();
 			int globalVariableOffset = cdtLoc.getNodeOffset();
 			int globalVariableLineNumber = cdtLoc.getStartingLineNumber();
@@ -440,7 +441,7 @@ public class CDTExtractor
 			modelLoc.setLength(globalVariableLength);
 			modelLoc.setLineNumber(globalVariableLineNumber);
 			modelLoc.setOffset(globalVariableOffset);
-
+			
 			symbol.setName(declarator.getName().toString());
 			symbol.setDeclarationLocation(modelLoc);
 			symbol.setDataType(type);
@@ -450,13 +451,20 @@ public class CDTExtractor
 				Variable variable = (Variable)symbol;
 				variable.setFunctionParameter(declNode instanceof IASTParameterDeclaration);
 				if (parentFunc != null)
+				{
+					_isModelFileDirty = true;
 					parentFunc.getLocalvariables().add(variable);
+				}
 				else
-					addSymbol(srcFile.getCodeInstance(), variable);
+				{
+					_isModelFileDirty = true;
+					srcFile.getCodeInstance().getSymbols().add(symbol);
+				}
 			}
 			else if (symbol instanceof Function)
 			{
-				addSymbol(srcFile.getCodeInstance(), symbol);
+				_isModelFileDirty = true;
+				srcFile.getCodeInstance().getSymbols().add(symbol);
 			}
 			else
 			{
@@ -502,29 +510,6 @@ public class CDTExtractor
 		}
 	}
 	
-	private void addSymbol(CodeInstance codeInstance, Symbol symbol)
-	{
-		if (ModelUtils.containsElementWithName(codeInstance.getSymbols(), symbol.getName()))
-		{
-			SourceCodeLocation scl = symbol.getDeclarationLocation();
-			scl.getSourceFile().getSourceCodeLocations().remove(scl);
-			return;
-		}
-		
-		_isModelFileDirty = true;
-
-		// renaming of duplicates
-		//int idx = 1;
-		//String originalName = symbol.getName();
-		//
-		//while (ModelUtils.containsElementWithName(codeInstance.getSymbols(), symbol.getName()))
-		//{
-		//	symbol.setName(originalName + "_" + idx);
-		//}
-		
-		codeInstance.getSymbols().add(symbol);
-	}
-
 	private DataType getReferenceToReferenceDataType(IASTNode subNode, CodeInstance codeInstance, DataType pointedDataType, String name, int numberOfPointers)
 	{
 		StringBuilder stringBuilder = new StringBuilder();
@@ -564,7 +549,24 @@ public class CDTExtractor
 			return existingRefDataType;
 		}
 	}
-		
+	
+	private DataType getDummyDataType(CodeInstance codeInstance)
+	{
+		String name =  "void";
+		DataType existingVoidDataType =  ModelUtils.findDataTypeForName(codeInstance, name);	
+		if (existingVoidDataType == null)
+		{
+			existingVoidDataType = CodemodelFactory.eINSTANCE.createDTVoid();
+			existingVoidDataType.setName(name);
+			codeInstance.getDataTypes().add(existingVoidDataType);
+			return existingVoidDataType;
+		}
+		else
+		{
+			return existingVoidDataType;
+		}
+	}
+	
 	private DataType getPrimitiveDataType(CodeInstance codeInstance, IASTSimpleDeclSpecifier cdtDataType)
 	{
 		if (cdtDataType instanceof IASTNamedTypeSpecifier ||
