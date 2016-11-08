@@ -3,7 +3,7 @@
   <uuts xmi:id="+R[B@de650b" name="ActuatorBoard">
     <processors xmi:id="+R[B@e17cd" inspectorConnector="+R[B@17b34a3" name="STM32F4">
       <processorCores xmi:id="+R[B@1ef07b3" name="Core0">
-        <symbolContainer xsi:type="fzi.mottem.model.codemodel:CodeInstance" href="fzi.mottem.examples.raupe.actuator.etm-code#+NPkgfzi_mottem_examples_raupe_actuator"/>
+        <symbolContainer xsi:type="fzi.mottem.model.codemodel:CodeInstance" href="fzi.mottem.examples.raupe.actuator.etm-code#+Nfzi_mottem_examples_raupe_actuator"/>
       </processorCores>
     </processors>
     <ioPorts xsi:type="fzi.mottem.model.testrigmodel:CANPort" xmi:id="+R[B@924c1c" name="CANPort" networkConnector="+R[B@9afc70"/>
@@ -35,7 +35,7 @@
   <uuts xmi:id="+R[B@16ad296" name="SensorBoard">
     <processors xmi:id="+R[B@1607072" name="STM32F4">
       <processorCores xmi:id="+R[B@53050d" name="Core0">
-        <symbolContainer xsi:type="fzi.mottem.model.codemodel:CodeInstance" href="fzi.mottem.examples.raupe.sensor.etm-code#+NPkgfzi_mottem_examples_raupe_sensor"/>
+        <symbolContainer xsi:type="fzi.mottem.model.codemodel:CodeInstance" href="fzi.mottem.examples.raupe.sensor.etm-code#+Nfzi_mottem_examples_raupe_sensor"/>
       </processorCores>
     </processors>
     <ioPorts xsi:type="fzi.mottem.model.testrigmodel:CANPort" xmi:id="+R[B@191020b" name="CANPort" networkConnector="+R[B@c399fd"/>

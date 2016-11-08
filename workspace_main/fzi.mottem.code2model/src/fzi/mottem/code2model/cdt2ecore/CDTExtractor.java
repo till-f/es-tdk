@@ -159,7 +159,7 @@ public class CDTExtractor
 	
 	private CodeInstance getCodeModel(IFile modelFile, String defaultName)
 	{
-		String defaultCodeInstanceName = "Pkg" + defaultName.replaceAll("[^a-zA-Z0-9_]", "_");
+		String defaultCodeInstanceName = defaultName.replaceAll("[^a-zA-Z0-9_]", "_");
 		
 		CodeInstance codeInstance;
 		if (modelFile.exists())

@@ -28,9 +28,9 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ee_files_isystem/contrib/st/STM32F4xx_StdPeriph_Driver/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ee_files_isystem/pkg/mcu/st_stm32_stm32f4xx/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ee_files_isystem/contrib/st/CMSIS/Device/ST/STM32F4xx/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ee_files_isystem/contrib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ee_files_isystem/pkg}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fzi.mottem.examples.raupe.actuator/Debug}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;C:\Git\daves\workspace_ptspec\ee_files_isystem/pkg&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;C:\Git\daves\workspace_ptspec\ee_files_isystem/contrib&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1930221647" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
@@ -41,9 +41,9 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ee_files_isystem/contrib/st/STM32F4xx_StdPeriph_Driver/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ee_files_isystem/pkg/mcu/st_stm32_stm32f4xx/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ee_files_isystem/contrib/st/CMSIS/Device/ST/STM32F4xx/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ee_files_discovery/pkg}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ee_files_isystem/contrib}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/fzi.mottem.examples.raupe.actuator/Debug}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;C:\Git\daves\workspace_ptspec\ee_files_isystem/pkg&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;C:\Git\daves\workspace_ptspec\ee_files_isystem/contrib&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.1504511500" superClass="cdt.managedbuild.tool.gnu.c.compiler.input.cygwin"/>
 							</tool>
