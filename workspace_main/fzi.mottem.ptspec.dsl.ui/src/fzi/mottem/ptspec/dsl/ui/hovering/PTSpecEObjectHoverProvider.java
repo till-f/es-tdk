@@ -78,7 +78,7 @@ public class PTSpecEObjectHoverProvider extends DefaultEObjectHoverProvider
 	    		PTSpecElementLinks.URL_CMD_RUNTEST + "/" + 
 	    		project.getName() + ":" + 
 	    		testClassName +
-	    		"\">Run Test</a></p>";
+	    		"\">Execute Test</a></p>";
     	}
     	else if (eObj instanceof PTSTestSuiteDeclaration)
     	{

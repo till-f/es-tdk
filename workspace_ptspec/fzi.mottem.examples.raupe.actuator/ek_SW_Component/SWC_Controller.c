@@ -6,7 +6,6 @@
 uint32 distance_control(float distance, float dist_change);
 void search_control(float distance);
 
-#define SPEED_OVERRIDE_ACTIVE 1
 #define SEARCH_CONTROL_ACTIVE 1
 
 unsigned int distance_value = 0;
@@ -21,6 +20,7 @@ uint32 searchMode = 0;
 uint32 searchStep = 0;
 uint32 searchTicks = 0;
 
+int speed_override_active = 0;
 int speed_override_left = 0;
 int speed_override_right = 0;
 
@@ -48,41 +48,45 @@ void runnableSWC_Controller(void)
 		distance_change = current_distance-prev_distance;
 	}
 
-#if SPEED_OVERRIDE_ACTIVE
-	HW_SET_SPEED_LEFT(speed_override_left);
-	HW_SET_SPEED_RIGHT(speed_override_right);
-#else
+	if (speed_override_active)
+	{
+		HW_SET_SPEED_LEFT(speed_override_left);
+		HW_SET_SPEED_RIGHT(speed_override_right);
+	}
+	else
+	{
 #if SEARCH_CONTROL_ACTIVE
-	if (searchMode)
-	{
-		search_control(distance_value);
-	}
-	else
+		if (searchMode)
+		{
+			search_control(distance_value);
+		}
+		else
 #endif
-	if(distance_value < 20)
-	{
-		HW_SET_SPEED_LEFT(0);
-		HW_SET_SPEED_RIGHT(0);
+		if(distance_value < 20)
+		{
+			HW_SET_SPEED_LEFT(0);
+			HW_SET_SPEED_RIGHT(0);
 
-		startSearchMode();
-	}
-	else if(distance_value > 40)
-	{
-		HW_SET_SPEED_LEFT(100);
-		HW_SET_SPEED_RIGHT(100);
-	}
-	else
-	{
-		uint32_t speed = distance_control(current_distance,distance_change);
-
-		HW_SET_SPEED_LEFT(speed);
-		HW_SET_SPEED_RIGHT(speed);
-
-		if (speed < 6)
 			startSearchMode();
+		}
+		else if(distance_value > 40)
+		{
+			HW_SET_SPEED_LEFT(100);
+			HW_SET_SPEED_RIGHT(100);
+		}
+		else
+		{
+			uint32_t speed = distance_control(current_distance,distance_change);
+
+			HW_SET_SPEED_LEFT(speed);
+			HW_SET_SPEED_RIGHT(speed);
+
+			if (speed < 6)
+				startSearchMode();
+		}
 	}
+
 	prev_distance = distance_value;
-#endif
 }
 
 uint32 distance_control(float distance, float dist_change)

@@ -1,32 +1,22 @@
-include "../model/Demo.etm-testrig";
-include "Units.pts";
+include "Target.pts";
+include "Helper.pts";
 
-target Target
+test AutoDriving : Target default Core0
 {
-	MotorDemo.ActuatorBoard.STM32F4.Core0
-}
-
-
-// Tests can be started from the popup shown when
-// the mouse is placed over the test name, or from
-// the PTSpec Navigator.
-test Example : Target default Core0
-{
-	report info: "Starting...";
-
 	run until main;
 	
-	concurrent
-	{
-		while (true)
-		{
-			wait 0.5s;
-			report info: "Current distance: " + current_distance;
-			
-			speed_override_left = 50;
-			speed_override_right = 50;
-		}
-	}
+	Helper.CC_BackgroundUpdate(ref current_distance);
+	
+	run;
+}
+
+test ManualDriving : Target default Core0
+{
+	run until main;
+
+	speed_override_active = 1;
+	
+	Helper.CC_BackgroundUpdate(ref current_distance);
 	
 	run;
 }

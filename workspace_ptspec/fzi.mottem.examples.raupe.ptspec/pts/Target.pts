@@ -1,0 +1,7 @@
+include "../model/Demo.etm-testrig";
+
+target Target
+{
+	MotorDemo.ActuatorBoard.STM32F4.Core0
+}
+ 
