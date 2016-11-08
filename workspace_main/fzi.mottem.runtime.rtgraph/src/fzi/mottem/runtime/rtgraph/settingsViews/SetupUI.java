@@ -47,13 +47,14 @@ public class SetupUI {
 
 	private static void initShell() {
 		shell.setLayout(new GridLayout(3, false));
+		//shell.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		initSignalsContainer();
 		initWidgetSettingsContainer();
 		initDashboardSettingsContainer();
 	}
 
 	private static void initSignalsContainer() {
-		GridData d = new GridData(SWT.FILL, SWT.DEFAULT, true, false);
+		GridData d = new GridData(SWT.FILL, SWT.DEFAULT, true, true);
 
 		ssgroup = new Group(shell, SWT.NONE);
 		ssgroup.setText("Signals");
@@ -72,7 +73,7 @@ public class SetupUI {
 	}
 
 	private static void initDashboardSettingsContainer() {
-		GridData d = new GridData(SWT.DEFAULT, SWT.DEFAULT, true, true, 1, 1);
+		GridData d = new GridData(SWT.FILL, SWT.DEFAULT, true, true, 1, 1);
 
 		dbgroup = new Group(shell, SWT.NONE);
 		dbgroup.setText("Dashboard settings");
@@ -82,7 +83,7 @@ public class SetupUI {
 		if (dashboardSettings == null || dashboardSettings.isDisposed()) {
 			dashboardSettings = new DashboardSettingsUI(dbgroup, SWT.None);
 			dashboardSettings.initContainerLayout();
-			dashboardSettings.setLayoutData(new GridData(SWT.DEFAULT, SWT.DEFAULT, true, true));
+			dashboardSettings.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		} else {
 			dashboardSettings.setParent(widgetsGroup);
 		}

@@ -51,8 +51,9 @@ public class WidgetSettingsUI extends Composite {
 		int li; // widget link index
 
 		public SizeButtonListener(boolean width, boolean plus) {
+			//inc = current_link.getDashboard()plus.getGridPxSize();
 			if (!plus) {
-				inc = -10;
+				inc = -inc;
 			}
 			if (width) {
 				widthInc = inc;
@@ -211,7 +212,7 @@ public class WidgetSettingsUI extends Composite {
 	protected void initLayout() {
 		this.setLayout(new GridLayout(colsNum, false));
 
-		GridData positionsData = new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1);
+		GridData positionsData = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
 
 		GridData data = new GridData();
 		data.horizontalAlignment = SWT.FILL;
@@ -901,10 +902,27 @@ public class WidgetSettingsUI extends Composite {
 		links_combo.setEnabled(enabled);
 		types_combo.setEnabled(enabled);
 		signals_combo.setEnabled(enabled);
+		
 		widthMinus.setEnabled(enabled);
 		widthPlus.setEnabled(enabled);
 		heightMinus.setEnabled(enabled);
 		heightPlus.setEnabled(enabled);
+		xPlus.setEnabled(enabled);
+		xMinus.setEnabled(enabled);
+		yPlus.setEnabled(enabled);
+		yMinus.setEnabled(enabled);
+		
+		valueFormatText.setEnabled(enabled);
+		
+		min.setEnabled(enabled);
+		max.setEnabled(enabled);
+		lo.setEnabled(enabled);
+		hi.setEnabled(enabled);
+		x.setEnabled(enabled);
+		y.setEnabled(enabled);
+		w.setEnabled(enabled);
+		h.setEnabled(enabled);
+			
 		removeButton.setEnabled(enabled);
 		checkLogarithmicScale.setEnabled(enabled);
 		setDataRangeButton.setEnabled(enabled);
