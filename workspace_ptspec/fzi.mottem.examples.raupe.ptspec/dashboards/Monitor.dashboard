@@ -5,7 +5,7 @@
             <height>200</height>
             <rangeMax>100.0</rangeMax>
             <rangeMin>0.0</rangeMin>
-            <signalUID>/fzi.mottem.examples.raupe.ptspec/model/fzi.mottem.examples.raupe.actuator.etm-code/+Ndistance_value+NPkgfzi_mottem_examples_raupe_actuator</signalUID>
+            <signalUID>/fzi.mottem.examples.raupe.ptspec/model/fzi.mottem.examples.raupe.actuator.etm-code/+Ncurrent_distance+Nfzi_mottem_examples_raupe_actuator</signalUID>
             <type>4</type>
             <width>200</width>
             <x>18</x>
@@ -16,6 +16,38 @@
             <rangeLow>25.0</rangeLow>
             <text></text>
             <widgetType>W_INDICATOR</widgetType>
+        </widget>
+        <widget>
+            <height>200</height>
+            <rangeMax>100.0</rangeMax>
+            <rangeMin>-100.0</rangeMin>
+            <signalUID>/fzi.mottem.examples.raupe.ptspec/model/fzi.mottem.examples.raupe.actuator.etm-code/+Nspeed_override_left+Nfzi_mottem_examples_raupe_actuator</signalUID>
+            <type>0</type>
+            <width>200</width>
+            <x>19</x>
+            <y>300</y>
+            <logarithmic>false</logarithmic>
+            <numberFormat></numberFormat>
+            <rangeHigh>100.0</rangeHigh>
+            <rangeLow>-100.0</rangeLow>
+            <text></text>
+            <widgetType>W_CONTROLLER</widgetType>
+        </widget>
+        <widget>
+            <height>200</height>
+            <rangeMax>100.0</rangeMax>
+            <rangeMin>-100.0</rangeMin>
+            <signalUID>/fzi.mottem.examples.raupe.ptspec/model/fzi.mottem.examples.raupe.actuator.etm-code/+Nspeed_override_right+Nfzi_mottem_examples_raupe_actuator</signalUID>
+            <type>0</type>
+            <width>200</width>
+            <x>250</x>
+            <y>300</y>
+            <logarithmic>false</logarithmic>
+            <numberFormat></numberFormat>
+            <rangeHigh>100.0</rangeHigh>
+            <rangeLow>-100.0</rangeLow>
+            <text></text>
+            <widgetType>W_CONTROLLER</widgetType>
         </widget>
     </widgetList>
     <widget_height_hint>200</widget_height_hint>

@@ -26,15 +26,22 @@ public class Runtime extends EclipseRuntime
 
 		IAccessDriver accessDriver = getAccessDriver(inspectorUID);
 		
-		return accessDriver.getValue((ITestReadable)_uidResolver.getElement(elementUID));
+		T value = accessDriver.getValue((ITestReadable)_uidResolver.getElement(elementUID));
+
+		if (value instanceof Number)
+		{
+			this.notifyUpdate(elementUID, ((Number)value).doubleValue());
+		}
+
+		return value;
 	}
 
 	@Override
 	public <T> void setValue(String inspectorUID, String elementUID, T value)
 	{
-		if (value instanceof Double)
+		if (value instanceof Number)
 		{
-			this.notifyUpdate(elementUID, ((Double)value).doubleValue());
+			this.notifyUpdate(elementUID, ((Number)value).doubleValue());
 		}
 		
 		if (SIMULATION_MODE)

@@ -20,8 +20,11 @@ test Example : Target default Core0
 	{
 		while (true)
 		{
+			wait 0.5s;
 			report info: "Current distance: " + current_distance;
-			wait 2s;
+			
+			speed_override_left = 50;
+			speed_override_right = 50;
 		}
 	}
 	

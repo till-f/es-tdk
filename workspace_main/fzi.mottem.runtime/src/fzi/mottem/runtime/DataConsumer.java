@@ -32,7 +32,9 @@ public class DataConsumer implements ITargetDataConsumer
 		IAccessDriver accessDrier = _driversByTRef.get(tRef);
 		
 		if (tRef instanceof ITestWriteable)
+		{
 			accessDrier.setValue((ITestWriteable)tRef, value);
+		}
 	}
 
 	@Override
