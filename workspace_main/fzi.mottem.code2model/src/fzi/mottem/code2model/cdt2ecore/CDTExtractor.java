@@ -220,8 +220,6 @@ public class CDTExtractor
 	
 	private void extractAST(CodeInstance ci, IASTTranslationUnit atu)
 	{
-		SourceFile modelSrcFile;
-		
 		if (atu instanceof IASTTranslationUnit ||
 			atu instanceof CASTTranslationUnit)
 		{
@@ -229,30 +227,32 @@ public class CDTExtractor
 
 			cleanupSourceFile(ci, _cdtResourcePath);
 			
-			modelSrcFile = CodemodelFactory.eINSTANCE.createSourceFile();
+			SourceFile modelSrcFile = CodemodelFactory.eINSTANCE.createSourceFile();
 			modelSrcFile.setFilePath(_cdtResourcePath);
 			ci.getSourceFiles().add(modelSrcFile);
+
+//			for (IASTPreprocessorIncludeStatement inc: atu.getIncludeDirectives())
+//	        {
+//	            getChildrenRecursive(modelSrcFile, inc);
+//	        }
+			
+	        for (IASTDeclaration d: atu.getDeclarations())
+	        {
+	            getChildrenRecursive(modelSrcFile, d);
+	        }
 		}
 		else
 		{
 			// ATU skipped.
 			return;
 		}
-		
-		for (IASTPreprocessorIncludeStatement inc: atu.getIncludeDirectives())
-        {
-            getChildrenRecursive(modelSrcFile, inc);
-        }
-		
-        for (IASTDeclaration d: atu.getDeclarations())
-        {
-            getChildrenRecursive(modelSrcFile, d);
-        }
 	}
 	
 	private void cleanupSourceFile(CodeInstance ci, String filePath)
 	{
 		SourceFile foundFile = null;
+		
+		System.err.println("---> PATH: " + filePath);
 		
 		for (SourceFile sf : ci.getSourceFiles())
 		{
