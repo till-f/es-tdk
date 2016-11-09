@@ -9,5 +9,16 @@
             class="fzi.mottem.runtime.RunTestListener">
       </client>
    </extension>
+   
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="fzi.mottem.runtime.perspective.PerspectiveFactory"
+            icon="icons/perspective.png"
+            id="fzi.mottem.runtime.perspective"
+            name="ES TDK">
+      </perspective>
+   </extension>
+   
 
 </plugin>

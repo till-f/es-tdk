@@ -40,7 +40,7 @@ import fzi.mottem.runtime.rtgraph.views.GraphView;
  */
 public class ViewCoordinator {
 
-	private static String view_settings_id = "fzi.mottem.runtime.rtgraph.views.SettingsViewPart";
+	public static String view_settings_id = "fzi.mottem.runtime.rtgraph.views.SettingsViewPart";
 
 
 	private ViewCoordinator() {
