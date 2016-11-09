@@ -22,7 +22,7 @@
 				value="%introDescription-overview"/>
 		  <property
 				name="applicationXMI"
-				value="LegacyIDE.e4xmi">
+				value="org.eclipse.platform/LegacyIDE.e4xmi">
 		  </property>
 		  <property
 				name="cssTheme"
