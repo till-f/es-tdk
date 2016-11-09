@@ -3,7 +3,7 @@ include "Target.pts";
 
 package Helper : Target
 {
-	func void CC_BackgroundUpdate(ref float quantity) default Core0
+	func void BackgroundUpdate(ref float quantity) default Core0
 	{
 		concurrent
 		{

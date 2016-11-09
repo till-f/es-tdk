@@ -5,7 +5,7 @@ test AutoDriving : Target default Core0
 {
 	run until main;
 	
-	Helper.CC_BackgroundUpdate(ref current_distance);
+	Helper.BackgroundUpdate(ref current_distance);
 	
 	run;
 }
@@ -16,7 +16,7 @@ test ManualDriving : Target default Core0
 
 	speed_override_active = 1;
 	
-	Helper.CC_BackgroundUpdate(ref current_distance);
+	Helper.BackgroundUpdate(ref current_distance);
 	
 	run;
 }

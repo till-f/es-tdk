@@ -22,7 +22,7 @@
 				value="%introDescription-overview"/>
 		  <property
 				name="applicationXMI"
-				value="org.eclipse.platform/LegacyIDE.e4xmi">
+				value="LegacyIDE.e4xmi">
 		  </property>
 		  <property
 				name="cssTheme"
@@ -30,9 +30,8 @@
 		  </property>
 		  <property
 				name="applicationCSSResources"
-          value="platform:/plugin/org.eclipse.ui.themes/images/">
+                value="platform:/plugin/org.eclipse.ui.themes/images/">
 		  </property>
-
           <property
         		name="startupForegroundColor"
         		value="808080"/>
@@ -50,12 +49,10 @@
                 name="buildIdSize"
                 value="395,40">
           </property>
-          <!--
           <property
                 name="applicationCSS"
                 value="org.eclipse.e4.ui.css.theme.e4_default">
           </property>
-          -->
           <property
                 name="aboutText"
                 value="%productBlurb">
