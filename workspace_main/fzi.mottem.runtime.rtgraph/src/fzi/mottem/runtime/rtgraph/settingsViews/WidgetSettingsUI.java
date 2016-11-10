@@ -190,17 +190,19 @@ public class WidgetSettingsUI extends Composite {
 		initListeners();
 	}
 
-	public void setAndFocusDashboard(DashboardComposite dashboard) {
-		System.out.println("WS: setAndFocusDashboard " + dashboard);
-		this.dashboard = dashboard;
-		if (this.dashboard.getCurrent_link() != null) {
-			current_link = this.dashboard.getCurrent_link();
-		} else if (this.dashboard.widgetLinks.size() > 0) {
-			focusOnLink(dashboard.getWidgetLinks().get(0));
-		} else {
-			deFocus();
+	public void setAndFocusDashboard(DashboardComposite dashboard) {		
+		if(!this.dashboard.equals(dashboard)) {
+			System.out.println("WS: setAndFocusDashboard " + dashboard);
+			this.dashboard = dashboard;
+			if (this.dashboard.getCurrent_link() != null) {
+				current_link = this.dashboard.getCurrent_link();
+			} else if (this.dashboard.widgetLinks.size() > 0) {
+				focusOnLink(dashboard.getWidgetLinks().get(0));
+			} else {
+				deFocus();
+			}
+			refresh();
 		}
-		refresh();
 	}
 
 	public void refreshSignalsLinks() {
@@ -244,34 +246,6 @@ public class WidgetSettingsUI extends Composite {
 		checkLogarithmicScale = new Button(rangeSettings, SWT.CHECK);
 
 		// rangeSettings.setLayoutData(data);
-	}
-
-	protected void initSizeButtons() {
-		/*Composite wb = new Composite(positionSettings, SWT.NONE);
-		Label wl = new Label(wb, SWT.NONE);
-		wl.setText("Width");
-
-		wb.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
-		wb.setLayout(new GridLayout(3, false));*/
-		/*widthPlus = new Button(wb, SWT.PUSH);
-		widthPlus.setText("+");
-		widthPlus.addListener(SWT.Selection, new SizeButtonListener(true, true));
-		widthMinus = new Button(wb, SWT.PUSH);
-		widthMinus.setText("-");
-		widthMinus.addListener(SWT.Selection, new SizeButtonListener(true, false));*/
-
-		/*Composite hb = new Composite(positionSettings, SWT.NONE);
-		Label hl = new Label(hb, SWT.NONE);
-		hl.setText("Height");
-
-		hb.setLayout(new GridLayout(3, false));
-		hb.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));*/
-		/*heightPlus = new Button(hb, SWT.PUSH);
-		heightPlus.setText("+");
-		heightPlus.addListener(SWT.Selection, new SizeButtonListener(false, true));
-		heightMinus = new Button(hb, SWT.PUSH);
-		heightMinus.setText("-");
-		heightMinus.addListener(SWT.Selection, new SizeButtonListener(false, false));*/
 	}
 
 	protected void initInnerControls() {
@@ -378,7 +352,6 @@ public class WidgetSettingsUI extends Composite {
 		h.addVerifyListener(new IntegerListener());
 		h.setLayoutData(dataText);
 
-		initSizeButtons();
 
 		browseImageButton = new Button(miscSettings, SWT.PUSH);
 		browseImageButton.setText("Browse Image");
@@ -603,7 +576,7 @@ public class WidgetSettingsUI extends Composite {
 	}
 
 	private void updateLinkFigureRange(AbstractWidgetExchangeLink link) {
-		System.out.println("WS: updateLinkFigureRange " + link);
+		//System.out.println("WS: updateLinkFigureRange " + link);
 		int li = links_combo.getSelectionIndex();
 
 		precheckDoubleRangesFormat();
@@ -627,7 +600,7 @@ public class WidgetSettingsUI extends Composite {
 	}
 
 	public void updateLinks() {
-		System.out.println("WS: updateLinks ");
+		//System.out.println("WS: updateLinks ");
 		int li = links_combo.getSelectionIndex();
 		int si = signals_combo.getSelectionIndex();
 		int ti = types_combo.getSelectionIndex();
@@ -716,7 +689,7 @@ public class WidgetSettingsUI extends Composite {
 
 	public void focusOnLink(AbstractWidgetExchangeLink link) {
 
-		System.out.println("WS: FocusOnLink " + link);
+		//System.out.println("WS: FocusOnLink " + link);
 		current_link = link;
 
 		if (current_link.getDashboard() != dashboard) {
@@ -731,14 +704,14 @@ public class WidgetSettingsUI extends Composite {
 	}
 
 	public void focusOn(int link_index) {
-		System.out.println("WS: FocusOn " + link_index);
+		//System.out.println("WS: FocusOn " + link_index);
 		current_link = dashboard.getWidgetLinks().get(link_index);
 		links_combo.select(link_index);
 		focusOnLink(current_link);
 	}
 
 	private void updateTypesCombo(AbstractWidgetExchangeLink link) {
-		System.out.println("WS: updateTypesCombo " + link);
+		//System.out.println("WS: updateTypesCombo " + link);
 		types_combo.clearSelection();
 		types_combo.removeAll();
 
@@ -759,7 +732,7 @@ public class WidgetSettingsUI extends Composite {
 	}
 
 	private void updateSignalsCombo(AbstractWidgetExchangeLink link) {
-		System.out.println("WS: updateSignalsCombo " + link);
+		//System.out.println("WS: updateSignalsCombo " + link);
 		signals_combo.clearSelection();
 		signals_combo.removeAll();
 
@@ -804,7 +777,7 @@ public class WidgetSettingsUI extends Composite {
 	}
 
 	public void refreshCombos() {
-		System.out.println("WS: refreshCombos, current link = " + current_link);
+		//System.out.println("WS: refreshCombos, current link = " + current_link);
 		int li = -1;
 
 		links_combo.removeAll();
@@ -867,11 +840,11 @@ public class WidgetSettingsUI extends Composite {
 	public void removeCurrentLink() {
 		current_link.delete();
 		current_link = null;
-		System.out.println("Widget Settings: removed current link : " + current_link);
+		//System.out.println("Widget Settings: removed current link : " + current_link);
 	}
 
 	public void resetCurrentLink() {
-		System.out.println("WS: resetCurrentLink ");
+		//System.out.println("WS: resetCurrentLink ");
 		ArrayList<AbstractWidgetExchangeLink> links = dashboard.getWidgetLinks();
 		System.out.println("WS: resetting current link. Size: " + links.size());
 		if (links.size() > 0) {
@@ -882,7 +855,7 @@ public class WidgetSettingsUI extends Composite {
 			links_combo.clearSelection();
 			refreshCombos();
 		}
-		System.out.println("WS: current link: " + current_link);
+		//System.out.println("WS: current link: " + current_link);
 	}
 
 	public void deFocus() {
@@ -894,7 +867,7 @@ public class WidgetSettingsUI extends Composite {
 		links_combo.clearSelection();
 		links_combo.removeAll();
 		links_combo.setText("---Widget---");
-		System.out.println("WS: defocused, current link = " + current_link);
+		//System.out.println("WS: defocused, current link = " + current_link);
 	}
 
 	public void setEnabled(boolean enabled) {
@@ -936,7 +909,7 @@ public class WidgetSettingsUI extends Composite {
 	}
 
 	private void enableTextOrImage() {
-		System.out.println("WS: enableTextOrImage ");
+		//System.out.println("WS: enableTextOrImage ");
 		if (current_link != null && current_link.getType() == Constants.WIDGET_IMAGE) {
 			textField.setEnabled(false);
 			browseImageButton.setEnabled(true);

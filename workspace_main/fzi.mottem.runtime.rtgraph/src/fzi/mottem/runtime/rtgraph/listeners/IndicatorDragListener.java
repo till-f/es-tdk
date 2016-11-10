@@ -84,7 +84,7 @@ public class IndicatorDragListener implements Listener {
 			}
 
 			SetupUI.focusOnLink(link);
-			link.getDashboard().setCurrentLink(link);
+			if(!SetupUI.isOpen()) link.getDashboard().setCurrentLink(link);
 			link.updateCanvasImage();
 			c.layout(true);
 
