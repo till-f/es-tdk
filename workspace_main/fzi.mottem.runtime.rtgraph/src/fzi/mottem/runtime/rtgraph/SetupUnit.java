@@ -24,6 +24,7 @@ import fzi.mottem.runtime.rtgraph.runnables.WidgetUpdater;
 import fzi.mottem.runtime.rtgraph.settingsViews.SetupUI;
 import fzi.mottem.runtime.rtgraph.settingsViews.WidgetSettingsUI;
 import fzi.mottem.runtime.rtgraph.views.Dashboard;
+import fzi.mottem.runtime.rtgraph.views.DashboardComposite;
 import fzi.mottem.runtime.rtgraph.views.GraphView;
 
 public class SetupUnit {
@@ -52,7 +53,7 @@ public class SetupUnit {
 
 	private static boolean testMode = false;
 
-	public static ArrayList<Dashboard> dashboards;
+	public static ArrayList<DashboardComposite> dashboards;
 
 	static {
 
@@ -134,7 +135,7 @@ public class SetupUnit {
 	}
 
 	public static void reloadDashboards() {
-		dashboards = ViewCoordinator.getDashboards();
+		dashboards = ViewCoordinator.getDashboardEditors();
 	}
 	
 	/**
@@ -180,10 +181,10 @@ public class SetupUnit {
 	public static void autoConnectWidgets() {
 		reloadDashboards();
 
-		for (Dashboard d : dashboards) {
+		for (DashboardComposite d : dashboards) {
 			for (AbstractWidgetExchangeLink link : d.getWidgetLinks()) {
-				if (link.getWidgetType() == WidgetType.W_INDICATOR)
-					DataExchanger.replaceSignal(link.getRepresentation().getSignalUID(), link);
+					if(DataExchanger.replaceSignal(link.getRepresentation().getSignalUID(), link))
+						link.applyRepresentation(true,  false,  false);
 			}
 		}
 	}
