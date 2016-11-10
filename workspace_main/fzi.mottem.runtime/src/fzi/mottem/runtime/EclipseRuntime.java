@@ -126,7 +126,7 @@ public abstract class EclipseRuntime implements IRuntime
 							
 						IAccessDriver accessDriver = _driversByTRef.get(tRef).get(0);
 						_consumer.setAccessDriverForTRef(tRef, accessDriver);
-						DataExchanger.registerConsumer(signalUID, _consumer);
+						DataExchanger.addSignalToConsumer(signalUID, _consumer);
 					}
 					else
 					{

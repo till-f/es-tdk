@@ -77,7 +77,7 @@ public class SetupUnit {
 
 			// ProfileUtils.loadDefaultProfile();
 			// ViewCoordinator.showDashboardViewpart();
-			ViewCoordinator.showSettingsViewpart();
+			// ViewCoordinator.showSettingsViewpart();
 			// generateGraphViews();
 			// generateDashboards();
 
@@ -183,7 +183,7 @@ public class SetupUnit {
 		for (Dashboard d : dashboards) {
 			for (AbstractWidgetExchangeLink link : d.getWidgetLinks()) {
 				if (link.getWidgetType() == WidgetType.W_INDICATOR)
-					DataExchanger.registerConsumer(link.getRepresentation().getSignalUID(), link);
+					DataExchanger.replaceSignal(link.getRepresentation().getSignalUID(), link);
 			}
 		}
 	}
@@ -211,7 +211,7 @@ public class SetupUnit {
 	 *            the MarkedFigureExchangeLink that needs to be registered
 	 */
 	public static void connectWidget(IndicatorWidgetLink link) {
-		DataExchanger.registerConsumer(link.getRepresentation().getSignalUID(), link);
+		DataExchanger.replaceSignal(link.getRepresentation().getSignalUID(), link);
 	}
 
 	/*
@@ -223,7 +223,7 @@ public class SetupUnit {
 	 */
 
 	public static void connectWidget(Signal signal, IndicatorWidgetLink current_link) {
-		DataExchanger.registerConsumer(signal, current_link);
+		DataExchanger.replaceSignal(signal, current_link);
 		current_link.setSignalUID(signal.getId());
 		current_link.setSignalSimpleName(signal.getSimpleName());
 	}
@@ -235,7 +235,7 @@ public class SetupUnit {
 	 *            the TraceExchangeLink that needs to be registered
 	 */
 	public static void connectTraceLink(TraceExchangeLink link) {
-		DataExchanger.registerConsumer(link.getSignalUID(), link);
+		DataExchanger.replaceSignal(link.getSignalUID(), link);
 	}
 
 	/**
@@ -248,7 +248,7 @@ public class SetupUnit {
 	 *            the TraceExchangeLink
 	 */
 	public static void connectTraceLink(int signalIndex, TraceExchangeLink link) {
-		if (DataExchanger.registerConsumer(signals.get(signalIndex), link)) {
+		if (DataExchanger.replaceSignal(signals.get(signalIndex), link)) {
 			link.setSignalUID(signals.get(signalIndex).getId());
 		} else {
 			System.out.println("SetupUnit: could not succesfully register link with name " + link.getName()
@@ -266,7 +266,7 @@ public class SetupUnit {
 	 *            the TraceExchangeLink
 	 */
 	public static void connectTraceLink(String signalUID, TraceExchangeLink link) {
-		if (DataExchanger.registerConsumer(signalUID, link)) {
+		if (DataExchanger.replaceSignal(signalUID, link)) {
 			link.setSignalUID(signalUID);
 		} else {
 			System.out.println("SetupUnit: could not succesfully register link with name " + link.getName()

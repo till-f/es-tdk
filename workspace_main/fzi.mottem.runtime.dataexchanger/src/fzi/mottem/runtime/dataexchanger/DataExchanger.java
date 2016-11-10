@@ -27,7 +27,6 @@ public class DataExchanger {
 	 *            The Consumer that will be removed
 	 */
 	public static void removeConsumer(ITargetDataConsumer consumer) {
-		//System.out.println("DE - cleaning consumer hashes for " + consumer.toString());
 		signalIdHash.forEach((signal, consumerList) -> consumerList.remove(consumer));
 	}
 
@@ -36,18 +35,61 @@ public class DataExchanger {
 	 * DataExchanger then the consumer will not be registered.
 	 * 
 	 * @param signal
-	 *            the Signal which will be associated with the DataConsumer
+	 *            The Signal which will be associated with the DataConsumer.
+	 *            All existing associations will be removed.
 	 * @param c
 	 *            the DataConsumer
 	 * @return <b> true </b> if the consumer is successfully registered,
 	 *         <b> false </b> otherwise
 	 */
-	public static boolean registerConsumer(Signal signal, ITargetDataConsumer c) {
+	public static boolean replaceSignal(Signal signal, ITargetDataConsumer c) {
+		removeConsumer(c);
+		
+		return addSignalToConsumer(signal, c);
+	}
+
+	/**
+	 * Registers a DataConsumer object for a given Signal UID. If there is no such Signal
+	 * then the consumer will not be registered.
+	 * 
+	 * @param uid
+	 *            the Signal UID which will be associated with the DataConsumer
+	 *            All existing associations will be removed.
+	 * @param c
+	 *            the DataConsumer
+	 * @return <b> true </b> if the consumer is successfully registered,
+	 *         <b> false </b> otherwise
+	 */
+	public static boolean replaceSignal(String uid, ITargetDataConsumer c) {
+		boolean registered = false;
+		Signal signal = getSignal(uid);
+		if (signal != null) {
+			registered = replaceSignal(signal, c);
+		} else {
+			System.out.println("DataExchanger - Tried to register consumer " + c.getClass().getSimpleName()
+					+ " but could not find signal with uid " + uid);
+		}
+
+		return registered;
+	}
+
+	/**
+	 * Registers a DataConsumer object for a given Signal. If the Signal is unknown to the
+	 * DataExchanger then the consumer will not be registered.
+	 * 
+	 * @param signal
+	 *            the Signal which will be associated with the DataConsumer.
+	 *            Existing association will be kept (multiple signals for consumer possible)
+	 * @param c
+	 *            the DataConsumer
+	 * @return <b> true </b> if the consumer is successfully registered,
+	 *         <b> false </b> otherwise
+	 */
+	public static boolean addSignalToConsumer(Signal signal, ITargetDataConsumer c) {
 		boolean registered = false;
 
 		System.out.println("DataExchanger - Registering consumer for signal " + signal.getId() + ": " + c.toString());
 
-		removeConsumer(c);
 		if(signalIdHash.get(signal) != null) {
 			registered = signalIdHash.get(signal).add(c);
 		} else {
@@ -63,16 +105,17 @@ public class DataExchanger {
 	 * 
 	 * @param uid
 	 *            the Signal UID which will be associated with the DataConsumer
+	 *            Existing association will be kept (multiple signals for consumer possible)
 	 * @param c
 	 *            the DataConsumer
 	 * @return <b> true </b> if the consumer is successfully registered,
 	 *         <b> false </b> otherwise
 	 */
-	public static boolean registerConsumer(String uid, ITargetDataConsumer c) {
+	public static boolean addSignalToConsumer(String uid, ITargetDataConsumer c) {
 		boolean registered = false;
 		Signal signal = getSignal(uid);
 		if (signal != null) {
-			registered = registerConsumer(signal, c);
+			registered = addSignalToConsumer(signal, c);
 		} else {
 			System.out.println("DataExchanger - Tried to register consumer " + c.getClass().getSimpleName()
 					+ " but could not find signal with uid " + uid);
@@ -80,6 +123,7 @@ public class DataExchanger {
 
 		return registered;
 	}
+	
 
 	/**
 	 * Gathers all Signals known to the DataExchanger

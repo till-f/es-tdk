@@ -340,7 +340,7 @@ public class GraphViewEditor extends EditorPart {
 							TraceExchangeLink tl = view.addTraceGetLink(uid);
 							tl.consumeBurst(msgMap.get(uid));
 							if (options.connectToDataExchanger)
-								DataExchanger.registerConsumer(uid, tl);
+								DataExchanger.replaceSignal(uid, tl);
 							Display.getCurrent().asyncExec(tl.getTraceUpdater());
 						}
 					}
