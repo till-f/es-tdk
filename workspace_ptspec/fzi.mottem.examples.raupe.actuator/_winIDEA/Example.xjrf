@@ -44,8 +44,7 @@
       </History>
       <PI.0>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>46</C>
-       <L>37</L>
+       <L>10</L>
        <P>..\main.c</P>
       </PI.0>
       <PI.1>
@@ -117,8 +116,8 @@
       </PI.19>
       <PI.2>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>17</C>
-       <L>18</L>
+       <C>3</C>
+       <L>13</L>
        <P>..\ek_SW_Component\SWC_Controller.c</P>
        <VL>6</VL>
       </PI.2>
@@ -868,8 +867,8 @@
      </Documents.0>
      <Progress>
       <b>781</b>
-      <l>2628</l>
-      <r>3132</r>
+      <l>618</l>
+      <r>1122</r>
       <t>418</t>
      </Progress>
      <Watches>
@@ -888,7 +887,7 @@
       </Misc.3>
       <WatchPane.2>
        <Watch.0>
-        <WatchName>searchMode</WatchName>
+        <WatchName>current_distance</WatchName>
         <ExpressionDisplay>
          <Color>0</Color>
          <ColorBack>8421376</ColorBack>
@@ -900,7 +899,7 @@
         </ExpressionDisplay>
        </Watch.0>
        <Watch.1>
-        <WatchName>searchStep</WatchName>
+        <WatchName>speed_override_left</WatchName>
         <ExpressionDisplay>
          <Color>0</Color>
          <ColorBack>8421376</ColorBack>
@@ -912,7 +911,7 @@
         </ExpressionDisplay>
        </Watch.1>
        <Watch.2>
-        <WatchName>searchTicks</WatchName>
+        <WatchName>speed_override_right</WatchName>
         <ExpressionDisplay>
          <Color>0</Color>
          <ColorBack>8421376</ColorBack>
@@ -923,18 +922,6 @@
          <Scale>0</Scale>
         </ExpressionDisplay>
        </Watch.2>
-       <Watch.3>
-        <WatchName>current_distance</WatchName>
-        <ExpressionDisplay>
-         <Color>0</Color>
-         <ColorBack>8421376</ColorBack>
-         <ColorText>0</ColorText>
-         <Enabled>0</Enabled>
-         <Hi type="D">100.0000000000000000</Hi>
-         <Lo type="D">0.0000000000000000</Lo>
-         <Scale>0</Scale>
-        </ExpressionDisplay>
-       </Watch.3>
       </WatchPane.2>
      </Watches>
      <Watches2>
@@ -1141,19 +1128,19 @@
           <Width>0</Width>
          </Columns.0>
          <Columns.1>
-          <Pos type="D">25.1177394034536900</Pos>
+          <Pos type="D">33.3333333333333360</Pos>
           <Width>0</Width>
          </Columns.1>
          <Columns.2>
-          <Pos type="D">38.1475667189952930</Pos>
+          <Pos type="D">44.0972222222222210</Pos>
           <Width>0</Width>
          </Columns.2>
          <Columns.3>
-          <Pos type="D">59.0266875981161690</Pos>
+          <Pos type="D">58.3333333333333360</Pos>
           <Width>0</Width>
          </Columns.3>
          <Columns.4>
-          <Pos type="D">92.9356357927786550</Pos>
+          <Pos type="D">92.8819444444444430</Pos>
           <Width>0</Width>
          </Columns.4>
         </Data>

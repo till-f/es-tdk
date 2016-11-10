@@ -309,7 +309,14 @@ public class PTSExpressionWorker
 				}
 				else
 				{
-					getValueArgs = PTS2JavaUtil.getJavaInspectorUID(symRef) + "," + PTS2JavaUtil.getJavaElementUID(finalTestRef);
+					if (PTSpecUtils.isReferenceParamter(finalTestRef))
+					{
+						getValueArgs = PTS2JavaUtil.getJavaInspectorUID(symRef) + "," + finalTestRef.getName();
+					}
+					else
+					{
+						getValueArgs = PTS2JavaUtil.getJavaInspectorUID(symRef) + "," + PTS2JavaUtil.getJavaElementUID(finalTestRef);
+					}
 				}
 
 				return "((" + testRefType + ")" + PTS2JavaUtil.getJavaEnvironmentProviderName(symRef) + ".getValue(" + getValueArgs + "))";

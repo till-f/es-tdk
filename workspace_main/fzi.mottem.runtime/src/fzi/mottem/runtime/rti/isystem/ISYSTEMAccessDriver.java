@@ -219,32 +219,32 @@ public class ISYSTEMAccessDriver extends AbstractAccessDriver
 				if (bitSize == 8 && RangeValidator.isInByteRange((Number) value))
 				{
 					
-					byte value_byte = ((Integer)value).byteValue();
+					byte value_byte = ((Number)value).byteValue();
 					CValueType varValue = new CValueType(bitSize, value_byte);
 					debugFacade.modify(IConnectDebug.EAccessFlags.fRealTime, varName, varValue);
 				}
 				else if (bitSize == 16 && RangeValidator.isInShortRange((Number)value))
 				{
-					Short value_short = ((Integer)value).shortValue();
+					Short value_short = ((Number)value).shortValue();
 					CValueType varValue = new CValueType(bitSize, value_short);
 					debugFacade.modify(IConnectDebug.EAccessFlags.fRealTime, varName, varValue);
 				}
 				else if (bitSize == 32 && RangeValidator.isInIntegerRange((Number)value))
 				{
-					Integer value_int = (Integer)value;
+					Integer value_int = ((Number)value).intValue();
 					CValueType varValue = new CValueType(bitSize, value_int);
 					debugFacade.modify(IConnectDebug.EAccessFlags.fRealTime, varName, varValue);
 				}
 				else if (bitSize == 64 && RangeValidator.isInLongRange((Number)value))
 				{
-					Long value_Long = (Long)value;
+					Long value_Long = ((Number)value).longValue();
 					CValueType varValue = new CValueType(bitSize, value_Long);
 					debugFacade.modify(IConnectDebug.EAccessFlags.fRealTime, varName, varValue);
 				}
 				else
 				{
-					Long castedValue = Long.valueOf(((Number)value).longValue());
-					throw new RuntimeException( castedValue + " is out of range. Please try to use an appropriate datatype");
+					Long castedValue = ((Number)value).longValue();
+					throw new RuntimeException(castedValue + " is out of range, not written.");
 				}
 			}
 			
@@ -255,21 +255,21 @@ public class ISYSTEMAccessDriver extends AbstractAccessDriver
 				if ((floatType.getExponentBitSize() == 8 &&
 						floatType.getSignificandBitSize() == 23))
 				{
-					Float value_float = (Float)value;
+					Float value_float = ((Number)value).floatValue();
 					CValueType wrapped_value = new CValueType(value_float);
 					debugFacade.modify(IConnectDebug.EAccessFlags.fRealTime, varName, wrapped_value);
 				}
 				else if ((floatType.getExponentBitSize() == 11 &&
 					     floatType.getSignificandBitSize() == 52))
 				{
-					Double value_double = (Double)value;
+					Double value_double = ((Number)value).doubleValue();
 					CValueType wrapped_value = new CValueType(value_double);
 					debugFacade.modify(IConnectDebug.EAccessFlags.fRealTime, varName, wrapped_value);
 				}
 				else
 				{
-					Double castedValue = Double.valueOf(((Number)value).doubleValue());
-					throw new RuntimeException( castedValue + " is out of range. Please try to use an appropriate datatype");
+					Double castedValue = ((Number)value).doubleValue();
+					throw new RuntimeException(castedValue + " is out of range, not written.");
 				}
 			}
 			else

@@ -17,6 +17,15 @@ import fzi.mottem.runtime.rtgraph.commands.RefreshCommand;
 
 public class RTGrahResourceDeltaVisitor implements IResourceDeltaVisitor
 {
+	private static UIJob REFRESH_SIGNALS_JOB = new UIJob("(Re)-Load Signals") {
+		@Override
+		public IStatus runInUIThread(IProgressMonitor monitor) {
+			RefreshCommand cmd = new RefreshCommand();
+			cmd.execute(null);
+			return Status.OK_STATUS;
+		}
+	};
+	
 	public final static String[] MODEL_FILE_EXTENSIONS = {
 			ModelUtils.FILE_EXTENSION_TESTRIG_MODEL, 
 			ModelUtils.FILE_EXTENSION_CODE_MODEL,
@@ -68,16 +77,8 @@ public class RTGrahResourceDeltaVisitor implements IResourceDeltaVisitor
 		}
 		else if (ArrayUtils.contains(MODEL_FILE_EXTENSIONS, fileExtension.toLowerCase()))
 		{
-			UIJob job = new UIJob("(Re)-Load Signals") {
-				@Override
-				public IStatus runInUIThread(IProgressMonitor monitor) {
-					RefreshCommand cmd = new RefreshCommand();
-					cmd.execute(null);
-					return Status.OK_STATUS;
-				}
-			};
-	    	job.setPriority(Job.LONG);
-	    	job.schedule();
+			REFRESH_SIGNALS_JOB.setPriority(Job.LONG);
+			REFRESH_SIGNALS_JOB.schedule(1000);
 		}
 	}
 }

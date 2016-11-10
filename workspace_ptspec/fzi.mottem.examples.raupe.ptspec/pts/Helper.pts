@@ -1,0 +1,17 @@
+include "Units.pts";
+include "Target.pts";
+
+package Helper : Target
+{
+	func void BackgroundUpdate(ref float quantity) default Core0
+	{
+		concurrent
+		{
+			while (true)
+			{
+				wait 0.5s;
+				float dummy = quantity;
+			}
+		}
+	}
+}
