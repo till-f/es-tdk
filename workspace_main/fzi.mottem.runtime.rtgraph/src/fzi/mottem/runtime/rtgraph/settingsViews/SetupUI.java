@@ -119,7 +119,7 @@ public class SetupUI {
 
 	public static void deSelect() {
 		if (isOpen()) {
-			gatherSignals();
+			//gatherSignals();
 			dashboardSettings.refresh(true);
 			widgetSettings.deFocus();
 			widgetSettings.setEnabled(false);
@@ -128,7 +128,6 @@ public class SetupUI {
 
 	public static void refresh() {
 		if (isOpen()) {
-			gatherSignals();
 			signalSettings.refresh();
 			widgetSettings.refresh();
 			dashboardSettings.refresh(true);
@@ -136,9 +135,9 @@ public class SetupUI {
 	}
 
 	public static void refreshSignals() {
-		if (isOpen()) {
 			gatherSignals();
-			//showSignals();
+		
+			if (isOpen()) {
 			signalSettings.refresh();
 			if (widgetSettings != null)
 				widgetSettings.refresh();

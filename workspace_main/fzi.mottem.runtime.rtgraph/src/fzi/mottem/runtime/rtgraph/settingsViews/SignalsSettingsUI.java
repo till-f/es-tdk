@@ -161,6 +161,8 @@ public class SignalsSettingsUI extends Composite {
 					refreshMenus();
 					selected_in_signals.clear();
 					for(int i = 0; i < selectedItems.length; i++) {
+						System.out.println("selected signals size = " + selectedItems.length); 
+						printInInfo();
 						selected_in_signals.add(in_signals.get(selectedItems[i]));
 						tooltipBuilder.append(in_signals_list.getItem(selectedItems[i]) + "\n");
 					}
@@ -198,7 +200,12 @@ public class SignalsSettingsUI extends Composite {
 		});
 		
 	}
-	
+	private void printInInfo() {
+		System.out.println("in_signals size = " + in_signals.size()); 
+		for(int s = 0; s < in_signals.size(); s++) {
+			//System.out.println(in_signals.get(s).getSimpleName());
+		}
+	}
 	public void refresh() {
 		in_signals = SetupUnit.getSignals(SignalType.HW_INPUT);
 		out_signals = SetupUnit.getSignals(SignalType.HW_OUTPUT);

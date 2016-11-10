@@ -136,7 +136,7 @@ public class SetupUnit {
 	public static void reloadDashboards() {
 		dashboards = ViewCoordinator.getDashboards();
 	}
-
+	
 	/**
 	 * Calls the DataExchanger and gathers the known Signals from it. The
 	 * Signals will be sorted alphabetically by their simple name. The ArrayList

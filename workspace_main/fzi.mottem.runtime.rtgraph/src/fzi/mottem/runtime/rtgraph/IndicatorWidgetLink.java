@@ -175,7 +175,7 @@ public class IndicatorWidgetLink extends AbstractWidgetExchangeLink {
 	@Override
 	public void setText(String text) {
 
-		System.out.println("Widget: Settings text to " + text + " " + getType());
+		System.out.println("Widget: Setting text to " + text + " " + getType());
 
 		String oldtext = new String(this.text);
 		this.text = text;

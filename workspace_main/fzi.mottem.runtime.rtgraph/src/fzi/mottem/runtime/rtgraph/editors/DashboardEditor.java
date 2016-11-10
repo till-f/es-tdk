@@ -108,11 +108,11 @@ public class DashboardEditor extends EditorPart {
 
 			@Override
 			public void partActivated(IWorkbenchPartReference partRef) {
+				
 				if(partRef.getPartName() == getPartName()) {
-					//System.out.println("Part is active, refreshing setup ui");
+					//System.out.println("Part is active, refreshing setup ui"); //ok
 					isActive = true;
 					//SetupUI.refresh();
-					
 					SetupUI.focusOnDashboard(dashboard);
 				}			
 			}
@@ -126,6 +126,8 @@ public class DashboardEditor extends EditorPart {
 			public void partClosed(IWorkbenchPartReference partRef) {
 				if(partRef.getPartName() == getPartName()) {
 					//System.out.println("Part is closed, refreshing setup ui");
+					getSite().getPage().removePartListener(this);
+					//so that there are no multiple listeners after multiple initialisations
 					SetupUI.refresh();
 					SetupUI.deSelect();
 				}			
@@ -141,7 +143,7 @@ public class DashboardEditor extends EditorPart {
 			@Override
 			public void partOpened(IWorkbenchPartReference partRef) {
 				if(partRef.getPartName() == getPartName()) {
-					//System.out.println("Part is open, focusing on it");
+					System.out.println("Part is open, focusing on it");
 					SetupUI.focusOnDashboard(dashboard);
 				}
 			}
@@ -161,6 +163,7 @@ public class DashboardEditor extends EditorPart {
 				
 			}
 		};
+		
 		getSite().getPage().removePartListener(pl);
 		getSite().getPage().addPartListener(pl);
 	}
