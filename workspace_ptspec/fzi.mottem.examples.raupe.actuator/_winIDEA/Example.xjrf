@@ -44,8 +44,10 @@
       </History>
       <PI.0>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <L>10</L>
+       <C>30</C>
+       <L>32</L>
        <P>..\main.c</P>
+       <VL>10</VL>
       </PI.0>
       <PI.1>
        <Bookmarks_num_>0</Bookmarks_num_>
@@ -116,10 +118,10 @@
       </PI.19>
       <PI.2>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <C>3</C>
-       <L>13</L>
+       <C>11</C>
+       <L>116</L>
        <P>..\ek_SW_Component\SWC_Controller.c</P>
-       <VL>6</VL>
+       <VL>102</VL>
       </PI.2>
       <PI.20>
        <Bookmarks_num_>0</Bookmarks_num_>
@@ -899,7 +901,7 @@
         </ExpressionDisplay>
        </Watch.0>
        <Watch.1>
-        <WatchName>speed_override_left</WatchName>
+        <WatchName>speed_left</WatchName>
         <ExpressionDisplay>
          <Color>0</Color>
          <ColorBack>8421376</ColorBack>
@@ -911,7 +913,7 @@
         </ExpressionDisplay>
        </Watch.1>
        <Watch.2>
-        <WatchName>speed_override_right</WatchName>
+        <WatchName>speed_right</WatchName>
         <ExpressionDisplay>
          <Color>0</Color>
          <ColorBack>8421376</ColorBack>
