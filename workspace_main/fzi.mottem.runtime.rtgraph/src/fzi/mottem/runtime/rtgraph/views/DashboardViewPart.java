@@ -10,11 +10,11 @@ import org.eclipse.swt.layout.RowData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
-import fzi.mottem.runtime.rtgraph.SetupUnit;
+import fzi.mottem.runtime.rtgraph.SetupUtilities;
 
 public class DashboardViewPart extends ViewPart {
 
-	SetupUnit setup;
+	SetupUtilities setup;
 
 	private CircularBufferDataProvider mainTraceProvider;
 	private Composite mainHolder;

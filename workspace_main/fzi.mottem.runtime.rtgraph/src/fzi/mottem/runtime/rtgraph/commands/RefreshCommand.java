@@ -19,7 +19,7 @@ import fzi.mottem.ptspec.dsl.common.PTSpecUtils;
 import fzi.mottem.ptspec.dsl.ui.nature.PTSpecNature;
 import fzi.mottem.runtime.dataexchanger.DataExchanger;
 import fzi.mottem.runtime.dataexchanger.Signal.SignalType;
-import fzi.mottem.runtime.rtgraph.SetupUnit;
+import fzi.mottem.runtime.rtgraph.SetupUtilities;
 import fzi.mottem.runtime.rtgraph.settingsViews.SetupUI;
 import fzi.util.eclipse.IntegrationUtils;
 import fzi.util.ecore.EcoreUtils;
@@ -76,8 +76,8 @@ public class RefreshCommand extends AbstractHandler
     		
     		SetupUI.refreshSignals();
     		
-    		SetupUnit.autoConnectWidgets();
-			SetupUnit.autoConnectGraphViews();
+    		SetupUtilities.autoConnectWidgets();
+			SetupUtilities.autoConnectGraphViews();
 		}
     	catch (Exception e)
     	{

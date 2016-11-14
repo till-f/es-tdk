@@ -10,7 +10,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import fzi.mottem.runtime.rtgraph.AbstractWidgetExchangeLink;
-import fzi.mottem.runtime.rtgraph.SetupUnit;
+import fzi.mottem.runtime.rtgraph.SetupUtilities;
 import fzi.mottem.runtime.rtgraph.ViewCoordinator;
 import fzi.mottem.runtime.rtgraph.views.DashboardComposite;
 
@@ -108,7 +108,7 @@ public class SetupUI {
 	}
 
 	private static void gatherSignals() {
-		SetupUnit.refreshSignals();
+		SetupUtilities.refreshSignals();
 	}
 
 	public static void makeUI(Composite parent) {

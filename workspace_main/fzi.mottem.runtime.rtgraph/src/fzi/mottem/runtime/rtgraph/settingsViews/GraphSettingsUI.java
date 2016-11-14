@@ -17,7 +17,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import fzi.mottem.runtime.dataexchanger.Signal;
-import fzi.mottem.runtime.rtgraph.SetupUnit;
+import fzi.mottem.runtime.rtgraph.SetupUtilities;
 import fzi.mottem.runtime.rtgraph.TraceExchangeLink;
 import fzi.mottem.runtime.rtgraph.listeners.IntegerListener;
 import fzi.mottem.runtime.rtgraph.views.GraphView;
@@ -77,7 +77,7 @@ public class GraphSettingsUI extends Composite {
 	private Listener clearButtonListener;
 
 	public void refreshSignalsLinks() {
-		signals = SetupUnit.getSignals();
+		signals = SetupUtilities.getSignals();
 	}
 
 	private void initLayout() {
@@ -195,8 +195,8 @@ public class GraphSettingsUI extends Composite {
 			public void handleEvent(Event event) {
 				signals_combo.removeAll();
 
-				for (int i = 0; i < SetupUnit.string_signals.size(); i++) {
-					signals_combo.add(SetupUnit.string_signals.get(i));
+				for (int i = 0; i < SetupUtilities.string_signals.size(); i++) {
+					signals_combo.add(SetupUtilities.string_signals.get(i));
 				}
 
 			}

@@ -2,6 +2,7 @@ package fzi.mottem.runtime.rtgraph;
 
 import org.csstudio.swt.widgets.figures.AbstractMarkedWidgetFigure;
 import org.eclipse.draw2d.LightweightSystem;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Canvas;
 
 import fzi.mottem.runtime.dataexchanger.ExchangeLink;
@@ -222,13 +223,30 @@ public abstract class AbstractWidgetExchangeLink extends ExchangeLink implements
 	public abstract void setFigureLo(double parseDouble);
 
 	public abstract void setFigureHi(double parseDouble);
+	
+	public void snapToGrid() {
+		Rectangle r = canvas.getBounds();
+		canvas.setBounds(snapToGrid(r));	
+	}
+	
+	public Rectangle snapToGrid(Rectangle r) {
+		int gridSize = dashboard.getGridSizePx();
+		int x = r.x + gridSize/2 - (r.x + gridSize/2)%gridSize;
+		int y = (r.y + gridSize/2) - (r.y + gridSize/2)%gridSize;
+		int width = (r.width + gridSize/2) - (r.width + gridSize/2)%gridSize;
+		int height = (r.height + gridSize/2) - (r.height + gridSize/2)%gridSize;
+		
+		return new Rectangle(x, y, width, height);
+	}
+
 
 	public abstract void setXY(int x, int y, int width, int height);
 
 	public abstract void refresh();
 
 	public abstract void setText(String text);
-
+	
+	
 	public void setValueLabelFormat(String text2) {
 		if(!text2.equals(figure.getValueLabelFormat())) {
 			figure.setValueLabelFormat(text2);

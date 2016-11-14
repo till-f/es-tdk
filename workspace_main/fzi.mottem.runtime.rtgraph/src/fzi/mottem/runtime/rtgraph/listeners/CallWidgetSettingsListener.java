@@ -5,7 +5,7 @@ import org.eclipse.swt.events.MouseListener;
 
 import fzi.mottem.runtime.rtgraph.AbstractWidgetExchangeLink;
 import fzi.mottem.runtime.rtgraph.IndicatorWidgetLink;
-import fzi.mottem.runtime.rtgraph.SetupUnit;
+import fzi.mottem.runtime.rtgraph.SetupUtilities;
 
 public class CallWidgetSettingsListener implements MouseListener {
 	
@@ -17,7 +17,7 @@ public class CallWidgetSettingsListener implements MouseListener {
 	
 	@Override
 	public void mouseDoubleClick(MouseEvent e) {
-		SetupUnit.presentWidgetSettings(link);
+		SetupUtilities.presentWidgetSettings(link);
 		/*if(link.getType() == Constants.WIDGET_TEXT) {
 			Shell shell = new Shell(Display.getCurrent());
 			shell.setSize(360, 360);

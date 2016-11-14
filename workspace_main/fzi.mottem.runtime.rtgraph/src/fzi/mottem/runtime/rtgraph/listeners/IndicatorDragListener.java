@@ -57,10 +57,10 @@ public class IndicatorDragListener implements Listener {
 	public void handleEvent(Event event) {
 		switch (event.type) {
 		case SWT.MouseDown:
-			
-			//put the canvas to the top of the drawing order
+
+			// put the canvas to the top of the drawing order
 			c.moveAbove(null);
-		
+
 			tracker = new Tracker(c.getParent(), SWT.NONE);
 			bounds = c.getBounds();
 
@@ -70,21 +70,22 @@ public class IndicatorDragListener implements Listener {
 				tracker.setStippled(true);
 			}
 
-			tracker.setRectangles(new Rectangle[] { new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height) });
+			tracker.setRectangles(new Rectangle[] {new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height)});
 			boolean finished = tracker.open();
-
+			
 			Rectangle tr = tracker.getRectangles()[0];
 
 			if (tr.x != bounds.x || tr.y != bounds.y || tr.width != bounds.width || tr.height != bounds.height) {
+				c.setBounds(link.snapToGrid(tracker.getRectangles()[0]));
 				if (finished)
 					link.updateRepresentation(false, true, false);
-				c.setBounds(tracker.getRectangles()[0]);
 				resizeBounds = new Rectangle(c.getBounds().width - resize_box_side,
 						c.getBounds().height - resize_box_side, resize_box_side, resize_box_side);
 			}
 
 			SetupUI.focusOnLink(link);
-			if(!SetupUI.isOpen()) link.getDashboard().setCurrentLink(link);
+			if (!SetupUI.isOpen())
+				link.getDashboard().setCurrentLink(link);
 			link.updateCanvasImage();
 			c.layout(true);
 
@@ -92,29 +93,29 @@ public class IndicatorDragListener implements Listener {
 		case SWT.MouseMove:
 			if (!in_drag_box && !in_resize_box && event.x <= bounds.width && event.y <= bounds.height) {
 				c.setCursor(cursor_hand);
-			
+
 				in_drag_box = true;
 			} else if (in_drag_box && !(event.x <= bounds.width && event.y <= bounds.height)) {
-				
+
 				c.setCursor(cursor_default);
 				in_drag_box = false;
 				in_resize_box = false;
 			}
-			
+
 			if (!in_resize_box && resizeBounds.contains(event.x, event.y)) {
 				c.setCursor(cursor_resize);
 				in_resize_box = true;
 				in_drag_box = false;
-				
+
 			} else if (in_resize_box && !resizeBounds.contains(event.x, event.y)) {
-				//c.setCursor(cursor_default);					
+				// c.setCursor(cursor_default);
 				in_resize_box = false;
-				
+
 			}
 
 			break;
 		case SWT.MouseUp:
-			//link.getDashboard().redraw();
+			// link.getDashboard().redraw();
 			break;
 
 		}

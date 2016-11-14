@@ -38,9 +38,11 @@ public class DashboardRepresentation {
 	public boolean scale_background_x = false;
 	@XmlElement
 	public boolean scale_background_y = false;
-
-	private String path = "C://";
+	@XmlElement
+	public int gridSize = 16;
 	
+	private String path = "C://";
+
 	public String getPath() {
 		return path;
 	}
