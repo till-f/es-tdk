@@ -78,19 +78,20 @@ public class WidgetSettingsUI extends Composite {
 	
 	private class PositionButtonListener implements Listener {
 
-		int inc = 10;
 		int widthInc = 0;
 		int heightInc = 0;
-		int li; // widget link index
 
 		public PositionButtonListener(boolean x, boolean plus) {
-			if (!plus) {
-				inc = -10;
-			}
-			if (x) {
-				widthInc = inc;
-			} else {
-				heightInc = inc;
+			if(current_link != null && current_link.getDashboard() != null) {
+				int inc = current_link.getDashboard().getGridSizePx();
+				if (!plus) {
+					inc = -inc;
+				}
+				if (x) {
+					widthInc = inc;
+				} else {
+					heightInc = inc;
+				}
 			}
 		}
 
@@ -98,7 +99,6 @@ public class WidgetSettingsUI extends Composite {
 
 		@Override
 		public void handleEvent(Event event) {
-			li = links_combo.getSelectionIndex();
 			if (current_link != null && current_link.getCanvas() != null) {
 				c = current_link.getCanvas();
 				c.setBounds(c.getBounds().x + widthInc, c.getBounds().y + heightInc, c.getSize().x, c.getSize().y);
