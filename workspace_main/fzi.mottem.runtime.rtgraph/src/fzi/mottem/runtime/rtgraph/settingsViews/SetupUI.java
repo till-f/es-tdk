@@ -128,7 +128,7 @@ public class SetupUI {
 
 	public static void refresh() {
 		if (isOpen()) {
-			signalSettings.refresh();
+			signalSettings.refreshUI();
 			widgetSettings.refresh();
 			dashboardSettings.refresh(true);
 		}
@@ -138,11 +138,11 @@ public class SetupUI {
 			gatherSignals();
 		
 			if (isOpen()) {
-			signalSettings.refresh();
+			signalSettings.refreshUI();
 			if (widgetSettings != null)
 				widgetSettings.refresh();
-			SetupUnit.autoConnectWidgets();
-			SetupUnit.autoConnectGraphViews();
+			
+			
 		}
 	}
 

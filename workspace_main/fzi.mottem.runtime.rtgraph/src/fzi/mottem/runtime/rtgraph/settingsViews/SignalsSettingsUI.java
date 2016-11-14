@@ -95,7 +95,7 @@ public class SignalsSettingsUI extends Composite {
 		
 		refresh_button = new Button(this, SWT.PUSH);
 		refresh_button.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-		refresh_button.setText("Refresh");
+		refresh_button.setText("Refresh and Reconnect");
 		
 		//Add context menus for input signals list
 		inputPopupMenu = new Menu(in_signals_list);
@@ -146,7 +146,7 @@ public class SignalsSettingsUI extends Composite {
 		
 		addListeners();	
 		
-		refresh();
+		refreshUI();
 	}
 
 	private void addListeners() {
@@ -195,7 +195,11 @@ public class SignalsSettingsUI extends Composite {
 			
 			@Override
 			public void handleEvent(Event event) {
-				refresh();	
+				//refresh();
+				SetupUnit.refreshSignals();
+				refreshUI();
+				SetupUnit.autoConnectWidgets();
+				SetupUnit.autoConnectGraphViews();
 			}
 		});
 		
@@ -206,7 +210,7 @@ public class SignalsSettingsUI extends Composite {
 			//System.out.println(in_signals.get(s).getSimpleName());
 		}
 	}
-	public void refresh() {
+	public void refreshUI() {
 		in_signals = SetupUnit.getSignals(SignalType.HW_INPUT);
 		out_signals = SetupUnit.getSignals(SignalType.HW_OUTPUT);
 		

@@ -748,7 +748,7 @@ public class WidgetSettingsUI extends Composite {
 			for (int i = 0; i < out_signals.size(); i++) {
 				s = out_signals.get(i);
 				signals_combo.add(s.getType().toString().charAt(0) + " " + s.getSimpleName());
-				if (link.getSignalUID() == s.getId()) {
+				if (link.getSignalUID().equals(s.getId())) {
 					selection = i;
 				}
 			}
@@ -758,7 +758,7 @@ public class WidgetSettingsUI extends Composite {
 			for (int i = 0; i < signals.size(); i++) {
 				s = signals.get(i);
 				signals_combo.add(s.getType().toString().charAt(0) + " " + s.getSimpleName());
-				if (link.getSignalUID() == s.getId()) {
+				if (link.getSignalUID().equals(s.getId())) {
 					selection = i;
 				}
 			}
