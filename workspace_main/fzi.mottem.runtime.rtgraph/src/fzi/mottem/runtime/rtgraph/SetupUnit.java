@@ -24,6 +24,7 @@ import fzi.mottem.runtime.rtgraph.runnables.WidgetUpdater;
 import fzi.mottem.runtime.rtgraph.settingsViews.SetupUI;
 import fzi.mottem.runtime.rtgraph.settingsViews.WidgetSettingsUI;
 import fzi.mottem.runtime.rtgraph.views.Dashboard;
+import fzi.mottem.runtime.rtgraph.views.DashboardComposite;
 import fzi.mottem.runtime.rtgraph.views.GraphView;
 
 public class SetupUnit {
@@ -52,7 +53,7 @@ public class SetupUnit {
 
 	private static boolean testMode = false;
 
-	public static ArrayList<Dashboard> dashboards;
+	public static ArrayList<DashboardComposite> dashboards;
 
 	static {
 
@@ -77,7 +78,7 @@ public class SetupUnit {
 
 			// ProfileUtils.loadDefaultProfile();
 			// ViewCoordinator.showDashboardViewpart();
-			ViewCoordinator.showSettingsViewpart();
+			// ViewCoordinator.showSettingsViewpart();
 			// generateGraphViews();
 			// generateDashboards();
 
@@ -134,7 +135,7 @@ public class SetupUnit {
 	}
 
 	public static void reloadDashboards() {
-		dashboards = ViewCoordinator.getDashboards();
+		dashboards = ViewCoordinator.getDashboardEditors();
 	}
 	
 	/**
@@ -180,10 +181,10 @@ public class SetupUnit {
 	public static void autoConnectWidgets() {
 		reloadDashboards();
 
-		for (Dashboard d : dashboards) {
+		for (DashboardComposite d : dashboards) {
 			for (AbstractWidgetExchangeLink link : d.getWidgetLinks()) {
-				if (link.getWidgetType() == WidgetType.W_INDICATOR)
-					DataExchanger.registerConsumer(link.getRepresentation().getSignalUID(), link);
+					if(DataExchanger.replaceSignal(link.getRepresentation().getSignalUID(), link))
+						link.applyRepresentation(true,  false,  false);
 			}
 		}
 	}
@@ -211,7 +212,7 @@ public class SetupUnit {
 	 *            the MarkedFigureExchangeLink that needs to be registered
 	 */
 	public static void connectWidget(IndicatorWidgetLink link) {
-		DataExchanger.registerConsumer(link.getRepresentation().getSignalUID(), link);
+		DataExchanger.replaceSignal(link.getRepresentation().getSignalUID(), link);
 	}
 
 	/*
@@ -223,7 +224,7 @@ public class SetupUnit {
 	 */
 
 	public static void connectWidget(Signal signal, IndicatorWidgetLink current_link) {
-		DataExchanger.registerConsumer(signal, current_link);
+		DataExchanger.replaceSignal(signal, current_link);
 		current_link.setSignalUID(signal.getId());
 		current_link.setSignalSimpleName(signal.getSimpleName());
 	}
@@ -235,7 +236,7 @@ public class SetupUnit {
 	 *            the TraceExchangeLink that needs to be registered
 	 */
 	public static void connectTraceLink(TraceExchangeLink link) {
-		DataExchanger.registerConsumer(link.getSignalUID(), link);
+		DataExchanger.replaceSignal(link.getSignalUID(), link);
 	}
 
 	/**
@@ -248,7 +249,7 @@ public class SetupUnit {
 	 *            the TraceExchangeLink
 	 */
 	public static void connectTraceLink(int signalIndex, TraceExchangeLink link) {
-		if (DataExchanger.registerConsumer(signals.get(signalIndex), link)) {
+		if (DataExchanger.replaceSignal(signals.get(signalIndex), link)) {
 			link.setSignalUID(signals.get(signalIndex).getId());
 		} else {
 			System.out.println("SetupUnit: could not succesfully register link with name " + link.getName()
@@ -266,7 +267,7 @@ public class SetupUnit {
 	 *            the TraceExchangeLink
 	 */
 	public static void connectTraceLink(String signalUID, TraceExchangeLink link) {
-		if (DataExchanger.registerConsumer(signalUID, link)) {
+		if (DataExchanger.replaceSignal(signalUID, link)) {
 			link.setSignalUID(signalUID);
 		} else {
 			System.out.println("SetupUnit: could not succesfully register link with name " + link.getName()

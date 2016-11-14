@@ -227,7 +227,7 @@ public class GraphView extends ObservableView<GraphViewRepresentation> {
 			String simpleName = createSimpleName(uid);
 			link = new TraceExchangeLink(simpleName);
 			if (connect)
-				DataExchanger.registerConsumer(uid, link);
+				DataExchanger.replaceSignal(uid, link);
 			link.setSignalUID(uid);
 			addTrace(simpleName, link);
 			return link;
@@ -716,7 +716,7 @@ public class GraphView extends ObservableView<GraphViewRepresentation> {
 
 	public void registerLinks() {
 		for (TraceExchangeLink link : traceMap.values()) {
-			DataExchanger.registerConsumer(link.getSignalUID(), link);
+			DataExchanger.replaceSignal(link.getSignalUID(), link);
 		}
 	}
 
@@ -807,7 +807,7 @@ public class GraphView extends ObservableView<GraphViewRepresentation> {
 		for (Signal s : selected_in_signals) {
 			TraceExchangeLink link = addTraceGetLink(s.getSimpleName());
 			link.setSignalUID(s.getId());
-			DataExchanger.registerConsumer(s.getId(), link);
+			DataExchanger.replaceSignal(s.getId(), link);
 			// TODO Test
 			link.updateRepresentation();
 		}

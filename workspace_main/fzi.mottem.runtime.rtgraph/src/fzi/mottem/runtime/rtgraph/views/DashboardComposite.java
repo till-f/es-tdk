@@ -220,7 +220,7 @@ public class DashboardComposite extends Dashboard {
 		l.getCanvas().addListener(SWT.MouseDown, dragListener);
 		l.getCanvas().addListener(SWT.MouseMove, dragListener);
 
-		DataExchanger.registerConsumer(newRep.getSignalUID(), l);
+		DataExchanger.replaceSignal(newRep.getSignalUID(), l);
 
 		// SetupUI.refresh();
 		setDirty(true);

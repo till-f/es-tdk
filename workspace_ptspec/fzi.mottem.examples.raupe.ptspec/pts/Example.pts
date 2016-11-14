@@ -6,6 +6,8 @@ test AutoDriving : Target default Core0
 	run until main;
 	
 	Helper.BackgroundUpdate(ref current_distance);
+	Helper.BackgroundUpdate2(ref speed_left);
+	Helper.BackgroundUpdate2(ref speed_right);
 	
 	run;
 }

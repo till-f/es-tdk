@@ -126,7 +126,7 @@ public abstract class EclipseRuntime implements IRuntime
 							
 						IAccessDriver accessDriver = _driversByTRef.get(tRef).get(0);
 						_consumer.setAccessDriverForTRef(tRef, accessDriver);
-						DataExchanger.registerConsumer(signalUID, _consumer);
+						DataExchanger.addSignalToConsumer(signalUID, _consumer);
 					}
 					else
 					{
@@ -144,8 +144,11 @@ public abstract class EclipseRuntime implements IRuntime
 	{
 		cancelAllAsyncExecutions();
 		
-		DataExchanger.removeConsumer(_consumer);
+		// necessarry? might be called in the context of DataExchanger.removeConsumer()
+		_consumer.drop();
 
+		DataExchanger.removeConsumer(_consumer);
+		
 		if (SIMULATION_MODE)
 			return;
 		

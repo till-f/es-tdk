@@ -51,7 +51,6 @@ public interface IAccessDriver
 	 */
 	public <T> void setValue(ITestWriteable element, T value);
 	
-	
 	/*
 	 * Returns the property value of the provided element.
 	 * 

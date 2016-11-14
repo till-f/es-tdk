@@ -74,7 +74,7 @@ public class TraceExchangeLink extends ExchangeLink {
 		this.signalUID = traceRepresentation.getSignalUID();
 		traceUpdater = new TraceUpdater(this);
 		traceDataProvider.setBufferSize(traceRepresentation.getBufferSize());
-		DataExchanger.registerConsumer(traceRepresentation.getSignalUID(), this);
+		DataExchanger.replaceSignal(traceRepresentation.getSignalUID(), this);
 	}
 
 	public void updateBuffer() {
@@ -139,7 +139,7 @@ public class TraceExchangeLink extends ExchangeLink {
 		this.signalUID = representation.getSignalUID();
 		traceUpdater.setTracePollingDelay(representation.getPollingDelay());
 		traceDataProvider.setBufferSize(representation.getBufferSize());
-		DataExchanger.registerConsumer(representation.getSignalUID(), this);
+		DataExchanger.replaceSignal(representation.getSignalUID(), this);
 	}
 	
 	public void updateRepresentation() {

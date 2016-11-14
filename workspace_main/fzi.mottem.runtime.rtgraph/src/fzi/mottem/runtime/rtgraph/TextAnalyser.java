@@ -33,7 +33,7 @@ public class TextAnalyser {
 				i += token.length();
 				if(simpleNames.contains(token)) {
 					int index = simpleNames.indexOf(token);
-					DataExchanger.registerConsumer(signals.get(index), consumer);
+					DataExchanger.replaceSignal(signals.get(index), consumer);
 				}
 				//i++; ?
 				//call subroutine that will

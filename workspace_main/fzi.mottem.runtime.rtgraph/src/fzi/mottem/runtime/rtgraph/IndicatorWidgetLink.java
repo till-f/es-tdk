@@ -423,8 +423,8 @@ public class IndicatorWidgetLink extends AbstractWidgetExchangeLink {
 
 		if (applySignal) {
 			signal = DataExchanger.getSignal(representation.getSignalUID());
+			this.signalUID = representation.getSignalUID();
 			if (signal != null) {
-				this.signalUID = signal.getId();
 				setSignalSimpleName(signal.getSimpleName());
 			}
 		}
@@ -447,10 +447,6 @@ public class IndicatorWidgetLink extends AbstractWidgetExchangeLink {
 		}
 
 		dashboard.layout(true);
-		if (DataExchanger.getSignal(signalUID) != null) {
-			simpleName = DataExchanger.getSignal(signalUID).getSimpleName();
-		}
-
 		if (representation.getText() == null || representation.getText().length() < 1) {
 			canvas.setToolTipText(simpleName + "\n" + signalUID);
 		} else {

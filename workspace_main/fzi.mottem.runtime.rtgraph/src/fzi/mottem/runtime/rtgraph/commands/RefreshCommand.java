@@ -72,8 +72,8 @@ public class RefreshCommand extends AbstractHandler
         			}
     			}
 			}
-
-			SetupUI.refreshSignals();
+    		
+    		SetupUI.refreshSignals();
 		}
     	catch (Exception e)
     	{

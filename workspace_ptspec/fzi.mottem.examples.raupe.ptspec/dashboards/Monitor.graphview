@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GraphView>
+    <traceList>
+        <trace>
+            <blue>196</blue>
+            <bufferSize>16384</bufferSize>
+            <green>21</green>
+            <logarithmic>false</logarithmic>
+            <max_range>100.0</max_range>
+            <min_range>0.0</min_range>
+            <name>current_distance</name>
+            <pointStyle>POINT</pointStyle>
+            <pollingDelay>10</pollingDelay>
+            <red>21</red>
+            <signalUID>/fzi.mottem.examples.raupe.ptspec/model/fzi.mottem.examples.raupe.actuator.etm-code/+Ncurrent_distance+Nfzi_mottem_examples_raupe_actuator</signalUID>
+            <traceName>current_distance</traceName>
+            <type>SOLID_LINE</type>
+        </trace>
+    </traceList>
+    <maxPrimaryXrange>460702.15000000014</maxPrimaryXrange>
+    <minPrimaryXrange>348921.84999999986</minPrimaryXrange>
+    <path>C:\Git\es-tdk\workspace_ptspec\fzi.mottem.examples.raupe.ptspec\dashboards\Monitor.graphview</path>
+    <primaryXLogarithmic>false</primaryXLogarithmic>
+</GraphView>
