@@ -27,7 +27,7 @@ import fzi.mottem.runtime.rtgraph.views.Dashboard;
 import fzi.mottem.runtime.rtgraph.views.DashboardComposite;
 import fzi.mottem.runtime.rtgraph.views.GraphView;
 
-public class SetupUnit {
+public class SetupUtilities {
 
 
 	static IWorkspace workspace;
@@ -89,7 +89,7 @@ public class SetupUnit {
 
 	}
 
-	private SetupUnit() {
+	private SetupUtilities() {
 		
 	}
 	

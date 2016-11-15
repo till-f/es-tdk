@@ -12,7 +12,7 @@ import javax.xml.bind.UnmarshalException;
 import javax.xml.bind.Unmarshaller;
 
 import fzi.mottem.runtime.rtgraph.Constants;
-import fzi.mottem.runtime.rtgraph.SetupUnit;
+import fzi.mottem.runtime.rtgraph.SetupUtilities;
 import fzi.mottem.runtime.rtgraph.ViewCoordinator;
 import fzi.mottem.runtime.rtgraph.views.GraphView;
 
@@ -176,7 +176,7 @@ public class ProfileUtils {
 	public static ArrayList<String> gatherProfileNames() {
 		ArrayList<String> profiles = new ArrayList<String>();
 
-		File dir = new File(SetupUnit.workspaceDirectory.getAbsolutePath() + Constants.profiles_path);
+		File dir = new File(SetupUtilities.workspaceDirectory.getAbsolutePath() + Constants.profiles_path);
 
 		File[] allFiles = dir.listFiles();
 

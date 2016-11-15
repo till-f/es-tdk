@@ -48,6 +48,8 @@ public class DashboardSettingsUI extends Composite {
 	Button add_consumer_button;
 	Button add_controller_button;
 	private Button set_button;
+	private Label gridSize_label;
+	private Text gridSize_text;
 
 	public DashboardSettingsUI(Composite parent, int style) {
 		super(parent, style);
@@ -88,10 +90,16 @@ public class DashboardSettingsUI extends Composite {
 		polling_label.setText("Poll interval (ms)");
 		polling_text = new Text(this, SWT.CENTER | SWT.SINGLE | SWT.BORDER);
 		polling_text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+		
+		gridSize_label = new Label(this, SWT.None);
+		gridSize_label.setText("Grid size (pixel)");
+		gridSize_text = new Text(this, SWT.CENTER | SWT.SINGLE | SWT.BORDER);
+		gridSize_text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 
 		name_label = new Label(this, SWT.None);
 		name_label.setText("Dashboard name:");
 		name_text = new Text(this, SWT.CENTER | SWT.SINGLE | SWT.BORDER);
+		name_text.setEnabled(false);
 		name_text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 
 		set_button = new Button(this, SWT.PUSH);
@@ -216,54 +224,41 @@ public class DashboardSettingsUI extends Composite {
 					stretch_bg_x_btn.setSelection(dashboard.isStretch_bg_x());
 					stretch_bg_y_btn.setSelection(dashboard.isStretch_bg_y());
 					polling_text.setText("" + dashboard.getRepresentation().widget_polling_delay);
+					gridSize_text.setText("" + dashboard.getGridSizePx());
 					name_text.setText("" + dashboard.getName());
 
-					/*
-					 * links_combo.removeAll(); for (int i = 0; i <
-					 * dashboard.getWidgetLinks().size(); i++) {
-					 * links_combo.add( i + " " +
-					 * dashboard.getWidgetLinks().get(i).getFigure().getClass().
-					 * getSimpleName()); if (current_link ==
-					 * dashboard.getWidgetLinks().get(i)) {
-					 * links_combo.select(i); } }
-					 */
 				} else {
 					dashboard = null; // ?
 				}
 			}
 		});
+		
+		Listener updateDashboardListener = new Listener() {
+			@Override
+			public void handleEvent(Event e) {
+				if (e.keyCode == SWT.CR) {
+					updateDashboard();
+				}
+			}
+		};
 
-	
+		polling_text.addListener(SWT.KeyDown, updateDashboardListener);
+		gridSize_text.addListener(SWT.KeyDown, updateDashboardListener);
 
 		polling_text.addVerifyListener(new IntegerListener());
+		gridSize_text.addVerifyListener(new IntegerListener());
 
 		set_button.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if (dashboard != null && !dashboard.isDisposed()) {
-					if(name_text.getText().length() > 0) {
-						if (name_text.getText() != dashboard.getName()) {
-							dashboard.setName(name_text.getText());
-						}
-					}
-					
-					if (polling_text.getText().length() > 0) {
-						int delay = Integer.parseInt(polling_text.getText());
-						if (delay != dashboard.getWidget_pollingDelay()) {
-							dashboard.setWidgetPollingDelay(delay);
-						}
-					}
-
-					refresh(true);
-				}
-
+				updateDashboard();
 			}
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
-
+				
 			}
 		});
 
@@ -292,7 +287,34 @@ public class DashboardSettingsUI extends Composite {
 			stretch_bg_x_btn.setSelection(dashboard.isStretch_bg_x());
 			stretch_bg_y_btn.setSelection(dashboard.isStretch_bg_y());
 			polling_text.setText("" + dashboard.getRepresentation().widget_polling_delay);
+			gridSize_text.setText("" + dashboard.getGridSizePx());
 			name_text.setText("" + dashboard.getName());
+		}
+	}
+	
+	private void updateDashboard() {
+		if (dashboard != null && !dashboard.isDisposed()) {
+			if(name_text.getText().length() > 0) {
+				if (name_text.getText() != dashboard.getName()) {
+					dashboard.setName(name_text.getText());
+				}
+			}
+			
+			if (polling_text.getText().length() > 0) {
+				int delay = Integer.parseInt(polling_text.getText());
+				if (delay != dashboard.getWidget_pollingDelay()) {
+					dashboard.setWidgetPollingDelay(delay);
+				}
+			}
+			
+			if (gridSize_text.getText().length() > 0) {
+				int pixel = Integer.parseInt(gridSize_text.getText());
+				if (pixel != dashboard.getGridSizePx()) {
+					dashboard.setGridSizePx(pixel);
+				}
+			}
+
+			refresh(true);
 		}
 	}
 }

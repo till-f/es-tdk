@@ -45,7 +45,7 @@ import fzi.mottem.runtime.rtgraph.Constants;
 import fzi.mottem.runtime.rtgraph.ControllerWidgetLink;
 import fzi.mottem.runtime.rtgraph.EclipseFileSystemHelper;
 import fzi.mottem.runtime.rtgraph.IndicatorWidgetLink;
-import fzi.mottem.runtime.rtgraph.SetupUnit;
+import fzi.mottem.runtime.rtgraph.SetupUtilities;
 import fzi.mottem.runtime.rtgraph.ViewCoordinator;
 import fzi.mottem.runtime.rtgraph.XML.DashboardRepresentation;
 import fzi.mottem.runtime.rtgraph.XML.WidgetRepresentation;
@@ -121,7 +121,7 @@ public class DashboardComposite extends Dashboard {
 	// ------------------------------------------------
 
 	private DashboardRepresentation representation;
-	private int gridPxSize = 10;
+	private int gridSizePx = 16;
 
 	WidgetUpdater widgetUpdater;
 	public ArrayList<AbstractWidgetExchangeLink> widgetLinks = new ArrayList<AbstractWidgetExchangeLink>();
@@ -146,6 +146,15 @@ public class DashboardComposite extends Dashboard {
 		if (editor != null)
 			editor.fireChange();
 	}
+	
+
+	public int getGridSizePx() {
+		return gridSizePx;
+	}
+
+	public void setGridSizePx(int gridPxSize) {
+		this.gridSizePx = gridPxSize;
+	}
 
 	@Override
 	public DashboardRepresentation getRepresentation() {
@@ -160,6 +169,7 @@ public class DashboardComposite extends Dashboard {
 	@Override
 	public void applyRepresentation() {
 		setDashboardBackgroundImage(representation.background_path);
+		setGridSizePx(representation.gridSize);
 		generateWidgets();
 	}
 
@@ -167,6 +177,7 @@ public class DashboardComposite extends Dashboard {
 	public void updateRepresentation() {
 
 		representation.figureRepresentations.clear();
+		representation.gridSize = gridSizePx;
 		for (AbstractWidgetExchangeLink wcons : widgetLinks) {
 			wcons.updateRepresentation();
 			representation.figureRepresentations.add(wcons.getRepresentation());
@@ -212,7 +223,8 @@ public class DashboardComposite extends Dashboard {
 		AbstractMarkedWidgetFigure figure = createIndicatorFigure(newRep.getType());
 
 		final IndicatorWidgetLink l = new IndicatorWidgetLink(figure, this, newRep);
-
+		l.snapToGrid();
+		
 		widgetLinks.add(0, l);
 
 		l.getCanvas().addMouseListener(new CallWidgetSettingsListener(l));
@@ -221,6 +233,8 @@ public class DashboardComposite extends Dashboard {
 		l.getCanvas().addListener(SWT.MouseMove, dragListener);
 
 		DataExchanger.replaceSignal(newRep.getSignalUID(), l);
+		
+		
 
 		// SetupUI.refresh();
 		setDirty(true);
@@ -237,7 +251,8 @@ public class DashboardComposite extends Dashboard {
 
 		final ControllerWidgetLink l = new ControllerWidgetLink(figure, this, newRep);
 		widgetLinks.add(l);
-
+		l.snapToGrid();
+		
 		ControllerDragListener listener = new ControllerDragListener(l);
 		l.getCanvas().addMouseListener(new CallControllerSettingsListener(l));
 		l.getCanvas().addListener(SWT.MouseDown, listener);
@@ -772,10 +787,10 @@ public class DashboardComposite extends Dashboard {
 	}
 	
 	public Rectangle computeBounds(int x, int y, int w, int h) {
-		int newx = x - x%gridPxSize;
-		int newy = y - y%gridPxSize;
-		int neww = w - w%gridPxSize;
-		int newh = h - h%gridPxSize;
+		int newx = x - x%gridSizePx;
+		int newy = y - y%gridSizePx;
+		int neww = w - w%gridSizePx;
+		int newh = h - h%gridSizePx;
 		
 		return new Rectangle(newx, newy, neww, newh);
 	}

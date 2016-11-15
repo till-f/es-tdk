@@ -10,7 +10,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
 import fzi.mottem.runtime.rtgraph.AbstractWidgetExchangeLink;
-import fzi.mottem.runtime.rtgraph.SetupUnit;
+import fzi.mottem.runtime.rtgraph.SetupUtilities;
 import fzi.mottem.runtime.rtgraph.ViewCoordinator;
 import fzi.mottem.runtime.rtgraph.views.DashboardComposite;
 
@@ -108,7 +108,7 @@ public class SetupUI {
 	}
 
 	private static void gatherSignals() {
-		SetupUnit.refreshSignals();
+		SetupUtilities.refreshSignals();
 	}
 
 	public static void makeUI(Composite parent) {
@@ -128,7 +128,7 @@ public class SetupUI {
 
 	public static void refresh() {
 		if (isOpen()) {
-			signalSettings.refresh();
+			signalSettings.refreshUI();
 			widgetSettings.refresh();
 			dashboardSettings.refresh(true);
 		}
@@ -138,11 +138,11 @@ public class SetupUI {
 			gatherSignals();
 		
 			if (isOpen()) {
-			signalSettings.refresh();
+			signalSettings.refreshUI();
 			if (widgetSettings != null)
 				widgetSettings.refresh();
-			SetupUnit.autoConnectWidgets();
-			SetupUnit.autoConnectGraphViews();
+			
+			
 		}
 	}
 

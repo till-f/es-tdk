@@ -4,7 +4,7 @@ import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 
 import fzi.mottem.runtime.rtgraph.ControllerWidgetLink;
-import fzi.mottem.runtime.rtgraph.SetupUnit;
+import fzi.mottem.runtime.rtgraph.SetupUtilities;
 
 public class CallControllerSettingsListener  implements MouseListener {
 	
@@ -16,7 +16,7 @@ public class CallControllerSettingsListener  implements MouseListener {
 	
 	@Override
 	public void mouseDoubleClick(MouseEvent e) {
-		SetupUnit.presentWidgetSettings(link);
+		SetupUtilities.presentWidgetSettings(link);
 	}
 
 	@Override

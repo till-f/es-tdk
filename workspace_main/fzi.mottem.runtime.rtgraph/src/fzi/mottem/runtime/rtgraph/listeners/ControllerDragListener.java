@@ -80,10 +80,10 @@ public class ControllerDragListener implements Listener {
 
 				Rectangle tr = tracker.getRectangles()[0];
 
-				if (tr.x != bounds.x || tr.y != bounds.y || tr.width != bounds.width || tr.height != bounds.height) {
+				if (tr.x != bounds.x || tr.y != bounds.y || tr.width != bounds.width || tr.height != bounds.height) {	
+					c.setBounds(link.snapToGrid(tracker.getRectangles()[0]));
 					if (finished)
 						link.updateRepresentation(false, true, false);
-					c.setBounds(tracker.getRectangles()[0]);
 					resizeBounds = new Rectangle(c.getBounds().width - resize_box_side,
 							c.getBounds().height - resize_box_side, resize_box_side, resize_box_side);
 

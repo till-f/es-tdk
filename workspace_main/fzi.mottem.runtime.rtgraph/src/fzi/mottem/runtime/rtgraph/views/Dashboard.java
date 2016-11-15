@@ -26,7 +26,7 @@ import org.eclipse.swt.widgets.Shell;
 
 import fzi.mottem.runtime.rtgraph.AbstractWidgetExchangeLink;
 import fzi.mottem.runtime.rtgraph.Constants;
-import fzi.mottem.runtime.rtgraph.SetupUnit;
+import fzi.mottem.runtime.rtgraph.SetupUtilities;
 import fzi.mottem.runtime.rtgraph.XML.DashboardRepresentation;
 import fzi.mottem.runtime.rtgraph.XML.ProfileUtils;
 import fzi.mottem.runtime.rtgraph.XML.WidgetRepresentation;
@@ -80,8 +80,8 @@ public class Dashboard extends ObservableView<DashboardRepresentation> {
 			// TODO Auto-generated catch block
 			System.out.println("Could not load background image from " + representation.background_path);
 			setBackgroundImage(
-					new Image(Display.getCurrent(), SetupUnit.class.getResourceAsStream(Constants.gray_icon)));
-			setBackground_path(SetupUnit.class.getResource(Constants.gray_icon).getPath());
+					new Image(Display.getCurrent(), SetupUtilities.class.getResourceAsStream(Constants.gray_icon)));
+			setBackground_path(SetupUtilities.class.getResource(Constants.gray_icon).getPath());
 		}
 
 		generateWidgets();

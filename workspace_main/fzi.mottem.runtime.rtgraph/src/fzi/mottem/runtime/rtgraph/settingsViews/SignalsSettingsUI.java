@@ -20,7 +20,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import fzi.mottem.runtime.dataexchanger.Signal;
 import fzi.mottem.runtime.dataexchanger.Signal.SignalType;
 //import fzi.mottem.runtime.rtgraph.MenuIt;
-import fzi.mottem.runtime.rtgraph.SetupUnit;
+import fzi.mottem.runtime.rtgraph.SetupUtilities;
 import fzi.mottem.runtime.rtgraph.ViewCoordinator;
 import fzi.mottem.runtime.rtgraph.editors.DashboardEditor;
 import fzi.mottem.runtime.rtgraph.editors.GraphViewEditor;
@@ -95,7 +95,7 @@ public class SignalsSettingsUI extends Composite {
 		
 		refresh_button = new Button(this, SWT.PUSH);
 		refresh_button.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-		refresh_button.setText("Refresh");
+		refresh_button.setText("Refresh and Reconnect");
 		
 		//Add context menus for input signals list
 		inputPopupMenu = new Menu(in_signals_list);
@@ -146,7 +146,7 @@ public class SignalsSettingsUI extends Composite {
 		
 		addListeners();	
 		
-		refresh();
+		refreshUI();
 	}
 
 	private void addListeners() {
@@ -195,7 +195,11 @@ public class SignalsSettingsUI extends Composite {
 			
 			@Override
 			public void handleEvent(Event event) {
-				refresh();	
+				//refresh();
+				SetupUtilities.refreshSignals();
+				refreshUI();
+				SetupUtilities.autoConnectWidgets();
+				SetupUtilities.autoConnectGraphViews();
 			}
 		});
 		
@@ -206,11 +210,11 @@ public class SignalsSettingsUI extends Composite {
 			//System.out.println(in_signals.get(s).getSimpleName());
 		}
 	}
-	public void refresh() {
-		in_signals = SetupUnit.getSignals(SignalType.HW_INPUT);
-		out_signals = SetupUnit.getSignals(SignalType.HW_OUTPUT);
+	public void refreshUI() {
+		in_signals = SetupUtilities.getSignals(SignalType.HW_INPUT);
+		out_signals = SetupUtilities.getSignals(SignalType.HW_OUTPUT);
 		
-		bi_signals = SetupUnit.getSignals(SignalType.BIDIRECTIONAL);
+		bi_signals = SetupUtilities.getSignals(SignalType.BIDIRECTIONAL);
 		
 		in_signals.addAll(bi_signals);
 		out_signals.addAll(bi_signals);

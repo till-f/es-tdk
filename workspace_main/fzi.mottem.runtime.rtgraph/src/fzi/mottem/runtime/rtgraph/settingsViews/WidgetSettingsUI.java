@@ -34,7 +34,7 @@ import fzi.mottem.runtime.rtgraph.AbstractWidgetExchangeLink;
 import fzi.mottem.runtime.rtgraph.AbstractWidgetExchangeLink.WidgetType;
 import fzi.mottem.runtime.rtgraph.Constants;
 import fzi.mottem.runtime.rtgraph.IndicatorWidgetLink;
-import fzi.mottem.runtime.rtgraph.SetupUnit;
+import fzi.mottem.runtime.rtgraph.SetupUtilities;
 import fzi.mottem.runtime.rtgraph.ViewCoordinator;
 import fzi.mottem.runtime.rtgraph.listeners.DoubleDigitListener;
 import fzi.mottem.runtime.rtgraph.listeners.IntegerListener;
@@ -78,19 +78,20 @@ public class WidgetSettingsUI extends Composite {
 	
 	private class PositionButtonListener implements Listener {
 
-		int inc = 10;
 		int widthInc = 0;
 		int heightInc = 0;
-		int li; // widget link index
 
 		public PositionButtonListener(boolean x, boolean plus) {
-			if (!plus) {
-				inc = -10;
-			}
-			if (x) {
-				widthInc = inc;
-			} else {
-				heightInc = inc;
+			if(current_link != null && current_link.getDashboard() != null) {
+				int inc = current_link.getDashboard().getGridSizePx();
+				if (!plus) {
+					inc = -inc;
+				}
+				if (x) {
+					widthInc = inc;
+				} else {
+					heightInc = inc;
+				}
 			}
 		}
 
@@ -98,7 +99,6 @@ public class WidgetSettingsUI extends Composite {
 
 		@Override
 		public void handleEvent(Event event) {
-			li = links_combo.getSelectionIndex();
 			if (current_link != null && current_link.getCanvas() != null) {
 				c = current_link.getCanvas();
 				c.setBounds(c.getBounds().x + widthInc, c.getBounds().y + heightInc, c.getSize().x, c.getSize().y);
@@ -191,7 +191,7 @@ public class WidgetSettingsUI extends Composite {
 	}
 
 	public void setAndFocusDashboard(DashboardComposite dashboard) {		
-		if(!this.dashboard.equals(dashboard)) {
+		if(this.dashboard == null || !this.dashboard.equals(dashboard)) {
 			System.out.println("WS: setAndFocusDashboard " + dashboard);
 			this.dashboard = dashboard;
 			if (this.dashboard.getCurrent_link() != null) {
@@ -206,9 +206,9 @@ public class WidgetSettingsUI extends Composite {
 	}
 
 	public void refreshSignalsLinks() {
-		signals = SetupUnit.getSignals();
+		signals = SetupUtilities.getSignals();
 
-		out_signals = SetupUnit.getSignals(SignalType.HW_OUTPUT);
+		out_signals = SetupUtilities.getSignals(SignalType.HW_OUTPUT);
 	}
 
 	protected void initLayout() {
@@ -414,22 +414,7 @@ public class WidgetSettingsUI extends Composite {
 
 	protected void initListeners() {
 		
-		/*.addListener(SWT.KeyDown, new Listener() {
-
-			@Override
-			public void handleEvent(Event e) {
-				if ((e.keyCode == SWT.CTRL)) {
-					mouseWheelListener.setZoomXaxis(true);
-					mouseWheelListener.setZoomYaxis(false);
-		
-				}
-				if ((e.keyCode == SWT.SHIFT)) {
-					mouseWheelListener.setZoomXaxis(false);
-					mouseWheelListener.setZoomYaxis(true);
-
-				}
-			}
-		});*/
+	
 		
 		Listener enterPositionListener = new Listener() {
 			@Override
@@ -627,7 +612,7 @@ public class WidgetSettingsUI extends Composite {
 
 				if (signals.get(si).getId() != current_link.getSignalUID()) {
 					if (current_link.getWidgetType() == WidgetType.W_INDICATOR) {
-						SetupUnit.connectWidget(signals.get(si), (IndicatorWidgetLink) current_link);
+						SetupUtilities.connectWidget(signals.get(si), (IndicatorWidgetLink) current_link);
 					} else { // case controller link - use only out_signals
 						current_link.getRepresentation().setSignalUID(out_signals.get(si).getId());
 						current_link.applyRepresentation(true, false, false);
@@ -748,7 +733,7 @@ public class WidgetSettingsUI extends Composite {
 			for (int i = 0; i < out_signals.size(); i++) {
 				s = out_signals.get(i);
 				signals_combo.add(s.getType().toString().charAt(0) + " " + s.getSimpleName());
-				if (link.getSignalUID() == s.getId()) {
+				if (link.getSignalUID().equals(s.getId())) {
 					selection = i;
 				}
 			}
@@ -758,7 +743,7 @@ public class WidgetSettingsUI extends Composite {
 			for (int i = 0; i < signals.size(); i++) {
 				s = signals.get(i);
 				signals_combo.add(s.getType().toString().charAt(0) + " " + s.getSimpleName());
-				if (link.getSignalUID() == s.getId()) {
+				if (link.getSignalUID().equals(s.getId())) {
 					selection = i;
 				}
 			}

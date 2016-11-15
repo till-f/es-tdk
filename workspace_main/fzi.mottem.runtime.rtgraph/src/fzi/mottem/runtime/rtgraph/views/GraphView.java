@@ -38,7 +38,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import fzi.mottem.runtime.dataexchanger.DataExchanger;
 import fzi.mottem.runtime.dataexchanger.Signal;
 import fzi.mottem.runtime.rtgraph.Constants;
-import fzi.mottem.runtime.rtgraph.SetupUnit;
+import fzi.mottem.runtime.rtgraph.SetupUtilities;
 import fzi.mottem.runtime.rtgraph.TraceExchangeLink;
 import fzi.mottem.runtime.rtgraph.ViewCoordinator;
 import fzi.mottem.runtime.rtgraph.XML.GraphViewRepresentation;
@@ -60,9 +60,9 @@ public class GraphView extends ObservableView<GraphViewRepresentation> {
 	Button followButton;
 	
 	Image running_rabbit = new Image(Display.getCurrent(),
-			SetupUnit.class.getResourceAsStream(Constants.rabbit_run_icon));
+			SetupUtilities.class.getResourceAsStream(Constants.rabbit_run_icon));
 	Image sitting_rabbit = new Image(Display.getCurrent(),
-			SetupUnit.class.getResourceAsStream(Constants.rabbit_sit_icon));
+			SetupUtilities.class.getResourceAsStream(Constants.rabbit_sit_icon));
 
 	Trace mainTrace;
 	private CircularBufferDataProvider mainTraceProvider;
@@ -317,7 +317,7 @@ public class GraphView extends ObservableView<GraphViewRepresentation> {
 	 *            the trace that is mapped to the Trace Exchange Link
 	 */
 	public void connectTraceLink(int signalIndex, Trace t) {
-		SetupUnit.connectTraceLink(signalIndex, traceMap.get(t));
+		SetupUtilities.connectTraceLink(signalIndex, traceMap.get(t));
 		traceMap.get(t).startUpdater();
 		setChanged();
 		setDirty(true);
@@ -333,7 +333,7 @@ public class GraphView extends ObservableView<GraphViewRepresentation> {
 	 *            the trace that is mapped to the Trace Exchange Link
 	 */
 	public void connectTraceLink(String signalUID, TraceExchangeLink tl) {
-		SetupUnit.connectTraceLink(signalUID, tl);
+		SetupUtilities.connectTraceLink(signalUID, tl);
 		tl.startUpdater();
 		setChanged();
 		setDirty(true);
@@ -349,7 +349,7 @@ public class GraphView extends ObservableView<GraphViewRepresentation> {
 	 *            the trace that is mapped to the Trace Exchange Link
 	 */
 	public void connectTraceLink(String signalUID, Trace t) {
-		SetupUnit.connectTraceLink(signalUID, traceMap.get(t));
+		SetupUtilities.connectTraceLink(signalUID, traceMap.get(t));
 		traceMap.get(t).startUpdater();
 		setChanged();
 		setDirty(true);
