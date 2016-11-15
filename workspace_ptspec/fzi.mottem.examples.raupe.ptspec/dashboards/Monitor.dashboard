@@ -7,9 +7,9 @@
             <rangeMin>0.0</rangeMin>
             <signalUID>default</signalUID>
             <type>5</type>
-            <width>70</width>
-            <x>380</x>
-            <y>460</y>
+            <width>60</width>
+            <x>400</x>
+            <y>470</y>
             <logarithmic>false</logarithmic>
             <numberFormat></numberFormat>
             <rangeHigh>75.0</rangeHigh>
@@ -23,9 +23,9 @@
             <rangeMin>0.0</rangeMin>
             <signalUID>default</signalUID>
             <type>5</type>
-            <width>70</width>
-            <x>20</x>
-            <y>460</y>
+            <width>60</width>
+            <x>30</x>
+            <y>470</y>
             <logarithmic>false</logarithmic>
             <numberFormat></numberFormat>
             <rangeHigh>75.0</rangeHigh>
@@ -34,12 +34,12 @@
             <widgetType>W_INDICATOR</widgetType>
         </widget>
         <widget>
-            <height>200</height>
+            <height>210</height>
             <rangeMax>80.0</rangeMax>
             <rangeMin>0.0</rangeMin>
             <signalUID>/fzi.mottem.examples.raupe.ptspec/model/fzi.mottem.examples.raupe.actuator.etm-code/+Ncurrent_distance+Nfzi_mottem_examples_raupe_actuator</signalUID>
             <type>4</type>
-            <width>420</width>
+            <width>430</width>
             <x>20</x>
             <y>20</y>
             <logarithmic>false</logarithmic>
@@ -50,14 +50,14 @@
             <widgetType>W_INDICATOR</widgetType>
         </widget>
         <widget>
-            <height>200</height>
+            <height>210</height>
             <rangeMax>100.0</rangeMax>
             <rangeMin>-100.0</rangeMin>
             <signalUID>/fzi.mottem.examples.raupe.ptspec/model/fzi.mottem.examples.raupe.actuator.etm-code/+Nspeed_left+Nfzi_mottem_examples_raupe_actuator</signalUID>
             <type>1</type>
-            <width>200</width>
-            <x>10</x>
-            <y>250</y>
+            <width>210</width>
+            <x>20</x>
+            <y>260</y>
             <logarithmic>false</logarithmic>
             <numberFormat></numberFormat>
             <rangeHigh>100.0</rangeHigh>
@@ -66,14 +66,14 @@
             <widgetType>W_INDICATOR</widgetType>
         </widget>
         <widget>
-            <height>200</height>
+            <height>210</height>
             <rangeMax>100.0</rangeMax>
             <rangeMin>-100.0</rangeMin>
             <signalUID>/fzi.mottem.examples.raupe.ptspec/model/fzi.mottem.examples.raupe.actuator.etm-code/+Nspeed_right+Nfzi_mottem_examples_raupe_actuator</signalUID>
             <type>1</type>
-            <width>200</width>
-            <x>220</x>
-            <y>250</y>
+            <width>210</width>
+            <x>240</x>
+            <y>260</y>
             <logarithmic>false</logarithmic>
             <numberFormat></numberFormat>
             <rangeHigh>100.0</rangeHigh>
@@ -88,5 +88,6 @@
     <background_path>C:\</background_path>
     <scale_background_x>false</scale_background_x>
     <scale_background_y>false</scale_background_y>
+    <gridSize>10</gridSize>
     <path>C:\Git\es-tdk\workspace_ptspec\fzi.mottem.examples.raupe.ptspec\dashboards\Monitor.dashboard</path>
 </Dashboard>

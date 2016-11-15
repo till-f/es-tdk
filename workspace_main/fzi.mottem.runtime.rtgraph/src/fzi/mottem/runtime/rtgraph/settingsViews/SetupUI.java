@@ -5,7 +5,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 
@@ -135,14 +134,13 @@ public class SetupUI {
 	}
 
 	public static void refreshSignals() {
-			gatherSignals();
-		
-			if (isOpen()) {
-			signalSettings.refreshUI();
+		gatherSignals();
+	
+		if (isOpen()) {
+			if (widgetSettings != null)
+				signalSettings.refreshUI();
 			if (widgetSettings != null)
 				widgetSettings.refresh();
-			
-			
 		}
 	}
 

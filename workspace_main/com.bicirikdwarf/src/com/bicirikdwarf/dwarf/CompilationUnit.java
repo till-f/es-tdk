@@ -30,17 +30,17 @@ public class CompilationUnit {
 		this.address = address;
 	}
 
-	public void parse(ByteBuffer buffer) {
+	public void parse(ByteBuffer buffer, boolean invertByteOrder) {
 		ElfUtils.dumpNextNBytes(buffer, 16);
 
-		length = buffer.getInt();
-		version = buffer.getShort();
-		abbrev_offset = buffer.getInt();
+		length = invertByteOrder ? Integer.reverseBytes(buffer.getInt()) : buffer.getInt();
+		version = invertByteOrder ? Short.reverseBytes(buffer.getShort()) : buffer.getShort();
+		abbrev_offset = invertByteOrder ? Integer.reverseBytes(buffer.getInt()) : buffer.getInt();
 		pointer_size = buffer.get();
 
 		int initial_length_size = 4;
 		if (length == 0xffffffff) {
-			length = (int) buffer.getLong();
+			length = (int) (invertByteOrder ? Long.reverseBytes(buffer.getLong()) : buffer.getLong());
 			initial_length_size = 12;
 		}
 

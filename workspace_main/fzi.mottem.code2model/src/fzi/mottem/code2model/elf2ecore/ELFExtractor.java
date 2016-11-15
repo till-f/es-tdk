@@ -1,9 +1,8 @@
 package fzi.mottem.code2model.elf2ecore;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.nio.MappedByteBuffer;
+import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
 import org.eclipse.core.resources.IResource;
@@ -30,29 +29,29 @@ public class ELFExtractor
 {
 	private DwarfModel _dwarfModel = null;
 	
-	public ELFExtractor(IResource elfResource)
+	public ELFExtractor(IResource elfResource) throws IOException
 	{
 		String absoluteElfPathStr = IntegrationUtils.getStringSystemPathForWorkspaceRelativePath(elfResource.getFullPath());
-		File elfFile = new File(absoluteElfPathStr);
+		//File elfFile = new File(absoluteElfPathStr);
 
-		RandomAccessFile raFile = null;
+		RandomAccessFile elfRandomAccessFile = null;
+		FileChannel elfFileChannel = null;
 		try
 		{
-			raFile = new RandomAccessFile(elfFile, "r");
-			FileChannel elfFileChannel = raFile.getChannel();
-			MappedByteBuffer buffer = elfFileChannel.map(FileChannel.MapMode.READ_ONLY, 0, elfFileChannel.size());
+			elfRandomAccessFile = new RandomAccessFile(absoluteElfPathStr, "r");
+			elfFileChannel = elfRandomAccessFile.getChannel();
+			ByteBuffer buffer = ByteBuffer.allocate((int)(elfFileChannel.size()));
+			elfFileChannel.read(buffer);
+			buffer.flip();
 	    	Elf32Context elfContext = new Elf32Context(buffer);
-	    	Dwarf32Context dwarfContext = new Dwarf32Context(elfContext);
+	    	Dwarf32Context dwarfContext = new Dwarf32Context(elfContext, elfContext.isByteOrderInverted());
 	    	_dwarfModel = DwarfModelFactory.createModel(dwarfContext);
 		}
-		catch (IOException e)
-		{
-			return;
-		} 
 		finally
 		{
 			try {
-				raFile.close();
+				elfFileChannel.close();
+				elfRandomAccessFile.close();
 			} catch (IOException e1) {
 				return;
 			}

@@ -1,5 +1,6 @@
 package fzi.mottem.code2model.elf2ecore;
 
+import java.io.IOException;
 import java.util.LinkedList;
 
 import org.eclipse.core.resources.IResource;
@@ -45,10 +46,18 @@ public class ELFExtractorJob extends Job
 			if (relevantCodeInstances.isEmpty())
 				return Status.OK_STATUS;
 			
-			ELFExtractor extractor = new ELFExtractor(_elfFile);
-			for (CodeInstance ci : relevantCodeInstances)
+			ELFExtractor extractor;
+			try
 			{
-				extractor.extractInto(ci);
+				extractor = new ELFExtractor(_elfFile);
+				for (CodeInstance ci : relevantCodeInstances)
+				{
+					extractor.extractInto(ci);
+				}
+			} 
+			catch (IOException e) 
+			{
+				e.printStackTrace();
 			}
 
 			return Status.OK_STATUS;

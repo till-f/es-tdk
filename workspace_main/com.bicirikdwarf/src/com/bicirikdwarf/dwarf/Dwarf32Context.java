@@ -25,8 +25,11 @@ public class Dwarf32Context {
 
 	ByteBuffer debug_str_buffer;
 
-	public Dwarf32Context(Elf32Context elf) throws IOException {
+	private final boolean invertByteOrder;
+
+	public Dwarf32Context(Elf32Context elf, boolean invertByteOrder) throws IOException {
 		this.elf = elf;
+		this.invertByteOrder = invertByteOrder;
 
 		abbrevs = new HashMap<>();
 		abbrevSequences = new HashMap<>();
@@ -53,7 +56,7 @@ public class Dwarf32Context {
 			int offset = buffer.position();
 
 			Abbrev abbrev = new Abbrev();
-			abbrev.parse(buffer);
+			abbrev.parse(buffer, invertByteOrder);
 
 			if (abbrev.number == 0) {
 				if (abbrevSequence != null) {
@@ -89,7 +92,7 @@ public class Dwarf32Context {
 		while (buffer.remaining() > 11) {
 			int address = buffer.position();
 			CompilationUnit cu = new CompilationUnit(this, address);
-			cu.parse(buffer);
+			cu.parse(buffer, invertByteOrder);
 			compilationUnits.put(address, cu);
 		}
 	}
@@ -126,21 +129,21 @@ public class Dwarf32Context {
 			return ElfUtils.getNTString(buffer);
 
 		case DW_FORM_addr:
-			return buffer.getInt();
+			return invertByteOrder ? Integer.reverseBytes(buffer.getInt()) : buffer.getInt();
 
 		case DW_FORM_strp: {
-			int stringOffset = buffer.getInt();
+			int stringOffset = invertByteOrder ? Integer.reverseBytes(buffer.getInt()) : buffer.getInt();
 			return readDebugString(stringOffset);
 		}
 
 		case DW_FORM_data1:
 			return buffer.get() & 0xff;
 		case DW_FORM_data2:
-			return buffer.getShort();
+			return invertByteOrder ? Short.reverseBytes(buffer.getShort()) : buffer.getShort();
 		case DW_FORM_data4:
-			return buffer.getInt();
+			return invertByteOrder ? Integer.reverseBytes(buffer.getInt()) : buffer.getInt();
 		case DW_FORM_data8:
-			return buffer.getLong();
+			return invertByteOrder ? Long.reverseBytes(buffer.getLong()) : buffer.getLong();
 
 		case DW_FORM_ref1: {
 			Byte data = buffer.get();
@@ -148,17 +151,17 @@ public class Dwarf32Context {
 		}
 
 		case DW_FORM_ref2: {
-			Short data = buffer.getShort();
+			Short data = invertByteOrder ? Short.reverseBytes(buffer.getShort()) : buffer.getShort();
 			return data + cu.address;
 		}
 
 		case DW_FORM_ref4: {
-			Integer data = buffer.getInt();
+			Integer data = invertByteOrder ? Integer.reverseBytes(buffer.getInt()) : buffer.getInt();
 			return data + cu.address;
 		}
 
 		case DW_FORM_ref8: {
-			Long data = buffer.getLong();
+			Long data = invertByteOrder ? Long.reverseBytes(buffer.getLong()) : buffer.getLong();
 			return data + cu.address;
 		}
 
@@ -181,7 +184,7 @@ public class Dwarf32Context {
 		}
 
 		case DW_FORM_block2: {
-			short size = buffer.getShort();
+			short size = invertByteOrder ? Short.reverseBytes(buffer.getShort()) : buffer.getShort();
 			byte bytes[] = new byte[size];
 			for (int z = 0; z < size; z++) {
 				bytes[z] = (byte) (buffer.get() & 0xff);
@@ -190,7 +193,7 @@ public class Dwarf32Context {
 		}
 
 		case DW_FORM_block4: {
-			int size = buffer.getInt();
+			int size = invertByteOrder ? Integer.reverseBytes(buffer.getInt()) : buffer.getInt();
 			byte bytes[] = new byte[size];
 			for (int z = 0; z < size; z++) {
 				bytes[z] = (byte) (buffer.get() & 0xff);
@@ -204,7 +207,7 @@ public class Dwarf32Context {
 			return buffer.get();
 
 		case DW_FORM_sec_offset:
-			return buffer.getInt();
+			return invertByteOrder ? Integer.reverseBytes(buffer.getInt()) : buffer.getInt();
 
 		case DW_FORM_flag_present:
 			// byte value = buffer.get();
