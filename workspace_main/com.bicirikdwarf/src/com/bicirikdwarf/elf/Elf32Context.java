@@ -24,7 +24,6 @@ import com.bicirikdwarf.utils.ElfUtils;
 // sword = int, int
 // word = unsigned int, long
 public class Elf32Context {
-	
 	public static int EI_NIDENT = 16;
 	public static int SHDR_SIZE = 40;
 
@@ -48,18 +47,12 @@ public class Elf32Context {
 
 		init();
 	}
-	
-	public boolean isByteOrderInverted()
-	{
-		return ehdr.isByteOrderInverted();
-	}
 
 	private void init() throws IOException {
 		ehdr.parse(elfBuffer);
 
 		for (int i = 0; i < ehdr.e_shnum; i++) {
 			Shdr shdr = readSectionHeader(i);
-			
 			if (i == ehdr.e_shstrndx)
 				this.shstrtab_buffer = this.getSectionBuffer(shdr);
 
@@ -95,7 +88,7 @@ public class Elf32Context {
 			int position = symtabBuffer.position();
 
 			Sym symbol = new Sym();
-			symbol.parse(symtabBuffer, ehdr.isByteOrderInverted());
+			symbol.parse(symtabBuffer);
 
 			String name = readString(symbol.st_name);
 			if (!name.isEmpty()) {
@@ -142,11 +135,12 @@ public class Elf32Context {
 		return getSectionBuffer(shdr);
 	}
 
-	private Shdr readSectionHeader(int index) throws IOException {
-		long location = (long) (ehdr.e_shoff + (index * SHDR_SIZE));
-		elfBuffer.position((int)location);
+	private Shdr readSectionHeader(int index) {
 		Shdr result = new Shdr();
-		result.parse(elfBuffer, ehdr.isByteOrderInverted());
+		int location = (int) (ehdr.e_shoff + (index * SHDR_SIZE));
+		elfBuffer.position(location);
+		result = new Shdr();
+		result.parse(elfBuffer);
 		return result;
 	}
 

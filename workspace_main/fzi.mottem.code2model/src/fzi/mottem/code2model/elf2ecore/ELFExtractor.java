@@ -44,7 +44,7 @@ public class ELFExtractor
 			elfFileChannel.read(buffer);
 			buffer.flip();
 	    	Elf32Context elfContext = new Elf32Context(buffer);
-	    	Dwarf32Context dwarfContext = new Dwarf32Context(elfContext, elfContext.isByteOrderInverted());
+	    	Dwarf32Context dwarfContext = new Dwarf32Context(elfContext);
 	    	_dwarfModel = DwarfModelFactory.createModel(dwarfContext);
 		}
 		finally

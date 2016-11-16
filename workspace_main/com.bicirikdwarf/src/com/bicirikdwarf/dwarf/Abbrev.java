@@ -21,7 +21,7 @@ public class Abbrev {
 		entries = new ArrayList<>();
 	}
 
-	public void parse(ByteBuffer buffer, boolean invertByteOrder) {
+	public void parse(ByteBuffer buffer) {
 		offset = buffer.position();
 		number = (int) Leb128.getULEB128(buffer);
 		if (number == 0)

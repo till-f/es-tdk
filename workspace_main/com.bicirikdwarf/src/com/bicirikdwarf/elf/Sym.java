@@ -10,12 +10,12 @@ public class Sym {
 	public byte st_other;
 	public short st_shndx;
 
-	public void parse(ByteBuffer buffer, boolean invertByteOrder) {
-		st_name = invertByteOrder ? Integer.reverseBytes(buffer.getInt()) : buffer.getInt();
-		st_value = invertByteOrder ? Integer.reverseBytes(buffer.getInt()) : buffer.getInt();
-		st_size = invertByteOrder ? Integer.reverseBytes(buffer.getInt()) : buffer.getInt();
+	public void parse(ByteBuffer buffer) {
+		st_name = buffer.getInt();
+		st_value = buffer.getInt();
+		st_size = buffer.getInt();
 		st_info = buffer.get();
 		st_other = buffer.get();
-		st_shndx = invertByteOrder ? Short.reverseBytes(buffer.getShort()) : buffer.getShort();
+		st_shndx = buffer.getShort();
 	}
 }

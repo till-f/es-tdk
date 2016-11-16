@@ -2,6 +2,7 @@ package com.bicirikdwarf.elf;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.util.Arrays;
 
 import com.bicirikdwarf.utils.Unsigned;
@@ -29,14 +30,8 @@ public class Ehdr {
 	int e_shentsize; // sizeof shdr - half
 	int e_shnum; // number shdrs - half
 	int e_shstrndx; // shdr string index - half
-	
-	public boolean isByteOrderInverted()
-	{
-		return e_ident_encoding == EELFEncoding.DATA2LSB;
-	}
 
 	public void parse(ByteBuffer buffer) throws IOException {
-
 		buffer.get(e_ident);
 
 		byte[] actual = Arrays.copyOf(e_ident, 4);
@@ -62,29 +57,31 @@ public class Ehdr {
 		{
 			case 1:
 				e_ident_encoding = EELFEncoding.DATA2LSB; // 2's complement, little endian
+				buffer.order(ByteOrder.LITTLE_ENDIAN);
 				break;
 			case 2:
 				e_ident_encoding = EELFEncoding.DATA2MSB; // 2's complement, big endian
+				buffer.order(ByteOrder.BIG_ENDIAN);
 				break;
 			default:
 				e_ident_encoding = EELFEncoding.INVALID;
 				break;
 		}
-		
-		e_type = Unsigned.getU16(buffer, isByteOrderInverted());
-		e_machine = ElfMachineType.byValue(Unsigned.getU16(buffer, isByteOrderInverted()));
-		e_version = Unsigned.getU32(buffer, isByteOrderInverted());
 
-		e_entry = Unsigned.getU32(buffer, isByteOrderInverted());
-		e_phoff = Unsigned.getU32(buffer, isByteOrderInverted());
-		e_shoff = Unsigned.getU32(buffer, isByteOrderInverted());
+		e_type = Unsigned.getU16(buffer);
+		e_machine = ElfMachineType.byValue(Unsigned.getU16(buffer));
+		e_version = Unsigned.getU32(buffer);
 
-		e_flags = Unsigned.getU32(buffer, isByteOrderInverted());
-		e_ehsize = Unsigned.getU16(buffer, isByteOrderInverted());
-		e_phentsize = Unsigned.getU16(buffer, isByteOrderInverted());
-		e_phnum = Unsigned.getU16(buffer, isByteOrderInverted());
-		e_shentsize = Unsigned.getU16(buffer, isByteOrderInverted());
-		e_shnum = Unsigned.getU16(buffer, isByteOrderInverted());
-		e_shstrndx = Unsigned.getU16(buffer, isByteOrderInverted());
+		e_entry = Unsigned.getU32(buffer);
+		e_phoff = Unsigned.getU32(buffer);
+		e_shoff = Unsigned.getU32(buffer);
+
+		e_flags = Unsigned.getU32(buffer);
+		e_ehsize = Unsigned.getU16(buffer);
+		e_phentsize = Unsigned.getU16(buffer);
+		e_phnum = Unsigned.getU16(buffer);
+		e_shentsize = Unsigned.getU16(buffer);
+		e_shnum = Unsigned.getU16(buffer);
+		e_shstrndx = Unsigned.getU16(buffer);
 	}
 }
