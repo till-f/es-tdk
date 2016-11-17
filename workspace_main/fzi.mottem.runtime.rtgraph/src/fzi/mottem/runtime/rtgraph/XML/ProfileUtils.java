@@ -13,8 +13,6 @@ import javax.xml.bind.Unmarshaller;
 
 import fzi.mottem.runtime.rtgraph.Constants;
 import fzi.mottem.runtime.rtgraph.SetupUtilities;
-import fzi.mottem.runtime.rtgraph.ViewCoordinator;
-import fzi.mottem.runtime.rtgraph.views.GraphView;
 
 public class ProfileUtils {
 

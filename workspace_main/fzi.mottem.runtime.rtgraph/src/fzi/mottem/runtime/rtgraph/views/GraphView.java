@@ -47,7 +47,6 @@ import fzi.mottem.runtime.rtgraph.editors.GraphViewEditor;
 import fzi.mottem.runtime.rtgraph.listeners.GraphMouseWheelListener;
 import fzi.mottem.runtime.rtgraph.runnables.AutoScaler;
 import fzi.mottem.runtime.rtgraph.settingsViews.GraphSettingsUI;
-import fzi.mottem.runtime.rtgraph.settingsViews.SetupUI;
 
 public class GraphView extends ObservableView<GraphViewRepresentation> {
 

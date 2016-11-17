@@ -11,17 +11,14 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
 import fzi.mottem.runtime.dataexchanger.DataExchanger;
 import fzi.mottem.runtime.dataexchanger.Signal;
 import fzi.mottem.runtime.dataexchanger.Signal.SignalType;
-import fzi.mottem.runtime.rtgraph.AbstractWidgetExchangeLink.WidgetType;
 import fzi.mottem.runtime.rtgraph.XML.ProfileUtils;
 import fzi.mottem.runtime.rtgraph.runnables.WidgetUpdater;
-import fzi.mottem.runtime.rtgraph.settingsViews.SetupUI;
 import fzi.mottem.runtime.rtgraph.settingsViews.WidgetSettingsUI;
 import fzi.mottem.runtime.rtgraph.views.Dashboard;
 import fzi.mottem.runtime.rtgraph.views.DashboardComposite;

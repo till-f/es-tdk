@@ -3,12 +3,8 @@ package fzi.mottem.runtime.rtgraph.settingsViews;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
-
-import fzi.mottem.runtime.rtgraph.SetupUtilities;
 
 public class SettingsViewPart extends ViewPart {
 	

@@ -2,10 +2,7 @@ package fzi.mottem.runtime.rtgraph;
 
 import java.io.File;
 import java.net.URI;
-import java.net.URISyntaxException;
 
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;

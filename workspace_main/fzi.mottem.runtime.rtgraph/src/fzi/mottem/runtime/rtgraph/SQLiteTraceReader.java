@@ -15,7 +15,6 @@ import fzi.mottem.runtime.dataexchanger.DataExchanger;
 import fzi.mottem.runtime.dataexchanger.Signal;
 import fzi.mottem.runtime.rtgraph.XML.GraphViewRepresentation;
 import fzi.mottem.runtime.rtgraph.XML.TraceRepresentation;
-import fzi.mottem.runtime.rtgraph.runnables.AutoScaler;
 
 public class SQLiteTraceReader {
 
