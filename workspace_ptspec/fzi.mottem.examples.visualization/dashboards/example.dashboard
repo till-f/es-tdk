@@ -2,14 +2,14 @@
 <Dashboard>
     <widgetList>
         <widget>
-            <height>200</height>
+            <height>368</height>
             <rangeMax>100.0</rangeMax>
             <rangeMin>0.0</rangeMin>
-            <signalUID>-uid-</signalUID>
+            <signalUID>/fzi.mottem.examples.ecumotor.ptspec/model/CAN.etm-dstream/__JhkAOyTEeOrd4av19tOtw</signalUID>
             <type>1</type>
-            <width>200</width>
-            <x>635</x>
-            <y>89</y>
+            <width>368</width>
+            <x>48</x>
+            <y>224</y>
             <logarithmic>false</logarithmic>
             <numberFormat></numberFormat>
             <rangeHigh>75.0</rangeHigh>
@@ -18,19 +18,51 @@
             <widgetType>W_INDICATOR</widgetType>
         </widget>
         <widget>
-            <height>599</height>
+            <height>576</height>
             <rangeMax>100.0</rangeMax>
             <rangeMin>0.0</rangeMin>
             <signalUID>-uid-</signalUID>
             <type>6</type>
-            <width>402</width>
-            <x>116</x>
-            <y>12</y>
+            <width>400</width>
+            <x>464</x>
+            <y>16</y>
             <logarithmic>false</logarithmic>
             <numberFormat></numberFormat>
             <rangeHigh>75.0</rangeHigh>
             <rangeLow>25.0</rangeLow>
             <text>images/Mona_Lisa2.jpg</text>
+            <widgetType>W_INDICATOR</widgetType>
+        </widget>
+        <widget>
+            <height>192</height>
+            <rangeMax>100.0</rangeMax>
+            <rangeMin>0.0</rangeMin>
+            <signalUID>/fzi.mottem.examples.raupe.ptspec/model/Demo.etm-testrig/+R[B@1501428</signalUID>
+            <type>0</type>
+            <width>192</width>
+            <x>240</x>
+            <y>16</y>
+            <logarithmic>false</logarithmic>
+            <numberFormat></numberFormat>
+            <rangeHigh>75.0</rangeHigh>
+            <rangeLow>25.0</rangeLow>
+            <text></text>
+            <widgetType>W_INDICATOR</widgetType>
+        </widget>
+        <widget>
+            <height>192</height>
+            <rangeMax>100.0</rangeMax>
+            <rangeMin>0.0</rangeMin>
+            <signalUID>/fzi.mottem.examples.visualization/model/EnvironmentDataModel.etm-env/+R[B@144576</signalUID>
+            <type>0</type>
+            <width>192</width>
+            <x>32</x>
+            <y>16</y>
+            <logarithmic>false</logarithmic>
+            <numberFormat></numberFormat>
+            <rangeHigh>75.0</rangeHigh>
+            <rangeLow>25.0</rangeLow>
+            <text></text>
             <widgetType>W_INDICATOR</widgetType>
         </widget>
     </widgetList>
@@ -40,5 +72,6 @@
     <background_path>images/widgets_bg.jpg</background_path>
     <scale_background_x>true</scale_background_x>
     <scale_background_y>true</scale_background_y>
+    <gridSize>16</gridSize>
     <path>C:\Work\FZI\git\daves\workspace_ptspec\fzi.mottem.examples.visualization\dashboards\example.dashboard</path>
 </Dashboard>
